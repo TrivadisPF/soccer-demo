@@ -1,6 +1,6 @@
 {
-        "name": "RawGamesV1",
-        "package": "com.trivadis.demo.football",
+        "name": "FixtureLiveDataRawV1",
+        "package": "com.trivadis.demo.soccer",
         "type": "record",
         "fields": [
             {

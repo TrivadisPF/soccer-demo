@@ -102,7 +102,7 @@
 						<param>http://dataplatform:8081</param>
 					</schemaRegistryUrls>
 					<subjects>
-						<game-raw-v1-value>src/main/avro/GameRaw-v1.avsc</game-raw-v1-value>
+						<fixture-live-data-raw-v1-value>src/main/avro/FixtureLiveDataRaw-v1.avsc</fixture-live-data-raw-v1-value>
 					</subjects>
 				</configuration>
 				<goals>
