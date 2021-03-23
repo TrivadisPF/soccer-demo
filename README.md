@@ -1,10 +1,10 @@
-# Football Streaming Demo
+# Soccer Streaming Demo
 
-This project shows how to setup and run the demo used in various talks, such as "Introduction into Stream Processing". 
+This project shows how to setup and run the demo used ... 
 
 ![Alt Image Text](./images/use-case-overview.png "Use Case Overview")
 
-## Preparation
+## Preparation (tbd)
 
 The platform where the demos can be run on, has been generated using the [`platys`](http://github.com/trivadispf/platys)  toolset using the [`platys-modern-data-platform`](http://github.com/trivadispf/platys-modern-data-platform) stack.
 
@@ -17,7 +17,7 @@ The prerequisites for running the platform are
 
 The environment is completely based on docker containers. In order to easily start the multiple containers, we are going to use Docker Compose. You need to have at least 8 GB of RAM available, better is 12 GB or 16 GB.
 
-### Start the platform using Docker Compose
+### Start the platform using Docker Compose (tbd.)
 
 First, create the following two environment variables, which export the Public IP address (if a cloud environment) and the Docker Engine (Docker Host)  IP address:
 
@@ -61,7 +61,7 @@ As a final step, add `dataplatform` as an alias to the `/etc/hosts` file so that
 
 If you have no rights for doing that, then you have to use your IP address instead of `dataplatform` in all the URLs.  
 
-### Available Services 
+### Available Services (tbd.)
 
 The following user interfaces are available:
 
@@ -74,6 +74,8 @@ The following user interfaces are available:
  * Cloudbeaver: <http://dataplatform:8978>
 
 
+## Data Wrangling
+
 Download the data from: <https://data.world/raghav333/fifa-players>
 
 ```
@@ -82,10 +84,14 @@ docker exec -ti awscli s3cmd put /data-transfer/fifa_cleaned.csv s3://fifa-bucke
 docker exec -ti awscli s3cmd put /data-transfer/football-positions.csv s3://fifa-bucket/
 ```
 
+## Create Kafka Topics
 
 ```
 docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic match_raw_v1 --replication-factor 3 --partitions 1
 ```
+
+
+
 
 
 ``` bash
