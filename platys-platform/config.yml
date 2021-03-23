@@ -196,7 +196,7 @@
       SPARK_jars_repositories: ''
       SPARK_jars_packages: ''
       SPARK_jars_excludes: ''
-      SPARK_jars: ''
+      SPARK_jars: 'com.github.mrpowers:spark-daria:1.0.0'
       SPARK_jars_ivySettings: ''
       SPARK_driver_extraJavaOptions: ''
       SPARK_executor_extraJavaOptions: ''
@@ -515,11 +515,11 @@
       #
       # ===== SQL Server ========
       #
-      SQLSERVER_enable: false
+      SQLSERVER_enable: true
       #
       # ===== PostgreSQL ========
       #
-      POSTGRESQL_enable: true
+      POSTGRESQL_enable: false
       POSTGRESQL_volume_map_data: false
       POSTGRESQL_database: demodb
       POSTGRESQL_user: demo

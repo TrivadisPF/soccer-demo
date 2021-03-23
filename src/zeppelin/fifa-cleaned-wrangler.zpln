@@ -3,7 +3,7 @@
     {
       "text": "%md # FIFA Data Wrangling",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:18:56+0000",
+      "dateUpdated": "2021-03-23T16:36:36+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -39,17 +39,17 @@
       "jobName": "paragraph_1616483977296_1158261442",
       "id": "paragraph_1616483977296_1158261442",
       "dateCreated": "2021-03-23T07:19:37+0000",
-      "dateStarted": "2021-03-23T09:18:56+0000",
-      "dateFinished": "2021-03-23T09:18:56+0000",
+      "dateStarted": "2021-03-23T16:36:36+0000",
+      "dateFinished": "2021-03-23T16:36:36+0000",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:905532"
+      "$$hashKey": "object:14322"
     },
     {
       "text": "val fifaRawDF = spark.read.options(Map(\"inferSchema\"->\"true\",\"delimiter\"->\",\",\"header\"->\"true\"))\n                            .csv(\"s3a://fifa-bucket/fifa_cleaned.csv\")",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:18:56+0000",
-      "progress": 50,
+      "dateUpdated": "2021-03-23T16:36:36+0000",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -85,12 +85,12 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=129",
-              "$$hashKey": "object:921896"
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=197",
+              "$$hashKey": "object:26417"
             },
             {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=130",
-              "$$hashKey": "object:921897"
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=198",
+              "$$hashKey": "object:26418"
             }
           ],
           "interpreterSettingId": "spark"
@@ -100,15 +100,15 @@
       "jobName": "paragraph_1616448082889_922787286",
       "id": "paragraph_1616448082889_922787286",
       "dateCreated": "2021-03-22T21:21:22+0000",
-      "dateStarted": "2021-03-23T09:18:56+0000",
-      "dateFinished": "2021-03-23T09:19:04+0000",
+      "dateStarted": "2021-03-23T16:36:36+0000",
+      "dateFinished": "2021-03-23T16:37:16+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905533"
+      "$$hashKey": "object:14323"
     },
     {
       "text": "fifaRawDF.printSchema()",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:04+0000",
+      "dateUpdated": "2021-03-23T16:37:16+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -142,71 +142,15 @@
       "jobName": "paragraph_1616448383396_1462117477",
       "id": "paragraph_1616448383396_1462117477",
       "dateCreated": "2021-03-22T21:26:23+0000",
-      "dateStarted": "2021-03-23T09:19:04+0000",
-      "dateFinished": "2021-03-23T09:19:04+0000",
+      "dateStarted": "2021-03-23T16:37:16+0000",
+      "dateFinished": "2021-03-23T16:37:17+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905534"
-    },
-    {
-      "text": "fifaRawDF.show()",
-      "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:04+0000",
-      "progress": 100,
-      "config": {
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "colWidth": 12,
-        "editorMode": "ace/mode/scala",
-        "fontSize": 9,
-        "results": {},
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+------+---------------+--------------------+----------+---+---------+----------+---------+-----------+--------------+---------+----------+---------+--------------+-----------------------------+--------------+----------------+--------------+-------------------+--------------------+-------------------+-----------+-------------+------------------+--------------+-----------------+-------------+---------------+----------------------+----------------------+--------+---------+----------------+-------------+-------+---------+-----+-----------------+------------+------------+------------+------------+-------+---------+-------+----------+-------+-------+--------+----------+----------+-------------+-----------+------+---------+---------+-------+---------------+--------------+---------+-----------+----------+--------------+-----------+--------------------+--------------------+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n|    id|           name|           full_name|birth_date|age|height_cm|weight_kgs|positions|nationality|overall_rating|potential|value_euro|wage_euro|preferred_foot|international_reputation(1-5)|weak_foot(1-5)|skill_moves(1-5)|     work_rate|          body_type| release_clause_euro|          club_team|club_rating|club_position|club_jersey_number|club_join_date|contract_end_year|national_team|national_rating|national_team_position|national_jersey_number|crossing|finishing|heading_accuracy|short_passing|volleys|dribbling|curve|freekick_accuracy|long_passing|ball_control|acceleration|sprint_speed|agility|reactions|balance|shot_power|jumping|stamina|strength|long_shots|aggression|interceptions|positioning|vision|penalties|composure|marking|standing_tackle|sliding_tackle|GK_diving|GK_handling|GK_kicking|GK_positioning|GK_reflexes|                tags|              traits|  LS|  ST|  RS|  LW|  LF|  CF|  RF|  RW| LAM| CAM| RAM|  LM| LCM|  CM| RCM|  RM| LWB| LDM| CDM| RDM| RWB|  LB| LCB|  CB| RCB|  RB|\n+------+---------------+--------------------+----------+---+---------+----------+---------+-----------+--------------+---------+----------+---------+--------------+-----------------------------+--------------+----------------+--------------+-------------------+--------------------+-------------------+-----------+-------------+------------------+--------------+-----------------+-------------+---------------+----------------------+----------------------+--------+---------+----------------+-------------+-------+---------+-----+-----------------+------------+------------+------------+------------+-------+---------+-------+----------+-------+-------+--------+----------+----------+-------------+-----------+------+---------+---------+-------+---------------+--------------+---------+-----------+----------+--------------+-----------+--------------------+--------------------+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n|158023|       L. Messi|Lionel Andrés Mes...|1987-06-24| 31|   170.18|      72.1| CF,RW,ST|  Argentina|            94|       94|   1.105E8| 565000.0|          Left|                            5|             4|               4|   Medium/ Low|              Messi|             2.265E8|       FC Barcelona|       86.0|           RW|              10.0|    2004-07-01|             2021|    Argentina|           82.0|                    RF|                  10.0|      86|       95|              70|           92|     86|       97|   93|               94|          89|          96|          91|          86|     93|       95|     95|        85|     68|     72|      66|        94|        48|           22|         94|    94|       75|       96|     33|             28|            26|        6|         11|        15|            14|          8|#Dribbler,#Distan...|Finesse Shot,Long...|89+2|89+2|89+2|93+2|93+2|93+2|93+2|93+2|93+2|93+2|93+2|91+2|85+2|85+2|85+2|91+2|64+2|61+2|61+2|61+2|64+2|59+2|48+2|48+2|48+2|59+2|\n|190460|     C. Eriksen|Christian  Dannem...|1992-02-14| 27|   154.94|      76.2|CAM,RM,CM|    Denmark|            88|       89|    6.95E7| 205000.0|         Right|                            3|             5|               4|  High/ Medium|               Lean|1.3380000000000001E8|  Tottenham Hotspur|       83.0|          LCM|              23.0|    2013-08-30|             2020|      Denmark|           78.0|                   CAM|                  10.0|      88|       81|              52|           91|     80|       84|   86|               87|          89|          91|          76|          73|     80|       88|     81|        84|     50|     92|      58|        89|        46|           56|         84|    91|       67|       88|     59|             57|            22|        9|         14|         7|             7|          6|#Playmaker  ,#Cro...|Flair,Long Shot T...|79+3|79+3|79+3|85+3|84+3|84+3|84+3|85+3|86+3|86+3|86+3|86+3|85+3|85+3|85+3|86+3|71+3|71+3|71+3|71+3|71+3|66+3|57+3|57+3|57+3|66+3|\n|195864|       P. Pogba|          Paul Pogba|1993-03-15| 25|    190.5|      83.9|   CM,CAM|     France|            88|       91|     7.3E7| 255000.0|         Right|                            4|             4|               5|  High/ Medium|             Normal|             1.442E8|  Manchester United|       82.0|          LCM|               6.0|    2016-08-09|             2021|       France|           84.0|                   RDM|                   6.0|      80|       75|              75|           86|     85|       87|   85|               82|          90|          90|          71|          79|     76|       82|     66|        90|     83|     88|      87|        82|        78|           64|         82|    88|       82|       87|     63|             67|            67|        5|          6|         2|             4|          3|#Dribbler,#Playma...|Flair,Long Passer...|81+3|81+3|81+3|82+3|83+3|83+3|83+3|82+3|84+3|84+3|84+3|83+3|84+3|84+3|84+3|83+3|76+3|77+3|77+3|77+3|76+3|74+3|72+3|72+3|72+3|74+3|\n|198219|     L. Insigne|     Lorenzo Insigne|1991-06-04| 27|   162.56|      59.0|    LW,ST|      Italy|            88|       88|     6.2E7| 165000.0|         Right|                            3|             4|               4|  High/ Medium|             Normal|             1.054E8|             Napoli|       82.0|           LS|              24.0|    2010-07-01|             2022|        Italy|           83.0|                    LW|                  10.0|      86|       77|              56|           85|     74|       90|   87|               77|          78|          93|          94|          86|     94|       83|     93|        75|     53|     75|      44|        84|        34|           26|         83|    87|       61|       83|     51|             24|            22|        8|          4|        14|             9|         10|#Speedster,#Dribb...|Finesse Shot,Long...|78+3|78+3|78+3|86+3|85+3|85+3|85+3|86+3|86+3|86+3|86+3|86+3|78+3|78+3|78+3|86+3|63+3|58+3|58+3|58+3|63+3|58+3|44+3|44+3|44+3|58+3|\n|201024|   K. Koulibaly|   Kalidou Koulibaly|1991-06-20| 27|   187.96|      88.9|       CB|    Senegal|            88|       91|     6.0E7| 135000.0|         Right|                            3|             3|               2|    High/ High|             Normal|             1.065E8|             Napoli|       82.0|          LCB|              26.0|    2014-07-01|             2021|         null|           null|                  null|                  null|      30|       22|              83|           68|     14|       69|   28|               28|          60|          63|          70|          75|     50|       82|     40|        55|     81|     75|      94|        15|        87|           88|         24|    49|       33|       80|     91|             88|            87|        7|         11|         7|            13|          5|#Tackling ,#Tacti...|        Power Header|53+3|53+3|53+3|53+3|54+3|54+3|54+3|53+3|55+3|55+3|55+3|57+3|61+3|61+3|61+3|57+3|73+3|77+3|77+3|77+3|73+3|76+3|85+3|85+3|85+3|76+3|\n|203376|    V. van Dijk|     Virgil van Dijk|1991-07-08| 27|   193.04|      92.1|       CB|Netherlands|            88|       90|    5.95E7| 215000.0|         Right|                            3|             3|               2|Medium/ Medium|             Normal|             1.145E8|          Liverpool|       83.0|          LCB|               4.0|    2018-01-01|             2023|  Netherlands|           81.0|                   LCB|                   4.0|      53|       52|              83|           79|     45|       70|   60|               70|          81|          76|          74|          77|     61|       87|     49|        81|     88|     75|      92|        64|        82|           88|         41|    60|       62|       87|     90|             89|            84|       13|         10|        13|            11|         11|#Tactician ,#Stre...|Injury Free,Leade...|68+3|68+3|68+3|66+3|67+3|67+3|67+3|66+3|68+3|68+3|68+3|68+3|73+3|73+3|73+3|68+3|78+3|82+3|82+3|82+3|78+3|80+3|86+3|86+3|86+3|80+3|\n|231747|      K. Mbappé|       Kylian Mbappé|1998-12-20| 20|    152.4|      73.0| RW,ST,RM|     France|            88|       95|     8.1E7| 100000.0|         Right|                            3|             4|               5|  High/ Medium|               Lean|             1.661E8|Paris Saint-Germain|       84.0|           LS|               7.0|    2018-07-01|             2022|       France|           84.0|                    RM|                  10.0|      77|       88|              77|           82|     78|       90|   77|               63|          73|          91|          96|          96|     92|       87|     83|        79|     75|     83|      71|        78|        62|           38|         88|    82|       70|       86|     34|             34|            32|       13|          5|         7|            11|          6|#Speedster,#Dribb...|Finesse Shot,Flai...|85+3|85+3|85+3|87+3|87+3|87+3|87+3|87+3|86+3|86+3|86+3|86+3|78+3|78+3|78+3|86+3|66+3|62+3|62+3|62+3|66+3|62+3|54+3|54+3|54+3|62+3|\n|153079|      S. Agüero|Sergio Leonel Agü...|1988-06-02| 30|   172.72|      69.9|       ST|  Argentina|            89|       89|    6.45E7| 300000.0|         Right|                            4|             4|               4|  High/ Medium|             Stocky|             1.193E8|    Manchester City|       85.0|           ST|              10.0|    2011-07-28|             2021|    Argentina|           82.0|                   SUB|                  11.0|      70|       93|              77|           81|     85|       89|   82|               73|          64|          89|          88|          80|     86|       90|     91|        88|     81|     76|      73|        83|        65|           24|         92|    83|       83|       90|     30|             20|            12|       13|         15|         6|            11|         14|#Dribbler,#Acroba...|Beat Offside Trap...|86+3|86+3|86+3|86+3|87+3|87+3|87+3|86+3|85+3|85+3|85+3|83+3|76+3|76+3|76+3|83+3|58+3|56+3|56+3|56+3|58+3|53+3|47+3|47+3|47+3|53+3|\n|167495|       M. Neuer|        Manuel Neuer|1986-03-27| 32|   193.04|      92.1|       GK|    Germany|            89|       89|     3.8E7| 130000.0|         Right|                            5|             4|               1|Medium/ Medium|             Normal|              6.27E7|  FC Bayern München|       85.0|           GK|               1.0|    2011-07-01|             2021|      Germany|           85.0|                    GK|                   1.0|      15|       13|              25|           55|     11|       30|   14|               11|          59|          46|          54|          60|     51|       84|     35|        25|     77|     43|      80|        16|        29|           30|         12|    70|       47|       70|     17|             10|            11|       90|         86|        91|            87|         87|                null|GK Long Throw,1-o...|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|\n|179813|      E. Cavani|Edinson Roberto C...|1987-02-14| 32|   185.42|      77.1|       ST|    Uruguay|            89|       89|     6.0E7| 200000.0|         Right|                            4|             4|               3|    High/ High|               Lean|              1.11E8|Paris Saint-Germain|       84.0|           RS|               9.0|    2013-07-16|             2020|      Uruguay|           81.0|                    LS|                  21.0|      70|       89|              89|           78|     90|       80|   77|               76|          52|          82|          75|          76|     77|       91|     59|        87|     88|     92|      78|        79|        84|           48|         93|    77|       85|       82|     52|             45|            39|       12|          5|        13|            13|         10|             #Engine|Beat Offside Trap...|85+3|85+3|85+3|81+3|83+3|83+3|83+3|81+3|80+3|80+3|80+3|79+3|75+3|75+3|75+3|79+3|67+3|65+3|65+3|65+3|67+3|65+3|63+3|63+3|63+3|65+3|\n|189511|Sergio Busquets|Sergio Busquets i...|1988-07-16| 30|   187.96|      76.2|   CDM,CM|      Spain|            89|       89|    5.15E7| 315000.0|         Right|                            4|             3|               3|Medium/ Medium|               Lean|             1.056E8|       FC Barcelona|       86.0|          CDM|               5.0|    2008-09-01|             2023|        Spain|           85.0|                   CDM|                   5.0|      62|       67|              68|           89|     44|       80|   66|               68|          82|          88|          50|          52|     66|       87|     52|        61|     66|     86|      77|        54|        85|           87|         77|    87|       60|       93|     90|             86|            80|        5|          8|        13|             9|         13|#Playmaker  ,#Tac...|                null|71+3|71+3|71+3|74+3|76+3|76+3|76+3|74+3|79+3|79+3|79+3|76+3|83+3|83+3|83+3|76+3|79+3|86+3|86+3|86+3|79+3|78+3|82+3|82+3|82+3|78+3|\n|192119|    T. Courtois|    Thibaut Courtois|1992-05-11| 26|   198.12|      96.2|       GK|    Belgium|            89|       90|    5.35E7| 240000.0|          Left|                            4|             2|               1|Medium/ Medium|           Courtois|             1.137E8|        Real Madrid|       86.0|           GK|              25.0|    2018-08-09|             2024|      Belgium|           85.0|                    GK|                   1.0|      14|       14|              13|           33|     12|       13|   19|               20|          35|          23|          46|          52|     61|       84|     45|        36|     68|     38|      70|        17|        23|           15|         13|    44|       27|       66|     20|             18|            16|       85|         91|        72|            86|         88|                null|GK Long Throw,Com...|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|\n|192448|  M. ter Stegen|Marc-André ter St...|1992-04-30| 26|   187.96|      84.8|       GK|    Germany|            89|       92|     5.8E7| 240000.0|         Right|                            3|             4|               1|Medium/ Medium|             Normal|             1.233E8|       FC Barcelona|       86.0|           GK|               1.0|    2014-07-01|             2022|      Germany|           85.0|                   SUB|                  22.0|      18|       14|              11|           42|     14|       17|   18|               12|          47|          18|          38|          50|     37|       86|     43|        22|     79|     35|      78|        10|        43|           22|         11|    70|       25|       70|     25|             13|            10|       87|         85|        88|            86|         90|                null|Rushes Out Of Goa...|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|null|\n|194765|   A. Griezmann|   Antoine Griezmann|1991-03-21| 27|   175.26|      73.0|    CF,ST|     France|            89|       90|     7.8E7| 145000.0|          Left|                            4|             3|               4|    High/ High|               Lean|             1.658E8|    Atlético Madrid|       84.0|           RS|               7.0|    2014-07-28|             2023|       France|           84.0|                   CAM|                   7.0|      82|       89|              84|           84|     87|       87|   86|               84|          78|          90|          88|          85|     90|       90|     82|        82|     90|     86|      62|        82|        73|           49|         91|    85|       83|       89|     59|             54|            48|       14|          8|        14|            13|         14|#Dribbler,#Engine...|Beat Offside Trap...|86+3|86+3|86+3|87+3|87+3|87+3|87+3|87+3|86+3|86+3|86+3|86+3|82+3|82+3|82+3|86+3|72+3|70+3|70+3|70+3|72+3|70+3|65+3|65+3|65+3|70+3|\n|209331|       M. Salah|Mohamed  Salah Ghaly|1992-06-15| 26|   175.26|      71.2|    RW,ST|      Egypt|            89|       90|    7.85E7| 265000.0|          Left|                            3|             3|               4|  High/ Medium|PLAYER_BODY_TYPE_25|             1.511E8|          Liverpool|       83.0|           ST|              11.0|    2017-07-01|             2023|        Egypt|           73.0|                    RM|                  10.0|      78|       90|              59|           83|     76|       89|   83|               60|          74|          88|          94|          91|     91|       92|     88|        80|     68|     84|      70|        83|        63|           55|         92|    84|       75|       91|     38|             43|            41|       14|         14|         9|            11|         14|#Speedster,#Dribb...|Diver,Beat Offsid...|84+3|84+3|84+3|87+3|87+3|87+3|87+3|87+3|87+3|87+3|87+3|86+3|81+3|81+3|81+3|86+3|70+3|66+3|66+3|66+3|70+3|66+3|57+3|57+3|57+3|66+3|\n|211110|      P. Dybala|Paulo Bruno Exequ...|1993-11-15| 25|    152.4|      74.8|   CAM,RW|  Argentina|            89|       94|     8.9E7| 205000.0|          Left|                            3|             3|               4|Medium/ Medium|             Normal|             1.535E8|           Juventus|       85.0|           RW|              10.0|    2015-07-01|             2022|    Argentina|           82.0|                    LF|                  21.0|      82|       84|              68|           87|     88|       92|   88|               88|          75|          92|          87|          83|     91|       86|     85|        82|     75|     80|      65|        88|        48|           32|         84|    87|       86|       84|     23|             20|            20|        5|          4|         4|             5|          8|#Dribbler,#Playma...|Avoids Using Weak...|83+3|83+3|83+3|87+3|86+3|86+3|86+3|87+3|87+3|87+3|87+3|86+3|79+3|79+3|79+3|86+3|62+3|58+3|58+3|58+3|62+3|56+3|45+3|45+3|45+3|56+3|\n|232363|    M. Škriniar|      Milan Škriniar|1995-02-11| 24|   187.96|      79.8|       CB|   Slovakia|            86|       93|    5.35E7|  89000.0|         Right|                            1|             4|               2|  Medium/ High|             Normal|             1.017E8|              Inter|       82.0|          LCB|              37.0|    2017-07-07|             2022|         null|           null|                  null|                  null|      40|       42|              82|           73|     40|       59|   34|               30|          69|          67|          70|          73|     48|       83|     51|        50|     78|     77|      85|        30|        86|           86|         30|    57|       56|       81|     92|             89|            84|       10|         13|        12|             8|         12|         #Tactician |        Power Header|58+2|58+2|58+2|57+2|57+2|57+2|57+2|57+2|59+2|59+2|59+2|60+2|66+2|66+2|66+2|60+2|74+2|79+2|79+2|79+2|74+2|77+2|84+2|84+2|84+2|77+2|\n|135507|    Fernandinho|  Fernando Luiz Rosa|1985-05-04| 33|    152.4|      67.1|      CDM|     Brazil|            87|       87|    2.05E7| 200000.0|         Right|                            3|             4|               3|  Medium/ High|               Lean|              3.79E7|    Manchester City|       85.0|          CDM|              25.0|    2013-07-01|             2020|         null|           null|                  null|                  null|      68|       69|              66|           85|     74|       77|   70|               72|          83|          82|          68|          67|     72|       89|     78|        83|     78|     84|      76|        78|        87|           89|         70|    75|       61|       79|     87|             86|            80|       12|         11|         5|            13|          7|         #Tactician |Long Shot Taker (...|75+3|75+3|75+3|75+3|76+3|76+3|76+3|75+3|77+3|77+3|77+3|76+3|81+3|81+3|81+3|76+3|81+3|84+3|84+3|84+3|81+3|80+3|82+3|82+3|82+3|80+3|\n|167664|     G. Higuaín|Gonzalo Gerardo H...|1987-12-10| 31|   185.42|      88.9|       ST|  Argentina|            87|       87|    4.85E7| 205000.0|         Right|                            4|             4|               3|  High/ Medium|             Normal|                null|            Chelsea|       83.0|           ST|               9.0|          null|     Jun 30, 2019|         null|           null|                  null|                  null|      68|       91|              79|           74|     88|       83|   74|               62|          59|          84|          70|          72|     75|       86|     69|        86|     79|     70|      85|        80|        50|           20|         92|    74|       70|       86|     35|             22|            18|        5|         12|         7|             5|         10|  #Clinical Finisher|Outside Foot Shot...|84+3|84+3|84+3|80+3|82+3|82+3|82+3|80+3|79+3|79+3|79+3|78+3|71+3|71+3|71+3|78+3|55+3|53+3|53+3|53+3|55+3|51+3|48+3|48+3|48+3|51+3|\n|168651|     I. Rakitić|        Ivan Rakitić|1988-03-10| 30|   182.88|      78.0|   CM,CDM|    Croatia|            87|       87|    4.65E7| 260000.0|         Right|                            4|             4|               3|  Medium/ High|               Lean|              9.53E7|       FC Barcelona|       86.0|          LCM|               4.0|    2014-07-01|             2021|         null|           null|                  null|                  null|      84|       79|              59|           87|     84|       82|   88|               82|          90|          85|          66|          62|     73|       80|     66|        84|     39|     83|      71|        87|        67|           81|         80|    86|       82|       86|     76|             75|            73|       14|         11|        12|             5|          9|        #Playmaker  |Injury Free,Long ...|77+3|77+3|77+3|80+3|80+3|80+3|80+3|80+3|82+3|82+3|82+3|81+3|84+3|84+3|84+3|81+3|78+3|80+3|80+3|80+3|78+3|76+3|73+3|73+3|73+3|76+3|\n+------+---------------+--------------------+----------+---+---------+----------+---------+-----------+--------------+---------+----------+---------+--------------+-----------------------------+--------------+----------------+--------------+-------------------+--------------------+-------------------+-----------+-------------+------------------+--------------+-----------------+-------------+---------------+----------------------+----------------------+--------+---------+----------------+-------------+-------+---------+-----+-----------------+------------+------------+------------+------------+-------+---------+-------+----------+-------+-------+--------+----------+----------+-------------+-----------+------+---------+---------+-------+---------------+--------------+---------+-----------+----------+--------------+-----------+--------------------+--------------------+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\nonly showing top 20 rows\n\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=131",
-              "$$hashKey": "object:921966"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616448758739_1983124739",
-      "id": "paragraph_1616448758739_1983124739",
-      "dateCreated": "2021-03-22T21:32:38+0000",
-      "dateStarted": "2021-03-23T09:19:04+0000",
-      "dateFinished": "2021-03-23T09:19:05+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:905535"
+      "$$hashKey": "object:14324"
     },
     {
       "text": "fifaRawDF.createOrReplaceTempView(\"fifa_raw_t\")",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:05+0000",
+      "dateUpdated": "2021-03-23T16:37:17+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -235,187 +179,13 @@
       "jobName": "paragraph_1616448789370_692071296",
       "id": "paragraph_1616448789370_692071296",
       "dateCreated": "2021-03-22T21:33:09+0000",
-      "dateStarted": "2021-03-23T09:19:05+0000",
-      "dateFinished": "2021-03-23T09:19:06+0000",
+      "dateStarted": "2021-03-23T16:37:17+0000",
+      "dateFinished": "2021-03-23T16:37:17+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905536"
+      "$$hashKey": "object:14326"
     },
     {
-      "text": "%sql\nSELECT max (length(club_position)) FROM fifa_raw_t;",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:06+0000",
-      "progress": 66,
-      "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "colWidth": 12,
-        "editorMode": "ace/mode/sql",
-        "fontSize": 9,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "max(length(club_position))": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            }
-          }
-        },
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "max(length(club_position))\n3\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=132",
-              "$$hashKey": "object:922091"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616448832408_1849125180",
-      "id": "paragraph_1616448832408_1849125180",
-      "dateCreated": "2021-03-22T21:33:52+0000",
-      "dateStarted": "2021-03-23T09:19:06+0000",
-      "dateFinished": "2021-03-23T09:19:06+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:905537"
-    },
-    {
-      "text": "%sql\nselect club_rating FROM fifa_raw_t where club_team = \"Fulham\"",
-      "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:06+0000",
-      "progress": 0,
-      "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "colWidth": 12,
-        "editorMode": "ace/mode/sql",
-        "fontSize": 9,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "club_rating": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            }
-          }
-        },
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "club_rating\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n76.0\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=133",
-              "$$hashKey": "object:922227"
-            },
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=134",
-              "$$hashKey": "object:922228"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616448865853_47253796",
-      "id": "paragraph_1616448865853_47253796",
-      "dateCreated": "2021-03-22T21:34:25+0000",
-      "dateStarted": "2021-03-23T09:19:06+0000",
-      "dateFinished": "2021-03-23T09:19:07+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:905538"
-    },
-    {
-      "text": "%md ## POSITION_T table\n",
-      "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:07+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -436,177 +206,19 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>POSITION_T table</h2>\n\n</div>"
-          }
-        ]
-      },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616482886659_1505419756",
-      "id": "paragraph_1616482886659_1505419756",
-      "dateCreated": "2021-03-23T07:01:26+0000",
-      "dateStarted": "2021-03-23T09:19:07+0000",
-      "dateFinished": "2021-03-23T09:19:07+0000",
+      "jobName": "paragraph_1616517382108_1973786396",
+      "id": "paragraph_1616517382108_1973786396",
+      "dateCreated": "2021-03-23T16:36:22+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905539"
-    },
-    {
-      "text": "%sql\nSELECT row_number() OVER (ORDER BY position) AS id, position AS short_name FROM (\n    SELECT DISTINCT position \n    FROM fifa_raw_t \n    LATERAL VIEW EXPLODE(split(positions,',')) as position\n)",
-      "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:07+0000",
-      "progress": 99,
-      "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "colWidth": 12,
-        "editorMode": "ace/mode/sql",
-        "fontSize": 9,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "id": "string",
-                      "short_name": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            }
-          }
-        },
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "id\tshort_name\n1\tCAM\n2\tCB\n3\tCDM\n4\tCF\n5\tCM\n6\tGK\n7\tLB\n8\tLM\n9\tLW\n10\tLWB\n11\tRB\n12\tRM\n13\tRW\n14\tRWB\n15\tST\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=135",
-              "$$hashKey": "object:922560"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616482905851_697355688",
-      "id": "paragraph_1616482905851_697355688",
-      "dateCreated": "2021-03-23T07:01:45+0000",
-      "dateStarted": "2021-03-23T09:19:07+0000",
-      "dateFinished": "2021-03-23T09:19:10+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:905540"
-    },
-    {
-      "text": "val positionDF = spark.sql(\"\"\" \nSELECT row_number() OVER (ORDER BY position) AS id, position AS short_name FROM (\n    SELECT DISTINCT position \n    FROM fifa_raw_t \n    LATERAL VIEW EXPLODE(split(positions,',')) as position\n)\n\"\"\")\npositionDF.createOrReplaceTempView(\"position_t\")            ",
-      "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:10+0000",
-      "progress": 0,
-      "config": {
-        "colWidth": 12,
-        "editorMode": "ace/mode/scala",
-        "fontSize": 9,
-        "results": {},
-        "enabled": true,
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        }
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mpositionDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id: int, short_name: string]\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616486609153_653790267",
-      "id": "paragraph_1616486609153_653790267",
-      "dateCreated": "2021-03-23T08:03:29+0000",
-      "dateStarted": "2021-03-23T09:19:10+0000",
-      "dateFinished": "2021-03-23T09:19:10+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:905541"
-    },
-    {
-      "text": "%md ## BODY_TYPE_T table\n",
-      "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:10+0000",
-      "progress": 0,
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "colWidth": 12,
-        "editorMode": "ace/mode/markdown",
-        "fontSize": 9,
-        "editorHide": true,
-        "results": {},
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
+      "focus": true,
+      "$$hashKey": "object:25951",
+      "text": "%md ## BODY_TYPE_T table",
+      "dateUpdated": "2021-03-23T16:37:17+0000",
+      "dateFinished": "2021-03-23T16:37:17+0000",
+      "dateStarted": "2021-03-23T16:37:17+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -615,23 +227,13 @@
             "data": "<div class=\"markdown-body\">\n<h2>BODY_TYPE_T table</h2>\n\n</div>"
           }
         ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616483202932_555825852",
-      "id": "paragraph_1616483202932_555825852",
-      "dateCreated": "2021-03-23T07:06:42+0000",
-      "dateStarted": "2021-03-23T09:19:10+0000",
-      "dateFinished": "2021-03-23T09:19:10+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:905542"
+      }
     },
     {
       "text": "%sql\nSELECT row_number() OVER (ORDER BY name) AS id, name FROM (\n        SELECT DISTINCT(body_type) AS name \n        FROM fifa_raw_t\n        ) t;\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:10+0000",
-      "progress": 95,
+      "dateUpdated": "2021-03-23T16:37:17+0000",
+      "progress": 99,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -696,8 +298,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=136",
-              "$$hashKey": "object:923069"
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=199",
+              "$$hashKey": "object:26586"
             }
           ],
           "interpreterSettingId": "spark"
@@ -707,15 +309,15 @@
       "jobName": "paragraph_1616483255453_1429640602",
       "id": "paragraph_1616483255453_1429640602",
       "dateCreated": "2021-03-23T07:07:35+0000",
-      "dateStarted": "2021-03-23T09:19:10+0000",
-      "dateFinished": "2021-03-23T09:19:12+0000",
+      "dateStarted": "2021-03-23T16:37:17+0000",
+      "dateFinished": "2021-03-23T16:37:50+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905543"
+      "$$hashKey": "object:14330"
     },
     {
       "text": "val bodyTypeDF = spark.sql(\"\"\" \nSELECT row_number() OVER (ORDER BY name) AS id, name FROM (\n        SELECT DISTINCT(body_type) AS name \n        FROM fifa_raw_t\n        ) t;\n\"\"\")\nbodyTypeDF.createOrReplaceTempView(\"body_type_t\")           ",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:12+0000",
+      "dateUpdated": "2021-03-23T16:37:50+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -749,15 +351,15 @@
       "jobName": "paragraph_1616489465065_1914571206",
       "id": "paragraph_1616489465065_1914571206",
       "dateCreated": "2021-03-23T08:51:05+0000",
-      "dateStarted": "2021-03-23T09:19:13+0000",
-      "dateFinished": "2021-03-23T09:19:14+0000",
+      "dateStarted": "2021-03-23T16:37:50+0000",
+      "dateFinished": "2021-03-23T16:37:51+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905544"
+      "$$hashKey": "object:14331"
     },
     {
       "text": "%md ## NATIONALITY_T table\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:14+0000",
+      "dateUpdated": "2021-03-23T16:37:51+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -793,143 +395,16 @@
       "jobName": "paragraph_1616449256689_1369816585",
       "id": "paragraph_1616449256689_1369816585",
       "dateCreated": "2021-03-22T21:40:56+0000",
-      "dateStarted": "2021-03-23T09:19:14+0000",
-      "dateFinished": "2021-03-23T09:19:14+0000",
+      "dateStarted": "2021-03-23T16:37:51+0000",
+      "dateFinished": "2021-03-23T16:37:51+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905545"
+      "$$hashKey": "object:14332"
     },
     {
       "text": "%sql\nSELECT row_number() OVER (ORDER BY nationality) AS id, nationality FROM (\n        SELECT DISTINCT(nationality) as nationality \n        FROM fifa_raw_t\n        ) t;",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:14+0000",
-      "progress": 99,
-      "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "colWidth": 12,
-        "editorMode": "ace/mode/sql",
-        "fontSize": 9,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "row_number() OVER (ORDER BY nationality ASC NULLS FIRST ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)": "string",
-                      "nationality": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            }
-          }
-        },
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "id\tnationality\n1\tAfghanistan\n2\tAlbania\n3\tAlgeria\n4\tAndorra\n5\tAngola\n6\tAntigua & Barbuda\n7\tArgentina\n8\tArmenia\n9\tAustralia\n10\tAustria\n11\tAzerbaijan\n12\tBarbados\n13\tBelarus\n14\tBelgium\n15\tBenin\n16\tBermuda\n17\tBolivia\n18\tBosnia Herzegovina\n19\tBrazil\n20\tBulgaria\n21\tBurkina Faso\n22\tBurundi\n23\tCameroon\n24\tCanada\n25\tCape Verde\n26\tCentral African Rep.\n27\tChad\n28\tChile\n29\tChina PR\n30\tColombia\n31\tComoros\n32\tCongo\n33\tCosta Rica\n34\tCroatia\n35\tCuba\n36\tCuracao\n37\tCyprus\n38\tCzech Republic\n39\tDR Congo\n40\tDenmark\n41\tDominican Republic\n42\tEcuador\n43\tEgypt\n44\tEl Salvador\n45\tEngland\n46\tEquatorial Guinea\n47\tEritrea\n48\tEstonia\n49\tEthiopia\n50\tFYR Macedonia\n51\tFaroe Islands\n52\tFiji\n53\tFinland\n54\tFrance\n55\tGabon\n56\tGambia\n57\tGeorgia\n58\tGermany\n59\tGhana\n60\tGreece\n61\tGrenada\n62\tGuam\n63\tGuatemala\n64\tGuinea\n65\tGuinea Bissau\n66\tGuyana\n67\tHaiti\n68\tHonduras\n69\tHong Kong\n70\tHungary\n71\tIceland\n72\tIndia\n73\tIndonesia\n74\tIran\n75\tIraq\n76\tIsrael\n77\tItaly\n78\tIvory Coast\n79\tJamaica\n80\tJapan\n81\tJordan\n82\tKazakhstan\n83\tKenya\n84\tKorea DPR\n85\tKorea Republic\n86\tKosovo\n87\tKuwait\n88\tLatvia\n89\tLiberia\n90\tLibya\n91\tLiechtenstein\n92\tLithuania\n93\tLuxembourg\n94\tMadagascar\n95\tMali\n96\tMalta\n97\tMauritania\n98\tMexico\n99\tMoldova\n100\tMontenegro\n101\tMontserrat\n102\tMorocco\n103\tMozambique\n104\tNamibia\n105\tNetherlands\n106\tNew Caledonia\n107\tNew Zealand\n108\tNicaragua\n109\tNigeria\n110\tNorthern Ireland\n111\tNorway\n112\tOman\n113\tPalestine\n114\tPanama\n115\tPapua New Guinea\n116\tParaguay\n117\tPeru\n118\tPhilippines\n119\tPoland\n120\tPortugal\n121\tRepublic of Ireland\n122\tRomania\n123\tRussia\n124\tRwanda\n125\tSaudi Arabia\n126\tScotland\n127\tSenegal\n128\tSerbia\n129\tSierra Leone\n130\tSlovakia\n131\tSlovenia\n132\tSouth Africa\n133\tSouth Sudan\n134\tSpain\n135\tSt Kitts Nevis\n136\tSt Lucia\n137\tSudan\n138\tSuriname\n139\tSweden\n140\tSwitzerland\n141\tSyria\n142\tSão Tomé & Príncipe\n143\tTanzania\n144\tThailand\n145\tTogo\n146\tTrinidad & Tobago\n147\tTunisia\n148\tTurkey\n149\tUganda\n150\tUkraine\n151\tUnited Arab Emirates\n152\tUnited States\n153\tUruguay\n154\tUzbekistan\n155\tVenezuela\n156\tVietnam\n157\tWales\n158\tYemen\n159\tZambia\n160\tZimbabwe\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=137",
-              "$$hashKey": "object:923699"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616449305636_2081671687",
-      "id": "paragraph_1616449305636_2081671687",
-      "dateCreated": "2021-03-22T21:41:45+0000",
-      "dateStarted": "2021-03-23T09:19:14+0000",
-      "dateFinished": "2021-03-23T09:19:20+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:905546"
-    },
-    {
-      "text": "val nationalityDF = spark.sql(\"\"\" \nSELECT row_number() OVER (ORDER BY nationality) AS id, nationality FROM (\n        SELECT DISTINCT(nationality) as nationality \n        FROM fifa_raw_t\n        ) t;\n\"\"\")\nnationalityDF.createOrReplaceTempView(\"nationality_t\")            ",
-      "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:20+0000",
-      "progress": 0,
-      "config": {
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "colWidth": 12,
-        "editorMode": "ace/mode/scala",
-        "fontSize": 9,
-        "results": {},
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mnationalityDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id: int, nationality: string]\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616449496724_2101394054",
-      "id": "paragraph_1616449496724_2101394054",
-      "dateCreated": "2021-03-22T21:44:56+0000",
-      "dateStarted": "2021-03-23T09:19:20+0000",
-      "dateFinished": "2021-03-23T09:19:20+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:905547"
-    },
-    {
-      "text": "%sql\nselect * from nationality_t",
-      "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:20+0000",
-      "progress": 99,
+      "dateUpdated": "2021-03-23T16:37:51+0000",
+      "progress": 100,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -994,8 +469,135 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=138",
-              "$$hashKey": "object:923842"
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=200",
+              "$$hashKey": "object:27129"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616449305636_2081671687",
+      "id": "paragraph_1616449305636_2081671687",
+      "dateCreated": "2021-03-22T21:41:45+0000",
+      "dateStarted": "2021-03-23T16:37:51+0000",
+      "dateFinished": "2021-03-23T16:38:14+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:14333"
+    },
+    {
+      "text": "val nationalityDF = spark.sql(\"\"\" \nSELECT row_number() OVER (ORDER BY nationality) AS id, nationality FROM (\n        SELECT DISTINCT(nationality) as nationality \n        FROM fifa_raw_t\n        ) t;\n\"\"\")\nnationalityDF.createOrReplaceTempView(\"nationality_t\")            ",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T16:38:14+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mnationalityDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id: int, nationality: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616449496724_2101394054",
+      "id": "paragraph_1616449496724_2101394054",
+      "dateCreated": "2021-03-22T21:44:56+0000",
+      "dateStarted": "2021-03-23T16:38:14+0000",
+      "dateFinished": "2021-03-23T16:38:15+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:14334"
+    },
+    {
+      "text": "%sql\nselect * from nationality_t",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T16:38:15+0000",
+      "progress": 94,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "nationality": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id\tnationality\n1\tAfghanistan\n2\tAlbania\n3\tAlgeria\n4\tAndorra\n5\tAngola\n6\tAntigua & Barbuda\n7\tArgentina\n8\tArmenia\n9\tAustralia\n10\tAustria\n11\tAzerbaijan\n12\tBarbados\n13\tBelarus\n14\tBelgium\n15\tBenin\n16\tBermuda\n17\tBolivia\n18\tBosnia Herzegovina\n19\tBrazil\n20\tBulgaria\n21\tBurkina Faso\n22\tBurundi\n23\tCameroon\n24\tCanada\n25\tCape Verde\n26\tCentral African Rep.\n27\tChad\n28\tChile\n29\tChina PR\n30\tColombia\n31\tComoros\n32\tCongo\n33\tCosta Rica\n34\tCroatia\n35\tCuba\n36\tCuracao\n37\tCyprus\n38\tCzech Republic\n39\tDR Congo\n40\tDenmark\n41\tDominican Republic\n42\tEcuador\n43\tEgypt\n44\tEl Salvador\n45\tEngland\n46\tEquatorial Guinea\n47\tEritrea\n48\tEstonia\n49\tEthiopia\n50\tFYR Macedonia\n51\tFaroe Islands\n52\tFiji\n53\tFinland\n54\tFrance\n55\tGabon\n56\tGambia\n57\tGeorgia\n58\tGermany\n59\tGhana\n60\tGreece\n61\tGrenada\n62\tGuam\n63\tGuatemala\n64\tGuinea\n65\tGuinea Bissau\n66\tGuyana\n67\tHaiti\n68\tHonduras\n69\tHong Kong\n70\tHungary\n71\tIceland\n72\tIndia\n73\tIndonesia\n74\tIran\n75\tIraq\n76\tIsrael\n77\tItaly\n78\tIvory Coast\n79\tJamaica\n80\tJapan\n81\tJordan\n82\tKazakhstan\n83\tKenya\n84\tKorea DPR\n85\tKorea Republic\n86\tKosovo\n87\tKuwait\n88\tLatvia\n89\tLiberia\n90\tLibya\n91\tLiechtenstein\n92\tLithuania\n93\tLuxembourg\n94\tMadagascar\n95\tMali\n96\tMalta\n97\tMauritania\n98\tMexico\n99\tMoldova\n100\tMontenegro\n101\tMontserrat\n102\tMorocco\n103\tMozambique\n104\tNamibia\n105\tNetherlands\n106\tNew Caledonia\n107\tNew Zealand\n108\tNicaragua\n109\tNigeria\n110\tNorthern Ireland\n111\tNorway\n112\tOman\n113\tPalestine\n114\tPanama\n115\tPapua New Guinea\n116\tParaguay\n117\tPeru\n118\tPhilippines\n119\tPoland\n120\tPortugal\n121\tRepublic of Ireland\n122\tRomania\n123\tRussia\n124\tRwanda\n125\tSaudi Arabia\n126\tScotland\n127\tSenegal\n128\tSerbia\n129\tSierra Leone\n130\tSlovakia\n131\tSlovenia\n132\tSouth Africa\n133\tSouth Sudan\n134\tSpain\n135\tSt Kitts Nevis\n136\tSt Lucia\n137\tSudan\n138\tSuriname\n139\tSweden\n140\tSwitzerland\n141\tSyria\n142\tSão Tomé & Príncipe\n143\tTanzania\n144\tThailand\n145\tTogo\n146\tTrinidad & Tobago\n147\tTunisia\n148\tTurkey\n149\tUganda\n150\tUkraine\n151\tUnited Arab Emirates\n152\tUnited States\n153\tUruguay\n154\tUzbekistan\n155\tVenezuela\n156\tVietnam\n157\tWales\n158\tYemen\n159\tZambia\n160\tZimbabwe\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=201",
+              "$$hashKey": "object:27711"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1005,15 +607,15 @@
       "jobName": "paragraph_1616449688821_1136744187",
       "id": "paragraph_1616449688821_1136744187",
       "dateCreated": "2021-03-22T21:48:08+0000",
-      "dateStarted": "2021-03-23T09:19:20+0000",
-      "dateFinished": "2021-03-23T09:19:23+0000",
+      "dateStarted": "2021-03-23T16:38:15+0000",
+      "dateFinished": "2021-03-23T16:38:29+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905548"
+      "$$hashKey": "object:14335"
     },
     {
       "text": "%md ## CLUB_TEAM_T table\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:23+0000",
+      "dateUpdated": "2021-03-23T16:38:29+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -1049,16 +651,16 @@
       "jobName": "paragraph_1616483716931_557252218",
       "id": "paragraph_1616483716931_557252218",
       "dateCreated": "2021-03-23T07:15:16+0000",
-      "dateStarted": "2021-03-23T09:19:23+0000",
-      "dateFinished": "2021-03-23T09:19:24+0000",
+      "dateStarted": "2021-03-23T16:38:29+0000",
+      "dateFinished": "2021-03-23T16:38:29+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905549"
+      "$$hashKey": "object:14336"
     },
     {
       "text": "%sql\nSELECT row_number() OVER (ORDER BY club_team, club_rating) AS id, club_team AS name, club_rating AS rating FROM (\n        SELECT DISTINCT club_team, club_rating\n        FROM fifa_raw_t\n        WHERE club_team IS NOT NULL\n        ) t;\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:24+0000",
-      "progress": 98,
+      "dateUpdated": "2021-03-23T16:38:29+0000",
+      "progress": 100,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1081,8 +683,8 @@
                   "tableColumnTypeState": {
                     "names": {
                       "id": "string",
-                      "club_team": "string",
-                      "club_rating": "string"
+                      "name": "string",
+                      "rating": "string"
                     },
                     "updated": false
                   },
@@ -1124,8 +726,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=139",
-              "$$hashKey": "object:924362"
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=202",
+              "$$hashKey": "object:28280"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1135,15 +737,15 @@
       "jobName": "paragraph_1616483860968_1228875990",
       "id": "paragraph_1616483860968_1228875990",
       "dateCreated": "2021-03-23T07:17:40+0000",
-      "dateStarted": "2021-03-23T09:19:24+0000",
-      "dateFinished": "2021-03-23T09:19:28+0000",
+      "dateStarted": "2021-03-23T16:38:29+0000",
+      "dateFinished": "2021-03-23T16:38:37+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905550"
+      "$$hashKey": "object:14337"
     },
     {
       "text": "val clubTeamDF = spark.sql(\"\"\" \nSELECT row_number() OVER (ORDER BY club_team, club_rating) AS id, club_team AS name, club_rating AS rating FROM (\n        SELECT DISTINCT club_team, club_rating\n        FROM fifa_raw_t\n        WHERE club_team IS NOT NULL\n        ) t;\n\"\"\")\nclubTeamDF.createOrReplaceTempView(\"club_team_t\")      ",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:28+0000",
+      "dateUpdated": "2021-03-23T16:38:37+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1177,15 +779,15 @@
       "jobName": "paragraph_1616483754534_159574296",
       "id": "paragraph_1616483754534_159574296",
       "dateCreated": "2021-03-23T07:15:54+0000",
-      "dateStarted": "2021-03-23T09:19:28+0000",
-      "dateFinished": "2021-03-23T09:19:28+0000",
+      "dateStarted": "2021-03-23T16:38:37+0000",
+      "dateFinished": "2021-03-23T16:38:38+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905551"
+      "$$hashKey": "object:14338"
     },
     {
       "text": "%md ## NATIONAL_TEAM_T table\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:28+0000",
+      "dateUpdated": "2021-03-23T16:38:38+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -1221,16 +823,16 @@
       "jobName": "paragraph_1616483743273_164285727",
       "id": "paragraph_1616483743273_164285727",
       "dateCreated": "2021-03-23T07:15:43+0000",
-      "dateStarted": "2021-03-23T09:19:28+0000",
-      "dateFinished": "2021-03-23T09:19:28+0000",
+      "dateStarted": "2021-03-23T16:38:38+0000",
+      "dateFinished": "2021-03-23T16:38:38+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905552"
+      "$$hashKey": "object:14339"
     },
     {
       "text": "%sql\nSELECT row_number() OVER (ORDER BY national_team, national_rating) AS id, national_team AS name, national_rating AS rating FROM (\n        SELECT DISTINCT national_team, national_rating\n        FROM fifa_raw_t\n        WHERE national_team IS NOT NULL\n        ) t;",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:28+0000",
-      "progress": 99,
+      "dateUpdated": "2021-03-23T16:38:38+0000",
+      "progress": 66,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1296,8 +898,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=140",
-              "$$hashKey": "object:924956"
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=203",
+              "$$hashKey": "object:28959"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1307,15 +909,15 @@
       "jobName": "paragraph_1616484050683_861815211",
       "id": "paragraph_1616484050683_861815211",
       "dateCreated": "2021-03-23T07:20:50+0000",
-      "dateStarted": "2021-03-23T09:19:28+0000",
-      "dateFinished": "2021-03-23T09:19:31+0000",
+      "dateStarted": "2021-03-23T16:38:38+0000",
+      "dateFinished": "2021-03-23T16:38:43+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905553"
+      "$$hashKey": "object:14340"
     },
     {
       "text": "val nationalTeamDF = spark.sql(\"\"\" \nSELECT row_number() OVER (ORDER BY national_team, national_rating) AS id, national_team AS name, national_rating AS rating FROM (\n        SELECT DISTINCT national_team, national_rating\n        FROM fifa_raw_t\n        WHERE national_team IS NOT NULL\n        ) t;\n\"\"\")\nnationalTeamDF.createOrReplaceTempView(\"national_team_t\") ",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:31+0000",
+      "dateUpdated": "2021-03-23T16:38:43+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1349,15 +951,15 @@
       "jobName": "paragraph_1616484184698_307445858",
       "id": "paragraph_1616484184698_307445858",
       "dateCreated": "2021-03-23T07:23:04+0000",
-      "dateStarted": "2021-03-23T09:19:31+0000",
-      "dateFinished": "2021-03-23T09:19:31+0000",
+      "dateStarted": "2021-03-23T16:38:43+0000",
+      "dateFinished": "2021-03-23T16:38:43+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905554"
+      "$$hashKey": "object:14341"
     },
     {
       "text": "%md ## PLAYER_T table\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:31+0000",
+      "dateUpdated": "2021-03-23T16:38:43+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -1393,16 +995,16 @@
       "jobName": "paragraph_1616449066851_1248745292",
       "id": "paragraph_1616449066851_1248745292",
       "dateCreated": "2021-03-22T21:37:46+0000",
-      "dateStarted": "2021-03-23T09:19:31+0000",
-      "dateFinished": "2021-03-23T09:19:31+0000",
+      "dateStarted": "2021-03-23T16:38:43+0000",
+      "dateFinished": "2021-03-23T16:38:43+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905555"
+      "$$hashKey": "object:14342"
     },
     {
       "text": "%sql\nSELECT fr.id\n        , fr.name\n        , fr.full_name \n        , fr.birth_date\n        , fr.age\n        , fr.height_cm\n        , fr.weight_kgs\n        , nat.id                          AS nationality_id \n        , fr.overall_rating\n        , fr.potential\n        , fr.value_euro\n        , fr.wage_euro\n        , fr.preferred_foot\n        , fr.`international_reputation(1-5)`   AS international_reputation\n        , fr.`weak_foot(1-5)`                  AS weak_foot\n        , fr.`skill_moves(1-5)`                AS skill_moves\n        , fr.work_rate\n        , fr.release_clause_euro\nFROM fifa_raw_t  fr\nLEFT JOIN nationality_t  nat\nON (fr.nationality = nat.nationality)\nLEFT JOIN body_type_t bodt\nON (fr.body_type = bodt.name)",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:31+0000",
-      "progress": 100,
+      "dateUpdated": "2021-03-23T16:38:44+0000",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1487,8 +1089,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=143",
-              "$$hashKey": "object:926626"
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=206",
+              "$$hashKey": "object:29648"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1498,26 +1100,28 @@
       "jobName": "paragraph_1616449064799_647575184",
       "id": "paragraph_1616449064799_647575184",
       "dateCreated": "2021-03-22T21:37:44+0000",
-      "dateStarted": "2021-03-23T09:19:31+0000",
-      "dateFinished": "2021-03-23T09:19:37+0000",
+      "dateStarted": "2021-03-23T16:38:44+0000",
+      "dateFinished": "2021-03-23T16:38:55+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905556"
+      "$$hashKey": "object:14343"
     },
     {
-      "text": "%sql\nSELECT distinct nat",
+      "text": "%md ## PLAYER_POSITION_T table",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:19:37+0000",
+      "dateUpdated": "2021-03-23T16:38:55+0000",
       "progress": 0,
       "config": {
+        "tableHide": false,
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
+          "language": "markdown",
+          "editOnDblClick": true,
           "completionKey": "TAB",
-          "completionSupport": true
+          "completionSupport": false
         },
         "colWidth": 12,
-        "editorMode": "ace/mode/sql",
+        "editorMode": "ace/mode/markdown",
         "fontSize": 9,
+        "editorHide": true,
         "results": {
           "0": {
             "graph": {
@@ -1645,11 +1249,11 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
-            "type": "TEXT",
-            "data": "cannot resolve '`nat`' given input columns: []; line 2 pos 16;\n'Distinct\n+- 'Project ['nat]\n   +- OneRowRelation\n"
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>PLAYER_POSITION_T table</h2>\n\n</div>"
           }
         ]
       },
@@ -1659,10 +1263,81 @@
       "jobName": "paragraph_1616489731731_280893490",
       "id": "paragraph_1616489731731_280893490",
       "dateCreated": "2021-03-23T08:55:31+0000",
-      "dateStarted": "2021-03-23T09:19:37+0000",
-      "dateFinished": "2021-03-23T09:19:37+0000",
+      "dateStarted": "2021-03-23T16:38:56+0000",
+      "dateFinished": "2021-03-23T16:38:56+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:14344"
+    },
+    {
+      "text": "%sql\nSELECT id AS player_id, idx AS index position  \nFROM fifa_raw_t\nLATERAL VIEW POSEXPLODE(split(positions,',')) as idx,position",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T16:38:56+0000",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "player_id": "string",
+                      "AS": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nmismatched input 'position' expecting {<EOF>, ';'}(line 2, pos 37)\n\n== SQL ==\n\nSELECT id AS player_id, idx AS index position  \n-------------------------------------^^^\nFROM fifa_raw_t\nLATERAL VIEW POSEXPLODE(split(positions,',')) as idx,position\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616511193942_1567503409",
+      "id": "paragraph_1616511193942_1567503409",
+      "dateCreated": "2021-03-23T14:53:13+0000",
+      "dateStarted": "2021-03-23T16:38:56+0000",
+      "dateFinished": "2021-03-23T16:38:56+0000",
       "status": "ERROR",
-      "$$hashKey": "object:905557"
+      "$$hashKey": "object:14345"
     },
     {
       "text": "%sql\nselect DISTINCT club_position FROM fifa_raw_t WHERE club_position IS NOT NULL\nMINUS SELECT short_name FROM position_t;",
@@ -1733,23 +1408,23 @@
           "values": [
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=118",
-              "$$hashKey": "object:926657"
+              "$$hashKey": "object:31480"
             },
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=119",
-              "$$hashKey": "object:926658"
+              "$$hashKey": "object:31481"
             },
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=120",
-              "$$hashKey": "object:926659"
+              "$$hashKey": "object:31482"
             },
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=121",
-              "$$hashKey": "object:926660"
+              "$$hashKey": "object:31483"
             },
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=122",
-              "$$hashKey": "object:926661"
+              "$$hashKey": "object:31484"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1762,7 +1437,7 @@
       "dateStarted": "2021-03-23T09:08:52+0000",
       "dateFinished": "2021-03-23T09:09:00+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905558"
+      "$$hashKey": "object:14346"
     },
     {
       "text": "%sql\nselect DISTINCT national_team_position FROM fifa_raw_t WHERE national_team_position IS NOT NULL\nMINUS SELECT short_name FROM position_t;",
@@ -1833,23 +1508,23 @@
           "values": [
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=124",
-              "$$hashKey": "object:926682"
+              "$$hashKey": "object:31505"
             },
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=125",
-              "$$hashKey": "object:926683"
+              "$$hashKey": "object:31506"
             },
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=126",
-              "$$hashKey": "object:926684"
+              "$$hashKey": "object:31507"
             },
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=127",
-              "$$hashKey": "object:926685"
+              "$$hashKey": "object:31508"
             },
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=128",
-              "$$hashKey": "object:926686"
+              "$$hashKey": "object:31509"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1862,7 +1537,7 @@
       "dateStarted": "2021-03-23T09:10:01+0000",
       "dateFinished": "2021-03-23T09:10:14+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905559"
+      "$$hashKey": "object:14347"
     },
     {
       "text": "val playerDF = spark.sql(\"\"\" \nSELECT fr.id\n        , fr.name\n        , fr.full_name \n        , fr.birth_date\n        , fr.age\n        , fr.height_cm\n        , fr.weight_kgs\n        , nat.id                          AS nationality_id \n        , fr.overall_rating\n        , fr.club_team\n        , fr.national_team\nFROM fifa_raw_t  fr\nLEFT JOIN nationality_t  nat\nON (fr.nationality = nat.nationality)\nLEFT JOIN body_type_t bodt\nON (fr.body_type = bodt.name)\n\"\"\")\nplayerDF.createOrReplaceTempView(\"player_t\")      ",
@@ -1904,7 +1579,7 @@
       "dateStarted": "2021-03-23T08:52:04+0000",
       "dateFinished": "2021-03-23T08:52:08+0000",
       "status": "ERROR",
-      "$$hashKey": "object:905560"
+      "$$hashKey": "object:14348"
     },
     {
       "text": "%md ## PLA_CLUT_T table\n",
@@ -1948,7 +1623,7 @@
       "dateStarted": "2021-03-23T08:00:07+0000",
       "dateFinished": "2021-03-23T08:00:07+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905561"
+      "$$hashKey": "object:14349"
     },
     {
       "text": "%sql\nSELECT fr.id                  AS player_id\n        , clut.id             AS club_team_id\n        , pos.id              AS position_id\n        , fr.club_jersey_number\n        , fr.club_join_date\n        , fr.contract_end_year\nFROM fifa_raw_t  fr\nLEFT JOIN position_t pos\nON (fr.club_position = pos.short_name)\nLEFT JOIN club_team_t clut\nON (fr.club_team = clut.name);",
@@ -2028,7 +1703,7 @@
           "values": [
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=94",
-              "$$hashKey": "object:928536"
+              "$$hashKey": "object:31530"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2041,7 +1716,7 @@
       "dateStarted": "2021-03-23T08:57:46+0000",
       "dateFinished": "2021-03-23T08:58:03+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905562"
+      "$$hashKey": "object:14350"
     },
     {
       "text": "%sql\nSELECT fr.id                  AS player_id\n        , clut.id             AS club_team_id\nFROM fifa_raw_t  fr\nLEFT JOIN national_team_t natt\nON (fr.national_team = natt.name)\nLEFT JOIN club_team_t clut\nON (fr.club_team = clut.name);;\n",
@@ -2072,7 +1747,7 @@
       "id": "paragraph_1616486461575_1036466211",
       "dateCreated": "2021-03-23T08:01:01+0000",
       "status": "READY",
-      "$$hashKey": "object:905563"
+      "$$hashKey": "object:14351"
     },
     {
       "text": "%sql \nSELECT * FROM player_t WHERE full_name LIKE '%Dias%' ",
@@ -2153,11 +1828,11 @@
           "values": [
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=69",
-              "$$hashKey": "object:928541"
+              "$$hashKey": "object:31535"
             },
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=70",
-              "$$hashKey": "object:928542"
+              "$$hashKey": "object:31536"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2170,7 +1845,7 @@
       "dateStarted": "2021-03-23T07:48:05+0000",
       "dateFinished": "2021-03-23T07:48:26+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905564"
+      "$$hashKey": "object:14352"
     },
     {
       "text": "%sql\nselect * from nationality_t where nationality = 'Portugal'",
@@ -2242,7 +1917,7 @@
           "values": [
             {
               "jobUrl": "http://192.168.142.128:4050/jobs/job?id=63",
-              "$$hashKey": "object:928551"
+              "$$hashKey": "object:31545"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2255,7 +1930,7 @@
       "dateStarted": "2021-03-23T07:37:43+0000",
       "dateFinished": "2021-03-23T07:37:49+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:905565"
+      "$$hashKey": "object:14353"
     },
     {
       "text": "",
@@ -2286,7 +1961,7 @@
       "id": "paragraph_1616485004669_111886615",
       "dateCreated": "2021-03-23T07:36:44+0000",
       "status": "READY",
-      "$$hashKey": "object:905566"
+      "$$hashKey": "object:14354"
     }
   ],
   "name": "fifa-cleaned-wrangler",
@@ -2301,6 +1976,8 @@
     "looknfeel": "default",
     "personalizedMode": "false"
   },
-  "info": {},
+  "info": {
+    "isRunning": false
+  },
   "path": "/fifa-cleaned-wrangler"
 }

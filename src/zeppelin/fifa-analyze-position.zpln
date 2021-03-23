@@ -1,0 +1,778 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "val fifaRawDF = spark.read.options(Map(\"inferSchema\"->\"true\",\"delimiter\"->\",\",\"header\"->\"true\"))\n                            .csv(\"s3a://fifa-bucket/fifa_cleaned.csv\")",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T09:38:18+0000",
+      "progress": 50,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mfifaRawDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id: int, name: string ... 90 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=146",
+              "$$hashKey": "object:32426"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=147",
+              "$$hashKey": "object:32427"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616492016947_683142863",
+      "id": "paragraph_1616492016947_683142863",
+      "dateCreated": "2021-03-23T09:33:36+0000",
+      "dateStarted": "2021-03-23T09:38:18+0000",
+      "dateFinished": "2021-03-23T09:38:21+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:32274"
+    },
+    {
+      "text": "val positionDF = spark.read.options(Map(\"inferSchema\"->\"true\",\"delimiter\"->\",\",\"header\"->\"true\"))\n                            .csv(\"s3a://fifa-bucket/football-positions.csv\")",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T09:48:38+0000",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mpositionDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id: int, short_name: string ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=185",
+              "$$hashKey": "object:32446"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=186",
+              "$$hashKey": "object:32447"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616492025702_215199175",
+      "id": "paragraph_1616492025702_215199175",
+      "dateCreated": "2021-03-23T09:33:45+0000",
+      "dateStarted": "2021-03-23T09:48:38+0000",
+      "dateFinished": "2021-03-23T09:48:39+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:32275"
+    },
+    {
+      "text": "fifaRawDF.createOrReplaceTempView(\"fifa_raw_t\")\npositionDF.createOrReplaceTempView(\"position_t\")",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T09:48:43+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616492332851_1490623524",
+      "id": "paragraph_1616492332851_1490623524",
+      "dateCreated": "2021-03-23T09:38:52+0000",
+      "dateStarted": "2021-03-23T09:48:43+0000",
+      "dateFinished": "2021-03-23T09:48:43+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:32276"
+    },
+    {
+      "text": "%sql \nSELECT * FROM position_t;",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T09:48:47+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "short_name": "string",
+                      "long_name": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id\tshort_name\tlong_name\n1\tGK\tGoalkeeper\n2\tCB\tCenter Back\n3\tLB\tLeft Full Back\n4\tRB\tRigh Full Back\n5\tLWB\tLeft Wing Back\n6\tRWB\tRight Wing Back\n7\tSW\tSweaper\n8\tDM\tDefensive Midfielder\n9\tRW\tRight Wing\n10\tLW\tLeft Wing\n11\tCM\tCentral Midfielder\n12\tAM\tAttacking Midfielder\n13\tLM\tLeft Midfielder\n14\tRM\tRight Midfielder\n15\tCF\tCenter Forward\n16\tRF\tRight Forward\n17\tLF\tLeft Forward\n18\tST\tStriker\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=187",
+              "$$hashKey": "object:32494"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616492382592_1740210052",
+      "id": "paragraph_1616492382592_1740210052",
+      "dateCreated": "2021-03-23T09:39:42+0000",
+      "dateStarted": "2021-03-23T09:48:47+0000",
+      "dateFinished": "2021-03-23T09:48:47+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:32277"
+    },
+    {
+      "title": "\"positions\" not in metadata",
+      "text": "%sql\nSELECT DISTINCT position \nFROM fifa_raw_t\nLATERAL VIEW EXPLODE(split(positions,',')) as position\nMINUS \nSELECT short_name FROM position_t;",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T10:15:16+0000",
+      "progress": 83,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "position": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "position\nCAM\nCDM\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=189",
+              "$$hashKey": "object:32530"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=190",
+              "$$hashKey": "object:32531"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=191",
+              "$$hashKey": "object:32532"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=192",
+              "$$hashKey": "object:32533"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=193",
+              "$$hashKey": "object:32534"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616492410198_192221170",
+      "id": "paragraph_1616492410198_192221170",
+      "dateCreated": "2021-03-23T09:40:10+0000",
+      "dateStarted": "2021-03-23T09:48:55+0000",
+      "dateFinished": "2021-03-23T09:48:59+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:32278"
+    },
+    {
+      "title": "\"national_team_position\" not in metadata",
+      "text": "%sql\nSELECT national_team_position FROM fifa_raw_t\nMINUS \nSELECT short_name FROM position_t;\n",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T10:15:25+0000",
+      "progress": 46,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "national_team_position": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "national_team_position\nLCM\nRDM\nRES\nCAM\nRAM\nRCM\nGK\nRS\nLCB\nRCB\nCDM\nLS\nSUB\nLAM\nLDM\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=174",
+              "$$hashKey": "object:32578"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=175",
+              "$$hashKey": "object:32579"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=176",
+              "$$hashKey": "object:32580"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=177",
+              "$$hashKey": "object:32581"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=178",
+              "$$hashKey": "object:32582"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616492447634_1137936925",
+      "id": "paragraph_1616492447634_1137936925",
+      "dateCreated": "2021-03-23T09:40:47+0000",
+      "dateStarted": "2021-03-23T09:46:16+0000",
+      "dateFinished": "2021-03-23T09:46:25+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:32279"
+    },
+    {
+      "title": "\"club_position\" not in metadata",
+      "text": "%sql\nSELECT club_position FROM fifa_raw_t\nMINUS \nSELECT short_name FROM position_t;\n",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T10:15:35+0000",
+      "progress": 23,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "club_position": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "club_position\nLCM\nRDM\nRES\nCAM\nRAM\nRCM\nGK\nRS\nLCB\nRCB\nCDM\nLS\nSUB\nLAM\nLDM\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=180",
+              "$$hashKey": "object:32626"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=181",
+              "$$hashKey": "object:32627"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=182",
+              "$$hashKey": "object:32628"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=183",
+              "$$hashKey": "object:32629"
+            },
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=184",
+              "$$hashKey": "object:32630"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616492589773_1331776307",
+      "id": "paragraph_1616492589773_1331776307",
+      "dateCreated": "2021-03-23T09:43:09+0000",
+      "dateStarted": "2021-03-23T09:46:27+0000",
+      "dateFinished": "2021-03-23T09:46:31+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:32280"
+    },
+    {
+      "text": "%sql\nselect * from fifa_raw_t;",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T14:28:16+0000",
+      "progress": 100,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "id": "string",
+                      "name": "string",
+                      "full_name": "string",
+                      "birth_date": "string",
+                      "age": "string",
+                      "height_cm": "string",
+                      "weight_kgs": "string",
+                      "positions": "string",
+                      "nationality": "string",
+                      "overall_rating": "string",
+                      "potential": "string",
+                      "value_euro": "string",
+                      "wage_euro": "string",
+                      "preferred_foot": "string",
+                      "international_reputation(1-5)": "string",
+                      "weak_foot(1-5)": "string",
+                      "skill_moves(1-5)": "string",
+                      "work_rate": "string",
+                      "body_type": "string",
+                      "release_clause_euro": "string",
+                      "club_team": "string",
+                      "club_rating": "string",
+                      "club_position": "string",
+                      "club_jersey_number": "string",
+                      "club_join_date": "string",
+                      "contract_end_year": "string",
+                      "national_team": "string",
+                      "national_rating": "string",
+                      "national_team_position": "string",
+                      "national_jersey_number": "string",
+                      "crossing": "string",
+                      "finishing": "string",
+                      "heading_accuracy": "string",
+                      "short_passing": "string",
+                      "volleys": "string",
+                      "dribbling": "string",
+                      "curve": "string",
+                      "freekick_accuracy": "string",
+                      "long_passing": "string",
+                      "ball_control": "string",
+                      "acceleration": "string",
+                      "sprint_speed": "string",
+                      "agility": "string",
+                      "reactions": "string",
+                      "balance": "string",
+                      "shot_power": "string",
+                      "jumping": "string",
+                      "stamina": "string",
+                      "strength": "string",
+                      "long_shots": "string",
+                      "aggression": "string",
+                      "interceptions": "string",
+                      "positioning": "string",
+                      "vision": "string",
+                      "penalties": "string",
+                      "composure": "string",
+                      "marking": "string",
+                      "standing_tackle": "string",
+                      "sliding_tackle": "string",
+                      "GK_diving": "string",
+                      "GK_handling": "string",
+                      "GK_kicking": "string",
+                      "GK_positioning": "string",
+                      "GK_reflexes": "string",
+                      "tags": "string",
+                      "traits": "string",
+                      "LS": "string",
+                      "ST": "string",
+                      "RS": "string",
+                      "LW": "string",
+                      "LF": "string",
+                      "CF": "string",
+                      "RF": "string",
+                      "RW": "string",
+                      "LAM": "string",
+                      "CAM": "string",
+                      "RAM": "string",
+                      "LM": "string",
+                      "LCM": "string",
+                      "CM": "string",
+                      "RCM": "string",
+                      "RM": "string",
+                      "LWB": "string",
+                      "LDM": "string",
+                      "CDM": "string",
+                      "RDM": "string",
+                      "RWB": "string",
+                      "LB": "string",
+                      "LCB": "string",
+                      "CB": "string",
+                      "RCB": "string",
+                      "RB": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "id\tname\tfull_name\tbirth_date\tage\theight_cm\tweight_kgs\tpositions\tnationality\toverall_rating\tpotential\tvalue_euro\twage_euro\tpreferred_foot\tinternational_reputation(1-5)\tweak_foot(1-5)\tskill_moves(1-5)\twork_rate\tbody_type\trelease_clause_euro\tclub_team\tclub_rating\tclub_position\tclub_jersey_number\tclub_join_date\tcontract_end_year\tnational_team\tnational_rating\tnational_team_position\tnational_jersey_number\tcrossing\tfinishing\theading_accuracy\tshort_passing\tvolleys\tdribbling\tcurve\tfreekick_accuracy\tlong_passing\tball_control\tacceleration\tsprint_speed\tagility\treactions\tbalance\tshot_power\tjumping\tstamina\tstrength\tlong_shots\taggression\tinterceptions\tpositioning\tvision\tpenalties\tcomposure\tmarking\tstanding_tackle\tsliding_tackle\tGK_diving\tGK_handling\tGK_kicking\tGK_positioning\tGK_reflexes\ttags\ttraits\tLS\tST\tRS\tLW\tLF\tCF\tRF\tRW\tLAM\tCAM\tRAM\tLM\tLCM\tCM\tRCM\tRM\tLWB\tLDM\tCDM\tRDM\tRWB\tLB\tLCB\tCB\tRCB\tRB\n158023\tL. Messi\tLionel Andrés Messi Cuccittini\t1987-06-24\t31\t170.18\t72.1\tCF,RW,ST\tArgentina\t94\t94\t1.105E8\t565000.0\tLeft\t5\t4\t4\tMedium/ Low\tMessi\t2.265E8\tFC Barcelona\t86.0\tRW\t10.0\t2004-07-01\t2021\tArgentina\t82.0\tRF\t10.0\t86\t95\t70\t92\t86\t97\t93\t94\t89\t96\t91\t86\t93\t95\t95\t85\t68\t72\t66\t94\t48\t22\t94\t94\t75\t96\t33\t28\t26\t6\t11\t15\t14\t8\t#Dribbler,#Distance Shooter,#Crosser,#FK Specialist,#Acrobat,#Clinical Finisher,#Complete Forward\tFinesse Shot,Long Shot Taker (CPU AI Only),Speed Dribbler (CPU AI Only),Playmaker (CPU AI Only),One Club Player,Team Player,Chip Shot (CPU AI Only)\t89+2\t89+2\t89+2\t93+2\t93+2\t93+2\t93+2\t93+2\t93+2\t93+2\t93+2\t91+2\t85+2\t85+2\t85+2\t91+2\t64+2\t61+2\t61+2\t61+2\t64+2\t59+2\t48+2\t48+2\t48+2\t59+2\n190460\tC. Eriksen\tChristian  Dannemann Eriksen\t1992-02-14\t27\t154.94\t76.2\tCAM,RM,CM\tDenmark\t88\t89\t6.95E7\t205000.0\tRight\t3\t5\t4\tHigh/ Medium\tLean\t1.3380000000000001E8\tTottenham Hotspur\t83.0\tLCM\t23.0\t2013-08-30\t2020\tDenmark\t78.0\tCAM\t10.0\t88\t81\t52\t91\t80\t84\t86\t87\t89\t91\t76\t73\t80\t88\t81\t84\t50\t92\t58\t89\t46\t56\t84\t91\t67\t88\t59\t57\t22\t9\t14\t7\t7\t6\t#Playmaker  ,#Crosser,#FK Specialist,#Complete Midfielder\tFlair,Long Shot Taker (CPU AI Only),Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only),Takes Finesse Free Kicks\t79+3\t79+3\t79+3\t85+3\t84+3\t84+3\t84+3\t85+3\t86+3\t86+3\t86+3\t86+3\t85+3\t85+3\t85+3\t86+3\t71+3\t71+3\t71+3\t71+3\t71+3\t66+3\t57+3\t57+3\t57+3\t66+3\n195864\tP. Pogba\tPaul Pogba\t1993-03-15\t25\t190.5\t83.9\tCM,CAM\tFrance\t88\t91\t7.3E7\t255000.0\tRight\t4\t4\t5\tHigh/ Medium\tNormal\t1.442E8\tManchester United\t82.0\tLCM\t6.0\t2016-08-09\t2021\tFrance\t84.0\tRDM\t6.0\t80\t75\t75\t86\t85\t87\t85\t82\t90\t90\t71\t79\t76\t82\t66\t90\t83\t88\t87\t82\t78\t64\t82\t88\t82\t87\t63\t67\t67\t5\t6\t2\t4\t3\t#Dribbler,#Playmaker  ,#Strength,#Complete Midfielder\tFlair,Long Passer (CPU AI Only),Long Shot Taker (CPU AI Only),Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t81+3\t81+3\t81+3\t82+3\t83+3\t83+3\t83+3\t82+3\t84+3\t84+3\t84+3\t83+3\t84+3\t84+3\t84+3\t83+3\t76+3\t77+3\t77+3\t77+3\t76+3\t74+3\t72+3\t72+3\t72+3\t74+3\n198219\tL. Insigne\tLorenzo Insigne\t1991-06-04\t27\t162.56\t59.0\tLW,ST\tItaly\t88\t88\t6.2E7\t165000.0\tRight\t3\t4\t4\tHigh/ Medium\tNormal\t1.054E8\tNapoli\t82.0\tLS\t24.0\t2010-07-01\t2022\tItaly\t83.0\tLW\t10.0\t86\t77\t56\t85\t74\t90\t87\t77\t78\t93\t94\t86\t94\t83\t93\t75\t53\t75\t44\t84\t34\t26\t83\t87\t61\t83\t51\t24\t22\t8\t4\t14\t9\t10\t#Speedster,#Dribbler,#Crosser,#Acrobat\tFinesse Shot,Long Shot Taker (CPU AI Only),Speed Dribbler (CPU AI Only),Takes Finesse Free Kicks\t78+3\t78+3\t78+3\t86+3\t85+3\t85+3\t85+3\t86+3\t86+3\t86+3\t86+3\t86+3\t78+3\t78+3\t78+3\t86+3\t63+3\t58+3\t58+3\t58+3\t63+3\t58+3\t44+3\t44+3\t44+3\t58+3\n201024\tK. Koulibaly\tKalidou Koulibaly\t1991-06-20\t27\t187.96\t88.9\tCB\tSenegal\t88\t91\t6.0E7\t135000.0\tRight\t3\t3\t2\tHigh/ High\tNormal\t1.065E8\tNapoli\t82.0\tLCB\t26.0\t2014-07-01\t2021\tnull\tnull\tnull\tnull\t30\t22\t83\t68\t14\t69\t28\t28\t60\t63\t70\t75\t50\t82\t40\t55\t81\t75\t94\t15\t87\t88\t24\t49\t33\t80\t91\t88\t87\t7\t11\t7\t13\t5\t#Tackling ,#Tactician ,#Strength,#Complete Defender\tPower Header\t53+3\t53+3\t53+3\t53+3\t54+3\t54+3\t54+3\t53+3\t55+3\t55+3\t55+3\t57+3\t61+3\t61+3\t61+3\t57+3\t73+3\t77+3\t77+3\t77+3\t73+3\t76+3\t85+3\t85+3\t85+3\t76+3\n203376\tV. van Dijk\tVirgil van Dijk\t1991-07-08\t27\t193.04\t92.1\tCB\tNetherlands\t88\t90\t5.95E7\t215000.0\tRight\t3\t3\t2\tMedium/ Medium\tNormal\t1.145E8\tLiverpool\t83.0\tLCB\t4.0\t2018-01-01\t2023\tNetherlands\t81.0\tLCB\t4.0\t53\t52\t83\t79\t45\t70\t60\t70\t81\t76\t74\t77\t61\t87\t49\t81\t88\t75\t92\t64\t82\t88\t41\t60\t62\t87\t90\t89\t84\t13\t10\t13\t11\t11\t#Tactician ,#Strength\tInjury Free,Leadership,Power Header\t68+3\t68+3\t68+3\t66+3\t67+3\t67+3\t67+3\t66+3\t68+3\t68+3\t68+3\t68+3\t73+3\t73+3\t73+3\t68+3\t78+3\t82+3\t82+3\t82+3\t78+3\t80+3\t86+3\t86+3\t86+3\t80+3\n231747\tK. Mbappé\tKylian Mbappé\t1998-12-20\t20\t152.4\t73.0\tRW,ST,RM\tFrance\t88\t95\t8.1E7\t100000.0\tRight\t3\t4\t5\tHigh/ Medium\tLean\t1.661E8\tParis Saint-Germain\t84.0\tLS\t7.0\t2018-07-01\t2022\tFrance\t84.0\tRM\t10.0\t77\t88\t77\t82\t78\t90\t77\t63\t73\t91\t96\t96\t92\t87\t83\t79\t75\t83\t71\t78\t62\t38\t88\t82\t70\t86\t34\t34\t32\t13\t5\t7\t11\t6\t#Speedster,#Dribbler,#Acrobat\tFinesse Shot,Flair,Speed Dribbler (CPU AI Only),Technical Dribbler (CPU AI Only)\t85+3\t85+3\t85+3\t87+3\t87+3\t87+3\t87+3\t87+3\t86+3\t86+3\t86+3\t86+3\t78+3\t78+3\t78+3\t86+3\t66+3\t62+3\t62+3\t62+3\t66+3\t62+3\t54+3\t54+3\t54+3\t62+3\n153079\tS. Agüero\tSergio Leonel Agüero del Castillo\t1988-06-02\t30\t172.72\t69.9\tST\tArgentina\t89\t89\t6.45E7\t300000.0\tRight\t4\t4\t4\tHigh/ Medium\tStocky\t1.193E8\tManchester City\t85.0\tST\t10.0\t2011-07-28\t2021\tArgentina\t82.0\tSUB\t11.0\t70\t93\t77\t81\t85\t89\t82\t73\t64\t89\t88\t80\t86\t90\t91\t88\t81\t76\t73\t83\t65\t24\t92\t83\t83\t90\t30\t20\t12\t13\t15\t6\t11\t14\t#Dribbler,#Acrobat,#Clinical Finisher,#Complete Forward\tBeat Offside Trap,Leadership,Chip Shot (CPU AI Only),Technical Dribbler (CPU AI Only)\t86+3\t86+3\t86+3\t86+3\t87+3\t87+3\t87+3\t86+3\t85+3\t85+3\t85+3\t83+3\t76+3\t76+3\t76+3\t83+3\t58+3\t56+3\t56+3\t56+3\t58+3\t53+3\t47+3\t47+3\t47+3\t53+3\n167495\tM. Neuer\tManuel Neuer\t1986-03-27\t32\t193.04\t92.1\tGK\tGermany\t89\t89\t3.8E7\t130000.0\tRight\t5\t4\t1\tMedium/ Medium\tNormal\t6.27E7\tFC Bayern München\t85.0\tGK\t1.0\t2011-07-01\t2021\tGermany\t85.0\tGK\t1.0\t15\t13\t25\t55\t11\t30\t14\t11\t59\t46\t54\t60\t51\t84\t35\t25\t77\t43\t80\t16\t29\t30\t12\t70\t47\t70\t17\t10\t11\t90\t86\t91\t87\t87\tnull\tGK Long Throw,1-on-1 Rush,Rushes Out Of Goal,Comes For Crosses\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n179813\tE. Cavani\tEdinson Roberto Cavani Gómez\t1987-02-14\t32\t185.42\t77.1\tST\tUruguay\t89\t89\t6.0E7\t200000.0\tRight\t4\t4\t3\tHigh/ High\tLean\t1.11E8\tParis Saint-Germain\t84.0\tRS\t9.0\t2013-07-16\t2020\tUruguay\t81.0\tLS\t21.0\t70\t89\t89\t78\t90\t80\t77\t76\t52\t82\t75\t76\t77\t91\t59\t87\t88\t92\t78\t79\t84\t48\t93\t77\t85\t82\t52\t45\t39\t12\t5\t13\t13\t10\t#Engine\tBeat Offside Trap,Power Header\t85+3\t85+3\t85+3\t81+3\t83+3\t83+3\t83+3\t81+3\t80+3\t80+3\t80+3\t79+3\t75+3\t75+3\t75+3\t79+3\t67+3\t65+3\t65+3\t65+3\t67+3\t65+3\t63+3\t63+3\t63+3\t65+3\n189511\tSergio Busquets\tSergio Busquets i Burgos\t1988-07-16\t30\t187.96\t76.2\tCDM,CM\tSpain\t89\t89\t5.15E7\t315000.0\tRight\t4\t3\t3\tMedium/ Medium\tLean\t1.056E8\tFC Barcelona\t86.0\tCDM\t5.0\t2008-09-01\t2023\tSpain\t85.0\tCDM\t5.0\t62\t67\t68\t89\t44\t80\t66\t68\t82\t88\t50\t52\t66\t87\t52\t61\t66\t86\t77\t54\t85\t87\t77\t87\t60\t93\t90\t86\t80\t5\t8\t13\t9\t13\t#Playmaker  ,#Tactician \tnull\t71+3\t71+3\t71+3\t74+3\t76+3\t76+3\t76+3\t74+3\t79+3\t79+3\t79+3\t76+3\t83+3\t83+3\t83+3\t76+3\t79+3\t86+3\t86+3\t86+3\t79+3\t78+3\t82+3\t82+3\t82+3\t78+3\n192119\tT. Courtois\tThibaut Courtois\t1992-05-11\t26\t198.12\t96.2\tGK\tBelgium\t89\t90\t5.35E7\t240000.0\tLeft\t4\t2\t1\tMedium/ Medium\tCourtois\t1.137E8\tReal Madrid\t86.0\tGK\t25.0\t2018-08-09\t2024\tBelgium\t85.0\tGK\t1.0\t14\t14\t13\t33\t12\t13\t19\t20\t35\t23\t46\t52\t61\t84\t45\t36\t68\t38\t70\t17\t23\t15\t13\t44\t27\t66\t20\t18\t16\t85\t91\t72\t86\t88\tnull\tGK Long Throw,Comes For Crosses\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n192448\tM. ter Stegen\tMarc-André ter Stegen\t1992-04-30\t26\t187.96\t84.8\tGK\tGermany\t89\t92\t5.8E7\t240000.0\tRight\t3\t4\t1\tMedium/ Medium\tNormal\t1.233E8\tFC Barcelona\t86.0\tGK\t1.0\t2014-07-01\t2022\tGermany\t85.0\tSUB\t22.0\t18\t14\t11\t42\t14\t17\t18\t12\t47\t18\t38\t50\t37\t86\t43\t22\t79\t35\t78\t10\t43\t22\t11\t70\t25\t70\t25\t13\t10\t87\t85\t88\t86\t90\tnull\tRushes Out Of Goal,Comes For Crosses,Saves with Feet\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n194765\tA. Griezmann\tAntoine Griezmann\t1991-03-21\t27\t175.26\t73.0\tCF,ST\tFrance\t89\t90\t7.8E7\t145000.0\tLeft\t4\t3\t4\tHigh/ High\tLean\t1.658E8\tAtlético Madrid\t84.0\tRS\t7.0\t2014-07-28\t2023\tFrance\t84.0\tCAM\t7.0\t82\t89\t84\t84\t87\t87\t86\t84\t78\t90\t88\t85\t90\t90\t82\t82\t90\t86\t62\t82\t73\t49\t91\t85\t83\t89\t59\t54\t48\t14\t8\t14\t13\t14\t#Dribbler,#Engine,#Acrobat,#Clinical Finisher,#Complete Forward\tBeat Offside Trap,Finesse Shot,Speed Dribbler (CPU AI Only)\t86+3\t86+3\t86+3\t87+3\t87+3\t87+3\t87+3\t87+3\t86+3\t86+3\t86+3\t86+3\t82+3\t82+3\t82+3\t86+3\t72+3\t70+3\t70+3\t70+3\t72+3\t70+3\t65+3\t65+3\t65+3\t70+3\n209331\tM. Salah\tMohamed  Salah Ghaly\t1992-06-15\t26\t175.26\t71.2\tRW,ST\tEgypt\t89\t90\t7.85E7\t265000.0\tLeft\t3\t3\t4\tHigh/ Medium\tPLAYER_BODY_TYPE_25\t1.511E8\tLiverpool\t83.0\tST\t11.0\t2017-07-01\t2023\tEgypt\t73.0\tRM\t10.0\t78\t90\t59\t83\t76\t89\t83\t60\t74\t88\t94\t91\t91\t92\t88\t80\t68\t84\t70\t83\t63\t55\t92\t84\t75\t91\t38\t43\t41\t14\t14\t9\t11\t14\t#Speedster,#Dribbler,#Acrobat,#Clinical Finisher,#Complete Forward\tDiver,Beat Offside Trap,Finesse Shot,Speed Dribbler (CPU AI Only),Chip Shot (CPU AI Only),Backs Into Player\t84+3\t84+3\t84+3\t87+3\t87+3\t87+3\t87+3\t87+3\t87+3\t87+3\t87+3\t86+3\t81+3\t81+3\t81+3\t86+3\t70+3\t66+3\t66+3\t66+3\t70+3\t66+3\t57+3\t57+3\t57+3\t66+3\n211110\tP. Dybala\tPaulo Bruno Exequiel Dybala\t1993-11-15\t25\t152.4\t74.8\tCAM,RW\tArgentina\t89\t94\t8.9E7\t205000.0\tLeft\t3\t3\t4\tMedium/ Medium\tNormal\t1.535E8\tJuventus\t85.0\tRW\t10.0\t2015-07-01\t2022\tArgentina\t82.0\tLF\t21.0\t82\t84\t68\t87\t88\t92\t88\t88\t75\t92\t87\t83\t91\t86\t85\t82\t75\t80\t65\t88\t48\t32\t84\t87\t86\t84\t23\t20\t20\t5\t4\t4\t5\t8\t#Dribbler,#Playmaker  ,#FK Specialist,#Acrobat,#Complete Midfielder\tAvoids Using Weaker Foot,Finesse Shot,Flair,Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only),Set Play Specialist,Takes Finesse Free Kicks\t83+3\t83+3\t83+3\t87+3\t86+3\t86+3\t86+3\t87+3\t87+3\t87+3\t87+3\t86+3\t79+3\t79+3\t79+3\t86+3\t62+3\t58+3\t58+3\t58+3\t62+3\t56+3\t45+3\t45+3\t45+3\t56+3\n232363\tM. Škriniar\tMilan Škriniar\t1995-02-11\t24\t187.96\t79.8\tCB\tSlovakia\t86\t93\t5.35E7\t89000.0\tRight\t1\t4\t2\tMedium/ High\tNormal\t1.017E8\tInter\t82.0\tLCB\t37.0\t2017-07-07\t2022\tnull\tnull\tnull\tnull\t40\t42\t82\t73\t40\t59\t34\t30\t69\t67\t70\t73\t48\t83\t51\t50\t78\t77\t85\t30\t86\t86\t30\t57\t56\t81\t92\t89\t84\t10\t13\t12\t8\t12\t#Tactician \tPower Header\t58+2\t58+2\t58+2\t57+2\t57+2\t57+2\t57+2\t57+2\t59+2\t59+2\t59+2\t60+2\t66+2\t66+2\t66+2\t60+2\t74+2\t79+2\t79+2\t79+2\t74+2\t77+2\t84+2\t84+2\t84+2\t77+2\n135507\tFernandinho\tFernando Luiz Rosa\t1985-05-04\t33\t152.4\t67.1\tCDM\tBrazil\t87\t87\t2.05E7\t200000.0\tRight\t3\t4\t3\tMedium/ High\tLean\t3.79E7\tManchester City\t85.0\tCDM\t25.0\t2013-07-01\t2020\tnull\tnull\tnull\tnull\t68\t69\t66\t85\t74\t77\t70\t72\t83\t82\t68\t67\t72\t89\t78\t83\t78\t84\t76\t78\t87\t89\t70\t75\t61\t79\t87\t86\t80\t12\t11\t5\t13\t7\t#Tactician \tLong Shot Taker (CPU AI Only)\t75+3\t75+3\t75+3\t75+3\t76+3\t76+3\t76+3\t75+3\t77+3\t77+3\t77+3\t76+3\t81+3\t81+3\t81+3\t76+3\t81+3\t84+3\t84+3\t84+3\t81+3\t80+3\t82+3\t82+3\t82+3\t80+3\n167664\tG. Higuaín\tGonzalo Gerardo Higuaín\t1987-12-10\t31\t185.42\t88.9\tST\tArgentina\t87\t87\t4.85E7\t205000.0\tRight\t4\t4\t3\tHigh/ Medium\tNormal\tnull\tChelsea\t83.0\tST\t9.0\tnull\tJun 30, 2019\tnull\tnull\tnull\tnull\t68\t91\t79\t74\t88\t83\t74\t62\t59\t84\t70\t72\t75\t86\t69\t86\t79\t70\t85\t80\t50\t20\t92\t74\t70\t86\t35\t22\t18\t5\t12\t7\t5\t10\t#Clinical Finisher\tOutside Foot Shot,Through Ball\t84+3\t84+3\t84+3\t80+3\t82+3\t82+3\t82+3\t80+3\t79+3\t79+3\t79+3\t78+3\t71+3\t71+3\t71+3\t78+3\t55+3\t53+3\t53+3\t53+3\t55+3\t51+3\t48+3\t48+3\t48+3\t51+3\n168651\tI. Rakitić\tIvan Rakitić\t1988-03-10\t30\t182.88\t78.0\tCM,CDM\tCroatia\t87\t87\t4.65E7\t260000.0\tRight\t4\t4\t3\tMedium/ High\tLean\t9.53E7\tFC Barcelona\t86.0\tLCM\t4.0\t2014-07-01\t2021\tnull\tnull\tnull\tnull\t84\t79\t59\t87\t84\t82\t88\t82\t90\t85\t66\t62\t73\t80\t66\t84\t39\t83\t71\t87\t67\t81\t80\t86\t82\t86\t76\t75\t73\t14\t11\t12\t5\t9\t#Playmaker  \tInjury Free,Long Shot Taker (CPU AI Only),Set Play Specialist\t77+3\t77+3\t77+3\t80+3\t80+3\t80+3\t80+3\t80+3\t82+3\t82+3\t82+3\t81+3\t84+3\t84+3\t84+3\t81+3\t78+3\t80+3\t80+3\t80+3\t78+3\t76+3\t73+3\t73+3\t73+3\t76+3\n172871\tJ. Vertonghen\tJan Vertonghen\t1987-04-24\t31\t187.96\t86.2\tCB\tBelgium\t87\t87\t3.4E7\t155000.0\tLeft\t3\t3\t3\tHigh/ High\tNormal\t6.29E7\tTottenham Hotspur\t83.0\tLCB\t5.0\t2012-07-01\t2020\tBelgium\t85.0\tLCB\t5.0\t72\t56\t80\t79\t52\t71\t63\t73\t74\t77\t61\t65\t61\t85\t60\t80\t85\t75\t79\t66\t84\t89\t60\t68\t66\t83\t89\t87\t88\t6\t10\t9\t12\t7\t#Tackling ,#Tactician \tPower Free-Kick,Leadership\t69+3\t69+3\t69+3\t69+3\t70+3\t70+3\t70+3\t69+3\t70+3\t70+3\t70+3\t71+3\t75+3\t75+3\t75+3\t71+3\t79+3\t82+3\t82+3\t82+3\t79+3\t80+3\t84+3\t84+3\t84+3\t80+3\n175943\tD. Mertens\tDries Mertens\t1987-05-06\t31\t170.18\t60.8\tCF,ST\tBelgium\t87\t87\t4.5E7\t135000.0\tRight\t3\t4\t4\tHigh/ Low\tNormal\t7.65E7\tNapoli\t82.0\tSUB\t14.0\t2013-07-01\t2020\tBelgium\t85.0\tRF\t14.0\t77\t86\t35\t82\t70\t91\t82\t79\t74\t89\t93\t85\t94\t88\t92\t80\t60\t75\t42\t81\t59\t36\t87\t83\t79\t81\t25\t40\t40\t7\t10\t8\t10\t4\t#Dribbler,#Acrobat,#Clinical Finisher,#Complete Forward\tDiver,Finesse Shot,Flair,Long Shot Taker (CPU AI Only),Technical Dribbler (CPU AI Only),Takes Finesse Free Kicks,Through Ball\t78+3\t78+3\t78+3\t86+3\t85+3\t85+3\t85+3\t86+3\t86+3\t86+3\t86+3\t85+3\t78+3\t78+3\t78+3\t85+3\t65+3\t60+3\t60+3\t60+3\t65+3\t60+3\t46+3\t46+3\t46+3\t60+3\n176676\tMarcelo\tMarcelo Vieira da Silva Júnior\t1988-05-12\t30\t175.26\t79.8\tLB\tBrazil\t87\t87\t3.65E7\t240000.0\tLeft\t4\t4\t5\tHigh/ Low\tNormal\t7.48E7\tReal Madrid\t86.0\tSUB\t12.0\t2007-01-01\t2022\tnull\tnull\tnull\tnull\t90\t73\t75\t84\t61\t90\t85\t67\t78\t92\t83\t82\t86\t87\t86\t83\t76\t89\t78\t70\t84\t83\t85\t82\t59\t86\t71\t82\t83\t12\t5\t5\t5\t9\t#Dribbler,#Crosser,#Acrobat\tFlair\t81+3\t81+3\t81+3\t85+3\t84+3\t84+3\t84+3\t85+3\t84+3\t84+3\t84+3\t85+3\t84+3\t84+3\t84+3\t85+3\t84+3\t82+3\t82+3\t82+3\t84+3\t83+3\t80+3\t80+3\t80+3\t83+3\n184087\tT. Alderweireld\tToby Alderweireld\t1989-03-02\t30\t185.42\t81.2\tCB\tBelgium\t87\t88\t4.4E7\t165000.0\tRight\t3\t3\t2\tMedium/ Medium\tNormal\t8.47E7\tTottenham Hotspur\t83.0\tRCB\t4.0\t2015-07-08\t2020\tBelgium\t85.0\tRCB\t2.0\t64\t45\t82\t79\t38\t62\t63\t69\t85\t75\t61\t67\t60\t88\t50\t78\t84\t76\t79\t65\t81\t87\t58\t67\t58\t84\t90\t91\t86\t16\t6\t14\t16\t14\t#Tackling ,#Tactician \tLong Passer (CPU AI Only)\t66+3\t66+3\t66+3\t65+3\t67+3\t67+3\t67+3\t65+3\t68+3\t68+3\t68+3\t68+3\t75+3\t75+3\t75+3\t68+3\t78+3\t83+3\t83+3\t83+3\t78+3\t80+3\t84+3\t84+3\t84+3\t80+3\n189332\tJordi Alba\tJordi Alba Ramos\t1989-03-21\t29\t170.18\t68.0\tLB\tSpain\t87\t87\t3.8E7\t250000.0\tLeft\t3\t3\t3\tHigh/ Medium\tNormal\t7.79E7\tFC Barcelona\t86.0\tLB\t18.0\t2012-07-01\t2024\tSpain\t85.0\tLB\t18.0\t87\t73\t70\t84\t60\t80\t80\t63\t74\t84\t93\t93\t90\t83\t85\t64\t81\t91\t61\t66\t77\t84\t80\t76\t59\t82\t74\t84\t84\t13\t15\t13\t6\t13\t#Speedster,#Crosser,#Acrobat\tBeat Offside Trap\t76+3\t76+3\t76+3\t82+3\t79+3\t79+3\t79+3\t82+3\t80+3\t80+3\t80+3\t83+3\t80+3\t80+3\t80+3\t83+3\t85+3\t80+3\t80+3\t80+3\t85+3\t84+3\t78+3\t78+3\t78+3\t84+3\n189509\tThiago\tThiago Alcântara do Nascimento\t1991-04-11\t27\t175.26\t69.9\tCM,CAM,CDM\tSpain\t87\t87\t5.15E7\t140000.0\tRight\t3\t3\t5\tMedium/ Medium\tNormal\t8.5E7\tFC Bayern München\t85.0\tLDM\t6.0\t2013-07-14\t2021\tSpain\t85.0\tSUB\t19.0\t72\t69\t54\t90\t90\t90\t85\t77\t87\t90\t78\t69\t90\t86\t86\t76\t75\t75\t59\t79\t56\t78\t79\t86\t75\t85\t67\t67\t71\t6\t11\t7\t9\t13\t#Dribbler,#Playmaker  ,#Acrobat,#Complete Midfielder\tInjury Prone,Dives Into Tackles (CPU AI Only),Flair,Technical Dribbler (CPU AI Only),Takes Finesse Free Kicks\t76+3\t76+3\t76+3\t82+3\t82+3\t82+3\t82+3\t82+3\t84+3\t84+3\t84+3\t82+3\t84+3\t84+3\t84+3\t82+3\t77+3\t77+3\t77+3\t77+3\t77+3\t74+3\t69+3\t69+3\t69+3\t74+3\n192387\tC. Immobile\tCiro Immobile\t1990-02-20\t29\t185.42\t84.8\tST\tItaly\t87\t87\t5.2E7\t115000.0\tRight\t3\t4\t3\tHigh/ Medium\tNormal\t8.84E7\tLazio\t80.0\tST\t17.0\t2016-07-27\t2023\tItaly\t83.0\tST\t17.0\t55\t90\t81\t74\t87\t83\t70\t51\t49\t83\t78\t85\t77\t87\t63\t86\t77\t80\t76\t80\t77\t40\t91\t65\t78\t81\t34\t33\t32\t6\t8\t15\t12\t6\t#Clinical Finisher\tBeat Offside Trap\t84+3\t84+3\t84+3\t79+3\t82+3\t82+3\t82+3\t79+3\t78+3\t78+3\t78+3\t77+3\t70+3\t70+3\t70+3\t77+3\t60+3\t58+3\t58+3\t58+3\t60+3\t58+3\t55+3\t55+3\t55+3\t58+3\n193041\tK. Navas\tKeylor Navas\t1986-12-15\t32\t185.42\t79.8\tGK\tCosta Rica\t87\t87\t3.05E7\t195000.0\tRight\t3\t3\t1\tMedium/ Medium\tNormal\t6.25E7\tReal Madrid\t86.0\tSUB\t1.0\t2014-08-03\t2020\tnull\tnull\tnull\tnull\t11\t15\t11\t30\t11\t16\t11\t15\t37\t19\t54\t53\t60\t84\t61\t21\t74\t39\t75\t13\t32\t20\t16\t68\t25\t67\t28\t14\t14\t90\t81\t75\t82\t90\tnull\tGK Up for Corners,GK Long Throw,Cautious With Crosses\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n197781\tIsco\tFrancisco Román Alarcón Suárez\t1992-04-21\t26\t175.26\t78.9\tCAM,CM,LW\tSpain\t87\t90\t6.25E7\t260000.0\tRight\t3\t3\t4\tHigh/ Medium\tNormal\t1.3280000000000001E8\tReal Madrid\t86.0\tSUB\t22.0\t2013-07-03\t2022\tSpain\t85.0\tLW\t22.0\t75\t79\t55\t86\t65\t94\t88\t76\t81\t95\t75\t69\t87\t77\t90\t69\t64\t70\t59\t85\t58\t64\t78\t86\t76\t86\t60\t64\t51\t10\t8\t12\t15\t6\t#Dribbler,#Playmaker  ,#Complete Midfielder\tSelfish,Finesse Shot,Flair,Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t76+3\t76+3\t76+3\t83+3\t82+3\t82+3\t82+3\t83+3\t85+3\t85+3\t85+3\t82+3\t82+3\t82+3\t82+3\t82+3\t71+3\t72+3\t72+3\t72+3\t71+3\t68+3\t63+3\t63+3\t63+3\t68+3\n198710\tJ. Rodríguez\tJames David Rodríguez Rubio\t1991-07-12\t27\t154.94\t74.8\tCAM,CM,RM\tColombia\t87\t88\t5.9E7\t260000.0\tLeft\t4\t3\t4\tMedium/ Medium\tNormal\tnull\tFC Bayern München\t85.0\tCAM\t11.0\tnull\tJun 30, 2019\tColombia\t79.0\tLAM\t10.0\t90\t83\t62\t89\t90\t85\t89\t86\t83\t90\t73\t67\t83\t85\t76\t86\t54\t70\t68\t92\t64\t55\t80\t88\t81\t87\t52\t41\t44\t15\t15\t15\t5\t14\t#Playmaker  ,#Distance Shooter,#Crosser,#FK Specialist,#Complete Midfielder\tAvoids Using Weaker Foot,Flair,Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only),Set Play Specialist\t80+3\t80+3\t80+3\t84+3\t83+3\t83+3\t83+3\t84+3\t85+3\t85+3\t85+3\t83+3\t81+3\t81+3\t81+3\t83+3\t69+3\t68+3\t68+3\t68+3\t69+3\t65+3\t58+3\t58+3\t58+3\t65+3\n200145\tCasemiro\tCarlos Henrique Venancio Casimiro\t1992-02-23\t27\t185.42\t83.9\tCDM\tBrazil\t87\t89\t5.05E7\t240000.0\tRight\t3\t3\t2\tMedium/ High\tNormal\t1.073E8\tReal Madrid\t86.0\tCDM\t14.0\t2013-07-11\t2021\tnull\tnull\tnull\tnull\t58\t64\t76\t83\t61\t69\t63\t74\t82\t78\t61\t66\t62\t86\t66\t86\t88\t87\t89\t81\t89\t86\t69\t77\t66\t84\t84\t87\t86\t13\t14\t16\t12\t12\t#Tackling ,#Tactician ,#Strength,#Complete Defender\tPower Free-Kick,Dives Into Tackles (CPU AI Only),Long Shot Taker (CPU AI Only)\t74+3\t74+3\t74+3\t71+3\t74+3\t74+3\t74+3\t71+3\t75+3\t75+3\t75+3\t72+3\t79+3\t79+3\t79+3\t72+3\t78+3\t84+3\t84+3\t84+3\t78+3\t79+3\t84+3\t84+3\t84+3\t79+3\n201399\tM. Icardi\tMauro Emanuel Icardi Rivero\t1993-02-19\t26\t154.94\t74.8\tST\tArgentina\t87\t90\t6.45E7\t130000.0\tRight\t3\t4\t3\tMedium/ Low\tNormal\t1.145E8\tInter\t82.0\tST\t9.0\t2013-07-09\t2021\tArgentina\t82.0\tST\t9.0\t46\t91\t91\t73\t85\t77\t58\t45\t54\t81\t77\t78\t76\t88\t76\t84\t94\t69\t76\t70\t56\t22\t92\t64\t82\t85\t45\t24\t20\t13\t9\t5\t7\t9\t#Poacher,#Aerial Threat,#Complete Forward\tInjury Free,Power Header\t84+3\t84+3\t84+3\t76+3\t81+3\t81+3\t81+3\t76+3\t76+3\t76+3\t76+3\t74+3\t68+3\t68+3\t68+3\t74+3\t53+3\t53+3\t53+3\t53+3\t53+3\t52+3\t51+3\t51+3\t51+3\t52+3\n206585\tKepa\tKepa Arrizabalaga\t1994-10-03\t24\t185.42\t84.8\tGK\tSpain\t84\t90\t3.1E7\t92000.0\tRight\t1\t4\t1\tMedium/ Medium\tLean\t6.36E7\tChelsea\t83.0\tGK\t1.0\t2018-08-08\t2025\tSpain\t85.0\tSUB\t13.0\t25\t11\t17\t32\t18\t10\t25\t19\t36\t16\t34\t33\t41\t79\t39\t25\t71\t37\t51\t14\t18\t21\t15\t55\t24\t63\t19\t18\t16\t84\t82\t79\t80\t85\tnull\tGK Long Throw,Comes For Crosses,Saves with Feet\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n208670\tH. Ziyech\tHakim Ziyech\t1993-03-19\t25\t154.94\t64.9\tCAM,RW\tMorocco\t84\t86\t3.8E7\t31000.0\tLeft\t3\t2\t4\tHigh/ High\tLean\t5.61E7\tAjax\t78.0\tRAM\t22.0\t2016-08-30\t2021\tnull\tnull\tnull\tnull\t84\t68\t53\t86\t77\t84\t90\t78\t89\t83\t76\t74\t86\t83\t78\t80\t38\t86\t59\t76\t72\t62\t76\t88\t72\t83\t52\t66\t36\t11\t7\t11\t8\t14\t#Playmaker  ,#Engine,#Acrobat,#Complete Midfielder\tFlair,Long Passer (CPU AI Only),Long Shot Taker (CPU AI Only),Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only),Set Play Specialist,Takes Finesse Free Kicks\t74+3\t74+3\t74+3\t80+3\t79+3\t79+3\t79+3\t80+3\t82+3\t82+3\t82+3\t81+3\t82+3\t82+3\t82+3\t81+3\t71+3\t72+3\t72+3\t72+3\t71+3\t67+3\t60+3\t60+3\t60+3\t67+3\n209499\tFabinho\tFábio Henrique Tavares\t1993-10-23\t25\t187.96\t78.0\tCDM\tBrazil\t84\t88\t3.4E7\t120000.0\tRight\t3\t2\t3\tMedium/ High\tLean\t6.55E7\tLiverpool\t83.0\tLDM\t3.0\t2018-07-01\t2023\tnull\tnull\tnull\tnull\t79\t66\t75\t83\t47\t76\t71\t53\t80\t82\t69\t72\t69\t83\t67\t78\t75\t92\t79\t65\t85\t84\t70\t77\t91\t84\t84\t86\t84\t13\t12\t6\t8\t8\tnull\tInjury Free,Long Passer (CPU AI Only)\t73+3\t73+3\t73+3\t75+3\t75+3\t75+3\t75+3\t75+3\t76+3\t76+3\t76+3\t77+3\t80+3\t80+3\t80+3\t77+3\t82+3\t83+3\t83+3\t83+3\t82+3\t82+3\t82+3\t82+3\t82+3\t82+3\n211300\tA. Martial\tAnthony Martial\t1995-12-05\t23\t182.88\t76.2\tLW,ST,LM\tFrance\t84\t90\t4.25E7\t165000.0\tRight\t3\t3\t4\tMedium/ Medium\tNormal\t8.93E7\tManchester United\t82.0\tLW\t11.0\t2015-09-01\t2024\tnull\tnull\tnull\tnull\t76\t84\t69\t78\t74\t88\t84\t54\t60\t87\t88\t89\t85\t82\t81\t84\t74\t76\t75\t80\t58\t42\t83\t74\t81\t82\t34\t39\t36\t9\t8\t8\t15\t11\t#Dribbler\tBeat Offside Trap,Finesse Shot,Flair,Speed Dribbler (CPU AI Only),Technical Dribbler (CPU AI Only)\t82+3\t82+3\t82+3\t83+3\t83+3\t83+3\t83+3\t83+3\t81+3\t81+3\t81+3\t81+3\t74+3\t74+3\t74+3\t81+3\t64+3\t60+3\t60+3\t60+3\t64+3\t61+3\t54+3\t54+3\t54+3\t61+3\n212188\tT. Werner\tTimo Werner\t1996-03-06\t23\t154.94\t74.8\tST\tGermany\t84\t87\t4.0E7\t77000.0\tRight\t3\t4\t3\tHigh/ Medium\tNormal\t7.1E7\tRB Leipzig\t79.0\tLS\t11.0\t2016-07-01\t2020\tGermany\t85.0\tRW\t9.0\t69\t87\t77\t77\t85\t83\t63\t56\t55\t84\t93\t93\t81\t86\t76\t78\t78\t83\t64\t70\t63\t37\t85\t61\t72\t74\t39\t20\t19\t9\t9\t8\t15\t9\t#Speedster\tDiver,Beat Offside Trap,Speed Dribbler (CPU AI Only)\t82+3\t82+3\t82+3\t81+3\t81+3\t81+3\t81+3\t81+3\t78+3\t78+3\t78+3\t80+3\t70+3\t70+3\t70+3\t80+3\t61+3\t55+3\t55+3\t55+3\t61+3\t57+3\t49+3\t49+3\t49+3\t57+3\n212190\tN. Süle\tNiklas Süle\t1995-09-03\t23\t195.57999999999998\t97.1\tCB\tGermany\t84\t90\t3.65E7\t84000.0\tRight\t2\t3\t2\tMedium/ Medium\tStocky\t6.75E7\tFC Bayern München\t85.0\tRCB\t4.0\t2017-07-01\t2022\tGermany\t85.0\tCB\t15.0\t30\t20\t86\t78\t31\t42\t28\t30\t63\t63\t52\t84\t33\t79\t33\t77\t38\t65\t94\t62\t82\t82\t26\t30\t32\t72\t83\t85\t83\t15\t7\t14\t7\t15\t#Aerial Threat,#Strength\tDives Into Tackles (CPU AI Only)\t56+2\t56+2\t56+2\t49+2\t52+2\t52+2\t52+2\t49+2\t52+2\t52+2\t52+2\t52+2\t60+2\t60+2\t60+2\t52+2\t69+2\t75+2\t75+2\t75+2\t69+2\t73+2\t81+2\t81+2\t81+2\t73+2\n212198\tBruno Fernandes\tBruno Miguel Borges Fernandes\t1994-09-08\t24\t152.4\t68.9\tCAM,CM\tPortugal\t84\t88\t4.05E7\t22000.0\tRight\t2\t3\t4\tHigh/ High\tLean\t8.4E7\tPortugal\t82.0\tSUB\t16.0\tnull\tnull\tSporting CP\t78.0\tLCM\t8.0\t84\t74\t58\t85\t84\t83\t86\t85\t84\t86\t79\t76\t77\t84\t78\t87\t72\t91\t67\t88\t66\t71\t81\t86\t82\t84\t66\t66\t57\t12\t14\t15\t8\t14\t#Engine,#Distance Shooter\tInjury Free,Flair,Long Shot Taker (CPU AI Only),Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t78+2\t78+2\t78+2\t82+2\t82+2\t82+2\t82+2\t82+2\t83+2\t83+2\t83+2\t83+2\t83+2\t83+2\t83+2\t83+2\t77+2\t76+2\t76+2\t76+2\t77+2\t74+2\t68+2\t68+2\t68+2\t74+2\n212462\tAlex Telles\tAlex Nicolao Telles\t1992-12-15\t26\t154.94\t71.2\tLB\tBrazil\t84\t86\t3.1E7\t22000.0\tLeft\t3\t2\t3\tHigh/ Medium\tLean\t6.43E7\tFC Porto\t81.0\tLB\t13.0\t2016-07-13\t2021\tnull\tnull\tnull\tnull\t89\t65\t74\t83\t67\t82\t87\t79\t86\t82\t84\t85\t73\t83\t70\t80\t81\t92\t68\t75\t78\t80\t76\t74\t73\t80\t80\t81\t79\t13\t8\t12\t11\t14\t#Crosser\tInjury Free,Avoids Using Weaker Foot,Flair,Speed Dribbler (CPU AI Only),Set Play Specialist,Takes Finesse Free Kicks\t76+3\t76+3\t76+3\t79+3\t78+3\t78+3\t78+3\t79+3\t79+3\t79+3\t79+3\t81+3\t81+3\t81+3\t81+3\t81+3\t83+3\t81+3\t81+3\t81+3\t83+3\t82+3\t78+3\t78+3\t78+3\t82+3\n216460\tJ. Giménez\tJosé María Giménez de Vargas\t1995-01-20\t24\t185.42\t79.8\tCB\tUruguay\t84\t88\t3.4E7\t63000.0\tRight\t2\t3\t2\tMedium/ High\tNormal\t7.23E7\tAtlético Madrid\t84.0\tRCB\t24.0\t2013-07-01\t2023\tUruguay\t81.0\tLCB\t2.0\t47\t37\t81\t68\t30\t47\t36\t44\t58\t56\t69\t70\t56\t76\t43\t72\t90\t67\t85\t48\t89\t85\t24\t27\t38\t73\t88\t86\t87\t9\t11\t7\t10\t15\t#Tackling \tDives Into Tackles (CPU AI Only)\t56+2\t56+2\t56+2\t51+2\t51+2\t51+2\t51+2\t51+2\t50+2\t50+2\t50+2\t53+2\t56+2\t56+2\t56+2\t53+2\t71+2\t73+2\t73+2\t73+2\t71+2\t74+2\t83+2\t83+2\t83+2\t74+2\n216594\tN. Fekir\tNabil Fekir\t1993-07-18\t25\t172.72\t74.8\tCAM\tFrance\t84\t88\t4.05E7\t84000.0\tLeft\t3\t3\t4\tHigh/ Medium\tStocky\t8.0E7\tOlympique Lyonnais\t79.0\tCAM\t18.0\t2013-07-01\t2020\tnull\tnull\tnull\tnull\t83\t82\t49\t83\t77\t90\t81\t79\t75\t89\t79\t79\t84\t80\t91\t84\t69\t77\t82\t82\t73\t28\t81\t81\t76\t89\t31\t37\t25\t15\t9\t8\t14\t15\t#Dribbler\tFlair,Chip Shot (CPU AI Only),Technical Dribbler (CPU AI Only),Backs Into Player\t79+3\t79+3\t79+3\t83+3\t83+3\t83+3\t83+3\t83+3\t83+3\t83+3\t83+3\t83+3\t77+3\t77+3\t77+3\t83+3\t62+3\t60+3\t60+3\t60+3\t62+3\t56+3\t50+3\t50+3\t50+3\t56+3\n220793\tD. Sánchez\tDavinson Sánchez\t1996-06-12\t22\t187.96\t78.9\tCB\tColombia\t84\t88\t3.4E7\t105000.0\tRight\t2\t3\t2\tMedium/ High\tLean\t6.55E7\tTottenham Hotspur\t83.0\tSUB\t6.0\t2017-08-26\t2024\tColombia\t79.0\tRCB\t23.0\t36\t40\t80\t77\t28\t63\t30\t27\t67\t73\t72\t79\t60\t80\t55\t66\t73\t76\t83\t44\t87\t82\t34\t49\t44\t75\t84\t85\t88\t9\t7\t10\t6\t15\tnull\tnull\t61+2\t61+2\t61+2\t59+2\t60+2\t60+2\t60+2\t59+2\t61+2\t61+2\t61+2\t62+2\t66+2\t66+2\t66+2\t62+2\t74+2\t78+2\t78+2\t78+2\t74+2\t76+2\t82+2\t82+2\t82+2\t76+2\n220834\tMarco Asensio\tMarco Asensio Willemsen\t1996-01-21\t23\t182.88\t76.2\tLW,RW\tSpain\t84\t89\t4.15E7\t195000.0\tLeft\t3\t3\t4\tHigh/ Medium\tNormal\t8.82E7\tReal Madrid\t86.0\tSUB\t20.0\t2015-07-01\t2023\tSpain\t85.0\tRW\t10.0\t82\t80\t57\t83\t79\t85\t83\t76\t81\t85\t85\t82\t79\t82\t76\t86\t58\t76\t61\t88\t45\t45\t82\t82\t62\t83\t40\t42\t39\t13\t9\t6\t12\t10\t#Distance Shooter\tLong Shot Taker (CPU AI Only),Takes Finesse Free Kicks\t79+3\t79+3\t79+3\t83+3\t82+3\t82+3\t82+3\t83+3\t83+3\t83+3\t83+3\t82+3\t78+3\t78+3\t78+3\t82+3\t66+3\t63+3\t63+3\t63+3\t66+3\t62+3\t52+3\t52+3\t52+3\t62+3\n231443\tO. Dembélé\tOusmane Dembélé\t1997-05-15\t21\t152.4\t67.1\tRW,LW\tFrance\t84\t92\t4.6E7\t170000.0\tLeft\t3\t5\t4\tHigh/ Low\tLean\t1.035E8\tFC Barcelona\t86.0\tLW\t11.0\t2017-08-28\t2022\tFrance\t84.0\tSUB\t11.0\t81\t78\t43\t79\t76\t91\t82\t64\t70\t83\t94\t93\t90\t82\t85\t83\t59\t76\t52\t76\t54\t36\t79\t84\t75\t82\t42\t30\t33\t6\t6\t14\t10\t13\t#Speedster,#Dribbler,#Acrobat\tInjury Prone,Flair,Speed Dribbler (CPU AI Only),Technical Dribbler (CPU AI Only)\t76+3\t76+3\t76+3\t84+3\t82+3\t82+3\t82+3\t84+3\t82+3\t82+3\t82+3\t83+3\t75+3\t75+3\t75+3\t83+3\t64+3\t58+3\t58+3\t58+3\t64+3\t59+3\t47+3\t47+3\t47+3\t59+3\n41\tIniesta\tAndrés Iniesta Luján\t1984-05-11\t34\t170.18\t68.0\tCM,LM\tSpain\t85\t85\t1.85E7\t19000.0\tRight\t4\t4\t4\tHigh/ Medium\tNormal\t2.41E7\tVissel Kobe\t69.0\tLAM\t8.0\t2018-07-16\t2021\tnull\tnull\tnull\tnull\t77\t69\t54\t90\t75\t88\t80\t70\t84\t91\t70\t66\t79\t84\t84\t67\t47\t58\t58\t70\t58\t65\t78\t93\t71\t89\t68\t57\t56\t6\t13\t6\t13\t7\t#Dribbler,#Playmaker  ,#Complete Midfielder\tFinesse Shot,Playmaker (CPU AI Only),Team Player,Technical Dribbler (CPU AI Only)\t73+3\t73+3\t73+3\t81+3\t80+3\t80+3\t80+3\t81+3\t84+3\t84+3\t84+3\t81+3\t82+3\t82+3\t82+3\t81+3\t71+3\t73+3\t73+3\t73+3\t71+3\t68+3\t63+3\t63+3\t63+3\t68+3\n41236\tZ. Ibrahimović\tZlatan Ibrahimović\t1981-10-03\t37\t195.57999999999998\t94.8\tST\tSweden\t85\t85\t1.4E7\t15000.0\tRight\t5\t4\t5\tMedium/ Low\tNormal\t2.1E7\tLA Galaxy\t71.0\tRS\t9.0\t2018-03-23\t2022\tnull\tnull\tnull\tnull\t73\t86\t83\t79\t86\t79\t82\t82\t73\t84\t58\t59\t75\t82\t39\t90\t68\t61\t86\t82\t84\t20\t85\t79\t89\t90\t28\t37\t24\t13\t15\t10\t9\t12\t#Poacher,#Aerial Threat,#Strength,#Clinical Finisher,#Complete Forward\tFlair,Long Shot Taker (CPU AI Only),Power Header,Technical Dribbler (CPU AI Only),Backs Into Player,Target Forward\t82+4\t82+4\t82+4\t77+4\t80+4\t80+4\t80+4\t77+4\t79+4\t79+4\t79+4\t76+4\t73+4\t73+4\t73+4\t76+4\t55+4\t57+4\t57+4\t57+4\t55+4\t51+4\t52+4\t52+4\t52+4\t51+4\n205498\tJorginho\tLuiz Frello Filho Jorge\t1991-12-20\t27\t154.94\t67.1\tCM\tItaly\t83\t84\t3.0E7\t140000.0\tRight\t2\t3\t3\tMedium/ Medium\tLean\t5.78E7\tChelsea\t83.0\tCM\t5.0\t2018-07-16\t2023\tItaly\t83.0\tCM\t8.0\t75\t57\t56\t89\t71\t82\t75\t76\t87\t85\t70\t61\t77\t82\t73\t71\t58\t79\t66\t62\t79\t76\t68\t87\t84\t79\t62\t77\t70\t14\t7\t13\t14\t8\t#Playmaker  \tPlaymaker (CPU AI Only)\t69+2\t69+2\t69+2\t75+2\t75+2\t75+2\t75+2\t75+2\t79+2\t79+2\t79+2\t78+2\t82+2\t82+2\t82+2\t78+2\t76+2\t79+2\t79+2\t79+2\t76+2\t74+2\t71+2\t71+2\t71+2\t74+2\n205678\tE. Višća\tEdin Višća\t1990-02-17\t29\t172.72\t63.0\tRM,RW\tBosnia Herzegovina\t83\t83\t2.6E7\t44000.0\tRight\t2\t4\t4\tHigh/ Medium\tLean\t4.94E7\tMedipol Başakşehir FK\t76.0\tRM\t7.0\t2011-08-16\t2021\tnull\tnull\tnull\tnull\t80\t80\t45\t82\t74\t82\t74\t60\t71\t82\t90\t89\t93\t80\t88\t79\t69\t84\t58\t77\t47\t52\t83\t77\t75\t82\t55\t40\t40\t8\t14\t14\t12\t16\t#Acrobat\tBeat Offside Trap,Long Shot Taker (CPU AI Only),Speed Dribbler (CPU AI Only)\t76+2\t76+2\t76+2\t82+2\t80+2\t80+2\t80+2\t82+2\t81+2\t81+2\t81+2\t81+2\t76+2\t76+2\t76+2\t81+2\t69+2\t64+2\t64+2\t64+2\t69+2\t64+2\t54+2\t54+2\t54+2\t64+2\n206113\tS. Gnabry\tSerge Gnabry\t1995-07-14\t23\t175.26\t74.8\tLM,RM,CAM,LW\tGermany\t83\t87\t3.4E7\t85000.0\tRight\t2\t4\t4\tHigh/ Medium\tNormal\t5.87E7\tFC Bayern München\t85.0\tRM\t22.0\t2017-07-01\t2020\tGermany\t85.0\tST\t6.0\t74\t81\t46\t79\t83\t87\t64\t62\t68\t83\t92\t90\t86\t81\t88\t85\t64\t68\t68\t81\t63\t38\t80\t74\t68\t74\t45\t48\t45\t14\t10\t10\t9\t7\t#Speedster,#Dribbler,#Acrobat\tInjury Prone,Flair,Speed Dribbler (CPU AI Only),Technical Dribbler (CPU AI Only)\t78+2\t78+2\t78+2\t82+2\t81+2\t81+2\t81+2\t82+2\t81+2\t81+2\t81+2\t80+2\t74+2\t74+2\t74+2\t80+2\t65+2\t62+2\t62+2\t62+2\t65+2\t62+2\t54+2\t54+2\t54+2\t62+2\n207410\tM. Kovačić\tMateo Kovačić\t1994-05-06\t24\t175.26\t78.0\tCM\tCroatia\t83\t89\t3.5E7\t165000.0\tRight\t3\t4\t4\tHigh/ High\tNormal\tnull\tChelsea\t83.0\tSUB\t17.0\tnull\tJun 30, 2019\tnull\tnull\tnull\tnull\t73\t62\t42\t87\t76\t88\t78\t68\t82\t89\t84\t74\t85\t74\t85\t79\t63\t82\t65\t75\t77\t76\t71\t88\t59\t81\t69\t74\t63\t9\t5\t6\t7\t7\t#Dribbler,#Playmaker  ,#Complete Midfielder\tFlair,Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t71+3\t71+3\t71+3\t79+3\t78+3\t78+3\t78+3\t79+3\t82+3\t82+3\t82+3\t80+3\t82+3\t82+3\t82+3\t80+3\t76+3\t78+3\t78+3\t78+3\t76+3\t74+3\t69+3\t69+3\t69+3\t74+3\n207566\tWilliam Carvalho\tWilliam Silva de Carvalho\t1992-04-07\t26\t187.96\t83.0\tCDM,CM\tPortugal\t83\t86\t2.7E7\t35000.0\tRight\t3\t4\t3\tMedium/ Medium\tNormal\t5.87E7\tReal Betis\t80.0\tCDM\t14.0\t2018-07-13\t2023\tPortugal\t82.0\tCDM\t14.0\t68\t52\t73\t81\t50\t78\t79\t50\t84\t80\t62\t67\t51\t75\t51\t70\t69\t85\t92\t59\t78\t81\t64\t81\t60\t89\t82\t83\t67\t6\t6\t5\t14\t14\t#Strength\tLong Passer (CPU AI Only),Long Shot Taker (CPU AI Only),Playmaker (CPU AI Only)\t68+3\t68+3\t68+3\t70+3\t71+3\t71+3\t71+3\t70+3\t73+3\t73+3\t73+3\t73+3\t78+3\t78+3\t78+3\t73+3\t76+3\t80+3\t80+3\t80+3\t76+3\t75+3\t79+3\t79+3\t79+3\t75+3\n207863\tFelipe\tFelipe Augusto de Almeida Monteiro\t1989-05-16\t29\t190.5\t86.2\tCB\tBrazil\t83\t84\t2.25E7\t22000.0\tRight\t3\t3\t2\tMedium/ High\tNormal\t4.67E7\tFC Porto\t81.0\tRCB\t28.0\t2016-07-01\t2021\tnull\tnull\tnull\tnull\t45\t39\t81\t74\t44\t57\t32\t30\t67\t62\t60\t67\t52\t77\t57\t46\t90\t78\t86\t41\t92\t81\t34\t50\t47\t75\t85\t85\t79\t9\t11\t14\t9\t7\t#Strength\tInjury Free,Power Header\t56+3\t56+3\t56+3\t55+3\t55+3\t55+3\t55+3\t55+3\t57+3\t57+3\t57+3\t58+3\t64+3\t64+3\t64+3\t58+3\t71+3\t76+3\t76+3\t76+3\t71+3\t73+3\t81+3\t81+3\t81+3\t73+3\n208418\tY. Carrasco\tYannick Ferreira Carrasco\t1993-09-04\t25\t154.94\t73.0\tLM\tBelgium\t83\t86\t3.3E7\t20000.0\tRight\t3\t4\t4\tHigh/ Medium\tLean\t7.34E7\tBelgium\t85.0\tLM\t11.0\tnull\tnull\tDalian YiFang FC\t64.0\tLM\t10.0\t78\t79\t53\t77\t68\t88\t81\t78\t71\t87\t89\t87\t88\t83\t71\t84\t68\t74\t59\t75\t61\t18\t81\t71\t74\t75\t58\t39\t26\t9\t11\t9\t10\t10\t#Acrobat\tLong Shot Taker (CPU AI Only),Speed Dribbler (CPU AI Only)\t78+3\t78+3\t78+3\t82+3\t81+3\t81+3\t81+3\t82+3\t80+3\t80+3\t80+3\t81+3\t73+3\t73+3\t73+3\t81+3\t62+3\t58+3\t58+3\t58+3\t62+3\t58+3\t50+3\t50+3\t50+3\t58+3\n208618\tLucas Vázquez\tLucas Vázquez Iglesias\t1991-07-01\t27\t172.72\t69.9\tRW,RM\tSpain\t83\t83\t2.7E7\t205000.0\tRight\t2\t4\t4\tHigh/ High\tNormal\t5.54E7\tReal Madrid\t86.0\tRW\t17.0\t2015-07-02\t2021\tnull\tnull\tnull\tnull\t83\t72\t56\t83\t58\t82\t82\t71\t75\t82\t86\t82\t86\t85\t84\t80\t68\t90\t57\t76\t72\t62\t82\t83\t56\t75\t62\t62\t61\t9\t16\t9\t9\t7\t#Engine,#Acrobat\tBeat Offside Trap\t75+2\t75+2\t75+2\t81+2\t80+2\t80+2\t80+2\t81+2\t81+2\t81+2\t81+2\t82+2\t79+2\t79+2\t79+2\t82+2\t75+2\t72+2\t72+2\t72+2\t75+2\t73+2\t65+2\t65+2\t65+2\t73+2\n208808\tQ. Promes\tQuincy Anton Promes\t1992-01-04\t27\t175.26\t72.1\tLM,ST,RM\tNetherlands\t83\t83\t2.8E7\t28000.0\tRight\t2\t4\t5\tHigh/ Low\tLean\t5.88E7\tSevilla FC\t80.0\tLM\t21.0\t2018-08-31\t2023\tNetherlands\t81.0\tRM\t9.0\t79\t86\t60\t78\t69\t84\t75\t76\t73\t82\t90\t91\t87\t82\t79\t82\t82\t83\t61\t83\t60\t33\t79\t81\t74\t78\t36\t30\t32\t10\t13\t6\t7\t13\t#Speedster,#Acrobat,#Clinical Finisher,#Complete Forward\tPower Free-Kick,Selfish,Flair,Long Shot Taker (CPU AI Only),Speed Dribbler (CPU AI Only)\t79+2\t79+2\t79+2\t83+2\t82+2\t82+2\t82+2\t83+2\t81+2\t81+2\t81+2\t82+2\t75+2\t75+2\t75+2\t82+2\t63+2\t58+2\t58+2\t58+2\t63+2\t59+2\t49+2\t49+2\t49+2\t59+2\n209658\tL. Goretzka\tLeon Goretzka\t1995-02-06\t24\t187.96\t78.9\tCM,CAM,CDM\tGermany\t83\t88\t3.4E7\t85000.0\tRight\t3\t4\t3\tHigh/ High\tLean\t5.87E7\tFC Bayern München\t85.0\tSUB\t18.0\t2018-07-01\t2022\tGermany\t85.0\tSUB\t14.0\t75\t73\t80\t84\t68\t81\t76\t75\t79\t83\t84\t79\t76\t84\t70\t78\t74\t86\t72\t80\t80\t82\t79\t82\t60\t80\t72\t76\t74\t13\t8\t15\t11\t9\t#Engine\tFlair,Long Shot Taker (CPU AI Only),Speed Dribbler (CPU AI Only)\t78+3\t78+3\t78+3\t80+3\t80+3\t80+3\t80+3\t80+3\t81+3\t81+3\t81+3\t80+3\t81+3\t81+3\t81+3\t80+3\t79+3\t79+3\t79+3\t79+3\t79+3\t79+3\t77+3\t77+3\t77+3\t79+3\n210008\tA. Rabiot\tAdrien Rabiot\t1995-04-03\t23\t193.04\t79.8\tCM,CDM\tFrance\t83\t87\t3.3E7\t91000.0\tLeft\t2\t3\t3\tHigh/ Medium\tLean\t6.35E7\tParis Saint-Germain\t84.0\tRES\t25.0\t2012-07-01\t2019\tnull\tnull\tnull\tnull\t70\t69\t77\t85\t72\t79\t73\t59\t83\t83\t73\t74\t79\t83\t72\t80\t73\t82\t80\t79\t76\t80\t76\t80\t67\t84\t70\t81\t75\t9\t12\t9\t7\t15\tnull\tnull\t77+2\t77+2\t77+2\t77+2\t78+2\t78+2\t78+2\t77+2\t79+2\t79+2\t79+2\t78+2\t81+2\t81+2\t81+2\t78+2\t78+2\t80+2\t80+2\t80+2\t78+2\t77+2\t77+2\t77+2\t77+2\t77+2\n210413\tA. Romagnoli\tAlessio Romagnoli\t1995-01-12\t24\t187.96\t78.0\tCB\tItaly\t83\t90\t3.1E7\t92000.0\tLeft\t2\t3\t2\tMedium/ High\tNormal\t5.89E7\tMilan\t80.0\tLCB\t13.0\t2015-08-11\t2022\tnull\tnull\tnull\tnull\t36\t30\t77\t72\t28\t65\t36\t24\t71\t70\t63\t69\t60\t78\t53\t64\t78\t75\t81\t46\t85\t86\t31\t45\t34\t76\t88\t86\t82\t9\t14\t12\t8\t9\tnull\tnull\t56+2\t56+2\t56+2\t56+2\t57+2\t57+2\t57+2\t56+2\t58+2\t58+2\t58+2\t59+2\t65+2\t65+2\t65+2\t59+2\t72+2\t77+2\t77+2\t77+2\t72+2\t74+2\t82+2\t82+2\t82+2\t74+2\n210514\tJoão Cancelo\tJoão Pedro Cavaco Cancelo\t1994-05-27\t24\t182.88\t73.9\tRB\tPortugal\t83\t89\t2.95E7\t105000.0\tRight\t2\t3\t4\tHigh/ Medium\tLean\t5.46E7\tJuventus\t85.0\tRB\t20.0\t2018-07-01\t2023\tPortugal\t82.0\tRB\t2.0\t86\t58\t64\t79\t62\t85\t83\t69\t75\t84\t91\t91\t78\t83\t74\t80\t73\t90\t66\t66\t73\t77\t78\t74\t46\t77\t79\t79\t79\t6\t9\t15\t14\t14\t#Speedster,#Crosser\tTechnical Dribbler (CPU AI Only)\t74+2\t74+2\t74+2\t80+2\t78+2\t78+2\t78+2\t80+2\t78+2\t78+2\t78+2\t81+2\t78+2\t78+2\t78+2\t81+2\t82+2\t78+2\t78+2\t78+2\t82+2\t81+2\t75+2\t75+2\t75+2\t81+2\n212523\tAnderson Talisca\tAnderson Souza Conceição\t1994-02-01\t25\t190.5\t79.8\tCAM\tBrazil\t83\t87\t3.4E7\t27000.0\tLeft\t2\t4\t4\tHigh/ Low\tNormal\t7.74E7\tGuangzhou Evergrande Taobao FC\t71.0\tCAM\t24.0\t2019-01-01\t2022\tnull\tnull\tnull\tnull\t78\t80\t77\t81\t76\t82\t86\t87\t79\t84\t77\t76\t76\t79\t65\t84\t58\t76\t72\t88\t67\t58\t86\t81\t71\t74\t55\t62\t42\t13\t11\t13\t12\t10\t#FK Specialist\tLong Passer (CPU AI Only),Long Shot Taker (CPU AI Only),Playmaker (CPU AI Only),Takes Finesse Free Kicks\t80+2\t80+2\t80+2\t81+2\t81+2\t81+2\t81+2\t81+2\t81+2\t81+2\t81+2\t80+2\t79+2\t79+2\t79+2\t80+2\t69+2\t69+2\t69+2\t69+2\t69+2\t67+2\t64+2\t64+2\t64+2\t67+2\n213345\tK. Coman\tKingsley Coman\t1996-06-13\t22\t152.4\t71.2\tLM,RM,LW,RW\tFrance\t83\t88\t3.45E7\t85000.0\tRight\t2\t3\t5\tMedium/ Low\tLean\t5.95E7\tFC Bayern München\t85.0\tLM\t29.0\t2015-08-30\t2023\tnull\tnull\tnull\tnull\t81\t77\t52\t77\t77\t88\t84\t70\t63\t83\t95\t93\t88\t82\t84\t78\t75\t76\t63\t73\t36\t23\t79\t75\t70\t75\t29\t17\t15\t5\t3\t5\t3\t5\t#Speedster,#Dribbler,#Acrobat\tInjury Prone,Speed Dribbler (CPU AI Only)\t77+2\t77+2\t77+2\t82+2\t81+2\t81+2\t81+2\t82+2\t80+2\t80+2\t80+2\t81+2\t71+2\t71+2\t71+2\t81+2\t58+2\t51+2\t51+2\t51+2\t58+2\t53+2\t40+2\t40+2\t40+2\t53+2\n213565\tT. Lemar\tThomas Lemar\t1995-11-12\t23\t170.18\t62.1\tLM,CAM,RM\tFrance\t83\t89\t3.55E7\t64000.0\tLeft\t3\t2\t4\tMedium/ Medium\tLean\t7.99E7\tAtlético Madrid\t84.0\tLM\t11.0\t2018-07-01\t2023\tFrance\t84.0\tSUB\t8.0\t83\t75\t54\t84\t76\t85\t85\t81\t75\t86\t86\t84\t87\t79\t86\t79\t71\t79\t63\t78\t63\t66\t78\t84\t68\t80\t55\t59\t63\t11\t15\t13\t7\t14\tnull\tFinesse Shot,Technical Dribbler (CPU AI Only),Set Play Specialist,Takes Finesse Free Kicks\t76+3\t76+3\t76+3\t82+3\t81+3\t81+3\t81+3\t82+3\t82+3\t82+3\t82+3\t82+3\t79+3\t79+3\t79+3\t82+3\t74+3\t71+3\t71+3\t71+3\t74+3\t71+3\t64+3\t64+3\t64+3\t71+3\n213331\tJ. Tah\tJonathan Tah\t1996-02-11\t23\t195.57999999999998\t97.1\tCB\tGermany\t82\t87\t2.5E7\t61000.0\tRight\t2\t4\t2\tMedium/ Medium\tStocky\t4.44E7\tBayer 04 Leverkusen\t80.0\tRCB\t4.0\t2015-07-16\t2023\tGermany\t85.0\tSUB\t20.0\t35\t20\t80\t74\t24\t55\t30\t27\t69\t64\t64\t77\t48\t81\t44\t44\t72\t63\t93\t25\t76\t80\t27\t61\t38\t75\t80\t87\t84\t11\t8\t7\t9\t14\t#Aerial Threat,#Strength\tnull\t52+2\t52+2\t52+2\t52+2\t53+2\t53+2\t53+2\t52+2\t56+2\t56+2\t56+2\t57+2\t63+2\t63+2\t63+2\t57+2\t70+2\t76+2\t76+2\t76+2\t70+2\t73+2\t81+2\t81+2\t81+2\t73+2\n216409\tM. Politano\tMatteo Politano\t1993-08-03\t25\t170.18\t67.1\tRM,LM,ST\tItaly\t82\t85\t2.8E7\t61000.0\tLeft\t2\t4\t4\tHigh/ Medium\tNormal\tnull\tInter\t82.0\tRM\t16.0\tnull\tJun 30, 2019\tnull\tnull\tnull\tnull\t80\t74\t40\t80\t75\t84\t79\t77\t76\t84\t85\t86\t90\t79\t82\t78\t50\t79\t45\t82\t63\t38\t77\t75\t70\t79\t63\t29\t29\t11\t12\t6\t8\t11\t#Acrobat\tAvoids Using Weaker Foot,Finesse Shot,Long Shot Taker (CPU AI Only),Speed Dribbler (CPU AI Only)\t73+2\t73+2\t73+2\t81+2\t79+2\t79+2\t79+2\t81+2\t80+2\t80+2\t80+2\t80+2\t74+2\t74+2\t74+2\t80+2\t64+2\t61+2\t61+2\t61+2\t64+2\t60+2\t49+2\t49+2\t49+2\t60+2\n220440\tC. Lenglet\tClément Lenglet\t1995-06-17\t23\t185.42\t81.2\tCB\tFrance\t82\t88\t2.6E7\t135000.0\tLeft\t1\t4\t2\tMedium/ High\tLean\t5.85E7\tFC Barcelona\t86.0\tSUB\t15.0\t2018-07-12\t2023\tnull\tnull\tnull\tnull\t36\t23\t80\t78\t24\t60\t25\t27\t69\t76\t72\t73\t62\t81\t60\t58\t85\t73\t80\t35\t80\t82\t50\t60\t43\t78\t85\t84\t80\t10\t10\t9\t12\t7\tnull\tPower Header\t58+2\t58+2\t58+2\t59+2\t61+2\t61+2\t61+2\t59+2\t63+2\t63+2\t63+2\t62+2\t68+2\t68+2\t68+2\t62+2\t72+2\t78+2\t78+2\t78+2\t72+2\t75+2\t81+2\t81+2\t81+2\t75+2\n221087\tPau López\tPau López Sabata\t1994-12-13\t24\t187.96\t77.1\tGK\tSpain\t82\t87\t2.15E7\t21000.0\tLeft\t1\t3\t1\tMedium/ Medium\tLean\t4.68E7\tReal Betis\t80.0\tGK\t13.0\t2018-07-04\t2023\tSpain\t85.0\tSUB\t23.0\t24\t19\t15\t38\t17\t18\t23\t21\t41\t16\t45\t52\t40\t74\t57\t21\t71\t42\t52\t18\t39\t16\t20\t62\t25\t62\t19\t20\t11\t81\t83\t79\t83\t83\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n221992\tH. Lozano\tHirving Rodrigo Lozano Bahena\t1995-07-30\t23\t175.26\t69.9\tRW,LW\tMexico\t82\t87\t2.95E7\t24000.0\tRight\t3\t4\t4\tHigh/ Low\tLean\t4.35E7\tPSV\t76.0\tRW\t11.0\t2017-07-21\t2023\tMexico\t77.0\tLS\t22.0\t75\t77\t58\t74\t75\t84\t72\t65\t67\t81\t94\t93\t91\t82\t76\t76\t67\t80\t59\t76\t64\t45\t78\t75\t64\t77\t42\t35\t29\t11\t10\t14\t14\t10\t#Speedster,#Acrobat\tBeat Offside Trap,Speed Dribbler (CPU AI Only)\t76+3\t76+3\t76+3\t81+3\t79+3\t79+3\t79+3\t81+3\t79+3\t79+3\t79+3\t80+3\t72+3\t72+3\t72+3\t80+3\t64+3\t59+3\t59+3\t59+3\t64+3\t60+3\t51+3\t51+3\t51+3\t60+3\n222737\tMalcom\tMalcom Filipe Silva de Oliveira\t1997-02-26\t22\t172.72\t73.9\tRW\tBrazil\t82\t89\t3.15E7\t140000.0\tLeft\t2\t4\t4\tMedium/ Medium\tNormal\t7.09E7\tFC Barcelona\t86.0\tSUB\t14.0\t2018-07-24\t2023\tnull\tnull\tnull\tnull\t79\t75\t57\t80\t71\t85\t77\t81\t73\t85\t87\t82\t92\t79\t84\t85\t58\t74\t64\t85\t53\t26\t78\t81\t68\t78\t21\t28\t17\t8\t14\t15\t7\t9\t#Acrobat\tDiver,Flair,Long Shot Taker (CPU AI Only),Speed Dribbler (CPU AI Only),Takes Finesse Free Kicks\t77+2\t77+2\t77+2\t81+2\t81+2\t81+2\t81+2\t81+2\t81+2\t81+2\t81+2\t80+2\t74+2\t74+2\t74+2\t80+2\t58+2\t55+2\t55+2\t55+2\t58+2\t53+2\t43+2\t43+2\t43+2\t53+2\n223959\tL. Torreira\tLucas Torreira Di Pascua\t1996-02-11\t23\t167.64000000000001\t64.0\tCDM,CM\tUruguay\t82\t87\t2.5E7\t98000.0\tRight\t2\t3\t3\tMedium/ High\tNormal\t4.94E7\tArsenal\t82.0\tRDM\t11.0\t2018-07-12\t2023\tUruguay\t81.0\tLCM\t14.0\t74\t50\t59\t83\t65\t78\t70\t78\t77\t81\t81\t74\t85\t79\t93\t78\t52\t85\t66\t74\t86\t86\t65\t74\t48\t78\t84\t84\t77\t5\t5\t13\t7\t9\tnull\tPower Free-Kick,Long Shot Taker (CPU AI Only),Playmaker (CPU AI Only)\t68+2\t68+2\t68+2\t74+2\t73+2\t73+2\t73+2\t74+2\t75+2\t75+2\t75+2\t75+2\t78+2\t78+2\t78+2\t75+2\t80+2\t81+2\t81+2\t81+2\t80+2\t79+2\t77+2\t77+2\t77+2\t79+2\n224411\tGonçalo Guedes\tGonçalo Manuel Ganchinho Guedes\t1996-11-29\t22\t152.4\t68.0\tLM,ST,RM,LW\tPortugal\t82\t86\t2.9E7\t36000.0\tRight\t1\t4\t4\tHigh/ Medium\tNormal\t6.31E7\tValencia CF\t80.0\tSUB\t7.0\t2018-08-29\t2024\tPortugal\t82.0\tSUB\t17.0\t78\t75\t60\t77\t71\t86\t76\t70\t69\t81\t89\t90\t85\t80\t78\t81\t65\t75\t62\t77\t67\t50\t77\t77\t69\t80\t24\t34\t30\t9\t12\t11\t9\t9\t#Dribbler\tDiver,Flair,Long Shot Taker (CPU AI Only),Speed Dribbler (CPU AI Only),Technical Dribbler (CPU AI Only)\t76+2\t76+2\t76+2\t80+2\t80+2\t80+2\t80+2\t80+2\t79+2\t79+2\t79+2\t80+2\t73+2\t73+2\t73+2\t80+2\t63+2\t59+2\t59+2\t59+2\t63+2\t59+2\t50+2\t50+2\t50+2\t59+2\n226226\tG. Lo Celso\tGiovani Lo Celso\t1996-04-09\t22\t175.26\t69.9\tCM,CAM,CDM\tArgentina\t82\t88\t3.0E7\t83000.0\tLeft\t1\t3\t4\tHigh/ Medium\tLean\tnull\tReal Betis\t80.0\tLCM\t21.0\tnull\tJun 30, 2019\tArgentina\t82.0\tRCM\t20.0\t75\t77\t59\t82\t69\t84\t82\t72\t84\t84\t77\t79\t82\t80\t81\t80\t64\t80\t69\t76\t65\t65\t79\t84\t60\t79\t61\t67\t67\t10\t7\t10\t15\t14\tnull\tFinesse Shot,Flair,Speed Dribbler (CPU AI Only),Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only),Takes Finesse Free Kicks\t76+2\t76+2\t76+2\t80+2\t80+2\t80+2\t80+2\t80+2\t81+2\t81+2\t81+2\t80+2\t80+2\t80+2\t80+2\t80+2\t74+2\t74+2\t74+2\t74+2\t74+2\t72+2\t67+2\t67+2\t67+2\t72+2\n226271\tFabián\tFabián Ruiz Peña\t1996-04-03\t22\t187.96\t69.9\tCM,CDM,CAM\tSpain\t82\t90\t3.2E7\t70000.0\tLeft\t1\t4\t4\tMedium/ Medium\tLean\t6.08E7\tNapoli\t82.0\tLCM\t8.0\t2018-07-05\t2023\tnull\tnull\tnull\tnull\t72\t79\t67\t80\t67\t83\t75\t59\t80\t83\t69\t67\t73\t79\t66\t75\t46\t75\t70\t83\t68\t77\t80\t84\t67\t77\t70\t78\t75\t16\t11\t7\t13\t13\tnull\tLong Shot Taker (CPU AI Only)\t76+2\t76+2\t76+2\t78+2\t79+2\t79+2\t79+2\t78+2\t80+2\t80+2\t80+2\t78+2\t80+2\t80+2\t80+2\t78+2\t75+2\t77+2\t77+2\t77+2\t75+2\t74+2\t73+2\t73+2\t73+2\t74+2\n228702\tF. de Jong\tFrenkie de Jong\t1997-05-12\t21\t154.94\t69.9\tCM,CDM,CB\tNetherlands\t82\t89\t3.1E7\t20000.0\tRight\t1\t3\t4\tMedium/ Medium\tLean\t4.96E7\tAjax\t78.0\tLDM\t21.0\t2015-08-25\t2022\tNetherlands\t81.0\tLDM\t7.0\t75\t52\t64\t87\t64\t86\t82\t64\t82\t88\t80\t78\t84\t83\t78\t68\t76\t74\t69\t57\t64\t78\t66\t85\t45\t86\t69\t73\t70\t7\t13\t10\t10\t9\t#Dribbler\tFlair,Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t70+2\t70+2\t70+2\t77+2\t76+2\t76+2\t76+2\t77+2\t79+2\t79+2\t79+2\t79+2\t80+2\t80+2\t80+2\t79+2\t77+2\t78+2\t78+2\t78+2\t77+2\t76+2\t72+2\t72+2\t72+2\t76+2\n230168\tRaphaelito Anjos\tRaphael William Anjos Rochedo\t1988-02-29\t31\t190.5\t84.8\tGK\tBrazil\t82\t82\t1.4E7\t32000.0\tRight\t1\t2\t1\tMedium/ Medium\tNormal\t2.52E7\tGrêmio\t75.0\tGK\t1.0\t2018-01-01\t2021\tBrazil\t81.0\tGK\t1.0\t10\t8\t11\t18\t8\t9\t9\t18\t16\t21\t41\t42\t34\t82\t41\t21\t67\t29\t79\t7\t34\t23\t27\t71\t14\t67\t20\t17\t13\t79\t84\t77\t83\t78\tnull\tTeam Player\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n230225\tJuiano Mestres\tJuan Everton Mestres de Mesquita\t1984-02-29\t35\t154.94\t82.1\tCB,CDM\tBrazil\t82\t82\t6500000.0\t39000.0\tRight\t1\t3\t2\tHigh/ Medium\tNormal\t1.24E7\tCruzeiro\t73.0\tRCB\t3.0\t2018-01-01\t2021\tBrazil\t81.0\tRCB\t3.0\t40\t56\t83\t67\t63\t60\t72\t58\t58\t64\t68\t74\t61\t78\t63\t74\t91\t76\t79\t61\t86\t82\t58\t50\t62\t70\t77\t85\t84\t18\t12\t14\t11\t18\tnull\tPower Header\t66+2\t66+2\t66+2\t60+2\t63+2\t63+2\t63+2\t60+2\t61+2\t61+2\t61+2\t61+2\t64+2\t64+2\t64+2\t61+2\t71+2\t73+2\t73+2\t73+2\t71+2\t74+2\t80+2\t80+2\t80+2\t74+2\n230258\tRosberto Dourado\tRosberto J. Dourado Santos\t1988-02-29\t31\t175.26\t69.9\tCDM,CM\tBrazil\t82\t82\t1.65E7\t46000.0\tRight\t1\t4\t2\tHigh/ Medium\tLean\t3.14E7\tAtlético Mineiro\t74.0\tRDM\t6.0\t2018-01-01\t2021\tBrazil\t81.0\tRCM\t13.0\t61\t53\t70\t82\t57\t77\t54\t57\t78\t76\t80\t81\t72\t80\t80\t60\t43\t93\t68\t59\t75\t82\t58\t77\t77\t81\t83\t86\t80\t15\t14\t14\t10\t9\tnull\tFinesse Shot,Long Passer (CPU AI Only),Technical Dribbler (CPU AI Only)\t67+2\t67+2\t67+2\t71+2\t71+2\t71+2\t71+2\t71+2\t73+2\t73+2\t73+2\t74+2\t77+2\t77+2\t77+2\t74+2\t79+2\t80+2\t80+2\t80+2\t79+2\t80+2\t78+2\t78+2\t78+2\t80+2\n230658\tArthur\tArthur Henrique Ramos Oliveira Melo\t1996-08-12\t22\t170.18\t73.0\tCM\tBrazil\t82\t90\t3.25E7\t125000.0\tRight\t1\t3\t4\tMedium/ Medium\tNormal\t7.31E7\tFC Barcelona\t86.0\tSUB\t8.0\t2018-07-09\t2024\tnull\tnull\tnull\tnull\t70\t72\t58\t86\t63\t83\t68\t60\t80\t84\t68\t70\t79\t81\t90\t76\t78\t78\t62\t74\t73\t75\t77\t84\t69\t86\t65\t76\t70\t6\t13\t13\t11\t12\tnull\tPlaymaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t74+2\t74+2\t74+2\t78+2\t78+2\t78+2\t78+2\t78+2\t80+2\t80+2\t80+2\t78+2\t81+2\t81+2\t81+2\t78+2\t75+2\t77+2\t77+2\t77+2\t75+2\t73+2\t71+2\t71+2\t71+2\t73+2\n231866\tRodri\tRodrigo Hernández Cascante\t1996-06-22\t22\t190.5\t82.1\tCM,CDM\tSpain\t82\t87\t2.9E7\t59000.0\tRight\t1\t3\t4\tMedium/ Medium\tLean\t6.16E7\tAtlético Madrid\t84.0\tRCM\t14.0\t2018-07-01\t2023\tSpain\t85.0\tSUB\t16.0\t63\t64\t75\t84\t59\t77\t65\t54\t80\t82\t70\t66\t69\t80\t72\t70\t69\t82\t75\t76\t63\t81\t75\t83\t46\t83\t71\t79\t74\t10\t10\t7\t14\t8\tnull\tnull\t73+2\t73+2\t73+2\t74+2\t76+2\t76+2\t76+2\t74+2\t78+2\t78+2\t78+2\t75+2\t80+2\t80+2\t80+2\t75+2\t76+2\t78+2\t78+2\t78+2\t76+2\t75+2\t75+2\t75+2\t75+2\t75+2\n183498\tM. Parolo\tMarco Parolo\t1985-01-25\t34\t182.88\t74.8\tCDM,CM\tItaly\t82\t82\t9000000.0\t59000.0\tRight\t2\t4\t3\tHigh/ High\tLean\t1.53E7\tLazio\t80.0\tRDM\t16.0\t2014-07-01\t2020\tnull\tnull\tnull\tnull\t70\t70\t75\t80\t76\t75\t67\t55\t83\t79\t68\t69\t67\t82\t71\t87\t77\t88\t77\t86\t80\t80\t82\t78\t45\t78\t78\t80\t82\t13\t9\t6\t7\t9\t#Engine\tPower Free-Kick,Long Shot Taker (CPU AI Only),Outside Foot Shot\t77+2\t77+2\t77+2\t75+2\t77+2\t77+2\t77+2\t75+2\t77+2\t77+2\t77+2\t76+2\t80+2\t80+2\t80+2\t76+2\t78+2\t80+2\t80+2\t80+2\t78+2\t78+2\t78+2\t78+2\t78+2\t78+2\n183574\tM. Kruse\tMax Kruse\t1988-03-19\t30\t154.94\t76.2\tCF,ST,CAM\tGermany\t82\t82\t2.15E7\t45000.0\tLeft\t2\t4\t4\tHigh/ Medium\tNormal\t3.66E7\tSV Werder Bremen\t77.0\tST\t10.0\t2016-08-02\t2019\tnull\tnull\tnull\tnull\t81\t83\t63\t84\t80\t82\t80\t69\t80\t85\t69\t67\t74\t85\t76\t81\t65\t71\t72\t79\t63\t41\t85\t84\t91\t86\t57\t38\t34\t12\t7\t5\t13\t9\tnull\tLeadership,Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t79+2\t79+2\t79+2\t81+2\t81+2\t81+2\t81+2\t81+2\t82+2\t82+2\t82+2\t80+2\t78+2\t78+2\t78+2\t80+2\t64+2\t64+2\t64+2\t64+2\t64+2\t60+2\t56+2\t56+2\t56+2\t60+2\n183711\tJ. Henderson\tJordan Brian Henderson\t1990-06-17\t28\t182.88\t79.8\tCDM,CM\tEngland\t82\t82\t1.8E7\t125000.0\tRight\t2\t3\t3\tMedium/ High\tNormal\t3.3299999999999996E7\tLiverpool\t83.0\tSUB\t14.0\t2011-06-09\t2020\tEngland\t82.0\tRCM\t8.0\t81\t67\t65\t84\t72\t73\t80\t74\t84\t80\t67\t66\t68\t80\t70\t77\t79\t91\t72\t71\t77\t80\t75\t83\t64\t78\t77\t79\t76\t7\t13\t7\t9\t13\tnull\tInjury Prone,Leadership,Early Crosser,Long Passer (CPU AI Only),Team Player\t72+2\t72+2\t72+2\t75+2\t75+2\t75+2\t75+2\t75+2\t77+2\t77+2\t77+2\t77+2\t80+2\t80+2\t80+2\t77+2\t79+2\t80+2\t80+2\t80+2\t79+2\t78+2\t76+2\t76+2\t76+2\t78+2\n184144\tN. Gaitán\tOsvaldo Nicolás Fabián Gaitán\t1988-02-23\t31\t172.72\t66.2\tCAM\tArgentina\t82\t82\t2.1E7\t22000.0\tLeft\t3\t2\t4\tMedium/ Medium\tLean\t4.52E7\tDalian YiFang FC\t64.0\tCAM\t9.0\t2018-02-27\t2021\tnull\tnull\tnull\tnull\t80\t71\t54\t81\t81\t84\t88\t72\t75\t83\t84\t79\t87\t82\t81\t72\t81\t69\t46\t73\t69\t40\t77\t82\t71\t80\t35\t42\t43\t8\t11\t9\t7\t5\t#Acrobat\tAvoids Using Weaker Foot,Flair,Technical Dribbler (CPU AI Only),Backs Into Player\t73+3\t73+3\t73+3\t80+3\t79+3\t79+3\t79+3\t80+3\t80+3\t80+3\t80+3\t80+3\t75+3\t75+3\t75+3\t80+3\t64+3\t61+3\t61+3\t61+3\t64+3\t60+3\t51+3\t51+3\t51+3\t60+3\n184200\tM. Arnautović\tMarko Arnautović\t1989-04-19\t29\t193.04\t83.0\tST\tAustria\t82\t82\t2.2E7\t120000.0\tRight\t3\t4\t4\tHigh/ Medium\tNormal\t4.18E7\tWest Ham United\t79.0\tST\t7.0\t2017-07-23\t2023\tAustria\t77.0\tLS\t7.0\t78\t78\t74\t78\t79\t84\t79\t72\t74\t85\t79\t83\t69\t78\t66\t84\t67\t78\t84\t75\t84\t44\t83\t77\t77\t81\t43\t48\t39\t14\t15\t10\t10\t15\tnull\tDiver,Flair,Technical Dribbler (CPU AI Only),Backs Into Player,Through Ball\t80+3\t80+3\t80+3\t80+3\t80+3\t80+3\t80+3\t80+3\t79+3\t79+3\t79+3\t80+3\t75+3\t75+3\t75+3\t80+3\t65+3\t65+3\t65+3\t65+3\t65+3\t63+3\t60+3\t60+3\t60+3\t63+3\n184431\tS. Giovinco\tSebastian Giovinco\t1987-01-26\t32\t162.56\t60.8\tCF,ST\tItaly\t82\t82\t2.0E7\t61000.0\tRight\t2\t4\t4\tHigh/ Medium\tNormal\t3.4E7\tItaly\t83.0\tSUB\t21.0\tnull\tnull\tAl Hilal\t74.0\tSUB\t9.0\t72\t78\t34\t80\t75\t86\t90\t93\t76\t86\t88\t80\t94\t83\t91\t80\t34\t77\t42\t81\t75\t26\t83\t78\t73\t82\t23\t29\t28\t6\t3\t6\t3\t3\t#Dribbler,#FK Specialist,#Acrobat\tFlair,Long Shot Taker (CPU AI Only),Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only),Backs Into Player,Takes Finesse Free Kicks\t75+2\t75+2\t75+2\t82+2\t81+2\t81+2\t81+2\t82+2\t82+2\t82+2\t82+2\t81+2\t75+2\t75+2\t75+2\t81+2\t59+2\t56+2\t56+2\t56+2\t59+2\t54+2\t41+2\t41+2\t41+2\t54+2\n184484\tG. Sigurðsson\tGylfi Þór Sigurðsson\t1989-09-08\t29\t185.42\t77.1\tCAM\tIceland\t82\t82\t2.25E7\t125000.0\tRight\t3\t4\t3\tHigh/ High\tNormal\t4.28E7\tEverton\t79.0\tCAM\t10.0\t2017-08-16\t2022\tIceland\t72.0\tCAM\t10.0\t86\t77\t60\t85\t75\t80\t87\t86\t80\t85\t58\t55\t68\t78\t63\t83\t68\t86\t68\t86\t57\t55\t79\t86\t79\t85\t57\t57\t55\t13\t8\t10\t15\t12\t#Engine,#Crosser,#FK Specialist\tInjury Free,Finesse Shot,Long Shot Taker (CPU AI Only),Playmaker (CPU AI Only),Set Play Specialist,Takes Finesse Free Kicks\t75+3\t75+3\t75+3\t78+3\t78+3\t78+3\t78+3\t78+3\t80+3\t80+3\t80+3\t79+3\t80+3\t80+3\t80+3\t79+3\t70+3\t70+3\t70+3\t70+3\t70+3\t67+3\t61+3\t61+3\t61+3\t67+3\n184942\tGiuliano\tGiuliano Victor de Paula\t1990-05-31\t28\t172.72\t68.0\tCAM,RW\tBrazil\t82\t82\t2.25E7\t59000.0\tRight\t2\t3\t4\tHigh/ Medium\tStocky\t3.83E7\tAl Nassr\t72.0\tCAM\t77.0\t2018-08-20\t2021\tnull\tnull\tnull\tnull\t77\t77\t59\t82\t65\t82\t67\t71\t80\t84\t85\t77\t85\t81\t85\t78\t61\t82\t74\t76\t72\t42\t81\t80\t79\t82\t49\t43\t38\t16\t11\t13\t9\t8\tnull\tPlaymaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t77+2\t77+2\t77+2\t80+2\t80+2\t80+2\t80+2\t80+2\t81+2\t81+2\t81+2\t80+2\t77+2\t77+2\t77+2\t80+2\t66+2\t65+2\t65+2\t65+2\t66+2\t62+2\t56+2\t56+2\t56+2\t62+2\n185122\tP. Gulácsi\tPéter Gulácsi\t1990-05-06\t28\t193.04\t86.2\tGK\tHungary\t82\t83\t1.8E7\t53000.0\tRight\t2\t2\t1\tMedium/ Medium\tNormal\t3.2E7\tRB Leipzig\t79.0\tGK\t1.0\t2015-07-01\t2022\tHungary\t73.0\tGK\t1.0\t16\t10\t23\t29\t10\t19\t18\t11\t25\t25\t42\t44\t41\t75\t50\t23\t67\t35\t68\t12\t34\t23\t11\t36\t24\t45\t25\t16\t20\t83\t82\t80\t79\t84\tnull\tCautious With Crosses\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n185221\tLuiz Gustavo\tLuiz Gustavo Dias\t1987-07-23\t31\t187.96\t78.0\tCDM,CB\tBrazil\t82\t82\t1.65E7\t57000.0\tLeft\t3\t3\t3\tMedium/ High\tLean\t3.14E7\tOlympique de Marseille\t78.0\tSUB\t19.0\t2017-07-04\t2021\tnull\tnull\tnull\tnull\t63\t48\t72\t79\t54\t68\t42\t60\t76\t73\t63\t62\t65\t83\t62\t78\t76\t85\t81\t73\t88\t83\t53\t69\t58\t84\t82\t81\t84\t10\t6\t11\t12\t13\tnull\tDives Into Tackles (CPU AI Only),Leadership,Long Passer (CPU AI Only)\t66+3\t66+3\t66+3\t66+3\t67+3\t67+3\t67+3\t66+3\t69+3\t69+3\t69+3\t68+3\t74+3\t74+3\t74+3\t68+3\t76+3\t80+3\t80+3\t80+3\t76+3\t77+3\t80+3\t80+3\t80+3\t77+3\n186345\tK. Trippier\tKieran Trippier\t1990-09-19\t28\t152.4\t72.1\tRB,RWB\tEngland\t82\t82\t1.85E7\t99000.0\tRight\t2\t4\t3\tHigh/ Medium\tNormal\t3.42E7\tTottenham Hotspur\t83.0\tRB\t2.0\t2015-06-19\t2022\tEngland\t82.0\tSUB\t12.0\t91\t48\t73\t79\t54\t75\t87\t83\t78\t81\t76\t75\t74\t80\t74\t75\t73\t88\t65\t70\t70\t79\t75\t80\t66\t73\t77\t82\t79\t11\t14\t8\t11\t10\t#Crosser\tLong Throw-in,Injury Free,Early Crosser\t70+2\t70+2\t70+2\t75+2\t73+2\t73+2\t73+2\t75+2\t75+2\t75+2\t75+2\t77+2\t78+2\t78+2\t78+2\t77+2\t81+2\t78+2\t78+2\t78+2\t81+2\t80+2\t76+2\t76+2\t76+2\t80+2\n186561\tA. Ramsey\tAaron Ramsey\t1990-12-26\t28\t182.88\t76.2\tCM,CDM,CAM\tWales\t82\t82\t2.3E7\t130000.0\tRight\t3\t3\t3\tHigh/ High\tLean\t4.37E7\tArsenal\t82.0\tSUB\t8.0\t2008-06-13\t2019\tWales\t75.0\tCAM\t10.0\t75\t74\t58\t84\t79\t81\t70\t66\t80\t82\t65\t69\t73\t81\t74\t81\t66\t89\t67\t74\t73\t69\t84\t79\t75\t81\t66\t70\t67\t6\t11\t5\t10\t8\t#Engine\tInjury Prone,Long Shot Taker (CPU AI Only)\t75+3\t75+3\t75+3\t77+3\t78+3\t78+3\t78+3\t77+3\t79+3\t79+3\t79+3\t79+3\t80+3\t80+3\t80+3\t79+3\t75+3\t75+3\t75+3\t75+3\t75+3\t73+3\t69+3\t69+3\t69+3\t73+3\n186627\tM. Balotelli\tMario  Barwuah Balotelli\t1990-08-12\t28\t187.96\t88.0\tST\tItaly\t82\t82\t2.35E7\t68000.0\tRight\t4\t4\t4\tMedium/ Low\tNormal\t4.47E7\tOlympique de Marseille\t78.0\tRS\t9.0\t2019-01-23\t2019\tnull\tnull\tnull\tnull\t68\t83\t67\t78\t78\t81\t78\t78\t66\t85\t75\t80\t71\t68\t50\t89\t74\t66\t86\t79\t70\t30\t78\t74\t92\t81\t10\t22\t20\t2\t2\t2\t4\t2\t#Strength\tPower Free-Kick,Selfish,Flair,Long Shot Taker (CPU AI Only),Technical Dribbler (CPU AI Only),Through Ball\t79+3\t79+3\t79+3\t77+3\t79+3\t79+3\t79+3\t77+3\t77+3\t77+3\t77+3\t76+3\t70+3\t70+3\t70+3\t76+3\t54+3\t53+3\t53+3\t53+3\t54+3\t49+3\t45+3\t45+3\t45+3\t49+3\n187754\tMarlos\tMarlos Romero Bonfim\t1988-06-07\t30\t175.26\t68.9\tRM\tUkraine\t82\t82\t2.1E7\t1000.0\tLeft\t2\t4\t5\tMedium/ Medium\tNormal\t4.41E7\tShakhtar Donetsk\t76.0\tRM\t11.0\t2014-07-04\t2019\tnull\tnull\tnull\tnull\t76\t79\t53\t81\t68\t87\t82\t72\t73\t88\t85\t82\t92\t77\t84\t77\t68\t78\t62\t78\t58\t51\t77\t82\t80\t84\t45\t49\t42\t6\t13\t13\t8\t9\t#Dribbler,#Acrobat\tFinesse Shot,Flair,Chip Shot (CPU AI Only),Technical Dribbler (CPU AI Only),Backs Into Player\t76+2\t76+2\t76+2\t82+2\t81+2\t81+2\t81+2\t82+2\t82+2\t82+2\t82+2\t81+2\t77+2\t77+2\t77+2\t81+2\t67+2\t65+2\t65+2\t65+2\t67+2\t64+2\t56+2\t56+2\t56+2\t64+2\n188803\tTaison\tTaison Barcellos Freda\t1988-01-13\t31\t172.72\t64.0\tLM,CAM\tBrazil\t82\t82\t2.1E7\t1000.0\tRight\t2\t3\t4\tMedium/ Medium\tLean\t4.41E7\tShakhtar Donetsk\t76.0\tLM\t7.0\t2013-01-11\t2021\tnull\tnull\tnull\tnull\t73\t76\t56\t77\t82\t87\t52\t73\t75\t85\t93\t91\t90\t79\t83\t83\t62\t79\t62\t83\t56\t49\t74\t79\t72\t82\t38\t53\t40\t7\t7\t11\t15\t13\t#Speedster,#Dribbler,#Acrobat\tBeat Offside Trap,Leadership,Speed Dribbler (CPU AI Only),Backs Into Player\t77+2\t77+2\t77+2\t81+2\t81+2\t81+2\t81+2\t81+2\t81+2\t81+2\t81+2\t81+2\t76+2\t76+2\t76+2\t81+2\t67+2\t64+2\t64+2\t64+2\t67+2\t64+2\t55+2\t55+2\t55+2\t64+2\n189125\tG. Bonaventura\tGiacomo Bonaventura\t1989-08-22\t29\t154.94\t74.8\tCM,LW\tItaly\t82\t82\t2.2E7\t115000.0\tRight\t3\t3\t4\tHigh/ Medium\tLean\t3.74E7\tMilan\t80.0\tSUB\t5.0\t2014-09-01\t2020\tnull\tnull\tnull\tnull\t82\t70\t70\t84\t78\t83\t78\t78\t80\t85\t75\t77\t77\t82\t77\t84\t69\t84\t66\t86\t68\t72\t78\t82\t68\t82\t74\t72\t68\t10\t14\t7\t15\t14\tnull\tLong Shot Taker (CPU AI Only),Technical Dribbler (CPU AI Only)\t77+3\t77+3\t77+3\t80+3\t80+3\t80+3\t80+3\t80+3\t81+3\t81+3\t81+3\t80+3\t81+3\t81+3\t81+3\t80+3\t78+3\t77+3\t77+3\t77+3\t78+3\t76+3\t72+3\t72+3\t72+3\t76+3\n201455\tG. Kondogbia\tGeoffrey Kondogbia\t1993-02-15\t26\t187.96\t79.8\tCM,CDM\tCentral African Rep.\t81\t84\t2.2E7\t43000.0\tLeft\t2\t2\t4\tHigh/ Medium\tLean\t4.79E7\tValencia CF\t80.0\tLCM\t6.0\t2018-07-02\t2022\tnull\tnull\tnull\tnull\t65\t69\t75\t81\t62\t78\t62\t56\t79\t83\t69\t76\t76\t83\t67\t86\t81\t78\t91\t80\t82\t79\t77\t79\t45\t82\t78\t82\t82\t15\t10\t10\t8\t10\t#Strength\tAvoids Using Weaker Foot,Finesse Shot,Technical Dribbler (CPU AI Only)\t77+2\t77+2\t77+2\t76+2\t78+2\t78+2\t78+2\t76+2\t78+2\t78+2\t78+2\t76+2\t79+2\t79+2\t79+2\t76+2\t77+2\t80+2\t80+2\t80+2\t77+2\t78+2\t81+2\t81+2\t81+2\t78+2\n202562\tJ. Roussillon\tJérôme Roussillon\t1993-01-06\t26\t175.26\t79.8\tLB,LWB,LM\tFrance\t81\t83\t1.8E7\t50000.0\tLeft\t2\t3\t3\tHigh/ Medium\tStocky\t3.2E7\tVfL Wolfsburg\t77.0\tLB\t15.0\t2018-08-06\t2022\tnull\tnull\tnull\tnull\t81\t64\t71\t77\t57\t79\t75\t56\t70\t79\t87\t85\t77\t76\t78\t75\t73\t84\t77\t65\t75\t77\t71\t71\t51\t75\t75\t84\t79\t9\t7\t13\t8\t15\tnull\tnull\t73+2\t73+2\t73+2\t76+2\t75+2\t75+2\t75+2\t76+2\t74+2\t74+2\t74+2\t77+2\t75+2\t75+2\t75+2\t77+2\t79+2\t77+2\t77+2\t77+2\t79+2\t79+2\t77+2\t77+2\t77+2\t79+2\n202685\tS. Zaza\tSimone Zaza\t1991-06-25\t27\t185.42\t83.9\tST\tItaly\t81\t82\t2.1E7\t48000.0\tLeft\t2\t3\t4\tHigh/ High\tNormal\tnull\tTorino\t77.0\tRS\t11.0\tnull\tJun 30, 2019\tnull\tnull\tnull\tnull\t52\t80\t79\t71\t81\t77\t71\t56\t45\t79\t77\t79\t76\t78\t69\t85\t89\t76\t88\t72\t87\t40\t83\t66\t79\t72\t54\t42\t50\t7\t13\t9\t7\t9\t#Strength\tDives Into Tackles (CPU AI Only),Beat Offside Trap,Flair,Target Forward\t79+2\t79+2\t79+2\t74+2\t77+2\t77+2\t77+2\t74+2\t74+2\t74+2\t74+2\t72+2\t67+2\t67+2\t67+2\t72+2\t61+2\t60+2\t60+2\t60+2\t61+2\t60+2\t62+2\t62+2\t62+2\t60+2\n203890\tS. Vrsaljko\tŠime Vrsaljko\t1992-01-10\t27\t154.94\t76.2\tRB\tCroatia\t81\t81\t1.5E7\t57000.0\tRight\t2\t3\t3\tHigh/ Medium\tLean\tnull\tInter\t82.0\tSUB\t2.0\tnull\tJun 30, 2019\tnull\tnull\tnull\tnull\t82\t44\t73\t77\t53\t74\t70\t57\t70\t79\t78\t79\t67\t79\t72\t75\t85\t87\t73\t58\t75\t80\t65\t68\t52\t67\t79\t81\t77\t15\t11\t10\t10\t12\tnull\tInjury Prone,Dives Into Tackles (CPU AI Only)\t67+2\t67+2\t67+2\t71+2\t70+2\t70+2\t70+2\t71+2\t70+2\t70+2\t70+2\t74+2\t73+2\t73+2\t73+2\t74+2\t79+2\t77+2\t77+2\t77+2\t79+2\t79+2\t77+2\t77+2\t77+2\t79+2\n204024\tC. Kramer\tChristoph Kramer\t1991-02-19\t28\t190.5\t76.2\tCDM,CM\tGermany\t81\t82\t1.7E7\t35000.0\tRight\t2\t3\t3\tHigh/ High\tLean\t3.02E7\tBorussia Mönchengladbach\t79.0\tSUB\t6.0\t2016-07-01\t2021\tnull\tnull\tnull\tnull\t61\t46\t58\t80\t58\t71\t54\t51\t72\t81\t52\t52\t66\t85\t54\t54\t51\t93\t69\t42\t78\t81\t70\t73\t47\t78\t80\t80\t76\t8\t13\t9\t6\t8\t#Engine\tnull\t63+2\t63+2\t63+2\t67+2\t67+2\t67+2\t67+2\t67+2\t70+2\t70+2\t70+2\t70+2\t75+2\t75+2\t75+2\t70+2\t76+2\t79+2\t79+2\t79+2\t76+2\t75+2\t75+2\t75+2\t75+2\t75+2\n204884\tB. Mendy\tBenjamin Mendy\t1994-07-17\t24\t185.42\t84.8\tLB\tFrance\t81\t86\t2.0E7\t105000.0\tLeft\t2\t3\t3\tHigh/ Low\tNormal\t3.85E7\tManchester City\t85.0\tSUB\t22.0\t2017-07-24\t2022\tnull\tnull\tnull\tnull\t87\t33\t65\t80\t31\t80\t80\t34\t69\t79\t77\t86\t68\t80\t70\t79\t71\t81\t81\t65\t75\t79\t77\t76\t50\t79\t78\t79\t81\t7\t7\t9\t15\t9\t#Crosser\tInjury Prone,Early Crosser,Speed Dribbler (CPU AI Only)\t68+2\t68+2\t68+2\t74+2\t73+2\t73+2\t73+2\t74+2\t74+2\t74+2\t74+2\t76+2\t76+2\t76+2\t76+2\t76+2\t80+2\t78+2\t78+2\t78+2\t80+2\t80+2\t77+2\t77+2\t77+2\t80+2\n204923\tM. Sabitzer\tMarcel Sabitzer\t1994-03-17\t24\t152.4\t77.1\tCAM,CM\tAustria\t81\t84\t2.25E7\t54000.0\tRight\t2\t4\t3\tHigh/ High\tNormal\t3.99E7\tRB Leipzig\t79.0\tRAM\t7.0\t2014-07-01\t2022\tAustria\t77.0\tLM\t9.0\t70\t79\t56\t79\t78\t79\t74\t63\t67\t81\t83\t77\t75\t85\t79\t86\t75\t84\t76\t81\t70\t55\t81\t79\t65\t75\t58\t55\t51\t11\t13\t14\t15\t13\tnull\tInjury Prone,Long Shot Taker (CPU AI Only)\t78+2\t78+2\t78+2\t79+2\t80+2\t80+2\t80+2\t79+2\t79+2\t79+2\t79+2\t78+2\t76+2\t76+2\t76+2\t78+2\t69+2\t68+2\t68+2\t68+2\t69+2\t67+2\t63+2\t63+2\t63+2\t67+2\n205362\tM. Nastasić\tMatija Nastasić\t1993-03-28\t25\t187.96\t83.0\tCB\tSerbia\t81\t84\t1.85E7\t36000.0\tLeft\t2\t2\t2\tLow/ High\tNormal\t3.2799999999999996E7\tFC Schalke 04\t78.0\tLCB\t5.0\t2015-01-14\t2022\tnull\tnull\tnull\tnull\t46\t30\t77\t73\t32\t43\t72\t68\t69\t65\t65\t77\t65\t80\t59\t44\t81\t62\t78\t22\t78\t78\t30\t55\t52\t80\t83\t83\t87\t11\t16\t11\t15\t13\tnull\tInjury Prone,Long Passer (CPU AI Only)\t52+2\t52+2\t52+2\t53+2\t52+2\t52+2\t52+2\t53+2\t55+2\t55+2\t55+2\t56+2\t62+2\t62+2\t62+2\t56+2\t70+2\t74+2\t74+2\t74+2\t70+2\t74+2\t79+2\t79+2\t79+2\t74+2\n206467\tA. Plea\tAlassane Plea\t1993-03-10\t25\t154.94\t78.9\tST,LW\tFrance\t81\t83\t2.2E7\t40000.0\tRight\t2\t3\t4\tHigh/ Medium\tStocky\t3.91E7\tBorussia Mönchengladbach\t79.0\tLW\t14.0\t2018-07-13\t2023\tnull\tnull\tnull\tnull\t78\t82\t73\t76\t81\t78\t78\t74\t68\t79\t78\t77\t79\t81\t78\t83\t75\t82\t77\t81\t63\t39\t83\t78\t65\t76\t29\t40\t30\t11\t15\t16\t12\t15\tnull\tBeat Offside Trap,Speed Dribbler (CPU AI Only)\t79+2\t79+2\t79+2\t79+2\t79+2\t79+2\t79+2\t79+2\t78+2\t78+2\t78+2\t78+2\t73+2\t73+2\t73+2\t78+2\t62+2\t59+2\t59+2\t59+2\t62+2\t58+2\t53+2\t53+2\t53+2\t58+2\n207862\tM. Ginter\tMatthias Ginter\t1994-01-19\t25\t187.96\t83.0\tCB,CDM\tGermany\t81\t83\t1.85E7\t30000.0\tRight\t2\t3\t2\tMedium/ Medium\tNormal\t3.2799999999999996E7\tBorussia Mönchengladbach\t79.0\tRCB\t28.0\t2017-07-04\t2021\tGermany\t85.0\tRWB\t4.0\t68\t55\t85\t77\t53\t62\t44\t42\t71\t72\t55\t69\t55\t79\t49\t74\t65\t74\t82\t46\t69\t80\t55\t69\t67\t71\t83\t84\t77\t12\t10\t6\t8\t10\tnull\tnull\t66+2\t66+2\t66+2\t64+2\t65+2\t65+2\t65+2\t64+2\t66+2\t66+2\t66+2\t67+2\t70+2\t70+2\t70+2\t67+2\t74+2\t77+2\t77+2\t77+2\t74+2\t76+2\t79+2\t79+2\t79+2\t76+2\n208093\tGerard Moreno\tGerard Moreno Balagueró\t1992-04-07\t26\t154.94\t77.1\tST\tSpain\t81\t83\t2.2E7\t45000.0\tLeft\t1\t4\t4\tHigh/ Medium\tLean\t4.79E7\tVillarreal CF\t79.0\tSUB\t7.0\t2018-07-02\t2023\tnull\tnull\tnull\tnull\t61\t78\t80\t75\t79\t78\t69\t56\t56\t80\t76\t79\t70\t81\t69\t80\t73\t77\t74\t77\t55\t40\t83\t58\t75\t72\t43\t41\t41\t15\t12\t7\t12\t10\tnull\tBeat Offside Trap,Finesse Shot\t79+2\t79+2\t79+2\t75+2\t77+2\t77+2\t77+2\t75+2\t74+2\t74+2\t74+2\t74+2\t69+2\t69+2\t69+2\t74+2\t61+2\t58+2\t58+2\t58+2\t61+2\t60+2\t56+2\t56+2\t56+2\t60+2\n208135\tA. Doucouré\tAbdoulaye Doucouré\t1993-01-01\t26\t182.88\t76.2\tCDM,CM\tFrance\t81\t85\t1.95E7\t60000.0\tRight\t2\t3\t3\tHigh/ Medium\tLean\t3.85E7\tWatford\t77.0\tRDM\t16.0\t2016-02-02\t2023\tnull\tnull\tnull\tnull\t68\t73\t66\t82\t68\t78\t41\t42\t74\t80\t63\t70\t60\t77\t69\t84\t72\t93\t81\t75\t78\t82\t73\t77\t54\t74\t79\t83\t75\t15\t12\t12\t15\t14\tnull\tnull\t75+2\t75+2\t75+2\t74+2\t76+2\t76+2\t76+2\t74+2\t76+2\t76+2\t76+2\t75+2\t79+2\t79+2\t79+2\t75+2\t78+2\t80+2\t80+2\t80+2\t78+2\t77+2\t78+2\t78+2\t78+2\t77+2\n209889\tR. Guerreiro\tRaphaël Guerreiro\t1993-12-22\t25\t170.18\t71.2\tLM,LB,CM\tPortugal\t81\t84\t2.25E7\t54000.0\tLeft\t3\t2\t4\tMedium/ Medium\tNormal\t3.99E7\tBorussia Dortmund\t81.0\tLM\t13.0\t2016-07-01\t2020\tnull\tnull\tnull\tnull\t85\t75\t52\t84\t79\t83\t84\t82\t77\t84\t82\t68\t88\t83\t86\t79\t63\t74\t49\t82\t69\t84\t77\t79\t44\t78\t67\t70\t77\t12\t6\t8\t11\t8\t#Acrobat\tInjury Prone,Avoids Using Weaker Foot,Flair,Long Shot Taker (CPU AI Only)\t74+3\t74+3\t74+3\t80+3\t79+3\t79+3\t79+3\t80+3\t81+3\t81+3\t81+3\t80+3\t80+3\t80+3\t80+3\t80+3\t78+3\t76+3\t76+3\t76+3\t78+3\t76+3\t69+3\t69+3\t69+3\t76+3\n210243\tRicardo Pereira\tRicardo Barbosa Pereira\t1993-10-06\t25\t175.26\t69.9\tRB,RM\tPortugal\t81\t84\t1.85E7\t64000.0\tRight\t3\t4\t3\tHigh/ High\tLean\t3.65E7\tLeicester City\t78.0\tRB\t14.0\t2018-06-09\t2023\tnull\tnull\tnull\tnull\t81\t62\t64\t80\t56\t83\t78\t45\t78\t79\t88\t87\t82\t81\t77\t68\t74\t84\t60\t62\t75\t81\t75\t76\t60\t81\t76\t83\t76\t16\t12\t15\t11\t11\tnull\tEarly Crosser,Speed Dribbler (CPU AI Only)\t72+3\t72+3\t72+3\t78+3\t76+3\t76+3\t76+3\t78+3\t77+3\t77+3\t77+3\t79+3\t78+3\t78+3\t78+3\t79+3\t81+3\t78+3\t78+3\t78+3\t81+3\t80+3\t75+3\t75+3\t75+3\t80+3\n210617\tSamu Castillejo\tSamuel Castillejo Azuaga\t1995-01-18\t24\t182.88\t67.1\tRM,LM,CM\tSpain\t81\t85\t2.3E7\t86000.0\tLeft\t2\t2\t4\tMedium/ High\tLean\t4.08E7\tMilan\t80.0\tSUB\t7.0\t2018-08-17\t2023\tnull\tnull\tnull\tnull\t80\t76\t43\t80\t58\t84\t78\t75\t76\t82\t85\t86\t83\t82\t78\t78\t63\t55\t50\t72\t48\t50\t80\t80\t59\t71\t45\t43\t25\t13\t16\t15\t8\t14\tnull\tSpeed Dribbler (CPU AI Only)\t74+2\t74+2\t74+2\t81+2\t79+2\t79+2\t79+2\t81+2\t80+2\t80+2\t80+2\t80+2\t74+2\t74+2\t74+2\t80+2\t63+2\t61+2\t61+2\t61+2\t63+2\t59+2\t50+2\t50+2\t50+2\t59+2\n212194\tJ. Brandt\tJulian Brandt\t1996-05-02\t22\t185.42\t83.9\tLM,RM,CAM\tGermany\t81\t88\t2.5E7\t63000.0\tRight\t2\t4\t4\tMedium/ Medium\tLean\t4.75E7\tBayer 04 Leverkusen\t80.0\tLCM\t10.0\t2014-01-01\t2021\tGermany\t85.0\tSUB\t10.0\t77\t77\t42\t81\t66\t87\t72\t59\t68\t85\t78\t84\t82\t80\t78\t80\t63\t73\t69\t78\t42\t29\t78\t82\t54\t69\t38\t20\t24\t11\t16\t11\t8\t9\t#Dribbler\tFlair,Technical Dribbler (CPU AI Only)\t75+2\t75+2\t75+2\t81+2\t80+2\t80+2\t80+2\t81+2\t81+2\t81+2\t81+2\t80+2\t73+2\t73+2\t73+2\t80+2\t59+2\t55+2\t55+2\t55+2\t59+2\t54+2\t43+2\t43+2\t43+2\t54+2\n226110\tN. Pépé\tNicolas Pépé\t1995-05-29\t23\t182.88\t73.0\tRM,RW,ST\tIvory Coast\t80\t88\t2.2E7\t35000.0\tLeft\t1\t3\t4\tHigh/ Medium\tLean\t4.62E7\tLOSC Lille\t75.0\tRM\t19.0\t2017-07-01\t2022\tnull\tnull\tnull\tnull\t69\t80\t57\t72\t68\t85\t79\t65\t63\t81\t90\t91\t90\t79\t79\t80\t68\t78\t61\t73\t43\t25\t78\t80\t85\t78\t28\t27\t25\t11\t14\t11\t6\t8\t#Speedster,#Acrobat\tSelfish,Finesse Shot,Speed Dribbler (CPU AI Only),Technical Dribbler (CPU AI Only)\t76+2\t76+2\t76+2\t80+2\t80+2\t80+2\t80+2\t80+2\t79+2\t79+2\t79+2\t79+2\t70+2\t70+2\t70+2\t79+2\t58+2\t52+2\t52+2\t52+2\t58+2\t54+2\t43+2\t43+2\t43+2\t54+2\n225953\tS. Bergwijn\tSteven Bergwijn\t1997-10-08\t21\t152.4\t78.0\tLW,RW\tNetherlands\t80\t86\t2.05E7\t18000.0\tRight\t1\t2\t4\tMedium/ Medium\tStocky\t3.2799999999999996E7\tPSV\t76.0\tLW\t17.0\t2014-07-01\t2022\tNetherlands\t81.0\tSUB\t22.0\t73\t74\t55\t76\t67\t87\t76\t66\t53\t84\t88\t89\t79\t71\t89\t78\t71\t78\t79\t74\t44\t30\t77\t75\t59\t76\t47\t31\t26\t11\t14\t12\t14\t13\t#Dribbler\tFlair,Speed Dribbler (CPU AI Only),Technical Dribbler (CPU AI Only)\t76+2\t76+2\t76+2\t79+2\t78+2\t78+2\t78+2\t79+2\t78+2\t78+2\t78+2\t78+2\t69+2\t69+2\t69+2\t78+2\t61+2\t55+2\t55+2\t55+2\t61+2\t56+2\t49+2\t49+2\t49+2\t56+2\n226753\tA. Onana\tAndré Onana\t1996-04-02\t22\t187.96\t93.0\tGK\tCameroon\t80\t85\t1.45E7\t14000.0\tRight\t2\t3\t1\tMedium/ Medium\tStocky\t2.14E7\tAjax\t78.0\tGK\t24.0\t2015-01-14\t2021\tCameroon\t75.0\tGK\t1.0\t15\t12\t20\t33\t13\t26\t30\t17\t26\t38\t64\t62\t68\t78\t53\t21\t80\t39\t67\t17\t29\t15\t11\t62\t27\t57\t12\t18\t14\t83\t79\t85\t75\t80\tnull\tRushes Out Of Goal\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n228229\tF. Balbuena\tFabián Balbuena\t1991-08-23\t27\t187.96\t84.8\tCB\tParaguay\t80\t83\t1.55E7\t80000.0\tRight\t1\t3\t2\tMedium/ Medium\tNormal\t3.06E7\tWest Ham United\t79.0\tSUB\t4.0\t2018-07-14\t2021\tnull\tnull\tnull\tnull\t33\t31\t82\t71\t24\t47\t30\t34\t56\t56\t56\t65\t42\t77\t42\t71\t73\t76\t84\t34\t82\t80\t27\t45\t48\t74\t82\t82\t76\t9\t13\t15\t9\t15\tnull\tnull\t54+2\t54+2\t54+2\t48+2\t51+2\t51+2\t51+2\t48+2\t51+2\t51+2\t51+2\t52+2\t58+2\t58+2\t58+2\t52+2\t67+2\t72+2\t72+2\t72+2\t67+2\t70+2\t78+2\t78+2\t78+2\t70+2\n228941\tAndré Silva\tAndré Miguel Valente da Silva\t1995-11-06\t23\t185.42\t78.9\tST\tPortugal\t80\t87\t2.1E7\t89000.0\tRight\t2\t3\t4\tMedium/ Medium\tNormal\tnull\tSevilla FC\t80.0\tLS\t12.0\tnull\tJun 30, 2019\tPortugal\t82.0\tSUB\t23.0\t59\t83\t77\t69\t79\t77\t69\t33\t58\t80\t77\t78\t77\t81\t72\t76\t84\t77\t74\t60\t76\t55\t84\t68\t80\t75\t28\t40\t35\t14\t13\t7\t11\t8\tnull\tBeat Offside Trap\t78+2\t78+2\t78+2\t75+2\t77+2\t77+2\t77+2\t75+2\t74+2\t74+2\t74+2\t74+2\t69+2\t69+2\t69+2\t74+2\t61+2\t59+2\t59+2\t59+2\t61+2\t58+2\t56+2\t56+2\t56+2\t58+2\n230142\tOyarzabal\tMikel Oyarzabal Ugarte\t1997-04-21\t21\t154.94\t78.0\tLW,LM,RW\tSpain\t80\t87\t2.1E7\t29000.0\tLeft\t1\t3\t3\tHigh/ Medium\tLean\t4.83E7\tReal Sociedad\t77.0\tLW\t10.0\t2014-07-01\t2024\tnull\tnull\tnull\tnull\t81\t78\t44\t80\t64\t84\t69\t71\t73\t85\t72\t75\t70\t81\t70\t73\t58\t72\t59\t79\t42\t29\t80\t79\t52\t70\t50\t32\t30\t10\t6\t10\t13\t11\tnull\tSpeed Dribbler (CPU AI Only),Backs Into Player\t74+2\t74+2\t74+2\t80+2\t79+2\t79+2\t79+2\t80+2\t79+2\t79+2\t79+2\t79+2\t74+2\t74+2\t74+2\t79+2\t61+2\t58+2\t58+2\t58+2\t61+2\t56+2\t47+2\t47+2\t47+2\t56+2\n230234\tEverton Andrão\tEverton Jorge Andrade Zanon\t1984-02-29\t35\t152.4\t74.8\tCDM,CM\tBrazil\t80\t80\t4500000.0\t34000.0\tRight\t1\t4\t2\tHigh/ High\tStocky\t8500000.0\tFluminense\t73.0\tCDM\t6.0\t2018-01-01\t2021\tBrazil\t81.0\tCDM\t6.0\t75\t58\t59\t78\t58\t75\t48\t73\t75\t77\t69\t68\t78\t78\t77\t72\t67\t89\t71\t64\t81\t79\t54\t73\t61\t68\t80\t81\t77\t9\t9\t14\t15\t8\t#Engine\tSet Play Specialist\t66+2\t66+2\t66+2\t70+2\t69+2\t69+2\t69+2\t70+2\t71+2\t71+2\t71+2\t72+2\t75+2\t75+2\t75+2\t72+2\t77+2\t78+2\t78+2\t78+2\t77+2\t77+2\t75+2\t75+2\t75+2\t77+2\n230347\tWelington Dano\tWelington Kauê Dano Nascimento\t1988-02-29\t31\t152.4\t68.9\tLB,LM\tBrazil\t80\t80\t1.05E7\t34000.0\tLeft\t1\t4\t4\tMedium/ Medium\tLean\t2.0E7\tCruzeiro\t73.0\tLB\t5.0\t2018-01-01\t2021\tBrazil\t81.0\tLB\t5.0\t82\t51\t69\t78\t47\t77\t83\t52\t71\t78\t78\t80\t83\t80\t81\t55\t71\t89\t68\t53\t69\t77\t72\t75\t61\t82\t70\t77\t81\t16\t15\t15\t7\t7\tnull\tnull\t67+2\t67+2\t67+2\t74+2\t71+2\t71+2\t71+2\t74+2\t73+2\t73+2\t73+2\t76+2\t75+2\t75+2\t75+2\t76+2\t79+2\t76+2\t76+2\t76+2\t79+2\t78+2\t74+2\t74+2\t74+2\t78+2\n231943\tRicharlison\tRicharlison de Andrade\t1997-05-10\t21\t154.94\t71.2\tST,LW,LM\tBrazil\t80\t86\t2.1E7\t84000.0\tRight\t1\t5\t4\tHigh/ High\tNormal\t4.41E7\tEverton\t79.0\tST\t30.0\t2018-07-24\t2023\tnull\tnull\tnull\tnull\t69\t79\t75\t75\t64\t84\t71\t65\t59\t80\t83\t86\t78\t78\t74\t80\t80\t78\t77\t64\t82\t35\t79\t72\t69\t78\t46\t44\t36\t12\t7\t8\t11\t13\tnull\tDiver,Selfish,Flair,Technical Dribbler (CPU AI Only)\t78+2\t78+2\t78+2\t78+2\t78+2\t78+2\t78+2\t78+2\t76+2\t76+2\t76+2\t77+2\t70+2\t70+2\t70+2\t77+2\t62+2\t60+2\t60+2\t60+2\t62+2\t60+2\t57+2\t57+2\t57+2\t60+2\n234035\tOdriozola\tÁlvaro Odriozola Arzalluz\t1995-12-14\t23\t175.26\t66.2\tRB\tSpain\t80\t88\t1.85E7\t115000.0\tRight\t1\t3\t3\tHigh/ Medium\tLean\t4.16E7\tReal Madrid\t86.0\tSUB\t19.0\t2018-07-05\t2024\tnull\tnull\tnull\tnull\t81\t45\t73\t77\t48\t69\t69\t30\t70\t77\t80\t82\t78\t77\t79\t58\t71\t80\t63\t59\t63\t75\t68\t63\t62\t69\t83\t79\t80\t11\t12\t10\t5\t14\tnull\tnull\t65+2\t65+2\t65+2\t71+2\t68+2\t68+2\t68+2\t71+2\t70+2\t70+2\t70+2\t72+2\t71+2\t71+2\t71+2\t72+2\t78+2\t75+2\t75+2\t75+2\t78+2\t78+2\t75+2\t75+2\t75+2\t78+2\n234153\tCarlos Soler\tCarlos Soler Barragán\t1997-01-02\t22\t154.94\t76.2\tRM,CM\tSpain\t80\t87\t2.1E7\t31000.0\tRight\t1\t4\t4\tMedium/ Medium\tLean\t4.83E7\tValencia CF\t80.0\tRM\t8.0\t2015-07-01\t2021\tnull\tnull\tnull\tnull\t79\t74\t56\t84\t66\t80\t69\t82\t77\t82\t75\t77\t75\t80\t73\t77\t59\t78\t65\t73\t49\t68\t76\t83\t73\t76\t60\t65\t56\t6\t14\t7\t13\t11\tnull\tEarly Crosser\t74+2\t74+2\t74+2\t78+2\t78+2\t78+2\t78+2\t78+2\t79+2\t79+2\t79+2\t79+2\t78+2\t78+2\t78+2\t79+2\t73+2\t71+2\t71+2\t71+2\t73+2\t70+2\t64+2\t64+2\t64+2\t70+2\n234906\tH. Aouar\tHoussem Aouar\t1998-06-30\t20\t175.26\t69.9\tCM,LM\tFrance\t80\t90\t2.35E7\t51000.0\tRight\t1\t4\t4\tHigh/ Medium\tLean\t4.94E7\tOlympique Lyonnais\t79.0\tLCM\t8.0\t2016-07-01\t2023\tnull\tnull\tnull\tnull\t68\t72\t54\t84\t68\t84\t78\t59\t78\t82\t79\t79\t81\t78\t81\t61\t61\t79\t61\t67\t69\t66\t73\t84\t63\t82\t64\t64\t63\t14\t6\t11\t7\t10\tnull\tFinesse Shot,Flair,Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t72+2\t72+2\t72+2\t78+2\t77+2\t77+2\t77+2\t78+2\t79+2\t79+2\t79+2\t78+2\t78+2\t78+2\t78+2\t78+2\t72+2\t73+2\t73+2\t73+2\t72+2\t70+2\t65+2\t65+2\t65+2\t70+2\n235569\tT. Ndombele\tTanguy NDombèlé Alvaro\t1996-12-28\t22\t154.94\t76.2\tCM,CDM\tFrance\t80\t89\t2.25E7\t51000.0\tRight\t1\t3\t4\tHigh/ Medium\tNormal\t4.73E7\tOlympique Lyonnais\t79.0\tRCM\t28.0\t2018-07-01\t2023\tFrance\t84.0\tSUB\t17.0\t67\t59\t56\t83\t59\t86\t67\t63\t79\t84\t84\t76\t83\t80\t84\t80\t63\t78\t78\t70\t81\t73\t70\t79\t60\t84\t66\t73\t69\t8\t10\t13\t8\t7\t#Dribbler\tFlair,Technical Dribbler (CPU AI Only)\t72+2\t72+2\t72+2\t77+2\t77+2\t77+2\t77+2\t77+2\t78+2\t78+2\t78+2\t78+2\t78+2\t78+2\t78+2\t78+2\t75+2\t76+2\t76+2\t76+2\t75+2\t73+2\t72+2\t72+2\t72+2\t73+2\n239207\tM. Gómez\tMaximiliano Gómez\t1996-08-14\t22\t185.42\t83.9\tST\tUruguay\t80\t85\t2.05E7\t25000.0\tRight\t1\t3\t4\tHigh/ Low\tNormal\t4.46E7\tRC Celta\t77.0\tST\t9.0\t2017-07-01\t2022\tUruguay\t81.0\tSUB\t18.0\t56\t85\t81\t76\t76\t76\t68\t53\t58\t77\t61\t65\t45\t77\t53\t79\t73\t71\t80\t76\t65\t21\t83\t60\t67\t77\t35\t20\t23\t7\t8\t13\t12\t6\tnull\tnull\t78+2\t78+2\t78+2\t72+2\t75+2\t75+2\t75+2\t72+2\t72+2\t72+2\t72+2\t71+2\t66+2\t66+2\t66+2\t71+2\t52+2\t52+2\t52+2\t52+2\t52+2\t49+2\t48+2\t48+2\t48+2\t49+2\n45186\tJoaquín\tJoaquín Sánchez Rodríguez\t1981-07-21\t37\t152.4\t74.8\tLM,ST,RM\tSpain\t81\t81\t6000000.0\t24000.0\tRight\t2\t3\t4\tHigh/ Medium\tNormal\t1.26E7\tReal Betis\t80.0\tLS\t17.0\t2015-09-01\t2020\tnull\tnull\tnull\tnull\t86\t80\t59\t83\t68\t85\t86\t77\t84\t83\t72\t66\t72\t82\t72\t74\t33\t54\t65\t76\t53\t35\t81\t85\t75\t80\t41\t47\t39\t9\t14\t6\t10\t11\t#Crosser\tLeadership,Technical Dribbler (CPU AI Only)\t76+2\t76+2\t76+2\t80+2\t80+2\t80+2\t80+2\t80+2\t81+2\t81+2\t81+2\t80+2\t77+2\t77+2\t77+2\t80+2\t62+2\t62+2\t62+2\t62+2\t62+2\t58+2\t52+2\t52+2\t52+2\t58+2\n112316\tJ. Mathieu\tJérémy Mathieu\t1983-10-29\t35\t187.96\t83.9\tCB\tFrance\t81\t81\t5500000.0\t18000.0\tLeft\t3\t2\t2\tHigh/ Medium\tNormal\t1.1E7\tSporting CP\t78.0\tLCB\t22.0\t2017-07-07\t2019\tnull\tnull\tnull\tnull\t79\t52\t80\t73\t61\t65\t82\t79\t77\t62\t68\t74\t52\t74\t43\t80\t65\t78\t89\t74\t72\t82\t58\t58\t72\t76\t86\t84\t82\t13\t14\t10\t9\t5\t#Strength\tInjury Prone,Avoids Using Weaker Foot,Dives Into Tackles (CPU AI Only)\t67+3\t67+3\t67+3\t65+3\t65+3\t65+3\t65+3\t65+3\t64+3\t64+3\t64+3\t67+3\t69+3\t69+3\t69+3\t67+3\t76+3\t76+3\t76+3\t76+3\t76+3\t77+3\t80+3\t80+3\t80+3\t77+3\n197061\tJ. Matip\tJoël Andre Job Matip\t1991-08-08\t27\t193.04\t89.8\tCB\tCameroon\t80\t82\t1.5E7\t99000.0\tRight\t2\t2\t2\tMedium/ Medium\tLean\t2.89E7\tLiverpool\t83.0\tSUB\t32.0\t2016-07-01\t2020\tnull\tnull\tnull\tnull\t54\t36\t82\t77\t50\t65\t63\t22\t74\t69\t55\t69\t55\t78\t47\t66\t66\t73\t77\t48\t75\t83\t51\t72\t42\t75\t80\t84\t78\t11\t15\t10\t7\t10\t#Aerial Threat\tAvoids Using Weaker Foot\t61+2\t61+2\t61+2\t61+2\t62+2\t62+2\t62+2\t61+2\t65+2\t65+2\t65+2\t64+2\t70+2\t70+2\t70+2\t64+2\t73+2\t77+2\t77+2\t77+2\t73+2\t74+2\t79+2\t79+2\t79+2\t74+2\n197853\tS. Aurier\tSerge Aurier\t1992-12-24\t26\t175.26\t76.2\tRB,RWB\tIvory Coast\t80\t83\t1.55E7\t82000.0\tRight\t2\t3\t3\tHigh/ Medium\tNormal\t2.98E7\tTottenham Hotspur\t83.0\tSUB\t24.0\t2017-08-31\t2022\tCôte d'Ivoire\t75.0\tRB\t17.0\t83\t54\t75\t78\t47\t76\t69\t30\t72\t79\t79\t78\t73\t81\t76\t71\t94\t77\t74\t58\t86\t79\t72\t71\t64\t75\t75\t81\t82\t7\t10\t15\t16\t9\tnull\tDives Into Tackles (CPU AI Only),Power Header,Through Ball\t70+2\t70+2\t70+2\t74+2\t72+2\t72+2\t72+2\t74+2\t73+2\t73+2\t73+2\t75+2\t75+2\t75+2\t75+2\t75+2\t79+2\t78+2\t78+2\t78+2\t79+2\t79+2\t79+2\t79+2\t79+2\t79+2\n198118\tJ. Guilavogui\tJosuha Guilavogui\t1990-09-19\t28\t187.96\t77.1\tCDM,CM\tFrance\t80\t81\t1.4E7\t49000.0\tRight\t2\t3\t2\tMedium/ High\tLean\t2.49E7\tVfL Wolfsburg\t77.0\tCDM\t23.0\t2016-05-17\t2020\tnull\tnull\tnull\tnull\t52\t49\t85\t78\t49\t63\t42\t53\t75\t74\t65\t72\t53\t79\t50\t78\t76\t77\t82\t66\t81\t83\t61\t67\t50\t75\t80\t82\t82\t14\t8\t14\t10\t15\tnull\tInjury Free\t68+2\t68+2\t68+2\t65+2\t67+2\t67+2\t67+2\t65+2\t68+2\t68+2\t68+2\t67+2\t72+2\t72+2\t72+2\t67+2\t74+2\t78+2\t78+2\t78+2\t74+2\t76+2\t81+2\t81+2\t81+2\t76+2\n198784\tA. Oxlade-Chamberlain\tAlex Oxlade-Chamberlain\t1993-08-15\t25\t175.26\t69.9\tCM,RM\tEngland\t80\t85\t1.95E7\t94000.0\tRight\t2\t4\t4\tHigh/ High\tStocky\t3.75E7\tLiverpool\t83.0\tRES\t21.0\t2017-08-31\t2022\tnull\tnull\tnull\tnull\t78\t69\t39\t80\t58\t84\t73\t60\t75\t84\t84\t85\t81\t78\t88\t80\t69\t82\t72\t76\t77\t72\t79\t81\t69\t77\t67\t70\t66\t16\t9\t6\t9\t9\tnull\tFlair,Long Shot Taker (CPU AI Only),Speed Dribbler (CPU AI Only)\t73+2\t73+2\t73+2\t80+2\t79+2\t79+2\t79+2\t80+2\t80+2\t80+2\t80+2\t80+2\t78+2\t78+2\t78+2\t80+2\t76+2\t75+2\t75+2\t75+2\t76+2\t73+2\t68+2\t68+2\t68+2\t73+2\n199005\tM. Ryan\tMathew Ryan\t1992-04-08\t26\t182.88\t82.1\tGK\tAustralia\t80\t83\t1.3E7\t43000.0\tRight\t1\t4\t1\tMedium/ Medium\tNormal\t2.57E7\tBrighton & Hove Albion\t76.0\tGK\t1.0\t2017-07-01\t2022\tAustralia\t73.0\tGK\t1.0\t23\t11\t14\t40\t15\t13\t23\t12\t45\t24\t53\t52\t53\t73\t50\t35\t78\t34\t68\t18\t36\t23\t10\t68\t25\t64\t10\t20\t17\t81\t75\t82\t78\t83\tnull\tGK Long Throw,Rushes Out Of Goal,Comes For Crosses\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n199069\tV. Aboubakar\tVincent Paté Aboubakar\t1992-01-22\t27\t182.88\t82.1\tST\tCameroon\t80\t81\t1.75E7\t19000.0\tRight\t3\t3\t5\tHigh/ Medium\tNormal\t3.63E7\tCameroon\t75.0\tRS\t10.0\tnull\tnull\tFC Porto\t81.0\tSUB\t9.0\t57\t80\t77\t75\t81\t81\t80\t67\t68\t80\t76\t83\t72\t76\t63\t81\t78\t82\t85\t75\t77\t33\t80\t81\t76\t86\t44\t23\t19\t8\t10\t9\t7\t8\tnull\tBeat Offside Trap,Flair\t79+3\t79+3\t79+3\t76+3\t79+3\t79+3\t79+3\t76+3\t78+3\t78+3\t78+3\t76+3\t72+3\t72+3\t72+3\t76+3\t57+3\t58+3\t58+3\t58+3\t57+3\t53+3\t52+3\t52+3\t52+3\t53+3\n199110\tL. Muriel\tLuis Fernando Muriel Fruto\t1991-04-16\t27\t152.4\t78.9\tST\tColombia\t80\t81\t1.75E7\t24000.0\tRight\t2\t4\t4\tHigh/ Medium\tStocky\tnull\tFiorentina\t76.0\tLW\t29.0\tnull\tJun 30, 2019\tColombia\t79.0\tSUB\t13.0\t62\t78\t65\t75\t75\t85\t77\t60\t55\t83\t86\t89\t85\t79\t80\t80\t62\t74\t77\t65\t50\t16\t81\t73\t74\t75\t26\t24\t22\t8\t10\t10\t14\t6\tnull\tBeat Offside Trap,Flair,Speed Dribbler (CPU AI Only)\t78+2\t78+2\t78+2\t79+2\t79+2\t79+2\t79+2\t79+2\t78+2\t78+2\t78+2\t77+2\t68+2\t68+2\t68+2\t77+2\t55+2\t51+2\t51+2\t51+2\t55+2\t51+2\t44+2\t44+2\t44+2\t51+2\n199206\tD. Vida\tDomagoj Vida\t1989-04-29\t29\t182.88\t76.2\tCB,RB\tCroatia\t80\t80\t1.15E7\t55000.0\tRight\t3\t3\t2\tMedium/ High\tLean\t2.19E7\tBeşiktaş JK\t77.0\tRCB\t24.0\t2018-01-03\t2022\tnull\tnull\tnull\tnull\t65\t41\t79\t66\t36\t53\t44\t35\t60\t66\t70\t80\t64\t75\t63\t54\t79\t76\t77\t22\t83\t81\t43\t50\t51\t78\t85\t79\t83\t16\t13\t10\t9\t8\tnull\tInjury Free,Dives Into Tackles (CPU AI Only),Power Header\t57+3\t57+3\t57+3\t58+3\t56+3\t56+3\t56+3\t58+3\t56+3\t56+3\t56+3\t61+3\t61+3\t61+3\t61+3\t61+3\t74+3\t73+3\t73+3\t73+3\t74+3\t76+3\t79+3\t79+3\t79+3\t76+3\n199416\tIbai Gómez\tIbai Gómez Pérez\t1989-11-11\t29\t152.4\t72.1\tRM,RW,LM\tSpain\t80\t80\t1.5E7\t31000.0\tRight\t1\t5\t3\tMedium/ Medium\tNormal\t3.15E7\tAthletic Club de Bilbao\t79.0\tRW\t19.0\t2019-01-10\t2022\tnull\tnull\tnull\tnull\t79\t79\t47\t77\t75\t82\t85\t81\t78\t81\t79\t77\t79\t75\t78\t83\t66\t75\t66\t79\t63\t45\t78\t80\t65\t67\t73\t58\t55\t14\t8\t13\t7\t11\tnull\tPower Free-Kick,Flair,Long Shot Taker (CPU AI Only),Outside Foot Shot\t75+2\t75+2\t75+2\t79+2\t78+2\t78+2\t78+2\t79+2\t79+2\t79+2\t79+2\t78+2\t75+2\t75+2\t75+2\t78+2\t69+2\t68+2\t68+2\t68+2\t69+2\t66+2\t61+2\t61+2\t61+2\t66+2\n200315\tCristian Tello\tCristian Tello Herrera\t1991-08-19\t27\t152.4\t64.9\tLM,RM\tSpain\t80\t80\t1.6E7\t30000.0\tRight\t2\t4\t4\tMedium/ Medium\tLean\t3.36E7\tReal Betis\t80.0\tSUB\t11.0\t2017-07-01\t2022\tnull\tnull\tnull\tnull\t78\t74\t47\t77\t75\t82\t81\t72\t70\t81\t92\t89\t82\t72\t79\t79\t72\t73\t58\t71\t48\t33\t74\t74\t56\t71\t55\t30\t26\t15\t12\t9\t7\t13\t#Speedster\tSpeed Dribbler (CPU AI Only)\t73+2\t73+2\t73+2\t79+2\t77+2\t77+2\t77+2\t79+2\t77+2\t77+2\t77+2\t78+2\t70+2\t70+2\t70+2\t78+2\t61+2\t57+2\t57+2\t57+2\t61+2\t57+2\t48+2\t48+2\t48+2\t57+2\n201119\tIsmaily\tIsmaily Gonçalves dos S.\t1990-01-11\t29\t152.4\t82.1\tLB\tBrazil\t80\t80\t1.15E7\t1000.0\tLeft\t1\t2\t4\tHigh/ Medium\tStocky\t2.42E7\tShakhtar Donetsk\t76.0\tLB\t31.0\t2013-02-14\t2023\tnull\tnull\tnull\tnull\t80\t60\t59\t81\t55\t83\t65\t50\t67\t81\t84\t80\t72\t81\t82\t75\t59\t88\t75\t73\t63\t79\t82\t71\t51\t79\t77\t74\t75\t8\t8\t14\t11\t10\tnull\tLong Throw-in,Avoids Using Weaker Foot,Outside Foot Shot\t73+2\t73+2\t73+2\t78+2\t77+2\t77+2\t77+2\t78+2\t77+2\t77+2\t77+2\t79+2\t77+2\t77+2\t77+2\t79+2\t79+2\t76+2\t76+2\t76+2\t79+2\t78+2\t73+2\t73+2\t73+2\t78+2\n201143\tA. Mandi\tAïssa Mandi\t1991-10-22\t27\t182.88\t78.0\tCB\tAlgeria\t80\t83\t1.55E7\t27000.0\tRight\t1\t3\t2\tHigh/ Medium\tLean\t3.37E7\tReal Betis\t80.0\tRCB\t23.0\t2016-07-01\t2021\tnull\tnull\tnull\tnull\t78\t41\t83\t79\t49\t66\t67\t49\t75\t74\t67\t68\t78\t78\t65\t52\t82\t69\t74\t49\t69\t84\t67\t68\t35\t74\t79\t82\t84\t15\t16\t9\t10\t14\tnull\tDives Into Tackles (CPU AI Only)\t64+2\t64+2\t64+2\t67+2\t66+2\t66+2\t66+2\t67+2\t68+2\t68+2\t68+2\t70+2\t72+2\t72+2\t72+2\t70+2\t77+2\t77+2\t77+2\t77+2\t77+2\t78+2\t79+2\t79+2\t79+2\t78+2\n201325\tC. Tătăruşanu\tAnton Ciprian Tătărușanu\t1986-02-09\t33\t195.57999999999998\t86.2\tGK\tRomania\t80\t80\t8500000.0\t25000.0\tRight\t2\t3\t1\tMedium/ Medium\tLean\t1.62E7\tFC Nantes\t75.0\tGK\t30.0\t2017-07-27\t2019\tRomania\t72.0\tGK\t12.0\t13\t15\t15\t37\t11\t16\t11\t11\t37\t19\t50\t47\t51\t74\t38\t14\t66\t42\t73\t12\t33\t26\t13\t48\t16\t45\t12\t15\t12\t81\t77\t76\t79\t83\tnull\tLeadership,Puncher,Cautious With Crosses\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n201377\tJ. Murillo\tJeison Fabián Murillo Cerón\t1992-05-27\t26\t182.88\t78.0\tCB\tColombia\t80\t84\t1.6E7\t38000.0\tRight\t2\t2\t2\tMedium/ High\tNormal\tnull\tFC Barcelona\t86.0\tSUB\t17.0\tnull\tJun 30, 2019\tColombia\t79.0\tLCB\t22.0\t56\t37\t76\t68\t54\t58\t38\t26\t62\t64\t75\t76\t77\t73\t72\t68\t89\t72\t80\t13\t88\t81\t45\t54\t46\t73\t77\t80\t82\t14\t13\t8\t11\t14\tnull\tDives Into Tackles (CPU AI Only),Power Header\t58+2\t58+2\t58+2\t58+2\t57+2\t57+2\t57+2\t58+2\t58+2\t58+2\t58+2\t61+2\t61+2\t61+2\t61+2\t61+2\t72+2\t73+2\t73+2\t73+2\t72+2\t74+2\t78+2\t78+2\t78+2\t74+2\n202335\tE. Dier\tEric Dier\t1994-01-15\t25\t187.96\t89.8\tCDM,CB,CM\tEngland\t80\t84\t1.65E7\t73000.0\tRight\t2\t3\t2\tMedium/ High\tNormal\t3.18E7\tTottenham Hotspur\t83.0\tSUB\t15.0\t2014-08-02\t2021\tEngland\t82.0\tCDM\t4.0\t67\t52\t82\t77\t51\t65\t60\t74\t78\t70\t62\t68\t52\t78\t38\t82\t77\t78\t89\t72\t91\t81\t53\t67\t70\t77\t82\t81\t83\t11\t14\t6\t13\t9\t#Strength\tDives Into Tackles (CPU AI Only),Power Header\t67+2\t67+2\t67+2\t65+2\t66+2\t66+2\t66+2\t65+2\t67+2\t67+2\t67+2\t67+2\t72+2\t72+2\t72+2\t67+2\t75+2\t79+2\t79+2\t79+2\t75+2\t76+2\t81+2\t81+2\t81+2\t76+2\n203042\tJ. Butland\tJack Butland\t1993-03-10\t25\t195.57999999999998\t94.8\tGK\tEngland\t80\t85\t1.4E7\t39000.0\tRight\t2\t3\t1\tMedium/ Medium\tNormal\t2.77E7\tStoke City\t73.0\tGK\t1.0\t2013-01-31\t2021\tEngland\t82.0\tSUB\t13.0\t11\t16\t12\t40\t12\t21\t12\t14\t30\t36\t58\t55\t55\t73\t50\t29\t76\t40\t79\t13\t40\t27\t16\t40\t42\t62\t23\t13\t11\t82\t75\t70\t79\t84\tnull\tLeadership,Comes For Crosses\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n49031\tS. Sorrentino\tStefano Sorrentino\t1979-03-28\t39\t185.42\t84.8\tGK\tItaly\t80\t80\t1000000.0\t10000.0\tRight\t2\t3\t1\tMedium/ Medium\tNormal\t1800000.0\tChievo Verona\t73.0\tGK\t70.0\t2016-07-06\t2019\tnull\tnull\tnull\tnull\t11\t10\t10\t36\t18\t14\t14\t11\t34\t20\t34\t40\t52\t67\t48\t21\t74\t28\t74\t13\t22\t25\t10\t34\t20\t66\t25\t10\t13\t81\t82\t66\t82\t79\tnull\tLeadership,Cautious With Crosses\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n54050\tW. Rooney\tWayne Mark Rooney\t1985-10-24\t33\t175.26\t83.0\tST\tEngland\t80\t80\t1.2E7\t13000.0\tRight\t4\t4\t3\tMedium/ High\tStocky\t1.8E7\tDC United\t70.0\tST\t9.0\t2018-07-10\t2021\tnull\tnull\tnull\tnull\t73\t80\t75\t81\t83\t74\t84\t83\t82\t80\t65\t65\t66\t82\t77\t85\t74\t74\t78\t80\t81\t56\t80\t82\t81\t86\t57\t55\t40\t10\t11\t13\t8\t7\tnull\tLeadership,Long Passer (CPU AI Only),Long Shot Taker (CPU AI Only),Chip Shot (CPU AI Only)\t78+3\t78+3\t78+3\t76+3\t78+3\t78+3\t78+3\t76+3\t78+3\t78+3\t78+3\t76+3\t77+3\t77+3\t77+3\t76+3\t66+3\t69+3\t69+3\t69+3\t66+3\t64+3\t64+3\t64+3\t64+3\t64+3\n110677\tMoyá\tMiguel Ángel Moyá Rumbo\t1984-04-02\t34\t187.96\t83.0\tGK\tSpain\t80\t80\t6000000.0\t26000.0\tRight\t2\t2\t1\tMedium/ Medium\tNormal\t1.26E7\tReal Sociedad\t77.0\tSUB\t13.0\t2018-02-27\t2020\tnull\tnull\tnull\tnull\t11\t11\t12\t31\t13\t13\t16\t12\t35\t24\t46\t34\t54\t74\t49\t21\t62\t30\t57\t16\t22\t11\t10\t68\t11\t60\t15\t14\t14\t84\t77\t81\t80\t79\tnull\tGK Up for Corners,Puncher,Saves with Feet\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n142707\tL. López\tLisandro López\t1983-03-02\t36\t175.26\t72.1\tST\tArgentina\t80\t80\t7000000.0\t23000.0\tRight\t2\t4\t4\tHigh/ High\tNormal\t9800000.0\tRacing Club\t75.0\tLS\t15.0\t2016-01-04\t2020\tnull\tnull\tnull\tnull\t66\t85\t79\t72\t74\t78\t78\t73\t70\t80\t77\t83\t84\t77\t80\t77\t84\t77\t75\t75\t61\t52\t82\t72\t82\t84\t35\t58\t34\t8\t10\t11\t13\t6\tnull\tBeat Offside Trap,Leadership\t79+2\t79+2\t79+2\t77+2\t78+2\t78+2\t78+2\t77+2\t77+2\t77+2\t77+2\t76+2\t73+2\t73+2\t73+2\t76+2\t63+2\t63+2\t63+2\t63+2\t63+2\t61+2\t59+2\t59+2\t59+2\t61+2\n142754\tJ. Mascherano\tJavier Alejandro Mascherano\t1984-06-08\t34\t175.26\t73.0\tCDM,CB\tArgentina\t80\t80\t4500000.0\t20000.0\tRight\t4\t3\t2\tLow/ High\tNormal\t9700000.0\tHebei China Fortune FC\t66.0\tLDM\t14.0\t2018-01-26\t2019\tnull\tnull\tnull\tnull\t63\t42\t66\t79\t51\t58\t63\t50\t75\t80\t69\t62\t72\t79\t78\t76\t80\t76\t72\t55\t88\t85\t51\t68\t60\t81\t78\t81\t82\t6\t10\t8\t5\t5\tnull\tDives Into Tackles (CPU AI Only),Team Player\t62+3\t62+3\t62+3\t64+3\t64+3\t64+3\t64+3\t64+3\t67+3\t67+3\t67+3\t67+3\t72+3\t72+3\t72+3\t67+3\t75+3\t79+3\t79+3\t79+3\t75+3\t76+3\t78+3\t78+3\t78+3\t76+3\n144622\tRaffael\tRaffael Caetano de Araújo\t1985-03-28\t33\t175.26\t68.9\tCF,ST\tBrazil\t80\t80\t9500000.0\t39000.0\tRight\t2\t4\t4\tHigh/ Medium\tLean\t1.62E7\tBorussia Mönchengladbach\t79.0\tSUB\t11.0\t2013-07-01\t2019\tnull\tnull\tnull\tnull\t78\t78\t63\t83\t83\t87\t79\t77\t76\t85\t69\t61\t83\t81\t83\t77\t70\t62\t62\t74\t66\t45\t82\t81\t72\t79\t43\t42\t31\t12\t10\t5\t13\t14\t#Dribbler\tInjury Prone,Finesse Shot,Technical Dribbler (CPU AI Only)\t76+2\t76+2\t76+2\t79+2\t79+2\t79+2\t79+2\t79+2\t81+2\t81+2\t81+2\t78+2\t76+2\t76+2\t76+2\t78+2\t62+2\t62+2\t62+2\t62+2\t62+2\t58+2\t54+2\t54+2\t54+2\t58+2\n146748\tDiego López\tDiego López Rodríguez\t1981-11-03\t37\t195.57999999999998\t88.9\tGK\tSpain\t80\t80\t2000000.0\t17000.0\tRight\t3\t3\t1\tMedium/ Medium\tLean\t4200000.0\tRCD Espanyol\t77.0\tGK\t13.0\t2017-07-01\t2020\tnull\tnull\tnull\tnull\t11\t12\t10\t28\t14\t11\t10\t11\t23\t23\t34\t52\t48\t78\t47\t22\t68\t42\t66\t11\t36\t16\t11\t53\t21\t62\t16\t13\t14\t75\t82\t74\t82\t76\tnull\tTeam Player,Comes For Crosses\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n146760\tJuanfran\tJuan Francisco Torres Belén\t1985-01-09\t34\t154.94\t71.2\tRB\tSpain\t80\t80\t5500000.0\t53000.0\tRight\t3\t3\t3\tHigh/ Medium\tLean\t1.13E7\tAtlético Madrid\t84.0\tSUB\t20.0\t2011-01-01\t2019\tnull\tnull\tnull\tnull\t81\t54\t59\t77\t49\t75\t80\t59\t66\t78\t74\t83\t74\t82\t63\t68\t68\t80\t74\t53\t78\t76\t68\t72\t66\t74\t75\t81\t80\t11\t14\t10\t15\t7\tnull\tTeam Player\t68+3\t68+3\t68+3\t73+3\t71+3\t71+3\t71+3\t73+3\t72+3\t72+3\t72+3\t74+3\t73+3\t73+3\t73+3\t74+3\t78+3\t76+3\t76+3\t76+3\t78+3\t78+3\t75+3\t75+3\t75+3\t78+3\n147782\tI. Denisov\tIgor Denisov\t1984-05-17\t34\t175.26\t69.9\tCDM\tRussia\t80\t80\t4500000.0\t1000.0\tRight\t2\t3\t3\tMedium/ High\tNormal\t9400000.0\tLokomotiv Moscow\t77.0\tRDM\t27.0\t2013-08-15\t2020\tnull\tnull\tnull\tnull\t66\t61\t63\t82\t60\t73\t62\t54\t74\t78\t67\t65\t77\t76\t76\t71\t70\t85\t64\t63\t88\t80\t64\t74\t62\t77\t81\t81\t73\t13\t7\t15\t13\t12\tnull\tLeadership,Long Passer (CPU AI Only)\t68+2\t68+2\t68+2\t70+2\t71+2\t71+2\t71+2\t70+2\t73+2\t73+2\t73+2\t72+2\t76+2\t76+2\t76+2\t72+2\t76+2\t78+2\t78+2\t78+2\t76+2\t75+2\t76+2\t76+2\t76+2\t75+2\n148119\tI. Akinfeev\tIgor Akinfeev\t1986-04-08\t32\t185.42\t78.0\tGK\tRussia\t80\t80\t8500000.0\t1000.0\tRight\t3\t3\t1\tMedium/ Medium\tNormal\t1.87E7\tPFC CSKA Moscow\t73.0\tGK\t35.0\t2002-01-01\t2022\tRussia\t77.0\tGK\t1.0\t19\t13\t18\t23\t10\t15\t19\t13\t22\t22\t51\t50\t53\t71\t45\t24\t62\t35\t72\t13\t24\t17\t11\t59\t10\t67\t18\t13\t13\t77\t72\t78\t82\t84\tnull\tLeadership,GK Long Throw,Team Player,Saves with Feet\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n153244\tA. Gignac\tAndré-Pierre Gignac\t1985-12-05\t33\t187.96\t91.2\tST\tFrance\t80\t80\t1.2E7\t70000.0\tRight\t3\t3\t3\tMedium/ Medium\tStocky\t1.92E7\tTigres U.A.N.L.\t75.0\tST\t10.0\t2015-06-18\t2019\tnull\tnull\tnull\tnull\t72\t83\t78\t71\t78\t73\t77\t70\t68\t72\t71\t68\t66\t78\t59\t84\t72\t71\t90\t79\t80\t51\t81\t72\t78\t80\t33\t41\t23\t10\t15\t14\t11\t11\t#Strength\tBeat Offside Trap,Finesse Shot,Power Header\t78+3\t78+3\t78+3\t74+3\t75+3\t75+3\t75+3\t74+3\t73+3\t73+3\t73+3\t73+3\t70+3\t70+3\t70+3\t73+3\t58+3\t60+3\t60+3\t60+3\t58+3\t56+3\t56+3\t56+3\t56+3\t56+3\n156713\tA. Granqvist\tAndreas Granqvist\t1985-04-16\t33\t193.04\t83.9\tCB\tSweden\t80\t80\tnull\tnull\tRight\t2\t4\t2\tHigh/ Medium\tNormal\tnull\tSweden\t76.0\tLCB\t4.0\tnull\tnull\tnull\tnull\tnull\tnull\t49\t51\t81\t73\t37\t49\t36\t40\t67\t63\t46\t49\t55\t76\t36\t74\t64\t67\t83\t59\t81\t82\t54\t49\t79\t78\t82\t83\t79\t7\t9\t12\t10\t15\tnull\tLeadership,Team Player\t62+2\t62+2\t62+2\t56+2\t58+2\t58+2\t58+2\t56+2\t58+2\t58+2\t58+2\t57+2\t64+2\t64+2\t64+2\t57+2\t68+2\t74+2\t74+2\t74+2\t68+2\t70+2\t79+2\t79+2\t79+2\t70+2\n157960\tManuel Fernandes\tManuel Henrique Tavares Fernandes\t1986-02-05\t33\t175.26\t74.8\tLM,CAM\tPortugal\t80\t80\t1.15E7\t1000.0\tRight\t2\t4\t4\tHigh/ Medium\tNormal\t2.42E7\tLokomotiv Moscow\t77.0\tLM\t4.0\t2014-07-01\t2019\tnull\tnull\tnull\tnull\t77\t70\t62\t80\t69\t86\t79\t70\t72\t83\t83\t76\t82\t76\t76\t81\t74\t72\t71\t82\t68\t68\t75\t77\t73\t77\t62\t69\t68\t14\t14\t9\t16\t8\t#Dribbler\tFlair,Long Shot Taker (CPU AI Only),Technical Dribbler (CPU AI Only),Takes Finesse Free Kicks\t75+2\t75+2\t75+2\t79+2\t78+2\t78+2\t78+2\t79+2\t79+2\t79+2\t79+2\t78+2\t77+2\t77+2\t77+2\t78+2\t73+2\t72+2\t72+2\t72+2\t73+2\t72+2\t68+2\t68+2\t68+2\t72+2\n158625\tDante\tDante Bonfim da Costa Santos\t1983-10-18\t35\t187.96\t84.8\tCB\tBrazil\t80\t80\t4500000.0\t37000.0\tLeft\t3\t4\t2\tMedium/ High\tNormal\t8500000.0\tOGC Nice\t75.0\tLCB\t31.0\t2016-08-23\t2019\tnull\tnull\tnull\tnull\t58\t47\t80\t74\t44\t57\t51\t55\t76\t74\t38\t41\t52\t76\t64\t64\t65\t62\t81\t53\t74\t79\t41\t62\t57\t78\t80\t82\t80\t14\t8\t10\t6\t13\tnull\tLeadership,Team Player\t59+3\t59+3\t59+3\t57+3\t58+3\t58+3\t58+3\t57+3\t61+3\t61+3\t61+3\t59+3\t68+3\t68+3\t68+3\t59+3\t69+3\t75+3\t75+3\t75+3\t69+3\t70+3\t77+3\t77+3\t77+3\t70+3\n159147\tL. Perrin\tLoïc Perrin\t1985-08-07\t33\t154.94\t79.8\tCB\tFrance\t80\t80\t8500000.0\t37000.0\tRight\t2\t3\t2\tMedium/ High\tNormal\t1.62E7\tAS Saint-Étienne\t76.0\tRCB\t24.0\t2003-07-01\t2020\tnull\tnull\tnull\tnull\t65\t55\t81\t74\t44\t62\t59\t51\t77\t73\t59\t60\t63\t76\t72\t65\t81\t71\t78\t61\t77\t83\t58\t63\t68\t80\t77\t84\t82\t6\t7\t12\t11\t14\tnull\tLeadership,Team Player\t65+2\t65+2\t65+2\t64+2\t65+2\t65+2\t65+2\t64+2\t66+2\t66+2\t66+2\t66+2\t71+2\t71+2\t71+2\t66+2\t73+2\t77+2\t77+2\t77+2\t73+2\t75+2\t79+2\t79+2\t79+2\t75+2\n161956\tBorja Valero\tBorja Valero Iglesias\t1985-01-12\t34\t175.26\t73.0\tCAM,CDM\tSpain\t80\t80\t9000000.0\t69000.0\tRight\t3\t4\t4\tMedium/ Medium\tNormal\t1.53E7\tInter\t82.0\tRES\t20.0\t2017-07-10\t2020\tnull\tnull\tnull\tnull\t78\t67\t60\t89\t70\t82\t78\t76\t85\t86\t55\t52\t72\t81\t78\t72\t67\t69\t66\t70\t52\t70\t69\t86\t72\t83\t65\t66\t62\t5\t4\t10\t8\t7\t#Playmaker  \tFinesse Shot,Flair,Long Passer (CPU AI Only),Playmaker (CPU AI Only),Set Play Specialist\t71+3\t71+3\t71+3\t75+3\t75+3\t75+3\t75+3\t75+3\t79+3\t79+3\t79+3\t76+3\t80+3\t80+3\t80+3\t76+3\t72+3\t74+3\t74+3\t74+3\t72+3\t69+3\t66+3\t66+3\t66+3\t69+3\n208330\tA. Januzaj\tAdnan Januzaj\t1995-02-05\t24\t185.42\t76.2\tRW,RM\tBelgium\t79\t85\t1.75E7\t32000.0\tLeft\t1\t4\t4\tMedium/ Low\tLean\t4.03E7\tReal Sociedad\t77.0\tRW\t11.0\t2017-07-12\t2022\tBelgium\t85.0\tSUB\t23.0\t82\t71\t42\t79\t67\t85\t80\t65\t74\t82\t84\t76\t85\t76\t71\t74\t61\t68\t59\t71\t41\t36\t76\t80\t60\t74\t30\t22\t22\t15\t10\t11\t12\t7\tnull\tDiver,Flair,Technical Dribbler (CPU AI Only)\t72+2\t72+2\t72+2\t79+2\t77+2\t77+2\t77+2\t79+2\t79+2\t79+2\t79+2\t79+2\t72+2\t72+2\t72+2\t79+2\t59+2\t55+2\t55+2\t55+2\t59+2\t53+2\t42+2\t42+2\t42+2\t53+2\n208334\tJ. Hector\tJonas Hector\t1990-05-27\t28\t185.42\t74.8\tLB,CDM\tGermany\t79\t79\t1.0E7\t26000.0\tLeft\t3\t3\t3\tMedium/ Medium\tNormal\t1.5E7\t1. FC Köln\t76.0\tLWB\t14.0\t2012-02-25\t2023\tGermany\t85.0\tLWB\t3.0\t79\t55\t71\t78\t51\t74\t65\t65\t74\t77\t75\t77\t67\t80\t67\t69\t66\t82\t76\t61\t71\t81\t62\t72\t65\t78\t76\t79\t79\t9\t10\t10\t12\t14\tnull\tAvoids Using Weaker Foot\t68+3\t68+3\t68+3\t72+3\t70+3\t70+3\t70+3\t72+3\t72+3\t72+3\t72+3\t74+3\t74+3\t74+3\t74+3\t74+3\t78+3\t77+3\t77+3\t77+3\t78+3\t78+3\t76+3\t76+3\t76+3\t78+3\n208498\tM. Dabbur\tMoanes Dabour\t1992-05-14\t26\t182.88\t76.2\tST\tIsrael\t79\t81\t1.55E7\t47000.0\tRight\t2\t4\t4\tMedium/ Low\tNormal\t2.44E7\tFC Red Bull Salzburg\t73.0\tLS\t9.0\t2016-06-09\t2021\tnull\tnull\tnull\tnull\t50\t82\t75\t73\t73\t76\t74\t66\t63\t77\t74\t76\t77\t78\t71\t76\t89\t81\t78\t66\t39\t19\t82\t64\t74\t69\t22\t37\t27\t13\t12\t10\t15\t11\tnull\tInjury Free,Selfish,Flair,Chip Shot (CPU AI Only),Technical Dribbler (CPU AI Only)\t77+2\t77+2\t77+2\t73+2\t76+2\t76+2\t76+2\t73+2\t74+2\t74+2\t74+2\t72+2\t68+2\t68+2\t68+2\t72+2\t54+2\t52+2\t52+2\t52+2\t54+2\t51+2\t47+2\t47+2\t47+2\t51+2\n208777\tÓliver Torres\tÓliver Torres Muñoz\t1994-11-10\t24\t175.26\t63.0\tCM\tSpain\t79\t84\t1.65E7\t15000.0\tRight\t3\t4\t3\tMedium/ Medium\tNormal\t3.42E7\tFC Porto\t81.0\tLCM\t10.0\t2017-07-01\t2021\tnull\tnull\tnull\tnull\t73\t66\t52\t82\t63\t84\t77\t64\t78\t83\t72\t65\t78\t78\t78\t65\t62\t78\t38\t69\t58\t67\t76\t80\t64\t82\t66\t66\t62\t7\t7\t14\t6\t8\tnull\tFlair,Long Passer (CPU AI Only),Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t69+3\t69+3\t69+3\t76+3\t76+3\t76+3\t76+3\t76+3\t78+3\t78+3\t78+3\t77+3\t78+3\t78+3\t78+3\t77+3\t72+3\t71+3\t71+3\t71+3\t72+3\t70+3\t62+3\t62+3\t62+3\t70+3\n209981\tY. Bounou\tYassine Bounou\t1991-04-05\t27\t193.04\t78.0\tGK\tMorocco\t79\t82\t1.05E7\t26000.0\tLeft\t1\t3\t1\tMedium/ Medium\tLean\t2.28E7\tGirona FC\t77.0\tGK\t13.0\t2016-07-12\t2021\tnull\tnull\tnull\tnull\t15\t14\t14\t39\t13\t20\t12\t19\t44\t12\t37\t34\t38\t78\t29\t25\t48\t43\t69\t19\t25\t12\t10\t60\t24\t57\t20\t18\t15\t76\t79\t77\t77\t78\tnull\tGK Long Throw\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n210324\tJ. Hofmann\tJonas Hofmann\t1992-07-14\t26\t175.26\t69.9\tCAM,RM,LM\tGermany\t79\t80\t1.5E7\t32000.0\tRight\t2\t4\t3\tMedium/ Medium\tLean\t2.66E7\tBorussia Mönchengladbach\t79.0\tLCM\t23.0\t2016-01-01\t2020\tnull\tnull\tnull\tnull\t81\t69\t40\t79\t62\t80\t69\t71\t72\t79\t78\t76\t78\t79\t77\t68\t61\t82\t60\t68\t43\t57\t78\t77\t68\t71\t49\t44\t40\t6\t6\t10\t10\t10\tnull\tnull\t70+2\t70+2\t70+2\t77+2\t75+2\t75+2\t75+2\t77+2\t77+2\t77+2\t77+2\t78+2\t74+2\t74+2\t74+2\t78+2\t67+2\t63+2\t63+2\t63+2\t67+2\t63+2\t53+2\t53+2\t53+2\t63+2\n210411\tOtávio\tOtávio Edmilson da Silva Monteiro\t1995-02-09\t24\t172.72\t71.2\tRM,CAM,CM\tBrazil\t79\t85\t1.75E7\t15000.0\tRight\t1\t3\t4\tMedium/ Medium\tNormal\t3.85E7\tFC Porto\t81.0\tSUB\t25.0\t2014-09-01\t2021\tnull\tnull\tnull\tnull\t78\t67\t56\t77\t63\t84\t74\t72\t74\t83\t76\t74\t86\t80\t82\t67\t57\t68\t54\t68\t73\t46\t76\t79\t72\t80\t52\t41\t27\t11\t12\t9\t10\t15\t#Acrobat\tDiver,Selfish,Flair,Long Passer (CPU AI Only),Technical Dribbler (CPU AI Only)\t71+2\t71+2\t71+2\t77+2\t76+2\t76+2\t76+2\t77+2\t78+2\t78+2\t78+2\t77+2\t73+2\t73+2\t73+2\t77+2\t63+2\t62+2\t62+2\t62+2\t63+2\t59+2\t53+2\t53+2\t53+2\t59+2\n210455\tJonny\tJonathan Castro Otto\t1994-03-03\t25\t170.18\t69.9\tLWB\tSpain\t79\t83\t1.35E7\t59000.0\tRight\t2\t3\t4\tHigh/ High\tNormal\t2.67E7\tWolverhampton Wanderers\t76.0\tLWB\t19.0\t2019-01-31\t2023\tnull\tnull\tnull\tnull\t78\t43\t70\t74\t44\t74\t62\t54\t59\t77\t77\t78\t72\t72\t78\t68\t75\t83\t64\t45\t82\t80\t65\t66\t46\t73\t77\t80\t82\t7\t10\t12\t10\t6\tnull\tnull\t64+2\t64+2\t64+2\t69+2\t67+2\t67+2\t67+2\t69+2\t68+2\t68+2\t68+2\t71+2\t70+2\t70+2\t70+2\t71+2\t78+2\t75+2\t75+2\t75+2\t78+2\t78+2\t76+2\t76+2\t76+2\t78+2\n212501\tL. Dendoncker\tLeander Dendoncker\t1995-04-15\t23\t187.96\t88.0\tCDM,CB,CM\tBelgium\t79\t85\t1.45E7\t20000.0\tRight\t2\t4\t2\tHigh/ High\tNormal\tnull\tWolverhampton Wanderers\t76.0\tRCM\t32.0\tnull\tJun 30, 2019\tBelgium\t85.0\tSUB\t20.0\t75\t66\t78\t79\t71\t69\t72\t71\t78\t74\t61\t68\t59\t73\t58\t86\t67\t89\t87\t76\t74\t78\t71\t76\t44\t75\t76\t78\t76\t14\t8\t14\t14\t6\t#Engine,#Strength\tPower Free-Kick,Injury Free,Long Passer (CPU AI Only),Long Shot Taker (CPU AI Only)\t73+2\t73+2\t73+2\t71+2\t72+2\t72+2\t72+2\t71+2\t72+2\t72+2\t72+2\t72+2\t76+2\t76+2\t76+2\t72+2\t76+2\t77+2\t77+2\t77+2\t76+2\t76+2\t77+2\t77+2\t77+2\t76+2\n213160\tR. Zobnin\tRoman Zobnin\t1994-02-11\t25\t182.88\t74.8\tCDM,CM,LM\tRussia\t79\t86\t1.5E7\t1000.0\tRight\t1\t3\t4\tHigh/ High\tLean\t3.45E7\tSpartak Moscow\t75.0\tRCM\t47.0\t2016-07-01\t2021\tRussia\t77.0\tLDM\t8.0\t69\t65\t70\t81\t55\t82\t65\t65\t79\t82\t74\t78\t70\t79\t65\t65\t63\t90\t63\t67\t70\t75\t64\t72\t57\t77\t81\t79\t76\t10\t8\t13\t15\t9\t#Engine\tnull\t70+2\t70+2\t70+2\t74+2\t74+2\t74+2\t74+2\t74+2\t75+2\t75+2\t75+2\t76+2\t77+2\t77+2\t77+2\t76+2\t78+2\t78+2\t78+2\t78+2\t78+2\t77+2\t75+2\t75+2\t75+2\t77+2\n213516\tRicardo Horta\tRicardo Jorge da Luz Horta\t1994-09-15\t24\t172.72\t63.0\tLM\tPortugal\t79\t84\t1.7E7\t16000.0\tRight\t1\t3\t3\tHigh/ Medium\tLean\t3.53E7\tSC Braga\t76.0\tLM\t21.0\t2017-07-19\t2022\tnull\tnull\tnull\tnull\t77\t74\t51\t76\t82\t80\t78\t70\t69\t81\t78\t75\t85\t81\t85\t78\t62\t80\t45\t71\t64\t55\t81\t76\t71\t69\t32\t44\t35\t7\t9\t10\t8\t13\tnull\tFinesse Shot,Technical Dribbler (CPU AI Only)\t73+2\t73+2\t73+2\t78+2\t77+2\t77+2\t77+2\t78+2\t77+2\t77+2\t77+2\t77+2\t74+2\t74+2\t74+2\t77+2\t64+2\t61+2\t61+2\t61+2\t64+2\t60+2\t51+2\t51+2\t51+2\t60+2\n213874\tThiago Mendes\tThiago Henrique Mendes Ribeiro\t1992-03-15\t26\t152.4\t79.8\tCDM,CM,RM\tBrazil\t79\t83\t1.35E7\t35000.0\tRight\t1\t3\t4\tHigh/ Medium\tNormal\t2.67E7\tLOSC Lille\t75.0\tRDM\t23.0\t2017-07-08\t2022\tnull\tnull\tnull\tnull\t67\t63\t59\t82\t60\t78\t67\t77\t81\t81\t74\t82\t78\t78\t74\t81\t68\t84\t66\t79\t80\t76\t70\t80\t60\t79\t73\t77\t76\t14\t9\t12\t13\t8\tnull\tLong Shot Taker (CPU AI Only)\t72+2\t72+2\t72+2\t75+2\t76+2\t76+2\t76+2\t75+2\t77+2\t77+2\t77+2\t76+2\t79+2\t79+2\t79+2\t76+2\t77+2\t78+2\t78+2\t78+2\t77+2\t76+2\t73+2\t73+2\t73+2\t76+2\n213991\tJ. Lerma\tJefferson Andrés Lerma Solís\t1994-10-25\t24\t152.4\t69.9\tCDM,CM\tColombia\t79\t83\t1.4E7\t55000.0\tRight\t1\t4\t3\tMedium/ High\tLean\t2.77E7\tBournemouth\t77.0\tRCM\t8.0\t2018-08-07\t2023\tColombia\t79.0\tSUB\t2.0\t66\t56\t65\t77\t56\t69\t66\t65\t76\t77\t74\t76\t75\t72\t76\t82\t84\t90\t76\t75\t83\t80\t58\t68\t58\t63\t78\t81\t81\t16\t14\t11\t7\t9\tnull\tDives Into Tackles (CPU AI Only),Long Shot Taker (CPU AI Only)\t68+2\t68+2\t68+2\t69+2\t69+2\t69+2\t69+2\t69+2\t70+2\t70+2\t70+2\t71+2\t74+2\t74+2\t74+2\t71+2\t77+2\t78+2\t78+2\t78+2\t77+2\t77+2\t77+2\t77+2\t77+2\t77+2\n214947\tJ. Gbamin\tJean-Philippe Gbamin\t1995-09-25\t23\t185.42\t83.0\tCDM,CM,CB\tIvory Coast\t79\t84\t1.45E7\t26000.0\tRight\t1\t3\t3\tMedium/ High\tNormal\t2.57E7\t1. FSV Mainz 05\t75.0\tRCM\t25.0\t2016-07-13\t2023\tnull\tnull\tnull\tnull\t69\t40\t71\t78\t45\t75\t62\t60\t74\t77\t76\t85\t68\t76\t66\t82\t77\t83\t83\t71\t85\t79\t65\t72\t40\t72\t79\t80\t71\t11\t13\t8\t14\t10\tnull\tLong Shot Taker (CPU AI Only)\t68+2\t68+2\t68+2\t70+2\t70+2\t70+2\t70+2\t70+2\t71+2\t71+2\t71+2\t72+2\t74+2\t74+2\t74+2\t72+2\t76+2\t78+2\t78+2\t78+2\t76+2\t76+2\t78+2\t78+2\t78+2\t76+2\n215057\tI. Marcone\tIván Marcone\t1990-06-03\t28\t182.88\t83.0\tCDM\tArgentina\t79\t80\t1.15E7\t27000.0\tRight\t1\t3\t3\tMedium/ High\tNormal\t1.7E7\tBoca Juniors\t76.0\tRDM\t23.0\t2019-01-21\t2023\tnull\tnull\tnull\tnull\t58\t48\t73\t80\t49\t69\t59\t60\t83\t73\t54\t34\t60\t79\t60\t73\t35\t86\t85\t66\t84\t76\t56\t69\t59\t76\t74\t80\t71\t16\t11\t12\t16\t10\tnull\tLong Shot Taker (CPU AI Only)\t64+2\t64+2\t64+2\t63+2\t65+2\t65+2\t65+2\t63+2\t67+2\t67+2\t67+2\t66+2\t74+2\t74+2\t74+2\t66+2\t71+2\t78+2\t78+2\t78+2\t71+2\t70+2\t75+2\t75+2\t75+2\t70+2\n215061\tD. Benedetto\tDarío Benedetto\t1990-05-17\t28\t152.4\t79.8\tST\tArgentina\t79\t79\t1.3E7\t32000.0\tRight\t2\t5\t3\tHigh/ Low\tNormal\t1.82E7\tBoca Juniors\t76.0\tST\t9.0\t2016-07-01\t2021\tnull\tnull\tnull\tnull\t55\t86\t75\t67\t71\t71\t67\t60\t65\t75\t78\t83\t77\t74\t73\t82\t86\t77\t76\t80\t66\t28\t82\t69\t72\t78\t45\t25\t25\t10\t14\t12\t8\t11\t#Clinical Finisher\tBeat Offside Trap,Finesse Shot,Long Shot Taker (CPU AI Only)\t78+2\t78+2\t78+2\t74+2\t76+2\t76+2\t76+2\t74+2\t73+2\t73+2\t73+2\t72+2\t67+2\t67+2\t67+2\t72+2\t55+2\t54+2\t54+2\t54+2\t55+2\t52+2\t50+2\t50+2\t50+2\t52+2\n190243\tM. Hitz\tMarwin Hitz\t1987-09-18\t31\t193.04\t88.9\tGK\tSwitzerland\t79\t79\t8000000.0\t41000.0\tRight\t2\t3\t1\tMedium/ Medium\tNormal\t1.36E7\tBorussia Dortmund\t81.0\tSUB\t35.0\t2018-07-01\t2021\tnull\tnull\tnull\tnull\t12\t27\t18\t29\t26\t13\t15\t17\t25\t17\t41\t46\t41\t72\t31\t38\t67\t38\t78\t12\t25\t23\t8\t15\t22\t42\t13\t15\t14\t81\t80\t63\t79\t81\tnull\tGK Up for Corners\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n190456\tN. Clyne\tNathaniel Edwin Clyne\t1991-04-05\t27\t175.26\t67.1\tRB\tEngland\t79\t80\t1.15E7\t94000.0\tRight\t2\t2\t3\tHigh/ Medium\tNormal\tnull\tBournemouth\t77.0\tRB\t23.0\tnull\tJun 30, 2019\tnull\tnull\tnull\tnull\t78\t54\t68\t75\t45\t76\t64\t39\t66\t78\t77\t78\t79\t75\t75\t74\t69\t76\t67\t69\t76\t79\t72\t64\t46\t75\t78\t81\t82\t10\t11\t13\t15\t7\tnull\tAvoids Using Weaker Foot\t69+2\t69+2\t69+2\t73+2\t71+2\t71+2\t71+2\t73+2\t71+2\t71+2\t71+2\t73+2\t72+2\t72+2\t72+2\t73+2\t77+2\t75+2\t75+2\t75+2\t77+2\t77+2\t76+2\t76+2\t76+2\t77+2\n190544\tA. Ljajić\tAdem Ljajić\t1991-09-29\t27\t182.88\t73.9\tCAM,LW\tSerbia\t79\t80\t1.5E7\t49000.0\tRight\t2\t4\t4\tHigh/ Low\tLean\tnull\tBeşiktaş JK\t77.0\tCAM\t22.0\tnull\tJun 30, 2019\tnull\tnull\tnull\tnull\t72\t69\t48\t78\t74\t85\t80\t83\t70\t86\t81\t76\t81\t74\t79\t78\t63\t68\t58\t78\t44\t32\t73\t77\t75\t75\t39\t35\t35\t6\t14\t7\t6\t12\tnull\tFinesse Shot,Long Shot Taker (CPU AI Only),Technical Dribbler (CPU AI Only),Backs Into Player,Takes Finesse Free Kicks\t72+2\t72+2\t72+2\t78+2\t77+2\t77+2\t77+2\t78+2\t78+2\t78+2\t78+2\t77+2\t72+2\t72+2\t72+2\t77+2\t60+2\t57+2\t57+2\t57+2\t60+2\t56+2\t47+2\t47+2\t47+2\t56+2\n191076\tJ. Guðmundsson\tJohann  Berg Guðmunds­son\t1990-10-27\t28\t152.4\t77.1\tRM,LM\tIceland\t79\t79\t1.3E7\t61000.0\tLeft\t1\t4\t4\tHigh/ High\tNormal\t2.47E7\tBurnley\t77.0\tRM\t7.0\t2016-07-20\t2021\tIceland\t72.0\tRM\t7.0\t82\t70\t64\t78\t72\t79\t79\t77\t75\t78\t79\t77\t76\t77\t76\t82\t78\t82\t70\t74\t66\t62\t74\t79\t70\t78\t60\t63\t55\t7\t6\t14\t10\t8\tnull\tFlair,Long Shot Taker (CPU AI Only),Set Play Specialist,Takes Finesse Free Kicks\t74+2\t74+2\t74+2\t77+2\t76+2\t76+2\t76+2\t77+2\t76+2\t76+2\t76+2\t77+2\t75+2\t75+2\t75+2\t77+2\t71+2\t70+2\t70+2\t70+2\t71+2\t69+2\t65+2\t65+2\t65+2\t69+2\n192598\tElkeson\tElkeson de Oliveira Cardoso\t1989-07-13\t29\t154.94\t77.1\tST,CAM\tBrazil\t79\t79\t1.3E7\t25000.0\tRight\t2\t4\t4\tHigh/ Medium\tStocky\t2.86E7\tShanghai SIPG FC\t69.0\tST\t9.0\t2016-01-21\t2020\tnull\tnull\tnull\tnull\t67\t75\t79\t75\t76\t76\t76\t80\t66\t77\t86\t76\t77\t75\t74\t86\t76\t79\t77\t72\t68\t56\t77\t78\t85\t76\t30\t57\t35\t9\t16\t7\t8\t7\tnull\tPower Free-Kick,Chip Shot (CPU AI Only)\t77+2\t77+2\t77+2\t75+2\t77+2\t77+2\t77+2\t75+2\t76+2\t76+2\t76+2\t75+2\t72+2\t72+2\t72+2\t75+2\t63+2\t63+2\t63+2\t63+2\t63+2\t62+2\t59+2\t59+2\t59+2\t62+2\n192678\tKike García\tEnrique García Martínez\t1989-11-25\t29\t185.42\t78.9\tST\tSpain\t79\t79\t1.3E7\t32000.0\tRight\t1\t4\t3\tMedium/ Medium\tNormal\t2.73E7\tSD Eibar\t77.0\tSUB\t17.0\t2016-02-03\t2021\tnull\tnull\tnull\tnull\t56\t78\t80\t72\t81\t75\t42\t46\t49\t80\t65\t66\t65\t77\t54\t82\t74\t71\t79\t75\t71\t37\t82\t65\t70\t80\t35\t34\t21\t7\t9\t8\t13\t13\tnull\tTarget Forward\t77+2\t77+2\t77+2\t72+2\t75+2\t75+2\t75+2\t72+2\t72+2\t72+2\t72+2\t70+2\t66+2\t66+2\t66+2\t70+2\t55+2\t55+2\t55+2\t55+2\t55+2\t52+2\t52+2\t52+2\t52+2\t52+2\n192679\tEscudero\tSergio Escudero Palomo\t1989-09-02\t29\t175.26\t72.1\tLB,LM\tSpain\t79\t79\t1.0E7\t20000.0\tLeft\t1\t2\t3\tMedium/ Medium\tLean\t2.1E7\tSevilla FC\t80.0\tSUB\t18.0\t2015-07-03\t2021\tnull\tnull\tnull\tnull\t81\t56\t68\t77\t51\t68\t69\t69\t77\t75\t72\t77\t74\t78\t77\t81\t74\t83\t69\t63\t75\t81\t67\t63\t66\t69\t80\t76\t80\t9\t15\t7\t13\t14\tnull\tLong Throw-in,Long Shot Taker (CPU AI Only)\t69+2\t69+2\t69+2\t70+2\t70+2\t70+2\t70+2\t70+2\t70+2\t70+2\t70+2\t72+2\t73+2\t73+2\t73+2\t72+2\t78+2\t77+2\t77+2\t77+2\t78+2\t78+2\t76+2\t76+2\t76+2\t78+2\n193152\tHerrerín\tIago Herrerín Buisán\t1988-01-25\t31\t187.96\t94.8\tGK\tSpain\t79\t79\t8000000.0\t21000.0\tRight\t1\t3\t1\tMedium/ Medium\tNormal\t1.68E7\tAthletic Club de Bilbao\t79.0\tGK\t13.0\t2012-07-01\t2021\tnull\tnull\tnull\tnull\t14\t13\t14\t16\t15\t19\t15\t12\t29\t12\t48\t39\t49\t73\t55\t22\t67\t42\t80\t16\t37\t23\t16\t40\t25\t58\t16\t16\t12\t78\t82\t81\t77\t75\tnull\tPuncher,GK Long Throw\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n193469\tVíctor Ruiz\tVíctor Ruíz Torre\t1989-01-25\t30\t185.42\t78.0\tCB\tSpain\t79\t79\t1.0E7\t35000.0\tLeft\t2\t2\t2\tMedium/ Medium\tNormal\t2.1E7\tVillarreal CF\t79.0\tLCB\t6.0\t2015-07-01\t2019\tnull\tnull\tnull\tnull\t54\t37\t77\t71\t39\t53\t67\t46\t70\t69\t55\t59\t56\t75\t58\t59\t78\t72\t80\t38\t81\t79\t39\t56\t46\t72\t80\t80\t82\t12\t8\t6\t6\t14\tnull\tAvoids Using Weaker Foot\t56+2\t56+2\t56+2\t55+2\t56+2\t56+2\t56+2\t55+2\t58+2\t58+2\t58+2\t59+2\t64+2\t64+2\t64+2\t59+2\t70+2\t74+2\t74+2\t74+2\t70+2\t72+2\t78+2\t78+2\t78+2\t72+2\n193532\tG. Medel\tGary Alexis Medel Soto\t1987-08-03\t31\t170.18\t64.9\tCDM,CB\tChile\t79\t79\t9500000.0\t50000.0\tRight\t3\t4\t3\tMedium/ High\tStocky\t1.81E7\tBeşiktaş JK\t77.0\tSUB\t6.0\t2017-08-11\t2020\tChile\t77.0\tRCB\t17.0\t50\t31\t68\t79\t58\t63\t35\t45\t73\t71\t72\t70\t78\t80\t92\t65\t82\t84\t83\t59\t89\t81\t58\t68\t58\t78\t75\t83\t76\t14\t7\t9\t6\t6\tnull\tInjury Free,Dives Into Tackles (CPU AI Only),Team Player\t61+3\t61+3\t61+3\t63+3\t64+3\t64+3\t64+3\t63+3\t67+3\t67+3\t67+3\t66+3\t72+3\t72+3\t72+3\t66+3\t73+3\t78+3\t78+3\t78+3\t73+3\t74+3\t78+3\t78+3\t78+3\t74+3\n193738\tY. Belhanda\tYounès Belhanda\t1990-02-25\t29\t152.4\t74.8\tCAM,LW\tMorocco\t79\t79\t1.25E7\t65000.0\tRight\t2\t4\t4\tMedium/ Medium\tNormal\t2.38E7\tGalatasaray SK\t76.0\tCAM\t10.0\t2017-07-04\t2021\tnull\tnull\tnull\tnull\t79\t74\t67\t78\t69\t84\t78\t78\t76\t83\t75\t72\t85\t79\t78\t78\t77\t84\t63\t79\t75\t66\t70\t78\t80\t72\t50\t54\t55\t15\t16\t11\t6\t16\tnull\tFinesse Shot,Flair,Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t74+2\t74+2\t74+2\t78+2\t77+2\t77+2\t77+2\t78+2\t78+2\t78+2\t78+2\t78+2\t76+2\t76+2\t76+2\t78+2\t71+2\t69+2\t69+2\t69+2\t71+2\t68+2\t63+2\t63+2\t63+2\t68+2\n194229\tHugo Mallo\tHugo Mallo Novegil\t1991-06-22\t27\t175.26\t72.1\tRB\tSpain\t79\t79\t1.05E7\t26000.0\tRight\t2\t3\t3\tHigh/ Medium\tNormal\t2.21E7\tRC Celta\t77.0\tRM\t2.0\t2009-07-01\t2023\tnull\tnull\tnull\tnull\t83\t28\t65\t71\t28\t69\t78\t38\t68\t80\t71\t71\t77\t80\t66\t74\t82\t91\t69\t39\t76\t81\t46\t64\t23\t70\t69\t81\t82\t14\t9\t7\t9\t15\tnull\tLeadership,Early Crosser,Team Player\t59+2\t59+2\t59+2\t65+2\t63+2\t63+2\t63+2\t65+2\t64+2\t64+2\t64+2\t69+2\t70+2\t70+2\t70+2\t69+2\t78+2\t76+2\t76+2\t76+2\t78+2\t78+2\t75+2\t75+2\t75+2\t78+2\n194761\tBorja García\tBorja García Freire\t1990-11-02\t28\t175.26\t72.1\tLM,CM\tSpain\t79\t79\t1.3E7\t35000.0\tRight\t1\t3\t3\tHigh/ Medium\tNormal\t2.73E7\tGirona FC\t77.0\tLF\t10.0\t2015-08-26\t2022\tnull\tnull\tnull\tnull\t70\t77\t53\t82\t59\t80\t67\t54\t80\t81\t81\t77\t75\t72\t77\t67\t72\t67\t67\t78\t52\t66\t77\t79\t62\t61\t45\t72\t59\t9\t13\t13\t12\t16\tnull\tLong Shot Taker (CPU AI Only),Playmaker (CPU AI Only),Takes Finesse Free Kicks\t73+2\t73+2\t73+2\t77+2\t77+2\t77+2\t77+2\t77+2\t78+2\t78+2\t78+2\t77+2\t77+2\t77+2\t77+2\t77+2\t69+2\t69+2\t69+2\t69+2\t69+2\t68+2\t63+2\t63+2\t63+2\t68+2\n194845\tW. Khazri\tWahbi Khazri\t1991-02-08\t28\t175.26\t82.1\tST,CF,CAM,LM\tTunisia\t79\t79\t1.35E7\t41000.0\tRight\t1\t4\t4\tHigh/ High\tStocky\t2.57E7\tAS Saint-Étienne\t76.0\tLS\t10.0\t2018-07-17\t2022\tnull\tnull\tnull\tnull\t79\t79\t54\t77\t69\t79\t80\t79\t69\t81\t75\t77\t80\t79\t67\t85\t44\t69\t68\t83\t75\t61\t81\t79\t75\t80\t30\t49\t30\t6\t7\t11\t11\t6\tnull\tLong Shot Taker (CPU AI Only),Speed Dribbler (CPU AI Only),Playmaker (CPU AI Only),Set Play Specialist,Takes Finesse Free Kicks\t76+2\t76+2\t76+2\t79+2\t79+2\t79+2\t79+2\t79+2\t78+2\t78+2\t78+2\t77+2\t74+2\t74+2\t74+2\t77+2\t64+2\t63+2\t63+2\t63+2\t64+2\t60+2\t54+2\t54+2\t54+2\t60+2\n194957\tP. Jones\tPhil Jones\t1992-02-21\t27\t185.42\t71.2\tCB\tEngland\t79\t80\t1.2E7\t110000.0\tRight\t2\t3\t2\tMedium/ High\tNormal\t2.37E7\tManchester United\t82.0\tLCB\t4.0\t2011-07-01\t2023\tnull\tnull\tnull\tnull\t60\t44\t78\t73\t49\t59\t38\t35\t67\t64\t54\t59\t52\t77\t59\t68\t82\t64\t79\t59\t86\t80\t42\t54\t55\t65\t76\t80\t81\t10\t8\t6\t16\t11\tnull\tInjury Prone,Dives Into Tackles (CPU AI Only)\t60+2\t60+2\t60+2\t58+2\t58+2\t58+2\t58+2\t58+2\t59+2\t59+2\t59+2\t60+2\t64+2\t64+2\t64+2\t60+2\t70+2\t73+2\t73+2\t73+2\t70+2\t72+2\t78+2\t78+2\t78+2\t72+2\n195586\tA. Finnbogason\tAlfreð Finnbogason\t1989-02-01\t30\t182.88\t79.8\tST\tIceland\t79\t79\t1.25E7\t35000.0\tRight\t2\t4\t3\tMedium/ Medium\tNormal\t2.25E7\tFC Augsburg\t74.0\tST\t27.0\t2014-07-02\t2020\tIceland\t72.0\tST\t11.0\t37\t84\t67\t71\t79\t75\t56\t51\t67\t75\t67\t68\t67\t82\t70\t78\t66\t72\t78\t77\t64\t20\t86\t72\t89\t83\t30\t32\t34\t6\t15\t16\t15\t11\tnull\tInjury Prone,Finesse Shot\t77+2\t77+2\t77+2\t72+2\t76+2\t76+2\t76+2\t72+2\t75+2\t75+2\t75+2\t70+2\t69+2\t69+2\t69+2\t70+2\t51+2\t54+2\t54+2\t54+2\t51+2\t49+2\t48+2\t48+2\t48+2\t49+2\n238794\tVinícius Júnior\tVinícius José de Oliveira Júnior\t2000-07-12\t18\t175.26\t73.0\tLW,RW\tBrazil\t78\t92\t2.05E7\t70000.0\tRight\t1\t4\t5\tHigh/ Medium\tLean\t5.48E7\tReal Madrid\t86.0\tLW\t28.0\t2018-07-12\t2025\tnull\tnull\tnull\tnull\t71\t70\t50\t73\t71\t82\t77\t62\t66\t81\t92\t94\t93\t70\t84\t74\t74\t79\t64\t68\t48\t26\t76\t71\t65\t77\t32\t25\t18\t5\t7\t7\t7\t10\t#Speedster,#Acrobat\tAvoids Using Weaker Foot,Flair,Speed Dribbler (CPU AI Only),Technical Dribbler (CPU AI Only),Backs Into Player\t73+2\t73+2\t73+2\t78+2\t76+2\t76+2\t76+2\t78+2\t76+2\t76+2\t76+2\t77+2\t68+2\t68+2\t68+2\t77+2\t57+2\t52+2\t52+2\t52+2\t57+2\t53+2\t43+2\t43+2\t43+2\t53+2\n241184\tJunior Firpo\tHéctor Junior Firpo Adamés\t1996-08-22\t22\t182.88\t74.8\tLWB,LB,CB,LM\tSpain\t78\t85\t1.25E7\t17000.0\tLeft\t1\t3\t3\tMedium/ Medium\tNormal\t2.88E7\tReal Betis\t80.0\tSUB\t20.0\t2015-07-01\t2023\tnull\tnull\tnull\tnull\t77\t66\t74\t76\t55\t72\t65\t43\t70\t77\t83\t82\t65\t71\t62\t68\t64\t79\t75\t61\t55\t75\t76\t61\t38\t65\t70\t78\t79\t7\t7\t7\t14\t14\tnull\tnull\t72+2\t72+2\t72+2\t73+2\t72+2\t72+2\t72+2\t73+2\t71+2\t71+2\t71+2\t74+2\t72+2\t72+2\t72+2\t74+2\t76+2\t73+2\t73+2\t73+2\t76+2\t76+2\t73+2\t73+2\t73+2\t76+2\n80\tE. Belözoğlu\tEmre Belözoğlu\t1980-09-07\t38\t170.18\t72.1\tCM,CDM\tTurkey\t79\t79\t4000000.0\t23000.0\tLeft\t2\t4\t4\tMedium/ Medium\tStocky\t7600000.0\tMedipol Başakşehir FK\t76.0\tLDM\t5.0\t2015-07-09\t2019\tnull\tnull\tnull\tnull\t80\t68\t43\t85\t69\t78\t83\t80\t86\t81\t54\t38\t68\t72\t81\t77\t72\t58\t64\t76\t87\t66\t63\t85\t85\t80\t65\t67\t60\t7\t11\t7\t14\t8\tnull\tLeadership,Long Passer (CPU AI Only),Long Shot Taker (CPU AI Only),Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only)\t66+2\t66+2\t66+2\t72+2\t72+2\t72+2\t72+2\t72+2\t75+2\t75+2\t75+2\t72+2\t77+2\t77+2\t77+2\t72+2\t68+2\t73+2\t73+2\t73+2\t68+2\t65+2\t65+2\t65+2\t65+2\t65+2\n49369\tFernando Torres\tFernando José Torres Sanz\t1984-03-20\t34\t185.42\t78.9\tST\tSpain\t79\t79\t6500000.0\t9000.0\tRight\t3\t4\t3\tMedium/ Medium\tNormal\t8100000.0\tSagan Tosu\t67.0\tRS\t9.0\t2018-07-16\t2019\tnull\tnull\tnull\tnull\t68\t76\t77\t77\t80\t80\t80\t63\t51\t78\t71\t77\t70\t73\t51\t83\t75\t60\t74\t72\t62\t20\t80\t76\t74\t69\t39\t22\t18\t14\t13\t8\t9\t10\tnull\tBeat Offside Trap,Speed Dribbler (CPU AI Only)\t77+3\t77+3\t77+3\t75+3\t77+3\t77+3\t77+3\t75+3\t75+3\t75+3\t75+3\t73+3\t66+3\t66+3\t66+3\t73+3\t53+3\t51+3\t51+3\t51+3\t53+3\t50+3\t47+3\t47+3\t47+3\t50+3\n121944\tB. Schweinsteiger\tBastian Schweinsteiger\t1984-08-01\t34\t182.88\t78.9\tCDM,CB,CM\tGermany\t79\t79\t5000000.0\t10000.0\tRight\t4\t3\t3\tMedium/ Medium\tNormal\t7500000.0\tChicago Fire\t69.0\tRDM\t31.0\t2017-03-21\t2019\tnull\tnull\tnull\tnull\t76\t69\t75\t82\t79\t71\t82\t74\t83\t78\t36\t37\t61\t81\t63\t81\t71\t67\t75\t77\t74\t73\t73\t81\t77\t87\t76\t72\t73\t14\t14\t13\t13\t11\tnull\tInjury Prone,Long Passer (CPU AI Only),Playmaker (CPU AI Only),Team Player\t71+3\t71+3\t71+3\t70+3\t72+3\t72+3\t72+3\t70+3\t74+3\t74+3\t74+3\t70+3\t77+3\t77+3\t77+3\t70+3\t71+3\t76+3\t76+3\t76+3\t71+3\t70+3\t73+3\t73+3\t73+3\t70+3\n124375\tB. Yılmaz\tBurak Yılmaz\t1985-07-15\t33\t187.96\t77.1\tST\tTurkey\t79\t79\t1.0E7\t59000.0\tRight\t2\t3\t3\tHigh/ Low\tLean\t1.9E7\tBeşiktaş JK\t77.0\tST\t71.0\t2019-01-19\t2021\tnull\tnull\tnull\tnull\t68\t82\t72\t66\t77\t69\t60\t70\t60\t69\t81\t79\t72\t81\t48\t85\t66\t69\t79\t74\t85\t33\t85\t64\t79\t71\t29\t29\t26\t14\t15\t11\t8\t12\tnull\tDiver,Injury Prone,Beat Offside Trap,Backs Into Player\t77+2\t77+2\t77+2\t73+2\t75+2\t75+2\t75+2\t73+2\t71+2\t71+2\t71+2\t72+2\t65+2\t65+2\t65+2\t72+2\t55+2\t53+2\t53+2\t53+2\t55+2\t53+2\t50+2\t50+2\t50+2\t53+2\n150418\tM. Gómez\tMario Gómez García\t1985-07-10\t33\t187.96\t88.9\tST\tGermany\t79\t79\t1.0E7\t44000.0\tRight\t3\t4\t3\tMedium/ Low\tNormal\t1.7E7\tVfB Stuttgart\t76.0\tLS\t27.0\t2018-01-01\t2020\tnull\tnull\tnull\tnull\t60\t80\t82\t68\t75\t71\t68\t36\t50\t71\t63\t66\t62\t80\t50\t84\t76\t60\t86\t71\t73\t20\t83\t62\t69\t82\t40\t31\t20\t8\t8\t9\t7\t14\t#Strength\tBeat Offside Trap,Target Forward\t77+3\t77+3\t77+3\t70+3\t73+3\t73+3\t73+3\t70+3\t70+3\t70+3\t70+3\t68+3\t63+3\t63+3\t63+3\t68+3\t51+3\t51+3\t51+3\t51+3\t51+3\t49+3\t51+3\t51+3\t51+3\t49+3\n152908\tA. Young\tAshley Young\t1985-07-09\t33\t175.26\t64.9\tRB,LB\tEngland\t79\t79\t7000000.0\t110000.0\tRight\t2\t3\t4\tHigh/ Medium\tLean\t1.33E7\tManchester United\t82.0\tRB\t18.0\t2011-07-01\t2020\tEngland\t82.0\tSUB\t18.0\t83\t64\t57\t78\t71\t77\t86\t75\t69\t78\t77\t74\t76\t79\t76\t75\t55\t75\t67\t65\t83\t77\t68\t74\t60\t74\t76\t78\t75\t16\t10\t15\t16\t15\tnull\tDiver,Dives Into Tackles (CPU AI Only),Team Player\t70+2\t70+2\t70+2\t74+2\t73+2\t73+2\t73+2\t74+2\t74+2\t74+2\t74+2\t75+2\t74+2\t74+2\t74+2\t75+2\t77+2\t76+2\t76+2\t76+2\t77+2\t76+2\t73+2\t73+2\t73+2\t76+2\n157301\tR. Babel\tRyan Guno Babel\t1986-12-19\t32\t185.42\t84.8\tLW\tNetherlands\t79\t79\t1.1E7\t70000.0\tRight\t3\t3\t4\tMedium/ Low\tNormal\t2.09E7\tFulham\t76.0\tCAM\t12.0\t2019-01-15\t2019\tNetherlands\t81.0\tLM\t11.0\t72\t77\t71\t71\t67\t82\t77\t50\t66\t80\t83\t82\t77\t71\t73\t85\t82\t77\t78\t82\t58\t34\t77\t74\t70\t75\t39\t28\t21\t16\t8\t12\t11\t15\tnull\tAvoids Using Weaker Foot,Flair,Long Shot Taker (CPU AI Only),Technical Dribbler (CPU AI Only)\t77+3\t77+3\t77+3\t77+3\t77+3\t77+3\t77+3\t77+3\t76+3\t76+3\t76+3\t76+3\t70+3\t70+3\t70+3\t76+3\t58+3\t55+3\t55+3\t55+3\t58+3\t54+3\t50+3\t50+3\t50+3\t54+3\n158121\tB. Costil\tBenoît Costil\t1987-07-03\t31\t187.96\t88.0\tGK\tFrance\t79\t79\t8000000.0\t35000.0\tRight\t2\t3\t1\tMedium/ Medium\tNormal\t1.6E7\tFC Girondins de Bordeaux\t74.0\tGK\t1.0\t2017-06-19\t2021\tnull\tnull\tnull\tnull\t11\t14\t15\t35\t12\t13\t12\t11\t33\t12\t49\t53\t38\t75\t45\t22\t49\t28\t65\t15\t22\t22\t12\t44\t15\t58\t16\t11\t14\t80\t76\t79\t77\t79\tnull\tInjury Free,Puncher\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\tnull\n158232\tS. Kalou\tSalomon Armand Magloire Kalou\t1985-08-05\t33\t182.88\t77.1\tLM,ST,RM\tIvory Coast\t79\t79\t1.0E7\t34000.0\tRight\t3\t3\t4\tMedium/ Low\tLean\t1.7E7\tHertha BSC\t77.0\tLS\t8.0\t2014-08-31\t2020\tnull\tnull\tnull\tnull\t67\t82\t77\t79\t78\t87\t78\t62\t68\t86\t67\t65\t76\t82\t76\t76\t76\t64\t67\t67\t35\t32\t83\t78\t85\t81\t50\t38\t27\t8\t9\t14\t7\t6\t#Dribbler\tFinesse Shot,Technical Dribbler (CPU AI Only)\t78+3\t78+3\t78+3\t78+3\t80+3\t80+3\t80+3\t78+3\t79+3\t79+3\t79+3\t77+3\t73+3\t73+3\t73+3\t77+3\t59+3\t58+3\t58+3\t58+3\t59+3\t56+3\t52+3\t52+3\t52+3\t56+3\n159065\tE. Lavezzi\tEzequiel Iván Lavezzi\t1985-05-03\t33\t172.72\t74.8\tST,CAM\tArgentina\t79\t79\t8000000.0\t22000.0\tRight\t3\t4\t4\tHigh/ Low\tStocky\t1.72E7\tHebei China Fortune FC\t66.0\tCAM\t22.0\t2016-02-17\t2023\tnull\tnull\tnull\tnull\t77\t80\t57\t80\t77\t82\t83\t79\t65\t83\t85\t83\t87\t81\t85\t79\t82\t68\t71\t78\t73\t31\t82\t83\t69\t78\t40\t40\t37\t6\t15\t11\t9\t12\t#Acrobat\tDiver,Speed Dribbler (CPU AI Only),Technical Dribbler (CPU AI Only)\t78+3\t78+3\t78+3\t81+3\t81+3\t81+3\t81+3\t81+3\t81+3\t81+3\t81+3\t80+3\t73+3\t73+3\t73+3\t80+3\t62+3\t60+3\t60+3\t60+3\t62+3\t59+3\t53+3\t53+3\t53+3\t59+3\n161648\tH. Ben Arfa\tHatem Ben Arfa\t1987-03-07\t32\t152.4\t73.9\tCAM,ST\tFrance\t79\t79\t1.1E7\t38000.0\tLeft\t3\t4\t5\tMedium/ Low\tLean\t2.09E7\tStade Rennais FC\t75.0\tCAM\t18.0\t2018-09-02\t2019\tnull\tnull\tnull\tnull\t70\t70\t46\t78\t72\t88\t76\t73\t74\t80\t77\t69\t82\t70\t79\t78\t74\t60\t65\t75\t61\t36\t72\t78\t84\t82\t31\t27\t21\t12\t8\t9\t13\t12\t#Dribbler\tSelfish,Flair,Long Shot Taker (CPU AI Only),Playmaker (CPU AI Only),Technical Dribbler (CPU AI Only),Through Ball\t71+3\t71+3\t71+3\t76+3\t76+3\t76+3\t76+3\t76+3\t77+3\t77+3\t77+3\t75+3\t71+3\t71+3\t71+3\t75+3\t55+3\t55+3\t55+3\t55+3\t55+3\t50+3\t45+3\t45+3\t45+3\t50+3"
+          },
+          {
+            "type": "HTML",
+            "data": "<div class=\"result-alert alert-warning\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Output is truncated</strong> to 102400 bytes. Learn more about <strong>ZEPPELIN_INTERPRETER_OUTPUT_LIMIT</strong></div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=194",
+              "$$hashKey": "object:32677"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616492787044_1349406000",
+      "id": "paragraph_1616492787044_1349406000",
+      "dateCreated": "2021-03-23T09:46:27+0000",
+      "dateStarted": "2021-03-23T14:28:02+0000",
+      "dateFinished": "2021-03-23T14:28:07+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:32281"
+    },
+    {
+      "text": "%sql\n",
+      "user": "admin",
+      "dateUpdated": "2021-03-23T14:28:02+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616509682278_1269138426",
+      "id": "paragraph_1616509682278_1269138426",
+      "dateCreated": "2021-03-23T14:28:02+0000",
+      "status": "READY",
+      "$$hashKey": "object:32282"
+    }
+  ],
+  "name": "fifa-analyze-position",
+  "id": "2G42REFJZ",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.1-SNAPSHOT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": true,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/fifa-analyze-position"
+}
