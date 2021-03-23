@@ -31,7 +31,7 @@ export PLATYS_VERSION=2.4.0
 export NETWORK_NAME=eth0
 export USERNAME=ubuntu
 export PASSWORD=ubuntu
-export ZIP_PASSWORD=football2021!
+export ZIP_PASSWORD=xxxxx
 
 # Prepare Environment Variables 
 export PUBLIC_IP=$(curl ipinfo.io/ip)
