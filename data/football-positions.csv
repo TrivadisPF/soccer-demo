@@ -1,0 +1,19 @@
+﻿id,short_name,long_name
+1,GK,Goalkeeper
+2,CB,Center Back
+3,LB,Left Full Back
+4,RB,Righ Full Back
+5,LWB,Left Wing Back
+6,RWB,Right Wing Back
+7,SW,Sweaper
+8,DM,Defensive Midfielder
+9,RW,Right Wing
+10,LW,Left Wing
+11,CM,Central Midfielder
+12,AM,Attacking Midfielder
+13,LM,Left Midfielder
+14,RM,Right Midfielder
+15,CF,Center Forward
+16,RF,Right Forward
+17,LF,Left Forward
+18,ST,Striker
