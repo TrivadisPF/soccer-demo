@@ -79,9 +79,9 @@ The following user interfaces are available:
 Download the data from: <https://data.world/raghav333/fifa-players>
 
 ```
-docker exec -ti awscli s3cmd mb s3://fifa-bucket
-docker exec -ti awscli s3cmd put /data-transfer/fifa_cleaned.csv s3://fifa-bucket/
-docker exec -ti awscli s3cmd put /data-transfer/football-positions.csv s3://fifa-bucket/
+docker exec -ti awscli s3cmd mb s3://soccer-bucket
+docker exec -ti awscli s3cmd put /data-transfer/fifa_cleaned.csv s3://soccer-bucket/raw/
+docker exec -ti awscli s3cmd put /data-transfer/football-positions.csv s3://soccer-bucket/raw/
 ```
 
 ## Create Kafka Topics
