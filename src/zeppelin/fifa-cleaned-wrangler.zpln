@@ -3,7 +3,7 @@
     {
       "text": "%md # FIFA Data Wrangling",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:36:36+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -36,19 +36,17 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616483977296_1158261442",
+      "jobName": "paragraph_1616520126547_1621923699",
       "id": "paragraph_1616483977296_1158261442",
-      "dateCreated": "2021-03-23T07:19:37+0000",
-      "dateStarted": "2021-03-23T16:36:36+0000",
-      "dateFinished": "2021-03-23T16:36:36+0000",
-      "status": "FINISHED",
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
       "focus": true,
-      "$$hashKey": "object:14322"
+      "$$hashKey": "object:21000"
     },
     {
-      "text": "val fifaRawDF = spark.read.options(Map(\"inferSchema\"->\"true\",\"delimiter\"->\",\",\"header\"->\"true\"))\n                            .csv(\"s3a://fifa-bucket/fifa_cleaned.csv\")",
+      "text": "val fifaRawDF = spark.read.options(Map(\"inferSchema\"->\"true\",\"delimiter\"->\",\",\"header\"->\"true\"))\n                            .csv(\"s3a://soccer-bucket/raw/fifa_cleaned.csv\")",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:36:36+0000",
+      "dateUpdated": "2021-03-23T17:22:25+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -68,47 +66,29 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
+        "code": "ERROR",
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mfifaRawDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id: int, name: string ... 90 more fields]\n"
+            "data": "org.apache.zeppelin.interpreter.InterpreterException: java.io.IOException: Fail to launch interpreter process:\nSLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/zeppelin/interpreter/spark/spark-interpreter-0.9.1-SNAPSHOT.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/hadoop-3.2.1/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\nIvy Default Cache set to: /root/.ivy2/cache\nThe jars for the packages stored in: /root/.ivy2/jars\n:: loading settings :: url = jar:file:/spark/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml\ncom.github.mrpowers#spark-daria added as a dependency\n:: resolving dependencies :: org.apache.spark#spark-submit-parent-56b9b875-e0a4-44aa-a910-dae52c103e9d;1.0\n\tconfs: [default]\n:: resolution report :: resolve 1148ms :: artifacts dl 0ms\n\t:: modules in use:\n\t---------------------------------------------------------------------\n\t|                  |            modules            ||   artifacts   |\n\t|       conf       | number| search|dwnlded|evicted|| number|dwnlded|\n\t---------------------------------------------------------------------\n\t|      default     |   1   |   0   |   0   |   0   ||   0   |   0   |\n\t---------------------------------------------------------------------\n\n:: problems summary ::\n:::: WARNINGS\n\t\tmodule not found: com.github.mrpowers#spark-daria;1.0.0\n\n\t==== local-m2-cache: tried\n\n\t  file:/root/.m2/repository/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.pom\n\n\t  -- artifact com.github.mrpowers#spark-daria;1.0.0!spark-daria.jar:\n\n\t  file:/root/.m2/repository/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.jar\n\n\t==== local-ivy-cache: tried\n\n\t  /root/.ivy2/local/com.github.mrpowers/spark-daria/1.0.0/ivys/ivy.xml\n\n\t  -- artifact com.github.mrpowers#spark-daria;1.0.0!spark-daria.jar:\n\n\t  /root/.ivy2/local/com.github.mrpowers/spark-daria/1.0.0/jars/spark-daria.jar\n\n\t==== central: tried\n\n\t  https://repo1.maven.org/maven2/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.pom\n\n\t  -- artifact com.github.mrpowers#spark-daria;1.0.0!spark-daria.jar:\n\n\t  https://repo1.maven.org/maven2/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.jar\n\n\t==== spark-packages: tried\n\n\t  https://dl.bintray.com/spark-packages/maven/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.pom\n\n\t  -- artifact com.github.mrpowers#spark-daria;1.0.0!spark-daria.jar:\n\n\t  https://dl.bintray.com/spark-packages/maven/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.jar\n\n\t\t::::::::::::::::::::::::::::::::::::::::::::::\n\n\t\t::          UNRESOLVED DEPENDENCIES         ::\n\n\t\t::::::::::::::::::::::::::::::::::::::::::::::\n\n\t\t:: com.github.mrpowers#spark-daria;1.0.0: not found\n\n\t\t::::::::::::::::::::::::::::::::::::::::::::::\n\n\n\n:: USE VERBOSE OR DEBUG MESSAGE LEVEL FOR MORE DETAILS\nException in thread \"main\" java.lang.RuntimeException: [unresolved dependency: com.github.mrpowers#spark-daria;1.0.0: not found]\n\tat org.apache.spark.deploy.SparkSubmitUtils$.resolveMavenCoordinates(SparkSubmit.scala:1389)\n\tat org.apache.spark.deploy.DependencyUtils$.resolveMavenDependencies(DependencyUtils.scala:54)\n\tat org.apache.spark.deploy.SparkSubmit.prepareSubmitEnvironment(SparkSubmit.scala:308)\n\tat org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:871)\n\tat org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:180)\n\tat org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:203)\n\tat org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:90)\n\tat org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1007)\n\tat org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1016)\n\tat org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)\n\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.open(RemoteInterpreter.java:129)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.getFormType(RemoteInterpreter.java:271)\n\tat org.apache.zeppelin.notebook.Paragraph.jobRun(Paragraph.java:444)\n\tat org.apache.zeppelin.notebook.Paragraph.jobRun(Paragraph.java:72)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:172)\n\tat org.apache.zeppelin.scheduler.AbstractScheduler.runJob(AbstractScheduler.java:132)\n\tat org.apache.zeppelin.scheduler.RemoteScheduler$JobRunner.run(RemoteScheduler.java:182)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: java.io.IOException: Fail to launch interpreter process:\nSLF4J: Class path contains multiple SLF4J bindings.\nSLF4J: Found binding in [jar:file:/zeppelin/interpreter/spark/spark-interpreter-0.9.1-SNAPSHOT.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: Found binding in [jar:file:/hadoop-3.2.1/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]\nSLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.\nSLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]\nIvy Default Cache set to: /root/.ivy2/cache\nThe jars for the packages stored in: /root/.ivy2/jars\n:: loading settings :: url = jar:file:/spark/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml\ncom.github.mrpowers#spark-daria added as a dependency\n:: resolving dependencies :: org.apache.spark#spark-submit-parent-56b9b875-e0a4-44aa-a910-dae52c103e9d;1.0\n\tconfs: [default]\n:: resolution report :: resolve 1148ms :: artifacts dl 0ms\n\t:: modules in use:\n\t---------------------------------------------------------------------\n\t|                  |            modules            ||   artifacts   |\n\t|       conf       | number| search|dwnlded|evicted|| number|dwnlded|\n\t---------------------------------------------------------------------\n\t|      default     |   1   |   0   |   0   |   0   ||   0   |   0   |\n\t---------------------------------------------------------------------\n\n:: problems summary ::\n:::: WARNINGS\n\t\tmodule not found: com.github.mrpowers#spark-daria;1.0.0\n\n\t==== local-m2-cache: tried\n\n\t  file:/root/.m2/repository/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.pom\n\n\t  -- artifact com.github.mrpowers#spark-daria;1.0.0!spark-daria.jar:\n\n\t  file:/root/.m2/repository/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.jar\n\n\t==== local-ivy-cache: tried\n\n\t  /root/.ivy2/local/com.github.mrpowers/spark-daria/1.0.0/ivys/ivy.xml\n\n\t  -- artifact com.github.mrpowers#spark-daria;1.0.0!spark-daria.jar:\n\n\t  /root/.ivy2/local/com.github.mrpowers/spark-daria/1.0.0/jars/spark-daria.jar\n\n\t==== central: tried\n\n\t  https://repo1.maven.org/maven2/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.pom\n\n\t  -- artifact com.github.mrpowers#spark-daria;1.0.0!spark-daria.jar:\n\n\t  https://repo1.maven.org/maven2/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.jar\n\n\t==== spark-packages: tried\n\n\t  https://dl.bintray.com/spark-packages/maven/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.pom\n\n\t  -- artifact com.github.mrpowers#spark-daria;1.0.0!spark-daria.jar:\n\n\t  https://dl.bintray.com/spark-packages/maven/com/github/mrpowers/spark-daria/1.0.0/spark-daria-1.0.0.jar\n\n\t\t::::::::::::::::::::::::::::::::::::::::::::::\n\n\t\t::          UNRESOLVED DEPENDENCIES         ::\n\n\t\t::::::::::::::::::::::::::::::::::::::::::::::\n\n\t\t:: com.github.mrpowers#spark-daria;1.0.0: not found\n\n\t\t::::::::::::::::::::::::::::::::::::::::::::::\n\n\n\n:: USE VERBOSE OR DEBUG MESSAGE LEVEL FOR MORE DETAILS\nException in thread \"main\" java.lang.RuntimeException: [unresolved dependency: com.github.mrpowers#spark-daria;1.0.0: not found]\n\tat org.apache.spark.deploy.SparkSubmitUtils$.resolveMavenCoordinates(SparkSubmit.scala:1389)\n\tat org.apache.spark.deploy.DependencyUtils$.resolveMavenDependencies(DependencyUtils.scala:54)\n\tat org.apache.spark.deploy.SparkSubmit.prepareSubmitEnvironment(SparkSubmit.scala:308)\n\tat org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:871)\n\tat org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:180)\n\tat org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:203)\n\tat org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:90)\n\tat org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1007)\n\tat org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1016)\n\tat org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)\n\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterManagedProcess.start(RemoteInterpreterManagedProcess.java:126)\n\tat org.apache.zeppelin.interpreter.ManagedInterpreterGroup.getOrCreateInterpreterProcess(ManagedInterpreterGroup.java:68)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.getOrCreateInterpreterProcess(RemoteInterpreter.java:104)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.internal_create(RemoteInterpreter.java:154)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.open(RemoteInterpreter.java:126)\n\t... 13 more\n"
           }
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=197",
-              "$$hashKey": "object:26417"
-            },
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=198",
-              "$$hashKey": "object:26418"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616448082889_922787286",
+      "jobName": "paragraph_1616520126547_1780852067",
       "id": "paragraph_1616448082889_922787286",
-      "dateCreated": "2021-03-22T21:21:22+0000",
-      "dateStarted": "2021-03-23T16:36:36+0000",
-      "dateFinished": "2021-03-23T16:37:16+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14323"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "dateStarted": "2021-03-23T17:22:25+0000",
+      "dateFinished": "2021-03-23T17:22:28+0000",
+      "status": "ERROR",
+      "$$hashKey": "object:21001"
     },
     {
       "text": "fifaRawDF.printSchema()",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:37:16+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -139,18 +119,16 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616448383396_1462117477",
+      "jobName": "paragraph_1616520126548_1582393589",
       "id": "paragraph_1616448383396_1462117477",
-      "dateCreated": "2021-03-22T21:26:23+0000",
-      "dateStarted": "2021-03-23T16:37:16+0000",
-      "dateFinished": "2021-03-23T16:37:17+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14324"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21002"
     },
     {
       "text": "fifaRawDF.createOrReplaceTempView(\"fifa_raw_t\")",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:37:17+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -176,16 +154,16 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616448789370_692071296",
+      "jobName": "paragraph_1616520126548_755766396",
       "id": "paragraph_1616448789370_692071296",
-      "dateCreated": "2021-03-22T21:33:09+0000",
-      "dateStarted": "2021-03-23T16:37:17+0000",
-      "dateFinished": "2021-03-23T16:37:17+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14326"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21003"
     },
     {
+      "text": "%md ## BODY_TYPE_T table",
       "user": "admin",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -206,19 +184,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616517382108_1973786396",
-      "id": "paragraph_1616517382108_1973786396",
-      "dateCreated": "2021-03-23T16:36:22+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:25951",
-      "text": "%md ## BODY_TYPE_T table",
-      "dateUpdated": "2021-03-23T16:37:17+0000",
-      "dateFinished": "2021-03-23T16:37:17+0000",
-      "dateStarted": "2021-03-23T16:37:17+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -227,13 +192,21 @@
             "data": "<div class=\"markdown-body\">\n<h2>BODY_TYPE_T table</h2>\n\n</div>"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616520126548_863393651",
+      "id": "paragraph_1616517382108_1973786396",
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21004"
     },
     {
       "text": "%sql\nSELECT row_number() OVER (ORDER BY name) AS id, name FROM (\n        SELECT DISTINCT(body_type) AS name \n        FROM fifa_raw_t\n        ) t;\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:37:17+0000",
-      "progress": 99,
+      "dateUpdated": "2021-03-23T17:22:06+0000",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -290,34 +263,18 @@
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=199",
-              "$$hashKey": "object:26586"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616483255453_1429640602",
+      "jobName": "paragraph_1616520126548_429020412",
       "id": "paragraph_1616483255453_1429640602",
-      "dateCreated": "2021-03-23T07:07:35+0000",
-      "dateStarted": "2021-03-23T16:37:17+0000",
-      "dateFinished": "2021-03-23T16:37:50+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14330"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21005"
     },
     {
       "text": "val bodyTypeDF = spark.sql(\"\"\" \nSELECT row_number() OVER (ORDER BY name) AS id, name FROM (\n        SELECT DISTINCT(body_type) AS name \n        FROM fifa_raw_t\n        ) t;\n\"\"\")\nbodyTypeDF.createOrReplaceTempView(\"body_type_t\")           ",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:37:50+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -348,18 +305,16 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616489465065_1914571206",
+      "jobName": "paragraph_1616520126548_634113351",
       "id": "paragraph_1616489465065_1914571206",
-      "dateCreated": "2021-03-23T08:51:05+0000",
-      "dateStarted": "2021-03-23T16:37:50+0000",
-      "dateFinished": "2021-03-23T16:37:51+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14331"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21006"
     },
     {
       "text": "%md ## NATIONALITY_T table\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:37:51+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -392,19 +347,17 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616449256689_1369816585",
+      "jobName": "paragraph_1616520126548_797337395",
       "id": "paragraph_1616449256689_1369816585",
-      "dateCreated": "2021-03-22T21:40:56+0000",
-      "dateStarted": "2021-03-23T16:37:51+0000",
-      "dateFinished": "2021-03-23T16:37:51+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14332"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21007"
     },
     {
       "text": "%sql\nSELECT row_number() OVER (ORDER BY nationality) AS id, nationality FROM (\n        SELECT DISTINCT(nationality) as nationality \n        FROM fifa_raw_t\n        ) t;",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:37:51+0000",
-      "progress": 100,
+      "dateUpdated": "2021-03-23T17:22:06+0000",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -461,34 +414,18 @@
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=200",
-              "$$hashKey": "object:27129"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616449305636_2081671687",
+      "jobName": "paragraph_1616520126548_1384260160",
       "id": "paragraph_1616449305636_2081671687",
-      "dateCreated": "2021-03-22T21:41:45+0000",
-      "dateStarted": "2021-03-23T16:37:51+0000",
-      "dateFinished": "2021-03-23T16:38:14+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14333"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21008"
     },
     {
       "text": "val nationalityDF = spark.sql(\"\"\" \nSELECT row_number() OVER (ORDER BY nationality) AS id, nationality FROM (\n        SELECT DISTINCT(nationality) as nationality \n        FROM fifa_raw_t\n        ) t;\n\"\"\")\nnationalityDF.createOrReplaceTempView(\"nationality_t\")            ",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:14+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -519,19 +456,17 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616449496724_2101394054",
+      "jobName": "paragraph_1616520126549_1203084848",
       "id": "paragraph_1616449496724_2101394054",
-      "dateCreated": "2021-03-22T21:44:56+0000",
-      "dateStarted": "2021-03-23T16:38:14+0000",
-      "dateFinished": "2021-03-23T16:38:15+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14334"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21009"
     },
     {
       "text": "%sql\nselect * from nationality_t",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:15+0000",
-      "progress": 94,
+      "dateUpdated": "2021-03-23T17:22:06+0000",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -588,34 +523,18 @@
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=201",
-              "$$hashKey": "object:27711"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616449688821_1136744187",
+      "jobName": "paragraph_1616520126549_660830866",
       "id": "paragraph_1616449688821_1136744187",
-      "dateCreated": "2021-03-22T21:48:08+0000",
-      "dateStarted": "2021-03-23T16:38:15+0000",
-      "dateFinished": "2021-03-23T16:38:29+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14335"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21010"
     },
     {
       "text": "%md ## CLUB_TEAM_T table\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:29+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -648,19 +567,17 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616483716931_557252218",
+      "jobName": "paragraph_1616520126549_1107007797",
       "id": "paragraph_1616483716931_557252218",
-      "dateCreated": "2021-03-23T07:15:16+0000",
-      "dateStarted": "2021-03-23T16:38:29+0000",
-      "dateFinished": "2021-03-23T16:38:29+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14336"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21011"
     },
     {
       "text": "%sql\nSELECT row_number() OVER (ORDER BY club_team, club_rating) AS id, club_team AS name, club_rating AS rating FROM (\n        SELECT DISTINCT club_team, club_rating\n        FROM fifa_raw_t\n        WHERE club_team IS NOT NULL\n        ) t;\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:29+0000",
-      "progress": 100,
+      "dateUpdated": "2021-03-23T17:22:06+0000",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -718,34 +635,18 @@
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=202",
-              "$$hashKey": "object:28280"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616483860968_1228875990",
+      "jobName": "paragraph_1616520126549_1192222347",
       "id": "paragraph_1616483860968_1228875990",
-      "dateCreated": "2021-03-23T07:17:40+0000",
-      "dateStarted": "2021-03-23T16:38:29+0000",
-      "dateFinished": "2021-03-23T16:38:37+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14337"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21012"
     },
     {
       "text": "val clubTeamDF = spark.sql(\"\"\" \nSELECT row_number() OVER (ORDER BY club_team, club_rating) AS id, club_team AS name, club_rating AS rating FROM (\n        SELECT DISTINCT club_team, club_rating\n        FROM fifa_raw_t\n        WHERE club_team IS NOT NULL\n        ) t;\n\"\"\")\nclubTeamDF.createOrReplaceTempView(\"club_team_t\")      ",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:37+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -776,18 +677,16 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616483754534_159574296",
+      "jobName": "paragraph_1616520126550_330019085",
       "id": "paragraph_1616483754534_159574296",
-      "dateCreated": "2021-03-23T07:15:54+0000",
-      "dateStarted": "2021-03-23T16:38:37+0000",
-      "dateFinished": "2021-03-23T16:38:38+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14338"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21013"
     },
     {
       "text": "%md ## NATIONAL_TEAM_T table\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:38+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -820,19 +719,17 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616483743273_164285727",
+      "jobName": "paragraph_1616520126550_1680625877",
       "id": "paragraph_1616483743273_164285727",
-      "dateCreated": "2021-03-23T07:15:43+0000",
-      "dateStarted": "2021-03-23T16:38:38+0000",
-      "dateFinished": "2021-03-23T16:38:38+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14339"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21014"
     },
     {
       "text": "%sql\nSELECT row_number() OVER (ORDER BY national_team, national_rating) AS id, national_team AS name, national_rating AS rating FROM (\n        SELECT DISTINCT national_team, national_rating\n        FROM fifa_raw_t\n        WHERE national_team IS NOT NULL\n        ) t;",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:38+0000",
-      "progress": 66,
+      "dateUpdated": "2021-03-23T17:22:06+0000",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -890,34 +787,18 @@
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=203",
-              "$$hashKey": "object:28959"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616484050683_861815211",
+      "jobName": "paragraph_1616520126550_203914734",
       "id": "paragraph_1616484050683_861815211",
-      "dateCreated": "2021-03-23T07:20:50+0000",
-      "dateStarted": "2021-03-23T16:38:38+0000",
-      "dateFinished": "2021-03-23T16:38:43+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14340"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21015"
     },
     {
       "text": "val nationalTeamDF = spark.sql(\"\"\" \nSELECT row_number() OVER (ORDER BY national_team, national_rating) AS id, national_team AS name, national_rating AS rating FROM (\n        SELECT DISTINCT national_team, national_rating\n        FROM fifa_raw_t\n        WHERE national_team IS NOT NULL\n        ) t;\n\"\"\")\nnationalTeamDF.createOrReplaceTempView(\"national_team_t\") ",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:43+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -948,18 +829,16 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616484184698_307445858",
+      "jobName": "paragraph_1616520126550_1086687978",
       "id": "paragraph_1616484184698_307445858",
-      "dateCreated": "2021-03-23T07:23:04+0000",
-      "dateStarted": "2021-03-23T16:38:43+0000",
-      "dateFinished": "2021-03-23T16:38:43+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14341"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21016"
     },
     {
       "text": "%md ## PLAYER_T table\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:43+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -992,18 +871,16 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616449066851_1248745292",
+      "jobName": "paragraph_1616520126551_399391599",
       "id": "paragraph_1616449066851_1248745292",
-      "dateCreated": "2021-03-22T21:37:46+0000",
-      "dateStarted": "2021-03-23T16:38:43+0000",
-      "dateFinished": "2021-03-23T16:38:43+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14342"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21017"
     },
     {
       "text": "%sql\nSELECT fr.id\n        , fr.name\n        , fr.full_name \n        , fr.birth_date\n        , fr.age\n        , fr.height_cm\n        , fr.weight_kgs\n        , nat.id                          AS nationality_id \n        , fr.overall_rating\n        , fr.potential\n        , fr.value_euro\n        , fr.wage_euro\n        , fr.preferred_foot\n        , fr.`international_reputation(1-5)`   AS international_reputation\n        , fr.`weak_foot(1-5)`                  AS weak_foot\n        , fr.`skill_moves(1-5)`                AS skill_moves\n        , fr.work_rate\n        , fr.release_clause_euro\nFROM fifa_raw_t  fr\nLEFT JOIN nationality_t  nat\nON (fr.nationality = nat.nationality)\nLEFT JOIN body_type_t bodt\nON (fr.body_type = bodt.name)",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:44+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1081,34 +958,18 @@
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=206",
-              "$$hashKey": "object:29648"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616449064799_647575184",
+      "jobName": "paragraph_1616520126552_1126398704",
       "id": "paragraph_1616449064799_647575184",
-      "dateCreated": "2021-03-22T21:37:44+0000",
-      "dateStarted": "2021-03-23T16:38:44+0000",
-      "dateFinished": "2021-03-23T16:38:55+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14343"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21018"
     },
     {
       "text": "%md ## PLAYER_POSITION_T table",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:55+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -1260,19 +1121,17 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616489731731_280893490",
+      "jobName": "paragraph_1616520126559_247560003",
       "id": "paragraph_1616489731731_280893490",
-      "dateCreated": "2021-03-23T08:55:31+0000",
-      "dateStarted": "2021-03-23T16:38:56+0000",
-      "dateFinished": "2021-03-23T16:38:56+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14344"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21019"
     },
     {
       "text": "%sql\nSELECT id AS player_id, idx AS index position  \nFROM fifa_raw_t\nLATERAL VIEW POSEXPLODE(split(positions,',')) as idx,position",
       "user": "admin",
-      "dateUpdated": "2021-03-23T16:38:56+0000",
-      "progress": 100,
+      "dateUpdated": "2021-03-23T17:22:06+0000",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1331,19 +1190,17 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616511193942_1567503409",
+      "jobName": "paragraph_1616520126560_452185374",
       "id": "paragraph_1616511193942_1567503409",
-      "dateCreated": "2021-03-23T14:53:13+0000",
-      "dateStarted": "2021-03-23T16:38:56+0000",
-      "dateFinished": "2021-03-23T16:38:56+0000",
-      "status": "ERROR",
-      "$$hashKey": "object:14345"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21020"
     },
     {
       "text": "%sql\nselect DISTINCT club_position FROM fifa_raw_t WHERE club_position IS NOT NULL\nMINUS SELECT short_name FROM position_t;",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:08:52+0000",
-      "progress": 79,
+      "dateUpdated": "2021-03-23T17:22:06+0000",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1399,51 +1256,19 @@
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=118",
-              "$$hashKey": "object:31480"
-            },
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=119",
-              "$$hashKey": "object:31481"
-            },
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=120",
-              "$$hashKey": "object:31482"
-            },
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=121",
-              "$$hashKey": "object:31483"
-            },
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=122",
-              "$$hashKey": "object:31484"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616490124175_2108343668",
+      "jobName": "paragraph_1616520126560_1172114615",
       "id": "paragraph_1616490124175_2108343668",
-      "dateCreated": "2021-03-23T09:02:04+0000",
-      "dateStarted": "2021-03-23T09:08:52+0000",
-      "dateFinished": "2021-03-23T09:09:00+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14346"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21021"
     },
     {
       "text": "%sql\nselect DISTINCT national_team_position FROM fifa_raw_t WHERE national_team_position IS NOT NULL\nMINUS SELECT short_name FROM position_t;",
       "user": "admin",
-      "dateUpdated": "2021-03-23T09:11:26+0000",
-      "progress": 97,
+      "dateUpdated": "2021-03-23T17:22:06+0000",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1499,50 +1324,18 @@
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=124",
-              "$$hashKey": "object:31505"
-            },
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=125",
-              "$$hashKey": "object:31506"
-            },
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=126",
-              "$$hashKey": "object:31507"
-            },
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=127",
-              "$$hashKey": "object:31508"
-            },
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=128",
-              "$$hashKey": "object:31509"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616490556836_1563979482",
+      "jobName": "paragraph_1616520126560_814844158",
       "id": "paragraph_1616490556836_1563979482",
-      "dateCreated": "2021-03-23T09:09:16+0000",
-      "dateStarted": "2021-03-23T09:10:01+0000",
-      "dateFinished": "2021-03-23T09:10:14+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14347"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21022"
     },
     {
       "text": "val playerDF = spark.sql(\"\"\" \nSELECT fr.id\n        , fr.name\n        , fr.full_name \n        , fr.birth_date\n        , fr.age\n        , fr.height_cm\n        , fr.weight_kgs\n        , nat.id                          AS nationality_id \n        , fr.overall_rating\n        , fr.club_team\n        , fr.national_team\nFROM fifa_raw_t  fr\nLEFT JOIN nationality_t  nat\nON (fr.nationality = nat.nationality)\nLEFT JOIN body_type_t bodt\nON (fr.body_type = bodt.name)\n\"\"\")\nplayerDF.createOrReplaceTempView(\"player_t\")      ",
       "user": "admin",
-      "dateUpdated": "2021-03-23T08:52:04+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1573,18 +1366,16 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616448925867_1930899025",
+      "jobName": "paragraph_1616520126561_1243118773",
       "id": "paragraph_1616448925867_1930899025",
-      "dateCreated": "2021-03-22T21:35:25+0000",
-      "dateStarted": "2021-03-23T08:52:04+0000",
-      "dateFinished": "2021-03-23T08:52:08+0000",
-      "status": "ERROR",
-      "$$hashKey": "object:14348"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21023"
     },
     {
       "text": "%md ## PLA_CLUT_T table\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T08:00:07+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -1617,18 +1408,16 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616486389730_810435569",
+      "jobName": "paragraph_1616520126561_907432770",
       "id": "paragraph_1616486389730_810435569",
-      "dateCreated": "2021-03-23T07:59:49+0000",
-      "dateStarted": "2021-03-23T08:00:07+0000",
-      "dateFinished": "2021-03-23T08:00:07+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14349"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21024"
     },
     {
       "text": "%sql\nSELECT fr.id                  AS player_id\n        , clut.id             AS club_team_id\n        , pos.id              AS position_id\n        , fr.club_jersey_number\n        , fr.club_join_date\n        , fr.contract_end_year\nFROM fifa_raw_t  fr\nLEFT JOIN position_t pos\nON (fr.club_position = pos.short_name)\nLEFT JOIN club_team_t clut\nON (fr.club_team = clut.name);",
       "user": "admin",
-      "dateUpdated": "2021-03-23T08:58:05+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1694,34 +1483,18 @@
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=94",
-              "$$hashKey": "object:31530"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616486418306_1239221501",
+      "jobName": "paragraph_1616520126561_862684752",
       "id": "paragraph_1616486418306_1239221501",
-      "dateCreated": "2021-03-23T08:00:18+0000",
-      "dateStarted": "2021-03-23T08:57:46+0000",
-      "dateFinished": "2021-03-23T08:58:03+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14350"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21025"
     },
     {
       "text": "%sql\nSELECT fr.id                  AS player_id\n        , clut.id             AS club_team_id\nFROM fifa_raw_t  fr\nLEFT JOIN national_team_t natt\nON (fr.national_team = natt.name)\nLEFT JOIN club_team_t clut\nON (fr.club_team = clut.name);;\n",
       "user": "admin",
-      "dateUpdated": "2021-03-23T08:01:04+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1743,16 +1516,16 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616486461575_1036466211",
+      "jobName": "paragraph_1616520126563_194241443",
       "id": "paragraph_1616486461575_1036466211",
-      "dateCreated": "2021-03-23T08:01:01+0000",
+      "dateCreated": "2021-03-23T17:22:06+0000",
       "status": "READY",
-      "$$hashKey": "object:14351"
+      "$$hashKey": "object:21026"
     },
     {
       "text": "%sql \nSELECT * FROM player_t WHERE full_name LIKE '%Dias%' ",
       "user": "admin",
-      "dateUpdated": "2021-03-23T07:48:27+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1819,39 +1592,19 @@
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=69",
-              "$$hashKey": "object:31535"
-            },
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=70",
-              "$$hashKey": "object:31536"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616484713335_1924784826",
+      "jobName": "paragraph_1616520126563_1779984062",
       "id": "paragraph_1616484713335_1924784826",
-      "dateCreated": "2021-03-23T07:31:53+0000",
-      "dateStarted": "2021-03-23T07:48:05+0000",
-      "dateFinished": "2021-03-23T07:48:26+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14352"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21027"
     },
     {
       "text": "%sql\nselect * from nationality_t where nationality = 'Portugal'",
       "user": "admin",
-      "dateUpdated": "2021-03-23T07:37:51+0000",
-      "progress": 99,
+      "dateUpdated": "2021-03-23T17:22:06+0000",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1908,34 +1661,18 @@
         ]
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://192.168.142.128:4050/jobs/job?id=63",
-              "$$hashKey": "object:31545"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616484742765_2043937531",
+      "jobName": "paragraph_1616520126563_692395275",
       "id": "paragraph_1616484742765_2043937531",
-      "dateCreated": "2021-03-23T07:32:22+0000",
-      "dateStarted": "2021-03-23T07:37:43+0000",
-      "dateFinished": "2021-03-23T07:37:49+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:14353"
+      "dateCreated": "2021-03-23T17:22:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:21028"
     },
     {
       "text": "",
       "user": "admin",
-      "dateUpdated": "2021-03-23T07:36:50+0000",
+      "dateUpdated": "2021-03-23T17:22:06+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1957,15 +1694,15 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1616485004669_111886615",
+      "jobName": "paragraph_1616520126563_720952944",
       "id": "paragraph_1616485004669_111886615",
-      "dateCreated": "2021-03-23T07:36:44+0000",
+      "dateCreated": "2021-03-23T17:22:06+0000",
       "status": "READY",
-      "$$hashKey": "object:14354"
+      "$$hashKey": "object:21029"
     }
   ],
   "name": "fifa-cleaned-wrangler",
-  "id": "2G2CGFPT2",
+  "id": "2G3CVWYBT",
   "defaultInterpreterGroup": "spark",
   "version": "0.9.1-SNAPSHOT",
   "noteParams": {},
@@ -1976,8 +1713,6 @@
     "looknfeel": "default",
     "personalizedMode": "false"
   },
-  "info": {
-    "isRunning": false
-  },
+  "info": {},
   "path": "/fifa-cleaned-wrangler"
 }
