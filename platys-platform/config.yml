@@ -194,7 +194,7 @@
       SPAKR_worker_memory:
       SPARK_worker_opts: '-Dspark.worker.cleanup.enabled=true'
       SPARK_jars_repositories: ''
-      SPARK_jars_packages: 'com.github.mrpowers:spark-daria:1.0.0'
+      SPARK_jars_packages: 'com.github.mrpowers:spark-daria_2.12:1.0.0'
       SPARK_jars_excludes: ''
       SPARK_jars: ''
       SPARK_jars_ivySettings: ''
