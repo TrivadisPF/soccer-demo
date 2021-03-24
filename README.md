@@ -124,10 +124,27 @@ For player positions the data in this csv file [./data/football-positions.csv](.
 ## Stream Processing
 
 
-
 ``` bash
 docker exec -it ksqldb-cli ksql http://ksqldb-server-1:8088
 ```
+
+Create a Stream on the livestream raw data
+
+```sql
+CREATE STREAM fixture_livestream_s
+WITH (KAFKA_TOPIC='fixture_livestream_v1', VALUE_FORMAT='AVRO');
+```
+
+
+```
+curl -X POST -H 'Content-Type: application/vnd.ksql.v1+avro' -i http://dataplatform:8088/query --data '{
+  "ksql": "SELECT * FROM fixture_livestream_s EMIT CHANGES;",
+  "streamsProperties": {
+    "ksql.streams.auto.offset.reset": "latest"
+  }
+}'
+```
+
 
 ```sql
 CREATE TABLE match_raw_t (
