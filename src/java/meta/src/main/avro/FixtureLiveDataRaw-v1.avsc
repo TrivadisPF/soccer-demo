@@ -10,15 +10,15 @@
             },
             {
             	"name": "x", 
-            	"type": "float"
+            	"type": "double"
             },
             {
             	"name": "y", 
-            	"type": "float"
+            	"type": "double"
             },
             {
             	"name": "z", 
-            	"type": "float"
+            	"type": "double"
             },
             {
             	"name": "playerId",
