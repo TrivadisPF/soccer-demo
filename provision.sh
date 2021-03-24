@@ -18,5 +18,3 @@ cp -r ../infrastructure/streamsets/user-libs/ plugins/streamsets/
 cp -r ../data/* ./data-transfer/
 unzip -P ${ZIP_PASSWORD} data-transfer/fixture-livestream.zip -d data-transfer
 
-
-# 
