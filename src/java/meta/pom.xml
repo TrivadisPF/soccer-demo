@@ -103,9 +103,11 @@
 					</schemaRegistryUrls>
 					<subjects>
 						<fixture_livestream_v1-value>src/main/avro/FixtureLiveDataRaw-v1.avsc</fixture_livestream_v1-value>
-						<fixture-v1-value>src/main/avro/FixtureRaw-v1.avsc</fixture-v1-value>
-						<stadium-v1-value>src/main/avro/StadiumRaw-v1.avsc</stadium-v1-value>
-						<lineup-v1-value>src/main/avro/LineupRaw-v1.avsc</lineup-v1-value>
+						<fixture_v1-value>src/main/avro/FixtureRaw-v1.avsc</fixture_v1-value>
+						<stadium_v1-value>src/main/avro/StadiumRaw-v1.avsc</stadium_v1-value>
+						<lineup_v1-value>src/main/avro/LineupRaw-v1.avsc</lineup_v1-value>
+						<ball_possession_v1-value>src/main/avro/BallPossession-v1.avsc</ball_possession_v1-value>
+						<ball_in_zone_v1-value>src/main/avro/BallInZone-v1.avsc</ball_in_zone_v1-value>
 					</subjects>
 				</configuration>
 				<goals>
