@@ -112,6 +112,13 @@ After the wrangling, the CSV Files are available in this folder [./data/player_s
 ### Live Football Tracking System
 
 
+## Football Data Hub
+
+### Metadata
+
+For player positions the data in this csv file [./data/football-positions.csv](./data/football-positions.csv) is what is used in football data hub.
+
+
 ## Stream Data Ingestion
 
 ## Stream Processing
