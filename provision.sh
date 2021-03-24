@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Export the variable with the password for the unzip
 # export ZIP_PASSWORD=xxxxx
 
