@@ -68,17 +68,17 @@ If you have no rights for doing that, then you have to use your IP address inste
 ### Create Kafka Topics
 
 ```
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic lineup_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic lineup_v1 --replication-factor 3 --partitions 1 &&
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fixture_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fixture_v1 --replication-factor 3 --partitions 1 &&
+	
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic stadium_v1 --replication-factor 3 --partitions 1 &&
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic stadium_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic player_v1 --replication-factor 3 --partitions 1 &&
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic player_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fixture_livestream_v1 --replication-factor 3 --partitions 1 &&
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fixture_livestream_v1 --replication-factor 3 --partitions 1
-
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_position_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_possession_v1 --replication-factor 3 --partitions 1 &&
 
 docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_in_zone_v1 --replication-factor 3 --partitions 1
 ```

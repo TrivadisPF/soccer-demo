@@ -4,7 +4,7 @@
         "type": "record",
         "fields": [
             {
-            	"name": "ts", 
+            	"name": "ts",
             	"type": "long",
             	"logicalType": "timestamp-millis"
             },
@@ -21,7 +21,7 @@
             	"type": "float"
             },
             {
-            	"name": "id", 
+            	"name": "playerId",
             	"type": "int"
             },
             {
