@@ -1,0 +1,19 @@
+{
+        "name": "PlayerPositionMetaV1",
+        "package": "com.trivadis.demo.soccer",
+        "type": "record",
+        "fields": [
+            {
+            	"name": "id",
+            	"type": "long"
+            },
+            {
+            	"name": "shortName",
+            	"type": "string"
+            },
+            {
+            	"name": "longName",
+            	"type": "string"
+            }
+        ]
+}

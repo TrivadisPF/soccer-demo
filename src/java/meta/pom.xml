@@ -108,6 +108,7 @@
 						<lineup_v1-value>src/main/avro/LineupRaw-v1.avsc</lineup_v1-value>
 						<ball_possession_v1-value>src/main/avro/BallPossession-v1.avsc</ball_possession_v1-value>
 						<ball_in_zone_v1-value>src/main/avro/BallInZone-v1.avsc</ball_in_zone_v1-value>
+						<player_position_meta_v1-value>src/main/avro/PlayerPositionMeta-v1.avsc</player_position_meta_v1-value>
 					</subjects>
 				</configuration>
 				<goals>
