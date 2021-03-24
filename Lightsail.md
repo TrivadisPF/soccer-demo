@@ -23,15 +23,15 @@ Scroll down to **Launch script** and add the following script. Make sure to spec
 Optionally change the password from the default value of `ubuntu` to a more secure one. 
 
 ```
-export GITHUB_PROJECT=football-streaming-demo
-export GITHUB_OWNER=gschmutz
+export GITHUB_PROJECT=soccer-demo
+export GITHUB_OWNER=trivadispf
 export DATAPLATFORM_HOME=docker
 export DOCKER_COMPOSE_VERSION=1.25.3
 export PLATYS_VERSION=2.4.0
 export NETWORK_NAME=eth0
 export USERNAME=ubuntu
-export PASSWORD=ubuntu
-export ZIP_PASSWORD=xxxxx
+export PASSWORD=<changeme>
+export ZIP_PASSWORD=<changeme>
 
 # Prepare Environment Variables 
 export PUBLIC_IP=$(curl ipinfo.io/ip)
@@ -64,7 +64,7 @@ sudo chown root:root /usr/local/bin/platys
 sudo rm platys.tar.gz 
 
 # Install various Utilities
-sudo apt-get install -y curl jq kafkacat
+sudo apt-get install -y curl jq kafkacat unzip
 
 # needed for elasticsearch
 sudo sysctl -w vm.max_map_count=262144   
@@ -74,9 +74,9 @@ cd /home/${USERNAME}
 git clone https://github.com/${GITHUB_OWNER}/${GITHUB_PROJECT}
 chown -R ${USERNAME}:${USERNAME} ${GITHUB_PROJECT}
 
-cd /home/${USERNAME}/${GITHUB_PROJECT}/data
+cd /home/${USERNAME}/${GITHUB_PROJECT}
 
-unzip -P ${ZIP_PASSWORD} game-livestream.zip -d game-livestream
+./provision.sh
 
 cd /home/${USERNAME}/${GITHUB_PROJECT}/${DATAPLATFORM_HOME}
 
