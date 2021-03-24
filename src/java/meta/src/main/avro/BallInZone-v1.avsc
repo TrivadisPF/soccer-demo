@@ -1,5 +1,5 @@
 {
-        "name": "BallPossessionV1",
+        "name": "BallInZoneV1",
         "package": "com.trivadis.demo.soccer",
         "type": "record",
         "fields": [
@@ -9,19 +9,7 @@
             	"logicalType": "timestamp-millis"
             },
             {
-            	"name": "playerId",
-            	"type": "long"
-            },
-            {
-            	"name": "playerName",
-            	"type": "string"
-            },
-            {
-            	"name": "teamId",
-            	"type": "long"
-            },
-            {
-            	"name": "teamName",
+            	"name": "text",
             	"type": "string"
             }
         ]
