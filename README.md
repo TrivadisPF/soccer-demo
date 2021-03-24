@@ -4,7 +4,7 @@ This project shows how to setup and run the demo used ...
 
 ![Alt Image Text](./images/use-case-overview.png "Use Case Overview")
 
-## Preparation (tbd)
+## Prerequistes
 
 The platform where the demos can be run on, has been generated using the [`platys`](http://github.com/trivadispf/platys)  toolset using the [`platys-modern-data-platform`](http://github.com/trivadispf/platys-modern-data-platform) stack.
 
@@ -13,7 +13,8 @@ The generated artefacts are available in the `./docker` folder.
 The prerequisites for running the platform are 
  
  * Docker 
- * Docker Compose. 
+ * Docker Compose
+ * Platys 
 
 The environment is completely based on docker containers. In order to easily start the multiple containers, we are going to use Docker Compose. You need to have at least 8 GB of RAM available, better is 12 GB or 16 GB.
 
@@ -61,22 +62,36 @@ As a final step, add `dataplatform` as an alias to the `/etc/hosts` file so that
 
 If you have no rights for doing that, then you have to use your IP address instead of `dataplatform` in all the URLs.  
 
-### Available Services (tbd.)
 
-The following user interfaces are available:
+## Preparation
 
- * Cluster Manager for Apache Kafka: <http://dataplatform:28104> 
- * Apache Kafka HQ: <http://dataplatform:28107>
- * Schema Registry UI: <http://dataplatform:28102>
- * Kafka Connect UI: <http://dataplatform:28103>
- * StreamSets Data Collector: <http://dataplatform:18630>
- * MQTT UI: <http://dataplatform:28136>
- * Cloudbeaver: <http://dataplatform:8978>
+### Create Kafka Topics
+
+```
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic lineup_v1 --replication-factor 3 --partitions 1
+
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fixture_v1 --replication-factor 3 --partitions 1
+
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic stadium_v1 --replication-factor 3 --partitions 1
+
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic player_v1 --replication-factor 3 --partitions 1
+
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fixture_livestream_v1 --replication-factor 3 --partitions 1
+
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_position_v1 --replication-factor 3 --partitions 1
+
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_in_zone_v1 --replication-factor 3 --partitions 1
+```
 
 
-## Data Wrangling
 
-Download the data from: <https://data.world/raghav333/fifa-players>
+## Source Systems
+
+### Players System 
+
+The data for the players system has been taken from the following dataset: <https://data.world/raghav333/fifa-players>.
+
+It has been "wrangled" using Spark. The code can be found in the Zeppelin notebook: `src/zeppelin/fifa-cleaned-wrangler.zpln`. Before it can be executed, the data needs to be available in S3 (Minio):
 
 ```
 docker exec -ti awscli s3cmd mb s3://soccer-bucket
@@ -84,13 +99,22 @@ docker exec -ti awscli s3cmd put /data-transfer/fifa_cleaned.csv s3://soccer-buc
 docker exec -ti awscli s3cmd put /data-transfer/football-positions.csv s3://soccer-bucket/raw/
 ```
 
-## Create Kafka Topics
+The Data Model for the Players system 
 
-```
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic match_raw_v1 --replication-factor 3 --partitions 1
-```
+![Alt Image Text](./images/football-Player.png "Lightsail Homepage")
+
+After the wrangling, the CSV Files are available in this folder [./data/player_source_system/soccer-bucket-raw_csv](./data/player_source_system/soccer-bucket-raw_csv). The script for creating the database model is available here: [./src/scripts/football.sql](./src/scripts/football.sql)
 
 
+### Fixture & Venue System 
+
+
+### Live Football Tracking System
+
+
+## Stream Data Ingestion
+
+## Stream Processing
 
 
 

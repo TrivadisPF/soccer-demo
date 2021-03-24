@@ -1,0 +1,23 @@
+{
+        "name": "StadiumRawV1",
+        "package": "com.trivadis.demo.soccer",
+        "type": "record",
+        "fields": [
+            {
+            	"name": "fixtureId",
+            	"type": "long"
+            },
+            {
+                "name": "homeTeamPlayerIds",
+                "type": "array",
+                "items": "long",
+                "default" []
+            },
+            {
+                "name": "awayTeamPlayerIds",
+                "type": "array",
+                "items": "long",
+                "default" []
+            },
+        ]
+}

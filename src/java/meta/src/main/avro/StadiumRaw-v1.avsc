@@ -1,0 +1,23 @@
+{
+        "name": "StadiumRawV1",
+        "package": "com.trivadis.demo.soccer",
+        "type": "record",
+        "fields": [
+            {
+            	"name": "id",
+            	"type": "long"
+            },
+            {
+            	"name": "name",
+            	"type": "string"
+            },
+            {
+            	"name": "pitchXSize",
+            	"type": "double"
+            },
+            {
+            	"name": "pitchYSize",
+            	"type": "double"
+            },
+        ]
+}

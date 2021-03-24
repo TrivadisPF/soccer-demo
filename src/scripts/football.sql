@@ -16,8 +16,13 @@ CREATE TABLE player_t (id BIGINT,
 					potential INTEGER,
 					value_euro DOUBLE,
 					wage_euro DOUBLE,
-					preferred_foot CHARACTER VARYING(100), 
+					preferred_foot CHARACTER VARYING(100),
+					international_reputation INTEGER,
+					weak_foot INTEGER,
+					skill_moves INTEGER,
+					work_rate CHARACTER VARYING(100),
 					body_type_id INTEGER,
+					release_clause_euro DOUBLE,
 					last_update TIMESTAMP);
 
 ALTER TABLE player_t ADD CONSTRAINT player_pk PRIMARY KEY (id);
@@ -35,7 +40,7 @@ CREATE TABLE player_metric_t (player_id BIGINT
 								, heading_accuracy INTEGER
 								, short_passing INTEGER
 								, volleys INTEGER
-								, drbbling INTEGER
+								, dribbling INTEGER
 								, curve INTEGER
 								, freekick_accuracy INTEGER
 								, long_passing INTEGER
@@ -88,7 +93,7 @@ CREATE TABLE club_team_t (id BIGINT
 							, rating DOUBLE);
 ALTER TABLE club_team_t ADD CONSTRAINT club_team_pk PRIMARY KEY (id);
 							
-CREATE TABLE national_team_t (id INTEGER
+CREATE TABLE national_team_t (id BIGINT
 							, name CHARACTER VARYING(100)
 							, rating DOUBLE)); 
 ALTER TABLE national_team_t ADD CONSTRAINT national_team_pk PRIMARY KEY (id);

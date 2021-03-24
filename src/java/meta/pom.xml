@@ -102,7 +102,10 @@
 						<param>http://dataplatform:8081</param>
 					</schemaRegistryUrls>
 					<subjects>
-						<fixture-live-data-raw-v1-value>src/main/avro/FixtureLiveDataRaw-v1.avsc</fixture-live-data-raw-v1-value>
+						<fixture_livestream_v1-value>src/main/avro/FixtureLiveDataRaw-v1.avsc</fixture_livestream_v1-value>
+						<fixture-v1-value>src/main/avro/FixtureRaw-v1.avsc</fixture-v1-value>
+						<stadium-v1-value>src/main/avro/StadiumRaw-v1.avsc</stadium-v1-value>
+						<lineup-v1-value>src/main/avro/Lineup-v1.avsc</lineup-v1-value>
 					</subjects>
 				</configuration>
 				<goals>

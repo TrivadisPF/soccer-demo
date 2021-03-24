@@ -1,0 +1,32 @@
+{
+        "name": "FixtureLiveDataRawV1",
+        "package": "com.trivadis.demo.soccer",
+        "type": "record",
+        "fields": [
+            {
+            	"name": "id",
+            	"type": "long"
+            },
+            {
+            	"name": "when",
+            	"type": "int",
+            	"logicalType": "date"
+            },
+            {
+            	"name": "startTime",
+            	"type": "string"
+            },
+            {
+            	"name": "stadiumId",
+            	"type": "long"
+            },
+            {
+            	"name": "homeTeamId",
+            	"type": "long"
+            },
+            {
+            	"name": "awayTeamId",
+            	"type": "long"
+            }
+        ]
+}
