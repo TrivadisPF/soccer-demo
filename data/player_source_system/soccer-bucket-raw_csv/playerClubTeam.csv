@@ -1,3 +1,4 @@
+player_id,club_team_id,club_position,club_jersey_number,club_join_date,contract_end_year
 242692,568,SUB,20.0,2019-01-05,2019
 241924,224,SUB,19.0,2017-07-01,2020
 220676,435,LCB,4.0,2013-07-15,2019
