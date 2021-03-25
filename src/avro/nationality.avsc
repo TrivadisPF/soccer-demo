@@ -1,0 +1,29 @@
+{
+  "type": "record",
+  "namespace": "info.bigenius",
+  "name": "SA_nationality",
+  "doc": "",
+  "fields": [
+    {
+      "name": "id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "name",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "TS",
+      "type": [
+        "long",
+        "null"
+      ]
+    }
+  ]
+}

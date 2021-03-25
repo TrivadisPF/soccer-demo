@@ -1,0 +1,260 @@
+{
+  "type": "record",
+  "namespace": "info.bigenius",
+  "name": "SA_playerMetric",
+  "doc": "",
+  "fields": [
+    {
+      "name": "player_id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "crossing",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "finishing",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "heading_accuracy",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "short_passing",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "volleys",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "dribbling",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "curve",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "freekick_accuracy",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "long_passing",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "ball_control",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "acceleration",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "sprint_speed",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "agility",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "reactions",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "balance",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "shot_power",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "jumping",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "stamina",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "strength",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "long_shots",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "aggression",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "interceptions",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "positioning",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "vision",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "penalties",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "composure",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "marking",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "standing_tackle",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "sliding_tackle",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "GK_diving",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "GK_handling",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "GK_kicking",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "GK_positioning",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "GK_reflexes",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "TS",
+      "type": [
+        "long",
+        "null"
+      ]
+    }
+  ]
+}

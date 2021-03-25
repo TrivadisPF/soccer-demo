@@ -1,0 +1,176 @@
+{
+  "type": "record",
+  "namespace": "info.bigenius",
+  "name": "SA_player",
+  "doc": "",
+  "fields": [
+    {
+      "name": "id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "name",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "full_name",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "age",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "height_cm",
+      "type": [
+        {
+          "type": "bytes",
+          "logicalType": "decimal",
+          "precision": 18,
+          "scale": 3
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    {
+      "name": "weight_kgs",
+      "type": [
+        {
+          "type": "bytes",
+          "logicalType": "decimal",
+          "precision": 18,
+          "scale": 3
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    {
+      "name": "nationality_id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "overall_rating",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "potential",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "value_euro",
+      "type": [
+        {
+          "type": "bytes",
+          "logicalType": "decimal",
+          "precision": 18,
+          "scale": 3
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    {
+      "name": "wage_euro",
+      "type": [
+        {
+          "type": "bytes",
+          "logicalType": "decimal",
+          "precision": 18,
+          "scale": 3
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    {
+      "name": "preferred_foot",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "international_reputation",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "weak_foot",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "skill_moves",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "work_rate",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "body_type_id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "release_clause_euro",
+      "type": [
+        {
+          "type": "bytes",
+          "logicalType": "decimal",
+          "precision": 18,
+          "scale": 3
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    {
+      "name": "TS",
+      "type": [
+        "long",
+        "null"
+      ]
+    }
+  ]
+}

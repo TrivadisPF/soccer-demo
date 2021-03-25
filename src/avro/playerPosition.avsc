@@ -1,0 +1,36 @@
+{
+  "type": "record",
+  "namespace": "info.bigenius",
+  "name": "SA_playerPosition",
+  "doc": "",
+  "fields": [
+    {
+      "name": "player_id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "p_index",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "position",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "TS",
+      "type": [
+        "long",
+        "null"
+      ]
+    }
+  ]
+}
