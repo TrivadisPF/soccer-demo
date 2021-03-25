@@ -1,0 +1,57 @@
+{
+  "type": "record",
+  "namespace": "info.bigenius",
+  "name": "SA_playerClubTeam",
+  "doc": "",
+  "fields": [
+    {
+      "name": "player_id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "club_team_id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "club_position",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "club_jersey_number",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "club_join_date",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "contract_end_year",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "TS",
+      "type": [
+        "long",
+        "null"
+      ]
+    }
+  ]
+}

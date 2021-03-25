@@ -1,0 +1,43 @@
+{
+  "type": "record",
+  "namespace": "info.bigenius",
+  "name": "SA_playerNationalTeam",
+  "doc": "",
+  "fields": [
+    {
+      "name": "player_id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "national_team_id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "national_team_position",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "nataionl_jersey_number",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "TS",
+      "type": [
+        "long",
+        "null"
+      ]
+    }
+  ]
+}

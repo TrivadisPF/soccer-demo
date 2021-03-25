@@ -1,0 +1,29 @@
+{
+  "type": "record",
+  "namespace": "info.bigenius",
+  "name": "SA_playerTag",
+  "doc": "",
+  "fields": [
+    {
+      "name": "player_id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "tag_id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "TS",
+      "type": [
+        "long",
+        "null"
+      ]
+    }
+  ]
+}

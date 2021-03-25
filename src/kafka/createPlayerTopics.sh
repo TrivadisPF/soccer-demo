@@ -1,0 +1,11 @@
+kafka-topics --create --bootstrap-server kafka-1:9092 --replication-factor 3 --partitions 3 --topic srcPlayerPlayer
+kafka-topics --create --bootstrap-server kafka-1:9092 --replication-factor 3 --partitions 3 --topic srcPlayerPlayerPosition
+kafka-topics --create --bootstrap-server kafka-1:9092 --replication-factor 3 --partitions 3 --topic srcPlayerPlayerMetric
+kafka-topics --create --bootstrap-server kafka-1:9092 --replication-factor 3 --partitions 3 --topic srcPlayerBodyType
+kafka-topics --create --bootstrap-server kafka-1:9092 --replication-factor 3 --partitions 3 --topic srcPlayerTag
+kafka-topics --create --bootstrap-server kafka-1:9092 --replication-factor 3 --partitions 3 --topic srcPlayerPlayerTag
+kafka-topics --create --bootstrap-server kafka-1:9092 --replication-factor 3 --partitions 3 --topic srcPlayerNationality
+kafka-topics --create --bootstrap-server kafka-1:9092 --replication-factor 3 --partitions 3 --topic srcPlayerClubTeam
+kafka-topics --create --bootstrap-server kafka-1:9092 --replication-factor 3 --partitions 3 --topic srcPlayerNationalTeam
+kafka-topics --create --bootstrap-server kafka-1:9092 --replication-factor 3 --partitions 3 --topic srcPlayerPlayerClubTeam
+kafka-topics --create --bootstrap-server kafka-1:9092 --replication-factor 3 --partitions 3 --topic srcPlayerPlayerNationalTeam

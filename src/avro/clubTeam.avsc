@@ -1,0 +1,43 @@
+{
+  "type": "record",
+  "namespace": "info.bigenius",
+  "name": "SA_clubTeam",
+  "doc": "",
+  "fields": [
+    {
+      "name": "id",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "name",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "rating",
+      "type": [
+        {
+          "type": "bytes",
+          "logicalType": "decimal",
+          "precision": 18,
+          "scale": 3
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    {
+      "name": "TS",
+      "type": [
+        "long",
+        "null"
+      ]
+    }
+  ]
+}
