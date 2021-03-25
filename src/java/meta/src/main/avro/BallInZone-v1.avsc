@@ -1,0 +1,16 @@
+{
+        "name": "BallInZoneV1",
+        "package": "com.trivadis.demo.soccer",
+        "type": "record",
+        "fields": [
+            {
+            	"name": "ts", 
+            	"type": "long",
+            	"logicalType": "timestamp-millis"
+            },
+            {
+            	"name": "text",
+            	"type": "string"
+            }
+        ]
+}

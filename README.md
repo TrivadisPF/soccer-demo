@@ -68,19 +68,21 @@ If you have no rights for doing that, then you have to use your IP address inste
 ### Create Kafka Topics
 
 ```
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic lineup_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic lineup_v1 --replication-factor 3 --partitions 1 &&
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fixture_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fixture_v1 --replication-factor 3 --partitions 1 &&
+	
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic stadium_v1 --replication-factor 3 --partitions 1 &&
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic stadium_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic player_v1 --replication-factor 3 --partitions 1 &&
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic player_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fixture_livestream_v1 --replication-factor 3 --partitions 1 &&
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fixture_livestream_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_possession_v1 --replication-factor 3 --partitions 1 &&
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_position_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_in_zone_v1 --replication-factor 3 --partitions 1 &&
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_in_zone_v1 --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic player_position_meta_v1 --replication-factor 3 --partitions 1
 ```
 
 
@@ -124,10 +126,27 @@ For player positions the data in this csv file [./data/football-positions.csv](.
 ## Stream Processing
 
 
-
 ``` bash
 docker exec -it ksqldb-cli ksql http://ksqldb-server-1:8088
 ```
+
+Create a Stream on the livestream raw data
+
+```sql
+CREATE STREAM fixture_livestream_s
+WITH (KAFKA_TOPIC='fixture_livestream_v1', VALUE_FORMAT='AVRO');
+```
+
+
+```
+curl -X POST -H 'Content-Type: application/vnd.ksql.v1+avro' -i http://dataplatform:8088/query --data '{
+  "ksql": "SELECT * FROM fixture_livestream_s EMIT CHANGES;",
+  "streamsProperties": {
+    "ksql.streams.auto.offset.reset": "latest"
+  }
+}'
+```
+
 
 ```sql
 CREATE TABLE match_raw_t (

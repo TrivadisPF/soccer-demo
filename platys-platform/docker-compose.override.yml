@@ -1,0 +1,13 @@
+version: "3.5"
+
+services:
+
+  restapi-mock:
+    image: trivadis/mock-server:latest
+    container_name: restapi-mock
+    hostname: restapi-mock
+    ports:
+      - 28600:8888
+    volumes:
+      - ./scripts/restapi-mock/api:/api
+    restart: unless-stopped

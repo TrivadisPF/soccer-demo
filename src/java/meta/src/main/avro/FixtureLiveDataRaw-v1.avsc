@@ -4,24 +4,24 @@
         "type": "record",
         "fields": [
             {
-            	"name": "ts", 
+            	"name": "ts",
             	"type": "long",
             	"logicalType": "timestamp-millis"
             },
             {
             	"name": "x", 
-            	"type": "float"
+            	"type": "double"
             },
             {
             	"name": "y", 
-            	"type": "float"
+            	"type": "double"
             },
             {
             	"name": "z", 
-            	"type": "float"
+            	"type": "double"
             },
             {
-            	"name": "id", 
+            	"name": "playerId",
             	"type": "int"
             },
             {

@@ -9,15 +9,11 @@
             },
             {
                 "name": "homeTeamPlayerIds",
-                "type": "array",
-                "items": "long",
-                "default" []
+                "type":  {"type": "array", "items" : "long" }
             },
             {
                 "name": "awayTeamPlayerIds",
-                "type": "array",
-                "items": "long",
-                "default" []
-            },
+                "type":  {"type": "array", "items" : "long"}
+            }
         ]
 }
