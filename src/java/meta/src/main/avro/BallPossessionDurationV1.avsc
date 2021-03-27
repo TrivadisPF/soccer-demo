@@ -1,0 +1,47 @@
+{
+  "type": "record",
+  "name": "BallPossessionStatsV1",
+  "namespace": "com.trivadis.demo.soccer",
+  "fields": [
+    {
+      "name": "matchId",
+      "type": [
+        "null",
+        "long"
+      ],
+      "default": null
+    },
+    {
+      "name": "homeTeamDurationMs",
+      "type": [
+        "null",
+        "long"
+      ],
+      "default": null
+    },
+    {
+      "name": "homeTeamPercentage",
+      "type": [
+        "null",
+        "double"
+      ],
+      "default": null
+    },
+    {
+      "name": "awayTeamDurationMs",
+      "type": [
+        "null",
+        "long"
+      ],
+      "default": null
+    },
+    {
+      "name": "awayTeamPercentage",
+      "type": [
+        "null",
+        "double"
+      ],
+      "default": null
+    }    
+  ]
+}

@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.trivadis.demo.ms.meta</groupId>
+	<groupId>com.trivadis.demo.soccer.meta</groupId>
 	<artifactId>meta</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -109,6 +109,8 @@
 						<ball_possession_v1-value>src/main/avro/BallPossession-v1.avsc</ball_possession_v1-value>
 						<ball_in_zone_v1-value>src/main/avro/BallInZone-v1.avsc</ball_in_zone_v1-value>
 						<player_position_meta_v1-value>src/main/avro/PlayerPositionMeta-v1.avsc</player_position_meta_v1-value>
+						<ball_possession_event_v1-value>src/main/avro/BallPossessionEvent-v1.avsc</ball_possession_event_v1-value>
+						<ball_possession_stats_v1-value>src/main/avro/BallPossessionStatsV1.avsc</ball_possession_stats_v1-value>
 					</subjects>
 				</configuration>
 				<goals>
