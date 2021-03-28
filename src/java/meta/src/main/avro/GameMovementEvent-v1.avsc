@@ -1,5 +1,5 @@
 {
-        "name": "GamePositionEventV1",
+        "name": "GameMovementEventV1",
   		"namespace": "com.trivadis.demo.soccer",
         "type": "record",
         "fields": [
