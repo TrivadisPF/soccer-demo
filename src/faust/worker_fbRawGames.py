@@ -64,7 +64,7 @@ BALL_KEY = str(MATCH_ID)+'.'+str(BALL_ID)
 #variables
 #list of all kafka brokers
 #kafka_brokers = ['kafka-1:19092', 'kafka-2:19093', 'kafka-3:19094']
-kafka_brokers = ['localhost:9092']
+kafka_brokers = ['localhost:29092']
 kafka_topics = ['rawGames', 'fbBallPossession', 'rawMetaMatch']
 
 windows_size = 1 #second
