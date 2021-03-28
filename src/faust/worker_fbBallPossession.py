@@ -7,8 +7,8 @@ def whatsTheBallId(metadataTopic):
 def whatsTheMatchId(metadataTopic):
     return('19060518')
 
-def ballPossession(playerId, ballId, distance=3):
-    dist = euclidianDistance((ballId[0], ballId[1], ballId[2]),(playerId[0], playerId[1], playerId[2]))
+def ballPossession(sensorId, ballId, distance=3):
+    dist = euclidianDistance((ballId[0], ballId[1], ballId[2]),(sensorId[0], sensorId[1], sensorId[2]))
     if dist < 3:
         return((True, dist))
     else:
@@ -75,14 +75,14 @@ class GameEvent(faust.Record, serializer='json'):
 class GameState(faust.Record, serializer='json'):
     ts: str
     eventtype: str
-    playerId: int
+    sensorId: int
     matchId: int
     playerKey: str #"19060518.10"
 
 #{
 #  "TS": "2019.06.05T20:46:07.200000",
 #  "EVENTTYPE": "BallPossessionChange",
-#  "PLAYERID": 114,
+#  "SENSORID": 114,
 #  "MATCHID": 19060518,
 #  "PLAYERKEY": "19060518.114",
 #  "NAME": "Zuber",
