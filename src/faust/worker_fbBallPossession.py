@@ -37,7 +37,7 @@ BALL_POSSESSION_ID = str(MATCH_ID)
 
 #variables
 #list of all kafka brokers
-#kafka_brokers = ['kafka-1:9092', 'kafka-2:9093', 'kafka-3:9094']
+#kafka_brokers = ['kafka-1:19092', 'kafka-2:19093', 'kafka-3:19094']
 kafka_brokers = ['localhost:29092']
 
 ballPossessionWindow = 1 #second
