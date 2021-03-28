@@ -58,7 +58,7 @@ print('max_events', max_elements_in_window)
 #  "x": "-0.38",
 #  "y": "-2.23",
 #  "z": "0.0",
-#  "id": "10"
+#  "sensorId": "10"
 #  "matchId": "19060518"
 #}
 
@@ -68,7 +68,7 @@ class GameEvent(faust.Record, serializer='json'):
     x: float
     y: float
     z: float
-    id: int
+    sensorId: int
     matchId: int
 
 #rowkey = "19060518.10"
@@ -112,7 +112,7 @@ async def process(stream):
         print('-----'+str(max_elements_in_window)+'-----')
 
         #print(len(records))
-        #<GameEvent: ts='2019.06.05T20:45:14.320000', x='-33.53', y='-11.4', z='0.0', id='3', matchId='19060518'>
+        #<GameEvent: ts='2019.06.05T20:45:14.320000', x='-33.53', y='-11.4', z='0.0', sensorId='3', matchId='19060518'>
         counter_dict = {}
         for record in records:
             #get timestamp
@@ -121,7 +121,7 @@ async def process(stream):
                 counter_dict[record.sensorId] += 1
             else:
                 counter_dict[record.sensorId] = 1
-        #create sorted list (ascending) of sets (id, count)
+        #create sorted list (ascending) of sets (sensorId, count)
         sorted_list = sorted(counter_dict.items(), key=lambda kv: kv[1])
 
         if not len(sorted_list) == 0:
