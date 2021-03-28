@@ -50,7 +50,7 @@ def calcVelocity(pointNew, pointOld):
 #calculates the acceleration -> math: acceleration = delta velocity [m/s]/ delta time [s] (linear acceleration)
 def calcAcceleration(advancedInfoNew, advancedInfoOld):
     #point1 and 2 must be formatted as a set like this 
-    #ts [str], velocity [float], acceleration[float], distance[str], directionVector[set], id[int], matchid[int])
+    #ts [str], velocity [float], acceleration[float], distance[str], directionVector[set], id[int], matchId[int])
 
     #returns float [m/s^2]
     return((advancedInfoNew.velocity - advancedInfoOld.velocity) / (calcDeltaTime(advancedInfoNew.ts, advancedInfoOld.ts)/1000/1000))
@@ -82,7 +82,7 @@ number_of_players_plus_ball = 23
 #  "y": "-2.23",
 #  "z": "0.0",
 #  "id": "10"
-#  "matchid": "19060518"
+#  "matchId": "19060518"
 #}
 
 # GameEvent Schema
@@ -92,7 +92,7 @@ class GameEvent(faust.Record, serializer='json'):
     y: float
     z: float
     id: int
-    matchid: int
+    matchId: int
 
 # GameEvent Schema
 class AdvancedInfo(faust.Record, serializer='json'):
@@ -102,7 +102,7 @@ class AdvancedInfo(faust.Record, serializer='json'):
     distance: float #[m]
     directionVector: str #(x, y, z)
     id: int
-    matchid: int
+    matchId: int
 
 app = faust.App('faustFbRawGames', broker=kafka_brokers, topic_partitions=int(len(kafka_brokers)), value_serializer='raw')
 #topic all the events of all games are sent to it
@@ -140,20 +140,20 @@ async def process(stream):
                 if key in fbAdvancedInfosTable:
                     #acceleration can be calculated as an earlier velocity (delta velocity needed) exists
                     advancedInfoOld = fbAdvancedInfosTable[key]
-                    advancedInfoNew = AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=-1, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchid=value.matchid)
+                    advancedInfoNew = AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=-1, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchId=value.matchId)
                     accelerationNew = calcAcceleration(advancedInfoNew, advancedInfoOld)
                     
                     #write new element to the table
-                    fbAdvancedInfosTable[key] = AdvancedInfo(ts=value.ts, velocity=velocityNew, acceleration=accelerationNew, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchid=value.matchid)
+                    fbAdvancedInfosTable[key] = AdvancedInfo(ts=value.ts, velocity=velocityNew, acceleration=accelerationNew, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchId=value.matchId)
                     
                     #write element to topic fbAdvancedInfos
-                    # await fbAdvancedInfosTopic.send(key=key, value=AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=accelerationNew, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchid=value.matchid))
+                    # await fbAdvancedInfosTopic.send(key=key, value=AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=accelerationNew, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchId=value.matchId))
 
 
                 else:
                     #write new element to the table
                     #if no accelleration can be calculated -1 is used
-                    fbAdvancedInfosTable[key] = AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=-1, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchid=value.matchid)
+                    fbAdvancedInfosTable[key] = AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=-1, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchId=value.matchId)
 
                 
 
@@ -189,7 +189,7 @@ async def process(stream):
                     #print(best)
 
                     #send record to topic 'fbBallPossessionTopic'
-                    await fbBallPossessionTopic.send(key=bytes(str(best[0]), 'utf-8'), value=GameEvent(ts=str(best[1].ts), x=float(best[1].x), y=float(best[1].y), z=float(best[1].z), sensorId=int(best[1].sensorId), matchid=int(best[1].matchid)))
+                    await fbBallPossessionTopic.send(key=bytes(str(best[0]), 'utf-8'), value=GameEvent(ts=str(best[1].ts), x=float(best[1].x), y=float(best[1].y), z=float(best[1].z), sensorId=int(best[1].sensorId), matchId=int(best[1].matchId)))
 
 # if __name__ == '__main__':
 #     app.main()

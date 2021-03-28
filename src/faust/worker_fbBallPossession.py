@@ -59,7 +59,7 @@ print('max_events', max_elements_in_window)
 #  "y": "-2.23",
 #  "z": "0.0",
 #  "id": "10"
-#  "matchid": "19060518"
+#  "matchId": "19060518"
 #}
 
 # GameEvent Schema
@@ -69,7 +69,7 @@ class GameEvent(faust.Record, serializer='json'):
     y: float
     z: float
     id: int
-    matchid: int
+    matchId: int
 
 #rowkey = "19060518.10"
 class GameState(faust.Record, serializer='json'):
@@ -112,7 +112,7 @@ async def process(stream):
         print('-----'+str(max_elements_in_window)+'-----')
 
         #print(len(records))
-        #<GameEvent: ts='2019.06.05T20:45:14.320000', x='-33.53', y='-11.4', z='0.0', id='3', matchid='19060518'>
+        #<GameEvent: ts='2019.06.05T20:45:14.320000', x='-33.53', y='-11.4', z='0.0', id='3', matchId='19060518'>
         counter_dict = {}
         for record in records:
             #get timestamp
@@ -140,7 +140,7 @@ async def process(stream):
                     #last player with ball possession
                     BALL_POSSESSION_ID = str(MATCH_ID)+'.'+str(sorted_list[-1][0])
                     
-                    #"<GameState: ts='2019.06.05T20:45:14.320000', eventtype='BallPossessionChange', matchid='19060518', description="
+                    #"<GameState: ts='2019.06.05T20:45:14.320000', eventtype='BallPossessionChange', matchId='19060518', description="
                     #sent record to topic 'fbBallPossessionAggregate'
                     f.await fbBallPossessionAggregateTopic.send(key=bytes(str(MATCH_ID), 'utf-8'), value=GameState(ts=str(time_stamp), eventtype=str('BallPossessionChange'), sensorId=int(sorted_list[-1][0]), matchId=int(MATCH_ID), playerKey=str(BALL_POSSESSION_ID)))
                 else:
