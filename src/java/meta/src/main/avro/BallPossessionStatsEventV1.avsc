@@ -1,13 +1,13 @@
 {
   "type": "record",
-  "name": "BallPossessionStatsV1",
+  "name": "BallPossessionStatsEventV1",
   "namespace": "com.trivadis.demo.soccer",
   "fields": [
     {
       "name": "matchId",
       "type": [
         "null",
-        "long"
+        "int"
       ],
       "default": null
     },

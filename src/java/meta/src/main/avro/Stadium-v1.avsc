@@ -1,6 +1,6 @@
 {
-        "name": "StadiumRawV1",
-        "package": "com.trivadis.demo.soccer",
+        "name": "StadiumV1",
+        "namespace": "com.trivadis.demo.soccer",
         "type": "record",
         "fields": [
             {

@@ -29,7 +29,7 @@
       "default": null
     },
     {
-      "name": "PLAYERID",
+      "name": "SENSORID",
       "type": [
         "null",
         "int"
@@ -40,7 +40,7 @@
       "name": "MATCHID",
       "type": [
         "null",
-        "long"
+        "int"
       ],
       "default": null
     },

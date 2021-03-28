@@ -1,0 +1,218 @@
+{
+  "type" : "record",
+  "name" : "StadiumDimensionV1",
+  "namespace" : "com.trivadis.demo.soccer",
+  "fields" : [ {
+    "name" : "NAME",
+    "type" : [ "null", "string" ],
+    "default" : null
+  }, {
+    "name" : "PITCH",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "KsqlDataSourceSchema_PITCH",
+      "fields" : [ {
+        "name" : "XMIN",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "XMAX",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "YMIN",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "YMAX",
+        "type" : [ "null", "double" ],
+        "default" : null
+      } ]
+    } ],
+    "default" : null
+  }, {
+    "name" : "PITCHLEFT",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "KsqlDataSourceSchema_PITCHLEFT",
+      "fields" : [ {
+        "name" : "XMIN",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "XMAX",
+        "type" : [ "null", "int" ],
+        "default" : null
+      }, {
+        "name" : "YMIN",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "YMAX",
+        "type" : [ "null", "double" ],
+        "default" : null
+      } ]
+    } ],
+    "default" : null
+  }, {
+    "name" : "PITCHRIGHT",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "KsqlDataSourceSchema_PITCHRIGHT",
+      "fields" : [ {
+        "name" : "XMIN",
+        "type" : [ "null", "int" ],
+        "default" : null
+      }, {
+        "name" : "XMAX",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "YMIN",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "YMAX",
+        "type" : [ "null", "double" ],
+        "default" : null
+      } ]
+    } ],
+    "default" : null
+  }, {
+    "name" : "PENALTYBOXLEFT",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "KsqlDataSourceSchema_PENALTYBOXLEFT",
+      "fields" : [ {
+        "name" : "XMIN",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "XMAX",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "YMIN",
+        "type" : [ "null", {
+          "type" : "bytes",
+          "scale" : 2,
+          "precision" : 4,
+          "logicalType" : "decimal"
+        } ],
+        "default" : null
+      }, {
+        "name" : "YMAX",
+        "type" : [ "null", {
+          "type" : "bytes",
+          "scale" : 2,
+          "precision" : 4,
+          "logicalType" : "decimal"
+        } ],
+        "default" : null
+      } ]
+    } ],
+    "default" : null
+  }, {
+    "name" : "PENALTYBOXRIGHT",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "KsqlDataSourceSchema_PENALTYBOXRIGHT",
+      "fields" : [ {
+        "name" : "XMIN",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "XMAX",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "YMIN",
+        "type" : [ "null", {
+          "type" : "bytes",
+          "scale" : 2,
+          "precision" : 4,
+          "logicalType" : "decimal"
+        } ],
+        "default" : null
+      }, {
+        "name" : "YMAX",
+        "type" : [ "null", {
+          "type" : "bytes",
+          "scale" : 2,
+          "precision" : 4,
+          "logicalType" : "decimal"
+        } ],
+        "default" : null
+      } ]
+    } ],
+    "default" : null
+  }, {
+    "name" : "GOALLEFT",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "KsqlDataSourceSchema_GOALLEFT",
+      "fields" : [ {
+        "name" : "XMIN",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "XMAX",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "YMIN",
+        "type" : [ "null", {
+          "type" : "bytes",
+          "scale" : 2,
+          "precision" : 3,
+          "logicalType" : "decimal"
+        } ],
+        "default" : null
+      }, {
+        "name" : "YMAX",
+        "type" : [ "null", {
+          "type" : "bytes",
+          "scale" : 2,
+          "precision" : 3,
+          "logicalType" : "decimal"
+        } ],
+        "default" : null
+      } ]
+    } ],
+    "default" : null
+  }, {
+    "name" : "GOALRIGHT",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "KsqlDataSourceSchema_GOALRIGHT",
+      "fields" : [ {
+        "name" : "XMIN",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "XMAX",
+        "type" : [ "null", "double" ],
+        "default" : null
+      }, {
+        "name" : "YMIN",
+        "type" : [ "null", {
+          "type" : "bytes",
+          "scale" : 2,
+          "precision" : 3,
+          "logicalType" : "decimal"
+        } ],
+        "default" : null
+      }, {
+        "name" : "YMAX",
+        "type" : [ "null", {
+          "type" : "bytes",
+          "scale" : 2,
+          "precision" : 3,
+          "logicalType" : "decimal"
+        } ],
+        "default" : null
+      } ]
+    } ],
+    "default" : null
+  } ]
+}

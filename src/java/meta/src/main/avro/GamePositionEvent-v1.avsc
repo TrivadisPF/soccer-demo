@@ -1,6 +1,6 @@
 {
-        "name": "FixtureLiveDataRawV1",
-        "package": "com.trivadis.demo.soccer",
+        "name": "GamePositionEventV1",
+  		"namespace": "com.trivadis.demo.soccer",
         "type": "record",
         "fields": [
             {
@@ -21,7 +21,7 @@
             	"type": "double"
             },
             {
-            	"name": "playerId",
+            	"name": "sensorId",
             	"type": "int"
             },
             {

@@ -102,15 +102,17 @@
 						<param>http://dataplatform:8081</param>
 					</schemaRegistryUrls>
 					<subjects>
-						<fixture_livestream_v1-value>src/main/avro/FixtureLiveDataRaw-v1.avsc</fixture_livestream_v1-value>
-						<fixture_v1-value>src/main/avro/FixtureRaw-v1.avsc</fixture_v1-value>
-						<stadium_v1-value>src/main/avro/StadiumRaw-v1.avsc</stadium_v1-value>
-						<lineup_v1-value>src/main/avro/LineupRaw-v1.avsc</lineup_v1-value>
-						<ball_possession_v1-value>src/main/avro/BallPossession-v1.avsc</ball_possession_v1-value>
-						<ball_in_zone_v1-value>src/main/avro/BallInZone-v1.avsc</ball_in_zone_v1-value>
+						<game_v1-value>src/main/avro/Game-v1.avsc</game_v1-value>
+						<stadium_v1-value>src/main/avro/Stadium-v1.avsc</stadium_v1-value>
+						<stadium_dimension_v1-value>src/main/avro/StadiumDimension-v1.avsc</stadium_dimension_v1-value>
+						<game_lineup_v1-value>src/main/avro/GameLineup-v1.avsc</game_lineup_v1-value>
 						<player_position_meta_v1-value>src/main/avro/PlayerPositionMeta-v1.avsc</player_position_meta_v1-value>
+
+						<game_position_event_v1-value>src/main/avro/GamePositionEvent-v1.avsc</game_position_event_v1-value>
+						<game_start_event_v1-value>src/main/avro/GameStartEvent-v1.avsc</game_start_event_v1-value>
+ 						<ball_in_zone_event_v1-value>src/main/avro/BallInZoneEvent-v1.avsc</ball_in_zone_event_v1-value>
 						<ball_possession_event_v1-value>src/main/avro/BallPossessionEvent-v1.avsc</ball_possession_event_v1-value>
-						<ball_possession_stats_v1-value>src/main/avro/BallPossessionStatsV1.avsc</ball_possession_stats_v1-value>
+						<ball_possession_stats_event_v1-value>src/main/avro/BallPossessionStatsEventV1.avsc</ball_possession_stats_event_v1-value>
 					</subjects>
 				</configuration>
 				<goals>

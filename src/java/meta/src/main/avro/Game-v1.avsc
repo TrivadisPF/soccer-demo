@@ -1,6 +1,6 @@
 {
-        "name": "FixtureLiveDataRawV1",
-        "package": "com.trivadis.demo.soccer",
+        "name": "GameV1",
+  		"namespace": "com.trivadis.demo.soccer",
         "type": "record",
         "fields": [
             {

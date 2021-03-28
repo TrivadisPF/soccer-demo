@@ -1,0 +1,59 @@
+{
+        "name": "GameLineupV1",
+        "namespace": "com.trivadis.demo.soccer",
+        "type": "record",
+        "fields": [
+            {
+            	"name": "matchId",
+            	"type": "int"
+            },
+            {
+                "name": "homeTeamPlayers",
+                "type":  {"type": "array", 
+                			"items" : {
+			  					"type": "record",
+			  					"name": "GameLinupPlayerItem",
+			  					"namespace": "com.trivadis.demo.soccer",
+			  					"fields": [
+			    					{
+									  "name": "playerId",
+									  "type": ["null", "int"]
+									},
+									{
+									  "name": "position",
+									  "type": ["null", "string"]
+									},
+									{
+									  "name": "sensorId",
+									  "type": ["null", "int"]
+									}
+								  ]
+                			} 
+                		}
+            },
+            {
+                "name": "awayTeamPlayers",
+                "type":  {"type": "array", 
+                			"items" : {
+			  					"type": "record",
+			  					"name": "GameLineupPlayerItem",
+			  					"namespace": "com.trivadis.demo.soccer",
+			  					"fields": [
+			    					{
+									  "name": "playerId",
+									  "type": ["null", "int"]
+									},
+									{
+									  "name": "position",
+									  "type": ["null", "string"]
+									},
+									{
+									  "name": "sensorId",
+									  "type": ["null", "int"]
+									}
+								  ]
+                			} 
+                		}
+            }
+        ]
+}

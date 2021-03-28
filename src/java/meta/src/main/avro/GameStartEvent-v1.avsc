@@ -1,16 +1,16 @@
 {
-        "name": "BallInZoneV1",
-        "package": "com.trivadis.demo.soccer",
+        "name": "GameStartEventV1",
+        "namespace": "com.trivadis.demo.soccer",
         "type": "record",
         "fields": [
             {
-            	"name": "ts", 
+            	"name": "ts",
             	"type": "long",
             	"logicalType": "timestamp-millis"
             },
             {
-            	"name": "text",
-            	"type": "string"
+            	"name": "matchId", 
+            	"type": "int"
             }
         ]
 }
