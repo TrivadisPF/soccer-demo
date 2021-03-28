@@ -50,7 +50,7 @@ def calcVelocity(pointNew, pointOld):
 #calculates the acceleration -> math: acceleration = delta velocity [m/s]/ delta time [s] (linear acceleration)
 def calcAcceleration(advancedInfoNew, advancedInfoOld):
     #point1 and 2 must be formatted as a set like this 
-    #ts [str], velocity [float], acceleration[float], distance[str], directionVector[set], id[int], matchId[int])
+    #ts [str], velocity [float], acceleration[float], distance[str], directionVector[set], sensorId[int], matchId[int])
 
     #returns float [m/s^2]
     return((advancedInfoNew.velocity - advancedInfoOld.velocity) / (calcDeltaTime(advancedInfoNew.ts, advancedInfoOld.ts)/1000/1000))
@@ -91,7 +91,7 @@ class GameEvent(faust.Record, serializer='json'):
     x: float
     y: float
     z: float
-    id: int
+    sensorId: int
     matchId: int
 
 # GameEvent Schema
@@ -101,7 +101,7 @@ class AdvancedInfo(faust.Record, serializer='json'):
     acceleration: float #[m/s^2]
     distance: float #[m]
     directionVector: str #(x, y, z)
-    id: int
+    sensorId: int
     matchId: int
 
 app = faust.App('faustFbRawGames', broker=kafka_brokers, topic_partitions=int(len(kafka_brokers)), value_serializer='raw')
