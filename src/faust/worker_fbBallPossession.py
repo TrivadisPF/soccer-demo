@@ -142,7 +142,7 @@ async def process(stream):
                     
                     #"<GameState: ts='2019.06.05T20:45:14.320000', eventtype='BallPossessionChange', matchId='19060518', description="
                     #sent record to topic 'fbBallPossessionAggregate'
-                    f.await fbBallPossessionAggregateTopic.send(key=bytes(str(MATCH_ID), 'utf-8'), value=GameState(ts=str(time_stamp), eventtype=str('BallPossessionChange'), sensorId=int(sorted_list[-1][0]), matchId=int(MATCH_ID), playerKey=str(BALL_POSSESSION_ID)))
+                    await fbBallPossessionAggregateTopic.send(key=bytes(str(MATCH_ID), 'utf-8'), value=GameState(ts=str(time_stamp), eventtype=str('BallPossessionChange'), sensorId=int(sorted_list[-1][0]), matchId=int(MATCH_ID), playerKey=str(BALL_POSSESSION_ID)))
                 else:
                     print('Same player as before')
 
