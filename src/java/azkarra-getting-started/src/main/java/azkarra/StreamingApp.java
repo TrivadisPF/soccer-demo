@@ -19,8 +19,9 @@
 
 package azkarra;
 
-import com.trivadis.demo.soccer.BallPossessionStatsV1;
+import com.trivadis.demo.soccer.BallPossessionStatsEventV1;
 import com.trivadis.demo.soccer.BallPossessionEventV1;
+import com.trivadis.demo.soccer.GameStartEventV1;
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde;
 import io.streamthoughts.azkarra.api.annotations.Component;
@@ -71,16 +72,19 @@ public class StreamingApp {
     public static class BallPossessionStatsTopologyProvider implements TopologyProvider, Configurable {
 
         private String topicSource;
+        private String gameStartTopicSource;
         private String topicSink;
         private String stateStoreName;
         private String schemaRegistryUrl;
 
         @Override
         public void configure(final Conf conf) {
+            gameStartTopicSource = conf.getOptionalString("topic.source.game.start")
+                    .orElse("game_start_event_v1");
             topicSource = conf.getOptionalString("topic.source")
                     .orElse("ball_possession_event_v1");
             topicSink = conf.getOptionalString("topic.sink")
-                    .orElse("ball_possession_stats_v1");
+                    .orElse("ball_possession_stats_event_v1");
             stateStoreName = conf.getOptionalString("state.store.name")
                     .orElse("count");
             schemaRegistryUrl = conf.getOptionalString("streams.schema.registry.url").orElse("must-be-defined-in-conf");
@@ -94,24 +98,29 @@ public class StreamingApp {
         @Override
         public Topology topology() {
             final SpecificAvroSerde<BallPossessionEventV1> ballPossessionSerde = createSerde(schemaRegistryUrl);
-            final SpecificAvroSerde<BallPossessionStatsV1> ballPossessionStatsSerde = createSerde(schemaRegistryUrl);
+            final SpecificAvroSerde<BallPossessionStatsEventV1> ballPossessionStatsSerde = createSerde(schemaRegistryUrl);
 
             final StreamsBuilder builder = new StreamsBuilder();
 
-            final StoreBuilder<KeyValueStore<Long, BallPossessionEventV1>> ballPossessionStore = Stores
-                    .keyValueStoreBuilder(Stores.persistentKeyValueStore("BallPossesionStore"), Serdes.Long(), ballPossessionSerde)
+            final StoreBuilder<KeyValueStore<Integer, BallPossessionEventV1>> ballPossessionStore = Stores
+                    .keyValueStoreBuilder(Stores.persistentKeyValueStore("BallPossesionStore"), Serdes.Integer(), ballPossessionSerde)
                     .withCachingEnabled();
             builder.addStateStore(ballPossessionStore);
 
-            final StoreBuilder<KeyValueStore<Long, BallPossessionStatsV1>> ballPossessionStatsStore = Stores
-                    .keyValueStoreBuilder(Stores.persistentKeyValueStore("BallPossesionStatsStore"), Serdes.Long(), ballPossessionStatsSerde)
+            final StoreBuilder<KeyValueStore<Integer, BallPossessionStatsEventV1>> ballPossessionStatsStore = Stores
+                    .keyValueStoreBuilder(Stores.persistentKeyValueStore("BallPossesionStatsStore"), Serdes.Integer(), ballPossessionStatsSerde)
                     .withCachingEnabled();
             builder.addStateStore(ballPossessionStatsStore);
+
+            final BallPossessionStatisticsHandler ballPossessionStatisticsHandler =  new BallPossessionStatisticsHandler(ballPossessionStore.name(), ballPossessionStatsStore.name());
+
+            final KStream<String, GameStartEventV1> gameStartEvent = builder.stream(gameStartTopicSource);
+            gameStartEvent.foreach((k,v) -> ballPossessionStatisticsHandler.startGame((v.getMatchId())));
 
             final KStream<String, BallPossessionEventV1> source = builder.stream(topicSource);
             source.peek((k,v) -> System.out.println("================> " + v.toString()));
 
-            KStream<String, BallPossessionStatsV1> ballPossessionStats = source.transformValues(() -> new CommandHandler(ballPossessionStore.name(), ballPossessionStatsStore.name()), ballPossessionStore.name(), ballPossessionStatsStore.name());
+            KStream<String, BallPossessionStatsEventV1> ballPossessionStats = source.transformValues(() -> ballPossessionStatisticsHandler, ballPossessionStore.name(), ballPossessionStatsStore.name());
             ballPossessionStats.peek((k,v) -> System.out.println("================> " + v.toString()));
 
             ballPossessionStats.to(topicSink);
@@ -120,30 +129,35 @@ public class StreamingApp {
         }
     }
 
-    private static final class CommandHandler implements ValueTransformer<BallPossessionEventV1, BallPossessionStatsV1> {
+    private static final class BallPossessionStatisticsHandler implements ValueTransformer<BallPossessionEventV1, BallPossessionStatsEventV1> {
         final private String storeName;
         final private String statsStoreName;
-        private KeyValueStore<Long, BallPossessionEventV1> stateStore;
-        private KeyValueStore<Long, BallPossessionStatsV1> statsStateStore;
+        private KeyValueStore<Integer, BallPossessionEventV1> stateStore;
+        private KeyValueStore<Integer, BallPossessionStatsEventV1> statsStateStore;
         private ProcessorContext context;
 
-        public CommandHandler(final String storeName, final String statsStoreName) {
+        public BallPossessionStatisticsHandler(final String storeName, final String statsStoreName) {
             Objects.requireNonNull(storeName,"Store Name can't be null");
             Objects.requireNonNull(statsStoreName,"Store Name can't be null");
             this.storeName = storeName;
             this.statsStoreName = statsStoreName;
         }
 
+        public void startGame(final int matchId) {
+            stateStore.delete(matchId);
+            statsStateStore.delete(matchId);
+        }
+
         @SuppressWarnings("unchecked")
         @Override
         public void init(ProcessorContext context) {
             this.context = context;
-            stateStore = (KeyValueStore<Long, BallPossessionEventV1>) this.context.getStateStore(storeName);
-            statsStateStore = (KeyValueStore<Long, BallPossessionStatsV1>) this.context.getStateStore(statsStoreName);
+            stateStore = (KeyValueStore<Integer, BallPossessionEventV1>) this.context.getStateStore(storeName);
+            statsStateStore = (KeyValueStore<Integer, BallPossessionStatsEventV1>) this.context.getStateStore(statsStoreName);
         }
 
         @Override
-        public BallPossessionStatsV1 transform(BallPossessionEventV1 ballPossessionEvent) {
+        public BallPossessionStatsEventV1 transform(BallPossessionEventV1 ballPossessionEvent) {
             long homeBallPossessionMs = 0;
             long awayBallPossessionMs = 0;
 
@@ -158,16 +172,16 @@ public class StreamingApp {
                 }
             }
 
-            BallPossessionStatsV1 currentBallPossessionStats = statsStateStore.get(ballPossessionEvent.getMATCHID());
+            BallPossessionStatsEventV1 currentBallPossessionStats = statsStateStore.get(ballPossessionEvent.getMATCHID());
             if (currentBallPossessionStats != null) {
                 currentBallPossessionStats.setHomeTeamDurationMs(currentBallPossessionStats.getHomeTeamDurationMs() + homeBallPossessionMs);
                 currentBallPossessionStats.setAwayTeamDurationMs(currentBallPossessionStats.getAwayTeamDurationMs() + awayBallPossessionMs);
             } else {
-                currentBallPossessionStats = BallPossessionStatsV1.newBuilder().setMatchId(ballPossessionEvent.getMATCHID()).setAwayTeamDurationMs(awayBallPossessionMs).setHomeTeamDurationMs(homeBallPossessionMs).setHomeTeamPercentage(0d).setAwayTeamPercentage(0d).build();
+                currentBallPossessionStats = BallPossessionStatsEventV1.newBuilder().setMatchId(ballPossessionEvent.getMATCHID()).setAwayTeamDurationMs(awayBallPossessionMs).setHomeTeamDurationMs(homeBallPossessionMs).setHomeTeamPercentage(0d).setAwayTeamPercentage(0d).build();
             }
             double total = currentBallPossessionStats.getHomeTeamDurationMs() + currentBallPossessionStats.getAwayTeamDurationMs();
-            currentBallPossessionStats.setHomeTeamPercentage(currentBallPossessionStats.getHomeTeamDurationMs() / total);
-            currentBallPossessionStats.setAwayTeamPercentage(currentBallPossessionStats.getAwayTeamDurationMs() / total);
+            currentBallPossessionStats.setHomeTeamPercentage(currentBallPossessionStats.getHomeTeamDurationMs() / total * 100);
+            currentBallPossessionStats.setAwayTeamPercentage(currentBallPossessionStats.getAwayTeamDurationMs() / total * 100);
 
             statsStateStore.put(ballPossessionEvent.getMATCHID(), currentBallPossessionStats);
             return currentBallPossessionStats;
