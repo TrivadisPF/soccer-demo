@@ -140,20 +140,20 @@ async def process(stream):
                 if key in fbAdvancedInfosTable:
                     #acceleration can be calculated as an earlier velocity (delta velocity needed) exists
                     advancedInfoOld = fbAdvancedInfosTable[key]
-                    advancedInfoNew = AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=-1, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, id=value.id, matchid=value.matchid)
+                    advancedInfoNew = AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=-1, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchid=value.matchid)
                     accelerationNew = calcAcceleration(advancedInfoNew, advancedInfoOld)
                     
                     #write new element to the table
-                    fbAdvancedInfosTable[key] = AdvancedInfo(ts=value.ts, velocity=velocityNew, acceleration=accelerationNew, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, id=value.id, matchid=value.matchid)
+                    fbAdvancedInfosTable[key] = AdvancedInfo(ts=value.ts, velocity=velocityNew, acceleration=accelerationNew, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchid=value.matchid)
                     
                     #write element to topic fbAdvancedInfos
-                    await fbAdvancedInfosTopic.send(key=key, value=AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=accelerationNew, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, id=value.id, matchid=value.matchid))
+                    # await fbAdvancedInfosTopic.send(key=key, value=AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=accelerationNew, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchid=value.matchid))
 
 
                 else:
                     #write new element to the table
                     #if no accelleration can be calculated -1 is used
-                    fbAdvancedInfosTable[key] = AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=-1, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, id=value.id, matchid=value.matchid)
+                    fbAdvancedInfosTable[key] = AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=-1, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchid=value.matchid)
 
                 
 
@@ -189,7 +189,7 @@ async def process(stream):
                     #print(best)
 
                     #send record to topic 'fbBallPossessionTopic'
-                    await fbBallPossessionTopic.send(key=bytes(str(best[0]), 'utf-8'), value=GameEvent(ts=str(best[1].ts), x=float(best[1].x), y=float(best[1].y), z=float(best[1].z), id=int(best[1].id), matchid=int(best[1].matchid)))
+                    await fbBallPossessionTopic.send(key=bytes(str(best[0]), 'utf-8'), value=GameEvent(ts=str(best[1].ts), x=float(best[1].x), y=float(best[1].y), z=float(best[1].z), sensorId=int(best[1].sensorId), matchid=int(best[1].matchid)))
 
 # if __name__ == '__main__':
 #     app.main()

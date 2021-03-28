@@ -117,10 +117,10 @@ async def process(stream):
         for record in records:
             #get timestamp
             time_stamp = record.ts
-            if record.id in counter_dict.keys():
-                counter_dict[record.id] += 1
+            if record.sensorId in counter_dict.keys():
+                counter_dict[record.sensorId] += 1
             else:
-                counter_dict[record.id] = 1
+                counter_dict[record.sensorId] = 1
         #create sorted list (ascending) of sets (id, count)
         sorted_list = sorted(counter_dict.items(), key=lambda kv: kv[1])
 
@@ -142,7 +142,7 @@ async def process(stream):
                     
                     #"<GameState: ts='2019.06.05T20:45:14.320000', eventtype='BallPossessionChange', matchid='19060518', description="
                     #sent record to topic 'fbBallPossessionAggregate'
-                    await fbBallPossessionAggregateTopic.send(key=bytes(str(MATCH_ID), 'utf-8'), value=GameState(ts=str(time_stamp), eventtype=str('BallPossessionChange'), playerId=int(sorted_list[-1][0]), matchId=int(MATCH_ID), playerKey=str(BALL_POSSESSION_ID)))
+                    f.await fbBallPossessionAggregateTopic.send(key=bytes(str(MATCH_ID), 'utf-8'), value=GameState(ts=str(time_stamp), eventtype=str('BallPossessionChange'), sensorId=int(sorted_list[-1][0]), matchId=int(MATCH_ID), playerKey=str(BALL_POSSESSION_ID)))
                 else:
                     print('Same player as before')
 
