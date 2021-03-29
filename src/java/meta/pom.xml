@@ -108,7 +108,7 @@
 						<game_lineup_v1-value>src/main/avro/GameLineup-v1.avsc</game_lineup_v1-value>
 						<player_position_meta_v1-value>src/main/avro/PlayerPositionMeta-v1.avsc</player_position_meta_v1-value>
 
-						<game_position_event_v1-value>src/main/avro/GamePositionEvent-v1.avsc</game_position_event_v1-value>
+						<game_movement_event_v1-value>src/main/avro/GameMovementEvent-v1.avsc</game_movement_event_v1-value>
 						<game_start_event_v1-value>src/main/avro/GameStartEvent-v1.avsc</game_start_event_v1-value>
  						<ball_in_zone_event_v1-value>src/main/avro/BallInZoneEvent-v1.avsc</ball_in_zone_event_v1-value>
 						<ball_possession_event_v1-value>src/main/avro/BallPossessionEvent-v1.avsc</ball_possession_event_v1-value>
