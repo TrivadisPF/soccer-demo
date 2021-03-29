@@ -42,6 +42,7 @@ import org.apache.kafka.streams.state.StoreBuilder;
 import org.apache.kafka.streams.state.Stores;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -158,30 +159,47 @@ public class StreamingApp {
 
         @Override
         public BallPossessionStatsEventV1 transform(BallPossessionEventV1 ballPossessionEvent) {
-            long homeBallPossessionMs = 0;
-            long awayBallPossessionMs = 0;
+            long ballPossessionMs = 0;
 
             BallPossessionEventV1 prevBallPossessionEvent = stateStore.get(ballPossessionEvent.getMATCHID());
             stateStore.put(ballPossessionEvent.getMATCHID(), ballPossessionEvent);
 
+            BallPossessionStatsEventV1 currentBallPossessionStats = statsStateStore.get(ballPossessionEvent.getMATCHID());
+            if (currentBallPossessionStats == null) {
+                currentBallPossessionStats = BallPossessionStatsEventV1.newBuilder().setMatchId(ballPossessionEvent.getMATCHID())
+                        .setAwayTeamDurationMs(0l)
+                        .setHomeTeamDurationMs(0l)
+                        .setHomeTeamPercentage(0d)
+                        .setAwayTeamPercentage(0d)
+                        .setPlayersDurationsMs(new HashMap<>())
+                        .setPlayersPercentages(new HashMap<>())
+                        .build();
+            }
+
             if (prevBallPossessionEvent != null) {
+                ballPossessionMs = ballPossessionEvent.getTS() - prevBallPossessionEvent.getTS();
                 if (prevBallPossessionEvent.getOBJECTTYPE() == 1) {
-                    homeBallPossessionMs = ballPossessionEvent.getTS() - prevBallPossessionEvent.getTS();
+                    currentBallPossessionStats.setHomeTeamDurationMs(currentBallPossessionStats.getHomeTeamDurationMs() + ballPossessionMs);
                 } else {
-                    awayBallPossessionMs = ballPossessionEvent.getTS() - prevBallPossessionEvent.getTS();
+                    currentBallPossessionStats.setAwayTeamDurationMs(currentBallPossessionStats.getAwayTeamDurationMs() + ballPossessionMs);
                 }
             }
 
-            BallPossessionStatsEventV1 currentBallPossessionStats = statsStateStore.get(ballPossessionEvent.getMATCHID());
-            if (currentBallPossessionStats != null) {
-                currentBallPossessionStats.setHomeTeamDurationMs(currentBallPossessionStats.getHomeTeamDurationMs() + homeBallPossessionMs);
-                currentBallPossessionStats.setAwayTeamDurationMs(currentBallPossessionStats.getAwayTeamDurationMs() + awayBallPossessionMs);
-            } else {
-                currentBallPossessionStats = BallPossessionStatsEventV1.newBuilder().setMatchId(ballPossessionEvent.getMATCHID()).setAwayTeamDurationMs(awayBallPossessionMs).setHomeTeamDurationMs(homeBallPossessionMs).setHomeTeamPercentage(0d).setAwayTeamPercentage(0d).build();
-            }
             double total = currentBallPossessionStats.getHomeTeamDurationMs() + currentBallPossessionStats.getAwayTeamDurationMs();
             currentBallPossessionStats.setHomeTeamPercentage(currentBallPossessionStats.getHomeTeamDurationMs() / total * 100);
             currentBallPossessionStats.setAwayTeamPercentage(currentBallPossessionStats.getAwayTeamDurationMs() / total * 100);
+
+            if (prevBallPossessionEvent != null) {
+                CharSequence playerId = prevBallPossessionEvent.getPLAYERID().toString();
+                if (!currentBallPossessionStats.getPlayersDurationsMs().containsKey(playerId)) {
+                    currentBallPossessionStats.getPlayersDurationsMs().put(playerId, 0l);
+                }
+                long playerBallPossessionMs = currentBallPossessionStats.getPlayersDurationsMs().get(playerId) + ballPossessionMs;
+                currentBallPossessionStats.getPlayersDurationsMs().put(playerId, playerBallPossessionMs);
+                for (CharSequence pid : currentBallPossessionStats.getPlayersDurationsMs().keySet()) {
+                    currentBallPossessionStats.getPlayersPercentages().put(pid, currentBallPossessionStats.getPlayersDurationsMs().get(pid)  / total * 100);
+                }
+            }
 
             statsStateStore.put(ballPossessionEvent.getMATCHID(), currentBallPossessionStats);
             return currentBallPossessionStats;
