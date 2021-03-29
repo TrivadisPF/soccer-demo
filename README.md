@@ -100,6 +100,27 @@ docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --top
 docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic rawGames --replication-factor 3 --partitions 1
 ```
 
+## UI 
+
+The following streams are consumed by the UI:
+
+* Getting the *ball in zone* events:
+
+	```sql
+SELECT * FROM ball_in_zone_event_t WHERE ball_event IS NOT NULL EMIT CHANGES;
+```
+
+* Getting the *ball possession* events:
+	
+	```sql
+SELECT * FROM ball_possession_event_s emit changes;
+```
+
+* Getting the *ball possession statistics* events:
+
+	```sql
+SELECT * FROM ball_possession_stats_event_s emit changes;
+```
 
 
 ## Source Systems
@@ -414,10 +435,10 @@ EMIT CHANGES;
 
 
 SELECT * FROM ball_possession_event_s emit changes;
+```
 
 
-
-### Ball Possession Percentage
+### Ball Possession Statistics
 
 ```
 DROP STREAM ball_possession_duration_s;
