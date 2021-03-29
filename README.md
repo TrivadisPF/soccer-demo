@@ -88,6 +88,8 @@ docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --top
 
 docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic game_start_event_v1 --replication-factor 3 --partitions 1 &&
 
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic game_event_v1 --replication-factor 3 --partitions 1 &&
+
 docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_in_zone_event_v1 --replication-factor 3 --partitions 1 &&
 
 docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_possession_event_v1 --replication-factor 3 --partitions 1 &&
