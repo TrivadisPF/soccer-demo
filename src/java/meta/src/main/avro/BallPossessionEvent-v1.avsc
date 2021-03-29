@@ -10,11 +10,18 @@
     "name" : "TS",
     "type" : [ "null", "long" ],
     "default" : null
-  }, {
+  }, 
+  {
     "name" : "TS_STRING",
     "type" : [ "null", "string" ],
     "default" : null
-  }, {
+  },
+  {
+    "name" : "PLAYTIMEMS",
+    "type" : [ "null", "long" ],
+    "default" : null
+  },
+  {
     "name" : "EVENTTYPE",
     "type" : [ "null", "string" ],
     "default" : null

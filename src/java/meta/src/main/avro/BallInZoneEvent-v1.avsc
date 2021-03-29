@@ -9,6 +9,11 @@
             	"logicalType": "timestamp-millis"
             },
             {
+            	"name": "playtimeMs",
+            	"type": "long",
+            	"logicalType": "timestamp-millis"
+            },            
+            {
             	"name": "text",
             	"type": "string"
             }
