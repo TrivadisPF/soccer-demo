@@ -110,7 +110,7 @@
       #
       # ===== Azkarra Streams ========
       #
-      AZKARRA_enable: true
+      AZKARRA_enable: false
       #
       # ===== Confluent Control Center ========
       #
