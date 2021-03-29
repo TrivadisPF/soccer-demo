@@ -19,9 +19,9 @@
 
 package azkarra;
 
-import com.trivadis.demo.soccer.BallPossessionStatsEventV1;
 import com.trivadis.demo.soccer.BallPossessionEventV1;
-import com.trivadis.demo.soccer.GameStartEventV1;
+import com.trivadis.demo.soccer.BallPossessionStatsEventV1;
+import com.trivadis.demo.soccer.GameEventV1;
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde;
 import io.streamthoughts.azkarra.api.annotations.Component;
@@ -81,7 +81,7 @@ public class StreamingApp {
         @Override
         public void configure(final Conf conf) {
             gameStartTopicSource = conf.getOptionalString("topic.source.game.start")
-                    .orElse("game_start_event_v1");
+                    .orElse("game_event_v1");
             topicSource = conf.getOptionalString("topic.source")
                     .orElse("ball_possession_event_v1");
             topicSink = conf.getOptionalString("topic.sink")
@@ -115,8 +115,10 @@ public class StreamingApp {
 
             final BallPossessionStatisticsHandler ballPossessionStatisticsHandler =  new BallPossessionStatisticsHandler(ballPossessionStore.name(), ballPossessionStatsStore.name());
 
-            final KStream<String, GameStartEventV1> gameStartEvent = builder.stream(gameStartTopicSource);
-            gameStartEvent.foreach((k,v) -> ballPossessionStatisticsHandler.startGame((v.getMatchId())));
+            final KStream<String, GameEventV1> gameEvent = builder.stream(gameStartTopicSource);
+            gameEvent.peek((k,v) -> System.out.println("================> " + v.toString()));
+            //gameEvent.filter((key, ge) -> ge.getEventType().equals("simulation-start"))
+            gameEvent.foreach((k,v) -> ballPossessionStatisticsHandler.startGame((v.getMatchId())));
 
             final KStream<String, BallPossessionEventV1> source = builder.stream(topicSource);
             source.peek((k,v) -> System.out.println("================> " + v.toString()));
@@ -145,6 +147,7 @@ public class StreamingApp {
         }
 
         public void startGame(final int matchId) {
+            System.out.println("=========> Start Game by init state for " + matchId);
             stateStore.delete(matchId);
             statsStateStore.delete(matchId);
         }

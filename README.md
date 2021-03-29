@@ -104,10 +104,10 @@ docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --top
 
 The following streams are consumed by the UI:
 
-Getting the *game start* event:
+Getting the *game* event:
 
 ```sql
-select * from game_start_event_s emit changes;
+select * from game_event_s emit changes;
 ```
 
 Getting the *ball in zone* events:
@@ -225,10 +225,10 @@ Create a Stream on the livestream raw data
 
 
 ```sql
-DROP STREAM game_start_event_s;
+DROP STREAM game_event_s;
 
-CREATE STREAM game_start_event_s (id VARCHAR KEY)
-WITH (KAFKA_TOPIC='game_start_event_v1', VALUE_FORMAT='AVRO', VALUE_AVRO_SCHEMA_FULL_NAME='GameStartEventV1');
+CREATE STREAM game_event_s (id VARCHAR KEY)
+WITH (KAFKA_TOPIC='game_event_v1', VALUE_FORMAT='AVRO', VALUE_AVRO_SCHEMA_FULL_NAME='GameEventV1');
 ```
 
 

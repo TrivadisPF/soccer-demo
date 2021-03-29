@@ -1,12 +1,16 @@
 {
-        "name": "GameStartEventV1",
+        "name": "GameEventV1",
         "namespace": "com.trivadis.demo.soccer",
         "type": "record",
         "fields": [
             {
-            	"name": "ts",
+            	"name": "timestampMs",
             	"type": "long",
             	"logicalType": "timestamp-millis"
+            },
+            {
+            	"name": "eventType", 
+            	"type": "string"
             },
             {
             	"name": "matchId", 
