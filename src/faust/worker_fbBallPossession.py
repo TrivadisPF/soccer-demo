@@ -55,6 +55,7 @@ print('max_events', max_elements_in_window)
 #key=19060518.10
 #value={
 #  "ts": "2018-06-29T08:15:27.243860",
+#  "playtimeMs": "40",
 #  "x": "-0.38",
 #  "y": "-2.23",
 #  "z": "0.0",
@@ -65,6 +66,7 @@ print('max_events', max_elements_in_window)
 # GameEvent Schema
 class GameEvent(faust.Record, serializer='json'):
     ts: str
+    playtimeMs: str
     x: float
     y: float
     z: float
@@ -74,6 +76,7 @@ class GameEvent(faust.Record, serializer='json'):
 #rowkey = "19060518.10"
 class GameState(faust.Record, serializer='json'):
     ts: str
+    playtimeMs: str
     eventtype: str
     sensorId: int
     matchId: int
@@ -81,6 +84,7 @@ class GameState(faust.Record, serializer='json'):
 
 #{
 #  "TS": "2019.06.05T20:46:07.200000",
+#  "PLAYTIMEMS": "40",
 #  "EVENTTYPE": "BallPossessionChange",
 #  "SENSORID": 114,
 #  "MATCHID": 19060518,
@@ -103,8 +107,9 @@ fbBallPossessionTopic = app.topic('fbBallPossession', value_type=GameEvent)
 #topic to write for all Events that are shown
 fbBallPossessionAggregateTopic = app.topic('fbBallPossessionAggregate', value_type=GameState)
 
-#last ball time stamp
+#last ball time stamp and playtimeMs
 time_stamp = ''
+playtimeMs = ''
 
 @app.agent(fbBallPossessionTopic)
 async def process(stream):
@@ -117,6 +122,7 @@ async def process(stream):
         for record in records:
             #get timestamp
             time_stamp = record.ts
+            playtimeMs = record.playtimeMs
             if record.sensorId in counter_dict.keys():
                 counter_dict[record.sensorId] += 1
             else:
@@ -142,7 +148,7 @@ async def process(stream):
                     
                     #"<GameState: ts='2019.06.05T20:45:14.320000', eventtype='BallPossessionChange', matchId='19060518', description="
                     #sent record to topic 'fbBallPossessionAggregate'
-                    await fbBallPossessionAggregateTopic.send(key=bytes(str(MATCH_ID), 'utf-8'), value=GameState(ts=str(time_stamp), eventtype=str('BallPossessionChange'), sensorId=int(sorted_list[-1][0]), matchId=int(MATCH_ID), playerKey=str(BALL_POSSESSION_ID)))
+                    await fbBallPossessionAggregateTopic.send(key=bytes(str(MATCH_ID), 'utf-8'), value=GameState(ts=str(time_stamp), playtimeMs=str(playtimeMs), eventtype=str('BallPossessionChange'), sensorId=int(sorted_list[-1][0]), matchId=int(MATCH_ID), playerKey=str(BALL_POSSESSION_ID)))
                 else:
                     print('Same player as before')
 

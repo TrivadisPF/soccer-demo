@@ -88,6 +88,7 @@ number_of_players_plus_ball = 23
 # GameEvent Schema
 class GameEvent(faust.Record, serializer='json'):
     ts: str
+    playtimeMs: str
     x: float
     y: float
     z: float
@@ -147,7 +148,7 @@ async def process(stream):
                     fbAdvancedInfosTable[key] = AdvancedInfo(ts=value.ts, velocity=velocityNew, acceleration=accelerationNew, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchId=value.matchId)
                     
                     #write element to topic fbAdvancedInfos
-                    # await fbAdvancedInfosTopic.send(key=key, value=AdvancedInfo(ts=str(value.ts), velocity=velocityNew, acceleration=accelerationNew, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchId=value.matchId))
+                    # await fbAdvancedInfosTopic.send(key=key, value=AdvancedInfo(ts=str(value.ts), playtimeMs(value.playtimeMs), velocity=velocityNew, acceleration=accelerationNew, distance=euclidianDistance(pointNew, pointOld), directionVector=delta_vectorNew, sensorId=value.sensorId, matchId=value.matchId))
 
 
                 else:
@@ -189,7 +190,7 @@ async def process(stream):
                     #print(best)
 
                     #send record to topic 'fbBallPossessionTopic'
-                    await fbBallPossessionTopic.send(key=bytes(str(best[0]), 'utf-8'), value=GameEvent(ts=str(best[1].ts), x=float(best[1].x), y=float(best[1].y), z=float(best[1].z), sensorId=int(best[1].sensorId), matchId=int(best[1].matchId)))
+                    await fbBallPossessionTopic.send(key=bytes(str(best[0]), 'utf-8'), value=GameEvent(ts=str(best[1].ts), playtimeMs=str(best[1].playtimeMs), x=float(best[1].x), y=float(best[1].y), z=float(best[1].z), sensorId=int(best[1].sensorId), matchId=int(best[1].matchId)))
 
 # if __name__ == '__main__':
 #     app.main()
