@@ -42,6 +42,21 @@
         "double"
       ],
       "default": null
-    }    
+    },
+    {
+		"name": "playersDurationsMs",
+		"type":  {"type": "map", 
+					"values" : "long",
+					"default" : {} 
+				}
+    },
+    {
+		"name": "playersPercentages",
+		"type":  {"type": "map", 
+					"values" : "double",
+					"default" : {} 
+				}
+    }
+ 
   ]
 }
