@@ -102,6 +102,12 @@ docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --top
 
 The following streams are consumed by the UI:
 
+Getting the *game start* event:
+
+```sql
+select * from game_start_event_s emit changes;
+```
+
 Getting the *ball in zone* events:
 
 ```sql
@@ -159,7 +165,7 @@ For player positions the data in this csv file [./data/football-positions.csv](.
 
 ## Stream Processing
 
-### Game Livestream System 
+### Game Lineup 
 
 
 ``` bash
@@ -211,18 +217,29 @@ EMIT CHANGES;
 SELECT * FROM game_lineup_player_t emit changes;
 ```
 
+### Game Livestream 
+
 Create a Stream on the livestream raw data
 
-```sql
-DROP STREAM game_position_s;
 
-CREATE STREAM game_position_event_s (id VARCHAR KEY)
-WITH (KAFKA_TOPIC='game_position_event_v1', VALUE_FORMAT='AVRO', VALUE_AVRO_SCHEMA_FULL_NAME='GamePositionEventV1');
+```sql
+DROP STREAM game_start_event_s;
+
+CREATE STREAM game_start_event_s (id VARCHAR KEY)
+WITH (KAFKA_TOPIC='game_start_event_v1', VALUE_FORMAT='AVRO', VALUE_AVRO_SCHEMA_FULL_NAME='GameStartEventV1');
+```
+
+
+```sql
+DROP STREAM game_movement_event_s;
+
+CREATE STREAM game_movement_event_s (id VARCHAR KEY)
+WITH (KAFKA_TOPIC='game_movement_event_v1', VALUE_FORMAT='AVRO', VALUE_AVRO_SCHEMA_FULL_NAME='GameMovementEventV1');
 ```
 
 ```
 curl -X POST -H 'Content-Type: application/vnd.ksql.v1+avro' -i http://dataplatform:8088/query --data '{
-  "ksql": "SELECT * FROM fixture_livestream_s EMIT CHANGES;",
+  "ksql": "SELECT * FROM game_movement_event_s EMIT CHANGES;",
   "streamsProperties": {
     "ksql.streams.auto.offset.reset": "latest"
   }
@@ -272,16 +289,18 @@ EMIT CHANGES;
 ### Ball in Zone
 
 ```
+DROP TABLE ball_in_zone_event_t;
 DROP STREAM ball_in_zone_s;
 
 CREATE STREAM ball_in_zone_s
 WITH ( kafka_topic = 'ball_in_zone_v1', PARTITIONS=1, REPLICAS=1, VALUE_FORMAT='AVRO', VALUE_AVRO_SCHEMA_FULL_NAME='BallInZoneV1')
 AS
-SELECT gpe.id
-       , gpe.ts
-		, gpe.x
-		, gpe.y
-		, gpe.playerId
+SELECT gme.id
+       , gme.ts
+       , gme.playtimeMs
+		, gme.x
+		, gme.y
+		, gme.sensorId
 		, stad.id as matchid
   , CASE WHEN x > pitch->Xmin AND x < pitch->Xmax AND y > pitch->Ymin AND y < pitch->Ymax THEN 1 ELSE 0 END AS isOnPitch,
   CASE WHEN x < pitchLeft->Xmax THEN 1 ELSE 0 END AS isPitchLeft,
@@ -290,10 +309,10 @@ SELECT gpe.id
   CASE WHEN x > penaltyBoxRight->Xmin AND x < penaltyBoxRight->Xmax AND y > penaltyBoxRight->Ymin AND y < penaltyBoxRight->Ymax THEN 1 ELSE 0 END AS isPenaltyBoxRight,
   CASE WHEN x > goalLeft->Xmin AND x < goalLeft->Xmax AND y > goalLeft->Ymin AND y < goalLeft->Ymax THEN 1 ELSE 0 END AS isGoalLeft,
   CASE WHEN x > goalRight->Xmin AND x < goalRight->Xmax AND y > goalRight->Ymin AND y < goalRight->Ymax THEN 1 ELSE 0 END AS isGoalRight
-FROM game_position_event_s 	gpe
+FROM game_movement_event_s 	gme
 INNER JOIN stadium_dimension_t stad 
-	ON cast(gpe.matchId as varchar) = stad.id
-WHERE gpe.playerId = 200
+	ON cast(gme.matchId as varchar) = stad.id
+WHERE gme.sensorId = 200
 EMIT CHANGES;
 ```
 
@@ -353,6 +372,7 @@ CREATE TABLE ball_in_zone_event_t
 WITH ( kafka_topic = 'ball_in_zone_event_v1', PARTITIONS=1, REPLICAS=1, VALUE_FORMAT='AVRO',  VALUE_AVRO_SCHEMA_FULL_NAME='BallInZoneEventV1')
 AS
 SELECT matchId
+	, LATEST_BY_OFFSET(playtimeMs) AS playtimeMs
 	, CASE WHEN ARRAY_JOIN (LATEST_BY_OFFSET(isPenaltyBoxRight,2), ':') = '0:1' THEN 'enter penalty box Switzerland'
 			WHEN ARRAY_JOIN (LATEST_BY_OFFSET(isPenaltyBoxRight,2), ':') = '1:0' THEN 'left penalty box Switzerland'
 			WHEN ARRAY_JOIN (LATEST_BY_OFFSET(isPenaltyBoxLeft,2), ':') = '0:1' THEN 'enter penalty box Portugal'
@@ -392,11 +412,13 @@ curl -X POST -H 'Content-Type: application/vnd.ksql.v1+json' -i http://dataplatf
 rawGames
 
 ```
+DROP STREAM BALL_POSSESSION_EVENT_S;
 DROP STREAM ball_possession_aggregate_s;
 
 CREATE STREAM ball_possession_aggregate_s (
   id BIGINT KEY,
   ts VARCHAR, 
+  playtimeMs VARCHAR,
   eventtype VARCHAR,
   sensorId INT,
   matchId INTEGER,
@@ -420,6 +442,7 @@ SELECT
   id,
   stringtotimestamp(bp.ts, 'yyyy.MM.dd''T''HH:mm:ss.SSS') as ts,
   bp.ts as ts_string, 
+  CAST (bp.playtimeMs AS bigint) AS playtimeMs,
   bp.eventtype as eventtype,
   bp.sensorId as sensorId,
   bp.matchId as matchId,
