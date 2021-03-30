@@ -86,8 +86,6 @@ docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --top
 
 docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic game_movement_event_v1 --replication-factor 3 --partitions 1 &&
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic game_start_event_v1 --replication-factor 3 --partitions 1 &&
-
 docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic game_event_v1 --replication-factor 3 --partitions 1 &&
 
 docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_in_zone_event_v1 --replication-factor 3 --partitions 1 &&
@@ -97,7 +95,11 @@ docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --top
 docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic ball_possession_stats_event_v1 --replication-factor 3 --partitions 1 &&
 
 
-docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic rawGames --replication-factor 3 --partitions 1
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic rawGames --replication-factor 3 --partitions 1 && 
+
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fbBallPossession --replication-factor 3 --partitions 1 && 
+
+docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fbBallPossessionAggregate --replication-factor 3 --partitions 1 
 ```
 
 ## UI 
@@ -182,6 +184,8 @@ DROP STREAM game_lineup_event_s;
 CREATE STREAM game_lineup_event_s (id VARCHAR KEY)
 WITH (KAFKA_TOPIC='game_lineup_v1', VALUE_FORMAT='AVRO', VALUE_AVRO_SCHEMA_FULL_NAME='GameLineupEventV1');
 
+DROP STREAM game_lineup_players_event_s;
+
 CREATE STREAM game_lineup_players_event_s 
 WITH (KAFKA_TOPIC='game_lineup_players_v1', PARTITIONS=1, REPLICAS=3, VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA', VALUE_AVRO_SCHEMA_FULL_NAME='GameLineupPlayersEvent')
 AS 
@@ -189,7 +193,7 @@ SELECT id
 		, matchId 
 		,'home' as team
 		, explode(hometeamplayers) AS player
-FROM game_lineup_s
+FROM game_lineup_event_s
 EMIT CHANGES;
 
 INSERT INTO game_lineup_players_event_s 
@@ -197,22 +201,45 @@ SELECT id
 		, matchId 
 		,'away' as team
 		, explode(awayteamplayers) AS player
-FROM game_lineup_s
+FROM game_lineup_event_s
 EMIT CHANGES;
 
-SELECT id, matchId, team, player->playerid FROM game_lineup_players_s EMIT CHANGES;
+SELECT id, matchId, team, player FROM game_lineup_players_event_s EMIT CHANGES;
+
+CREATE STREAM game_lineup_player_s
+WITH (KAFKA_TOPIC='game_lineup_player_s_v1', PARTITIONS=1, REPLICAS=3, VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA') 
+AS
+SELECT glpe.id
+			, matchId AS matchId
+			, team AS team
+			, CASE WHEN team = 'home' THEN g.homeTeamId
+			       ELSE g.awayTeamId 
+			  END  teamId
+			, player->sensorId	AS sensorId
+			, player->position AS position
+			, player->playerId AS playerId
+			, g.rowkey
+FROM game_lineup_players_event_s glpe
+LEFT JOIN game_t		g
+ON (CAST (glpe .matchId AS VARCHAR)  = g.rowkey) 
+EMIT CHANGES;
+
 
 DROP TABLE game_lineup_player_t;
 
 CREATE TABLE game_lineup_player_t
-WITH (KAFKA_TOPIC='game_lineup_player_v1', PARTITIONS=1, REPLICAS=3, VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA', VALUE_AVRO_SCHEMA_FULL_NAME='GameLineupPlayer')
+WITH (KAFKA_TOPIC='game_lineup_player_v1', PARTITIONS=1, REPLICAS=3, VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA', VALUE_AVRO_SCHEMA_FULL_NAME='GameLineupPlayerV1')
 AS
 SELECT latest_by_offset (matchId) AS matchId
 			, latest_by_offset (team) AS team
+			, CASE WHEN latest_by_offset (team) = 'home' THEN latest_by_offset (g.homeTeamId )
+			       ELSE latest_by_offset(g.awayTeamId) END  teamId
 			, player->sensorId	AS sensorId
 			, latest_by_offset (player->position) AS position
 			, latest_by_offset (player->playerId) AS playerId
 FROM game_lineup_players_event_s 
+LEFT JOIN game_t		g
+ON (CAST (matchId AS VARCHAR)  = g.rowkey)
 GROUP BY player->sensorId
 EMIT CHANGES;
 
@@ -248,6 +275,28 @@ curl -X POST -H 'Content-Type: application/vnd.ksql.v1+avro' -i http://dataplatf
 }'
 ```
 
+## Game Metadata
+
+```
+DROP TABLE game_t;
+
+CREATE TABLE game_t (rowkey VARCHAR PRIMARY KEY) 
+WITH (KAFKA_TOPIC='game_v1', VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA');
+```
+
+
+## Players Metadata (t.b.d.)
+
+Can not be implemented because data in srcPlayerPlayer is not keyed
+
+```
+DROP TABLE player_t;
+
+	CREATE TABLE player_t (rowkey INT PRIMARY KEY) 
+	WITH (KAFKA_TOPIC='srcPlayerPlayer', PARTITIONS=3, REPLICAS=3, VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA');
+
+```
+
 ## Stadium Dimension Metadata
 
 ```
@@ -263,7 +312,7 @@ WITH (KAFKA_TOPIC='stadium_v1', PARTITIONS=1, REPLICAS=3, VALUE_FORMAT='AVRO', K
 DROP TABLE stadium_dimension_t;
 
 CREATE TABLE stadium_dimension_t 
-WITH (KAFKA_TOPIC='stadium_dimension-v1', PARTITIONS=1, REPLICAS=3, VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA', VALUE_AVRO_SCHEMA_FULL_NAME='StadiumDimensionV1')
+WITH (KAFKA_TOPIC='stadium_dimension_v1', PARTITIONS=1, REPLICAS=3, VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA', VALUE_AVRO_SCHEMA_FULL_NAME='StadiumDimensionV1')
 as
 select
   id,
@@ -448,9 +497,10 @@ SELECT
   bp.eventtype as eventtype,
   bp.sensorId as sensorId,
   bp.matchId as matchId,
-  glp.position as name,
+  glp.position as position,
   glp.playerId as playerId,
   glp.team as team,
+  glp.teamId as teamId,
   CASE WHEN (glp.team = 'home') THEN 1 ELSE 2 END as objectType
 FROM ball_possession_aggregate_s bp
 INNER JOIN game_lineup_player_t glp on glp.sensorId  = bp.sensorId
@@ -464,7 +514,7 @@ SELECT * FROM ball_possession_event_s emit changes;
 ### Ball Possession Statistics
 
 ```
-DROP STREAM ball_possession_duration_s;
+DROP STREAM ball_possession_stats_event_s;
 
 CREATE STREAM ball_possession_stats_event_s 
 WITH (KAFKA_TOPIC='ball_possession_stats_event_v1', VALUE_FORMAT='AVRO');

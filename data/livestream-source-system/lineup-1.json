@@ -2,114 +2,114 @@
     "matchId": 19060518,
     "homeTeamPlayers": [
         {
-            "playerId": 1,
+            "playerId": 178005,
             "position": "Patricio",
             "sensorId": 1
         },
         {
-            "playerId": 3,
+            "playerId": 120533,
             "position": "Pepe",
             "sensorId": 3
         },   
         {
-            "playerId": 4,
+            "playerId": 239818,
             "position": "Dias",
-            "sensorId": 3
+            "sensorId": 4
         },  
         {
-            "playerId": 5,
+            "playerId": 209889,
             "position": "Guerreiro",
             "sensorId": 5
         },                       
         {
-            "playerId": 7,
+            "playerId": 20801,
             "position": "Ronaldo",
             "sensorId": 7
         }, 
         {
-            "playerId": 10,
+            "playerId": 218667,
             "position": "Silva",
             "sensorId": 10
         },             
         {
-            "playerId": 14,
+            "playerId": 207566,
             "position": "Carvalho",
             "sensorId": 14
         },                       
         {
-            "playerId": 16,
+            "playerId": 212198,
             "position": "Fernandes",
             "sensorId": 16
         }, 
         {
-            "playerId": 18,
+            "playerId": 224293,
             "position": "Neves",
             "sensorId": 18
         },             
         {
-            "playerId": 20,
+            "playerId": 227928,
             "position": "Semedo",
             "sensorId": 20
         },  
         {
-            "playerId": 23,
+            "playerId": 242444,
             "position": "Felix",
             "sensorId": 23
         }
     ],
     "awayTeamPlayers": [
         {
-            "playerId": 101,
+            "playerId": 177683,
             "position": "Sommer",
             "sensorId": 101
         },
         {
-            "playerId": 102,
+            "playerId": 210625,
             "position": "Mbabu",
             "sensorId": 102
         },   
         {
-            "playerId": 105,
+            "playerId": 229237,
             "position": "Akanji",
             "sensorId": 105
         },  
         {
-            "playerId": 108,
+            "playerId": 202024,
             "position": "Freuler",
             "sensorId": 108
         },                       
         {
-            "playerId": 109,
+            "playerId": 193408,
             "position": "Seferovic",
             "sensorId": 109
         }, 
         {
-            "playerId": 110,
+            "playerId": 199503,
             "position": "Xhaka",
             "sensorId": 110
         },             
         {
-            "playerId": 113,
+            "playerId": 244343,
             "position": "Rodrigues",
             "sensorId": 113
         },                       
         {
-            "playerId": 114,
+            "playerId": 190059,
             "position": "Zuber",
             "sensorId": 114
         }, 
         {
-            "playerId": 117,
+            "playerId": 229261,
             "position": "Zakaria",
             "sensorId": 117
         },             
         {
-            "playerId": 122,
+            "playerId": 210047,
             "position": "Schaer",
             "sensorId": 122
         },  
         {
-            "playerId": 123,
+            "playerId": 193348,
             "position": "Shaqiri",
             "sensorId": 123
         }
