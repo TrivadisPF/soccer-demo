@@ -74,7 +74,7 @@ export class BallPosessionService {
     };
 
     const config = {
-      url: 'http://18.197.89.131:8088/api/query',
+      url: '/api/query',
       method: 'POST',
       headers: {'Content-Type': 'application/json', 'Cache-Control': 'no-store'},
       body: data,
