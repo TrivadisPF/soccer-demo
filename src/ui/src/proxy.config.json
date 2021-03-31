@@ -1,31 +1,13 @@
 {
   "/api/*": {
-    "target": "http://ap1:8088",
+    "target": "http://18.197.89.131:8088",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": false,
-    "pathRewrite": {
-      "^/api": ""
-    },
-    "headers": {
-      "Connection": "keep-alive",
-      "Cache-Control": "no-cache, no-store, no-transform"
-    }
-  },
-  "/api2/*": {
-    "target": "http://api2:8088",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin": false,
-    "pathRewrite": {
-      "^/api2": ""
-    },
+    "pathRewrite": { "^/api": ""},
     "headers": {
       "Connection": "keep-alive",
       "Cache-Control": "no-cache, no-store, no-transform"
     }
   }
 }
-
-
-
