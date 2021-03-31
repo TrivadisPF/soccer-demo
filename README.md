@@ -290,11 +290,21 @@ WITH (KAFKA_TOPIC='game_v1', VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA');
 Can not be implemented because data in srcPlayerPlayer is not keyed
 
 ```
+CREATE STREAM player_s
+WITH (KAFKA_TOPIC='srcPlayerPlayer', PARTITIONS=3, REPLICAS=3, VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA');
+
+
 DROP TABLE player_t;
 
-	CREATE TABLE player_t (rowkey INT PRIMARY KEY) 
-	WITH (KAFKA_TOPIC='srcPlayerPlayer', PARTITIONS=3, REPLICAS=3, VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA');
-
+CREATE TABLE player_t
+WITH (KAFKA_TOPIC='player_v1', PARTITIONS=1, REPLICAS=3, VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA')
+AS 
+SELECT id
+, LATEST_BY_OFFSET(name)		AS name
+, LATEST_BY_OFFSET(full_name) AS full_name
+FROM player_s
+GROUP BY id
+EMIT CHANGES;
 ```
 
 ## Stadium Dimension Metadata
@@ -490,7 +500,7 @@ WITH (
 )
 AS
 SELECT
-  id,
+  bp.id,
   stringtotimestamp(bp.ts, 'yyyy.MM.dd''T''HH:mm:ss.SSS') as ts,
   bp.ts as ts_string, 
   CAST (bp.playtimeMs AS bigint) AS playtimeMs,
@@ -499,11 +509,15 @@ SELECT
   bp.matchId as matchId,
   glp.position as position,
   glp.playerId as playerId,
+  p.name,
+  p.full_name,
   glp.team as team,
   glp.teamId as teamId,
   CASE WHEN (glp.team = 'home') THEN 1 ELSE 2 END as objectType
 FROM ball_possession_aggregate_s bp
 INNER JOIN game_lineup_player_t glp on glp.sensorId  = bp.sensorId
+INNER JOIN player_t p ON p.id = glp.playerId
+PARTTION BY bp.id
 EMIT CHANGES;
 
 
@@ -520,56 +534,10 @@ CREATE STREAM ball_possession_stats_event_s
 WITH (KAFKA_TOPIC='ball_possession_stats_event_v1', VALUE_FORMAT='AVRO');
 ```
 
+```
 SELECT * FROM ball_possession_stats_event_s emit changes;
-
-
-### Misc
-
-```sql
-CREATE TABLE match_raw_t (
-  rowkey BIGINT PRIMARY KEY, 
-  match_id BIGINT, 
-  pitch_x_size DOUBLE, 
-  pitch_y_size DOUBLE) 
-WITH (KAFKA_TOPIC='match_raw_v1', 
-		PARTITIONS=1, 
-		REPLICAS=1, 
-		VALUE_FORMAT='AVRO');
 ```
 
-```sql
-INSERT INTO raw_meta_data_match_t (rowkey, match_id, pitch_x_size , pitch_y_size) 
-VALUES (19060518, 19060518, 105.0, 68.0);
-```
-
-
-```sql
-CREATE STREAM raw_meta_data_match_s (
-  rowkey BIGINT KEY, 
-  match_id BIGINT, 
-  pitch_x_size DOUBLE, 
-  pitch_x_size DOUBLE) 
-WITH (KAFKA_TOPIC='rawMetaMatch'
-		, PARTITIONS=1
-		, REPLICAS=1
-		, VALUE_FORMAT='JSON');
-```
-
--- Tabelle mit Topic fbFieldPos neu erstellen
-CREATE TABLE t_fbFieldPos 
-WITH (KAFKA_TOPIC='fbFieldPos', PARTITIONS=1, REPLICAS=1, VALUE_FORMAT='JSON')
-as
-select
-  matchId, 
-  STRUCT( Xmin := -(pitchXSize/2), Xmax := (pitchXSize/2), Ymin := -(pitchYSize/2), Ymax := (pitchYSize/2)) AS pitch,
-  STRUCT( Xmin := -(pitchXSize/2), Xmax := 0, Ymin := -(pitchYSize/2), Ymax := (pitchYSize/2)) AS pitchLeft, 
-  STRUCT( Xmin := 0, Xmax := (pitchXSize/2), Ymin := -(pitchYSize/2), Ymax := (pitchYSize/2)) AS pitchRight, 
-  STRUCT( Xmin := -(pitchXSize/2), Xmax := -(pitchXSize/2)+16.5, Ymin := (-20.16), Ymax := 20.16) AS penaltyBoxLeft, 
-  STRUCT( Xmin := (pitchXSize/2)-16.5, Xmax := (pitchXSize/2), Ymin := (-20.16), Ymax := 20.16) AS penaltyBoxRight, 
-  STRUCT( Xmin := -(pitchXSize/2)-2.0, Xmax := -(pitchXSize/2), Ymin := -3.66, Ymax := 3.66 ) AS goalLeft, 
-  STRUCT( Xmin := (pitchXSize/2), Xmax := (pitchXSize/2)+2.0, Ymin := (-3.66), Ymax := 3.66 ) AS goalRight
-FROM t_rawMetaMatch
-EMIT CHANGES;
 
 
 This was the game
