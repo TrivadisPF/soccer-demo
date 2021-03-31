@@ -4,24 +4,28 @@
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": false,
-    "pathRewrite": { "^/api": ""},
+    "pathRewrite": {
+      "^/api": ""
+    },
     "headers": {
       "Connection": "keep-alive",
       "Cache-Control": "no-cache, no-store, no-transform"
     }
-  }
-},
-
-{
+  },
   "/api2/*": {
     "target": "http://api2:8088",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": false,
-    "pathRewrite": { "^/api": ""},
+    "pathRewrite": {
+      "^/api2": ""
+    },
     "headers": {
       "Connection": "keep-alive",
       "Cache-Control": "no-cache, no-store, no-transform"
     }
   }
 }
+
+
+
