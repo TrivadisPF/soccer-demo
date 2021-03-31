@@ -184,9 +184,9 @@
               <div class="col-sm-6">
                 <div class="row  align-content-center">
                   <div class="embed-responsive embed-responsive-21by9">
-                    <video  (timeupdate)="setCurrentTime($event)" *ngIf="showVideo"
+                    <video   *ngIf="showVideo"
                             class="video embed-responsive-item"  width="720" height="400" #videoPlayer>
-                      <source src="assets/video/match.mp4#t={{startVideoAt}}}" type="video/mp4"/>
+                      <source src="assets/video/match.mp4#t={{startVideoAt}}" type="video/mp4"/>
                       Browser not supported
                     </video>
                   </div>

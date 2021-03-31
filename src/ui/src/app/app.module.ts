@@ -10,6 +10,7 @@ import {ChartsModule} from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FixtureStatComponent } from './component/fixture-stat/fixture-stat.component';
 import { GraphQLModule } from './graphql.module';
+import {Router, RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,10 @@ import { GraphQLModule } from './graphql.module';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     NgbModule,
-    GraphQLModule
+    GraphQLModule,
+    RouterModule.forRoot([
+      { path: '*', component: AppComponent},
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,6 +10,7 @@ import {BallPossession} from './util/ball-possession';
 import {MatchEventService} from './services/match/match-event.service';
 import {FixtureService} from './services/fixture/fixture.service';
 import {PlayerStat} from './util/player-stat';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -47,16 +48,16 @@ export class AppComponent implements OnInit {
               private ballPosessionService: BallPosessionService,
               private matchEventService: MatchEventService,
               private fixtureService: FixtureService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute
   ) {
     this.players = new Map();
   }
 
   ngOnInit(): void {
 
-
     this.fixtureService.getFixture().subscribe(result => {
       if (!result.loading && result.data && result.data.football_db_game_t) {
-
         result.data.football_db_game_t[0].lineups.forEach(l => {
           this.players.set(l.player_id, l.player.full_name);
           const playerStat = new PlayerStat(l.player_id, l.player.full_name, 0, 0);
@@ -66,59 +67,80 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.matchEventService.matchEventSubject.subscribe(_ => this.start());
-    this.matchEventService.listen();
 
-    setTimeout(() => {
-      this.ballPosessionService.ballPossessionSubject.subscribe(data => {
+    const navigationEnd = this.router.events.subscribe((val) => {
 
-        if (data && data.playerId) {
-          this.ballPossessions = [data, ...this.ballPossessions];
+      if (val instanceof NavigationEnd) {
+        const waitStart = this.activatedRoute.snapshot.queryParams['waitStart'];
+
+        if (waitStart) {
+          console.log('waiting for start before subscribing to events');
+          this.subscribeMatchEvents();
+        } else {
+          console.log('subscribing to events and stats');
+
+          this.subscribeSoccerEvents();
         }
-
-      });
-    }, 1000);
-
-    this.ballPosessionService.collectPosession();
-
-    setTimeout(() => {
-        this.ballPosessionService.ballPosessionStatSubject.subscribe(data => {
-          this.stats.refreshFromBallPossession(data);
-
-          data.playersDurationsMs.forEach((stat, playerName) => {
-
-            if (this.homePlayers.has(playerName)) {
-              this.homePlayerStats.find(p => p.name === playerName).possessionMinutes = (stat / 60000);
-            } else if (this.visitorPlayers.has(playerName)) {
-              this.visitorPlayerStats.find(p => p.name === playerName).possessionMinutes = (stat / 60000);
-            }
-          });
-
-          data.playersPercentages.forEach((stat, playerName) => {
-
-            if (this.homePlayers.has(playerName)) {
-              this.homePlayerStats.find(p => p.name === playerName).possessionPercentage = stat;
-            } else if (this.visitorPlayers.has(playerName)) {
-              this.visitorPlayerStats.find(p => p.name === playerName).possessionPercentage = stat;
-            }
-          });
-        });
-        this.ballPosessionService.collectPosessionStats();
-      },
-      2000);
+        navigationEnd.unsubscribe();
+      }
+    });
 
 
   }
 
+
+  subscribeSoccerEvents(): void {
+
+
+    this.ballPosessionService.ballPossessionSubject.subscribe(data => {
+
+      if (data && data.playerId) {
+        this.ballPossessions = [data, ...this.ballPossessions];
+      }
+
+    });
+    this.ballPosessionService.collectPosession();
+
+
+    this.ballPosessionService.ballPosessionStatSubject.subscribe(data => {
+      this.stats.refreshFromBallPossession(data);
+
+      data.playersDurationsMs.forEach((stat, playerName) => {
+
+        if (this.homePlayers.has(playerName)) {
+          this.homePlayerStats.find(p => p.name === playerName).possessionMinutes = (stat / 60000);
+        } else if (this.visitorPlayers.has(playerName)) {
+          this.visitorPlayerStats.find(p => p.name === playerName).possessionMinutes = (stat / 60000);
+        }
+      });
+
+      data.playersPercentages.forEach((stat, playerName) => {
+
+        if (this.homePlayers.has(playerName)) {
+          this.homePlayerStats.find(p => p.name === playerName).possessionPercentage = stat;
+        } else if (this.visitorPlayers.has(playerName)) {
+          this.visitorPlayerStats.find(p => p.name === playerName).possessionPercentage = stat;
+        }
+      });
+    });
+    this.ballPosessionService.collectPosessionStats();
+
+
+  };
+
+  subscribeMatchEvents(): void {
+    this.matchEventService.matchEventSubject
+      .subscribe(_ => this.start());
+    this.matchEventService.listen();
+  }
+
   start(): void {
+    this.subscribeSoccerEvents();
     this.playSound();
     this.videoplayer.nativeElement.play();
 
   }
 
-  setCurrentTime(data): void {
-    this.currentTime = data.target.currentTime;
-  }
 
   playSound(): void {
     const audio = new Audio();
