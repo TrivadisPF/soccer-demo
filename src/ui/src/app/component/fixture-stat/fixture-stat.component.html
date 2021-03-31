@@ -1,0 +1,34 @@
+<h4>{{visitor ? stats.visitorTeam : stats.homeTeam}}</h4>
+<div class="card">
+  <div class="card-header">Live Statistics</div>
+  <div class="card-body">
+    <div class="card-text">
+      <table class="table table-sm">
+        <tbody>
+        <tr>
+          <td scope="row">Possession %</td>
+          <td>{{(visitor ? stats.visitorTeamPosessionPercentage : stats.homeTeamPosessionPercentage )| number: '1.0-2'}}</td>
+        </tr>
+        <tr>
+          <td scope="row">Possession (mins)</td>
+          <td>{{((visitor ? stats.visitorTeamPosessionMs : stats.homeTeamPosessionMs) / 60000) | number: '1.0-2'}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-sm" style="font-size: 0.9em">
+        <thead>
+        <th scope="col">Player</th>
+        <th scope="col"> Poss. min/%</th>
+        </thead>
+        <tbody *ngFor="let ps of playerStats">
+        <tr>
+          <td>{{ps.name}}</td>
+          <td>{{ps.possessionMinutes  | number: '1.0-2'}}  / {{ps.possessionPercentage | number: '1.0-2'}} </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
