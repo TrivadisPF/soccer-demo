@@ -99,6 +99,8 @@ export class AppComponent implements OnInit {
       }
 
     });
+
+
     this.ballPosessionService.collectPosession();
 
 
@@ -123,10 +125,11 @@ export class AppComponent implements OnInit {
         }
       });
     });
-    this.ballPosessionService.collectPosessionStats();
+
+    setTimeout(() => this.ballPosessionService.collectPosessionStats(), 1500);
 
 
-  };
+  }
 
   subscribeMatchEvents(): void {
     this.matchEventService.matchEventSubject

@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2903850d-13a0-4110-aa8b-85a0a1c6aa17" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fifa-demo.iws" beforeDir="false" afterPath="$PROJECT_DIR$/fifa-demo.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-    </list>
+    <list default="true" id="2903850d-13a0-4110-aa8b-85a0a1c6aa17" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,7 +138,7 @@
       <option name="presentableId" value="Default" />
       <updated>1616594513608</updated>
       <workItem from="1616594514703" duration="99207000" />
-      <workItem from="1617183568776" duration="6205000" />
+      <workItem from="1617183568776" duration="6705000" />
     </task>
     <task id="LOCAL-00001" summary="ui sources">
       <created>1617183669910</created>
@@ -167,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617184649426</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="implemented wait parameter">
+      <created>1617197478197</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617197478197</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,7 +187,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ui sources" />
-    <option name="LAST_COMMIT_MESSAGE" value="ui sources" />
+    <MESSAGE value="implemented wait parameter" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented wait parameter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
