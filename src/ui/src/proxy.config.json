@@ -6,8 +6,8 @@
     "changeOrigin": true,
     "pathRewrite": { "^/api": ""},
     "headers": {
-      "Connection": "keep-alive",
-      "Cache-Control": "no-cache, no-store, no-transform"
+      "Pragma": "no-cache"
+
     }
   }
 }
