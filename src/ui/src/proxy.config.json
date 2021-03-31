@@ -1,0 +1,12 @@
+{
+  "/api/*": {
+    "target": "http://18.197.89.131:8088",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": { "^/api": ""},
+    "headers": {
+      "Connection": "keep-alive"
+    }
+  }
+}
