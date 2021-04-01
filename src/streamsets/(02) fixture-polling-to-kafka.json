@@ -3,9 +3,9 @@
     "schemaVersion" : 6,
     "version" : 22,
     "pipelineId" : "EDHompcsf414feff-fc6a-45ad-ab84-c453a5eff8f2",
-    "title" : "fixture-polling-to-kafka",
+    "title" : "(02) fixture-polling-to-kafka",
     "description" : "",
-    "uuid" : "3034ccc4-bd10-41c2-be13-9f5691811a77",
+    "uuid" : "360b568b-d640-4165-a977-e40f839faebe",
     "configuration" : [ {
       "name" : "executionMode",
       "value" : "STANDALONE"
@@ -1358,24 +1358,24 @@
     },
     "info" : {
       "pipelineId" : "EDHompcsf414feff-fc6a-45ad-ab84-c453a5eff8f2",
-      "title" : "fixture-polling-to-kafka",
+      "title" : "(02) fixture-polling-to-kafka",
       "description" : "",
       "created" : 1616663295353,
-      "lastModified" : 1617095798325,
+      "lastModified" : 1617107752691,
       "creator" : "admin",
       "lastModifier" : "admin",
       "lastRev" : "0",
-      "uuid" : "3034ccc4-bd10-41c2-be13-9f5691811a77",
+      "uuid" : "360b568b-d640-4165-a977-e40f839faebe",
       "valid" : true,
       "metadata" : {
-        "labels" : [ "restapi", "polling", "fixtures-source" ]
+        "labels" : [ "ingest", "restapi" ]
       },
       "name" : "EDHompcsf414feff-fc6a-45ad-ab84-c453a5eff8f2",
       "sdcVersion" : "3.21.0",
       "sdcId" : "49302bc7-8d47-11eb-8ef0-afafbc2cef2a"
     },
     "metadata" : {
-      "labels" : [ "restapi", "polling", "fixtures-source" ]
+      "labels" : [ "ingest", "restapi" ]
     },
     "statsAggregatorStage" : {
       "instanceName" : "statsAggregatorStageInstance",
