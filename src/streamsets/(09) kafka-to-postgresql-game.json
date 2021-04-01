@@ -5,7 +5,7 @@
     "pipelineId" : "09kafka5ccfd6d8-92c4-4506-b386-28cd6b9e6a7d",
     "title" : "(09) kafka-to-postgresql-game",
     "description" : "",
-    "uuid" : "272a6c4a-6966-4907-85eb-e95951e59b40",
+    "uuid" : "716e6144-c526-4644-9134-e60e5ea72b5c",
     "configuration" : [ {
       "name" : "executionMode",
       "value" : "STANDALONE"
@@ -1194,21 +1194,21 @@
       "title" : "(09) kafka-to-postgresql-game",
       "description" : "",
       "created" : 1617099516694,
-      "lastModified" : 1617100206875,
+      "lastModified" : 1617107803227,
       "creator" : "admin",
       "lastModifier" : "admin",
       "lastRev" : "0",
-      "uuid" : "272a6c4a-6966-4907-85eb-e95951e59b40",
+      "uuid" : "716e6144-c526-4644-9134-e60e5ea72b5c",
       "valid" : true,
       "metadata" : {
-        "labels" : [ ]
+        "labels" : [ "distribution", "jdbc" ]
       },
       "name" : "09kafka5ccfd6d8-92c4-4506-b386-28cd6b9e6a7d",
       "sdcVersion" : "3.21.0",
       "sdcId" : "49302bc7-8d47-11eb-8ef0-afafbc2cef2a"
     },
     "metadata" : {
-      "labels" : [ ]
+      "labels" : [ "distribution", "jdbc" ]
     },
     "statsAggregatorStage" : {
       "instanceName" : "statsAggregatorStageInstance",

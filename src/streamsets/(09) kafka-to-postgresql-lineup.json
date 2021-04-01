@@ -5,7 +5,7 @@
     "pipelineId" : "09kafka1d91f11f-eeab-4649-b9a9-1c5ee02eb4c2",
     "title" : "(09) kafka-to-postgresql-lineup",
     "description" : "",
-    "uuid" : "88ff4f31-197e-4472-847d-0f2de9158177",
+    "uuid" : "e859d6c3-b3d7-4047-bd1e-ac8e929c75b8",
     "configuration" : [ {
       "name" : "executionMode",
       "value" : "STANDALONE"
@@ -824,6 +824,12 @@
         }, {
           "fromFieldExpression" : "/POSITION",
           "toFieldExpression" : "/position"
+        }, {
+          "fromFieldExpression" : "/TEAM",
+          "toFieldExpression" : "/team"
+        }, {
+          "fromFieldExpression" : "/TEAMID",
+          "toFieldExpression" : "/team_id"
         } ]
       }, {
         "name" : "errorHandler.nonExistingFromFieldHandling",
@@ -1149,21 +1155,21 @@
       "title" : "(09) kafka-to-postgresql-lineup",
       "description" : "",
       "created" : 1617091552659,
-      "lastModified" : 1617099063024,
+      "lastModified" : 1617107821474,
       "creator" : "admin",
       "lastModifier" : "admin",
       "lastRev" : "0",
-      "uuid" : "88ff4f31-197e-4472-847d-0f2de9158177",
+      "uuid" : "e859d6c3-b3d7-4047-bd1e-ac8e929c75b8",
       "valid" : true,
       "metadata" : {
-        "labels" : [ ]
+        "labels" : [ "distribution", "jdbc" ]
       },
       "name" : "09kafka1d91f11f-eeab-4649-b9a9-1c5ee02eb4c2",
       "sdcVersion" : "3.21.0",
       "sdcId" : "49302bc7-8d47-11eb-8ef0-afafbc2cef2a"
     },
     "metadata" : {
-      "labels" : [ ]
+      "labels" : [ "distribution", "jdbc" ]
     },
     "statsAggregatorStage" : {
       "instanceName" : "statsAggregatorStageInstance",

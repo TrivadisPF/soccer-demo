@@ -5,7 +5,7 @@
     "pipelineId" : "09kafka84a5127c-425c-403e-980f-1042bd41b4a8",
     "title" : "(09) kafka-to-postgresql-team",
     "description" : "",
-    "uuid" : "b8d928b0-4dbc-47da-a656-a88226d89fbc",
+    "uuid" : "fe88a617-1c1a-4e5d-a957-96e3c4a82a0f",
     "configuration" : [ {
       "name" : "executionMode",
       "value" : "STANDALONE"
@@ -1097,21 +1097,21 @@
       "title" : "(09) kafka-to-postgresql-team",
       "description" : "",
       "created" : 1617106467362,
-      "lastModified" : 1617106658470,
+      "lastModified" : 1617107856847,
       "creator" : "admin",
       "lastModifier" : "admin",
       "lastRev" : "0",
-      "uuid" : "b8d928b0-4dbc-47da-a656-a88226d89fbc",
+      "uuid" : "fe88a617-1c1a-4e5d-a957-96e3c4a82a0f",
       "valid" : true,
       "metadata" : {
-        "labels" : [ ]
+        "labels" : [ "distribution", "jdbc" ]
       },
       "name" : "09kafka84a5127c-425c-403e-980f-1042bd41b4a8",
       "sdcVersion" : "3.21.0",
       "sdcId" : "49302bc7-8d47-11eb-8ef0-afafbc2cef2a"
     },
     "metadata" : {
-      "labels" : [ ]
+      "labels" : [ "distribution", "jdbc" ]
     },
     "statsAggregatorStage" : {
       "instanceName" : "statsAggregatorStageInstance",
