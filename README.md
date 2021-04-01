@@ -499,24 +499,25 @@ WITH (
     VALUE_AVRO_SCHEMA_FULL_NAME='com.trivadis.demo.soccer.BallPossessionEventV1'
 )
 AS
-SELECT
-  bp.id,
-  stringtotimestamp(bp.ts, 'yyyy.MM.dd''T''HH:mm:ss.SSS') as ts,
-  bp.ts as ts_string, 
-  CAST (bp.playtimeMs AS bigint) AS playtimeMs,
-  bp.eventtype as eventtype,
-  bp.sensorId as sensorId,
-  bp.matchId as matchId,
-  glp.position as position,
-  glp.playerId as playerId,
-  p.name,
-  p.full_name,
-  glp.team as team,
-  glp.teamId as teamId,
-  CASE WHEN (glp.team = 'home') THEN 1 ELSE 2 END as objectType
+SELECT bp.id
+  		, STRINGTOTIMESTAMP(bp.ts, 'yyyy.MM.dd''T''HH:mm:ss.SSS') AS ts
+  		, bp.ts AS ts_string
+  		, CAST (bp.playtimeMs AS bigint) AS playtimeMs
+  		, bp.eventtype AS eventtype
+  		, bp.sensorId AS sensorId
+  		, bp.matchId AS matchId
+  		, glp.position AS position
+  		, glp.playerId AS playerId
+  		, p.name
+  		, p.full_name
+  		, glp.team as team
+  		, glp.teamId as teamId
+  		, CASE WHEN (glp.team = 'home') THEN 1 ELSE 2 END as objectType
 FROM ball_possession_aggregate_s bp
-INNER JOIN game_lineup_player_t glp on glp.sensorId  = bp.sensorId
-INNER JOIN player_t p ON p.id = glp.playerId
+INNER JOIN game_lineup_player_t glp 
+	ON glp.sensorId  = bp.sensorId
+INNER JOIN player_t p 
+	ON p.id = glp.playerId
 PARTTION BY bp.id
 EMIT CHANGES;
 ```
