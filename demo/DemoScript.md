@@ -316,6 +316,9 @@ OR ARRAY_JOIN (LATEST_BY_OFFSET(isPenaltyBoxRight,2), ':') IN ('0:1','1:0')
 EMIT CHANGES;
 ```
 
+```
+SELECT * FROM ball_in_zone_event_t WHERE ball_event IS NOT NULL EMIT CHANGES;
+```
 
 
 ## Lineup & Player Information (GraphQL)
@@ -323,9 +326,39 @@ EMIT CHANGES;
 ![Alt Image Text](../images/usecase-lineup-player.png "Modern Data Platform Overview")
 
 
+Example StreamSets Projection Handler: [(09) kafka-to-postgresql-lineup](http://18.197.89.131:18630/collector/pipeline/09kafka1d91f11f-eeab-4649-b9a9-1c5ee02eb4c2)
+
+PostgreSQL Data Model (read model)
+
+![Alt Image Text](../images/soccer-read-model.png "Read Model for Data Distribution")
+
+GraphQL Explorer: [GraphiQL](http://18.197.89.131:28177/console/api/api-explorer)
+
+Simulate Lineup for a new game
+
+```bash
+docker exec -ti streamsets-1 bash
+```
+
+```
+query MyQuery {
+  football_db_lineup_t(where: {_not: {game_id: {_eq: "19060518"}, player: {}}}) {
+    player_id
+    sensor_id
+    player {
+      full_name
+      name
+      potential
+      preferred_foot
+    }
+    game_id
+  }
+}
+```
+
 ```bash
 curl -X POST -H 'X-SDC-APPLICATION-ID: abc123!' -i http://localhost:8000 --data '{
-    "matchId": 19060518,
+    "matchId": 19060519,
     "homeTeamPlayers": [
         {
             "playerId": 178005,
@@ -447,7 +480,7 @@ Update with Sensor
 
 ```bash
 curl -X POST -H 'X-SDC-APPLICATION-ID: abc123!' -i http://localhost:8000 --data '{
-    "matchId": 19060518,
+    "matchId": 19060519,
     "homeTeamPlayers": [
         {
             "playerId": 178005,
