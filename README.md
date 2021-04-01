@@ -519,6 +519,7 @@ INNER JOIN game_lineup_player_t glp on glp.sensorId  = bp.sensorId
 INNER JOIN player_t p ON p.id = glp.playerId
 PARTTION BY bp.id
 EMIT CHANGES;
+```
 
 
 SELECT * FROM ball_possession_event_s emit changes;
