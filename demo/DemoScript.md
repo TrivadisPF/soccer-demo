@@ -158,15 +158,11 @@ Kafka Streams Topology
         final BallPossessionStatisticsHandler ballPossessionStatisticsHandler = new BallPossessionStatisticsHandler(ballPossessionStore.name(), ballPossessionStatsStore.name());
 
         final KStream<String, GameEventV1> gameEvent = builder.stream("game_event_v1");
-        gameEvent.peek((k, v) -> System.out.println("================> " + v.toString()));
-        //gameEvent.filter((key, ge) -> ge.getEventType().equals("simulation-start"))
         gameEvent.foreach((k, v) -> ballPossessionStatisticsHandler.startGame((v.getMatchId())));
 
         final KStream<String, BallPossessionEventV1> source = builder.stream("ball_possession_event_v1");
-        source.peek((k, v) -> System.out.println("================> " + v.toString()));
 
         KStream<String, BallPossessionStatsEventV1> ballPossessionStats = source.transformValues(() -> ballPossessionStatisticsHandler, ballPossessionStore.name(), ballPossessionStatsStore.name());
-        ballPossessionStats.peek((k, v) -> System.out.println("================> " + v.toString()));
 
         ballPossessionStats.to("ball_possession_stats_event_v1");
 
