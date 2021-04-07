@@ -4,7 +4,7 @@ This project shows how to setup and run the demo used ...
 
 ![Alt Image Text](./images/use-case-overview.png "Use Case Overview")
 
-The demo is based on some input from [this project](https://github.com/pascalhubacher/SemesterarbeitCASBGD).
+The demo is uses some material developed and documented by [this project](https://github.com/pascalhubacher/SemesterarbeitCASBGD).
 
 ## Prerequistes
 
