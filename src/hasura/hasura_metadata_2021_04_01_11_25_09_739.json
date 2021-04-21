@@ -1,0 +1,113 @@
+{
+  "version": 3,
+  "sources": [
+    {
+      "name": "default",
+      "kind": "postgres",
+      "tables": [
+        {
+          "table": {
+            "schema": "football_db",
+            "name": "game_t"
+          },
+          "array_relationships": [
+            {
+              "name": "lineups",
+              "using": {
+                "manual_configuration": {
+                  "remote_table": {
+                    "schema": "football_db",
+                    "name": "lineup_t"
+                  },
+                  "insertion_order": null,
+                  "column_mapping": {
+                    "id": "game_id"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "table": {
+            "schema": "football_db",
+            "name": "lineup_t"
+          },
+          "object_relationships": [
+            {
+              "name": "player",
+              "using": {
+                "manual_configuration": {
+                  "remote_table": {
+                    "schema": "football_db",
+                    "name": "player_t"
+                  },
+                  "insertion_order": null,
+                  "column_mapping": {
+                    "player_id": "id"
+                  }
+                }
+              }
+            },
+            {
+              "name": "teamDetails",
+              "using": {
+                "manual_configuration": {
+                  "remote_table": {
+                    "schema": "football_db",
+                    "name": "team_t"
+                  },
+                  "insertion_order": null,
+                  "column_mapping": {
+                    "team_id": "id"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "table": {
+            "schema": "football_db",
+            "name": "player_t"
+          }
+        },
+        {
+          "table": {
+            "schema": "football_db",
+            "name": "team_t"
+          },
+          "array_relationships": [
+            {
+              "name": "lineups",
+              "using": {
+                "manual_configuration": {
+                  "remote_table": {
+                    "schema": "football_db",
+                    "name": "lineup_t"
+                  },
+                  "insertion_order": null,
+                  "column_mapping": {
+                    "id": "team_id"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "configuration": {
+        "connection_info": {
+          "database_url": {
+            "from_env": "HASURA_GRAPHQL_DATABASE_URL"
+          },
+          "pool_settings": {
+            "retries": 1,
+            "idle_timeout": 180,
+            "max_connections": 50
+          }
+        }
+      }
+    }
+  ]
+}
