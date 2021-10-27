@@ -24,7 +24,7 @@ Optionally change the password from the default value of `ubuntu` to a more secu
 
 ```
 export GITHUB_PROJECT=soccer-demo
-export GITHUB_OWNER=trivadispf
+export GITHUB_OWNER=TrivadisPF
 export DATAPLATFORM_HOME=docker
 export DOCKER_COMPOSE_VERSION=1.25.3
 export PLATYS_VERSION=2.4.0
