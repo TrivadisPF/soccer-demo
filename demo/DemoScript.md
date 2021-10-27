@@ -2,10 +2,10 @@
 
 ![Alt Image Text](../images/usecase-ball-possession.png "Modern Data Platform Overview")
 
-On my Mac
+On a terminal
 
 ```
-kafkacat -b dataplatform:9092 -t game_movement_event_v1 -s avro -r http://dataplatform:8081
+docker exec -ti kcat kcat -b kafka-1:19092 -t game_movement_event_v1 -s value=avro -r http://schema-registry:8081
 ```
 
 Faust Player Near Ball [worker_fbRawGames.py](../src/faust/fbRawGames/worker_fbRawGames.py)
