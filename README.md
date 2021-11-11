@@ -64,6 +64,76 @@ As a final step, add `dataplatform` as an alias to the `/etc/hosts` file so that
 
 If you have no rights for doing that, then you have to use your IP address instead of `dataplatform` in all the URLs.  
 
+### Running in AWS Ligthsail
+
+```
+export GITHUB_PROJECT=soccer-demo
+export GITHUB_OWNER=trivadispf
+export DATAPLATFORM_HOME=docker
+export DOCKER_COMPOSE_VERSION=1.25.3
+export PLATYS_VERSION=2.4.0
+export NETWORK_NAME=eth0
+export USERNAME=ubuntu
+export PASSWORD=<changeme>
+export ZIP_PASSWORD=<changeme>
+
+# Prepare Environment Variables 
+export PUBLIC_IP=$(curl ipinfo.io/ip)
+export DOCKER_HOST_IP=$(ip addr show ${NETWORK_NAME} | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
+
+# allow login by password
+sudo sed -i "s/.*PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+echo "${USERNAME}:${PASSWORD}"|chpasswd
+sudo service sshd restart
+
+# add alias "dataplatform" to /etc/hosts
+echo "$DOCKER_HOST_IP     dataplatform" | sudo tee -a /etc/hosts
+
+# Install Docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable edge"
+apt-get install -y docker-ce
+sudo usermod -aG docker $USERNAME
+
+# Install Docker Compose
+curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+# Install Platys
+sudo curl -L "https://github.com/TrivadisPF/platys/releases/download/${PLATYS_VERSION}/platys_${PLATYS_VERSION}_linux_x86_64.tar.gz" -o /tmp/platys.tar.gz
+tar zvxf /tmp/platys.tar.gz 
+sudo mv platys /usr/local/bin/
+sudo chown root:root /usr/local/bin/platys
+sudo rm platys.tar.gz 
+
+# Install various Utilities
+sudo apt-get install -y curl jq kafkacat unzip openjdk-11-jdk maven
+
+# needed for elasticsearch
+sudo sysctl -w vm.max_map_count=262144   
+
+# Get the project
+cd /home/${USERNAME} 
+git clone https://github.com/${GITHUB_OWNER}/${GITHUB_PROJECT}
+chown -R ${USERNAME}:${USERNAME} ${GITHUB_PROJECT}
+
+cd /home/${USERNAME}/${GITHUB_PROJECT}
+
+./provision.sh
+
+cd /home/${USERNAME}/${GITHUB_PROJECT}/${DATAPLATFORM_HOME}
+
+# Prepare Environment Variables into .bash_profile file
+printf "export PUBLIC_IP=$PUBLIC_IP\n" >> /home/$USERNAME/.bash_profile
+printf "export DOCKER_HOST_IP=$DOCKER_HOST_IP\n" >> /home/$USERNAME/.bash_profile
+printf "export DATAPLATFORM_HOME=$PWD\n" >> /home/$USERNAME/.bash_profile
+printf "\n" >> /home/$USERNAME/.bash_profile
+sudo chown ${USERNAME}:${USERNAME} /home/$USERNAME/.bash_profile
+
+# Startup Environment
+sudo -E docker-compose up -d
+```
 
 ## Preparation
 
@@ -103,6 +173,22 @@ docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --top
 
 docker exec -ti kafka-1 kafka-topics --create --zookeeper zookeeper-1:2181 --topic fbBallPossessionAggregate --replication-factor 3 --partitions 1 
 ```
+
+### Register Avro Schemas
+
+In a terminal window (i.e. <http://dataplatform:3001>) perform
+
+```bash
+cd /$DATAPLATFORM_HOME/../src/java/meta
+
+mvn schema-registry:register
+```
+
+Now check the Schema Registry <http://dataplatform:28102>.
+
+### Load the Streamsets Pipelines
+
+
 
 ## UI 
 
@@ -169,14 +255,26 @@ For player positions the data in this csv file [./data/football-positions.csv](.
 
 ## Stream Data Ingestion
 
-## Stream Processing
-
-### Game Lineup 
-
 
 ``` bash
 docker exec -it ksqldb-cli ksql http://ksqldb-server-1:8088
 ```
+
+## Stream Processing
+
+### Game Metadata
+
+```
+DROP TABLE game_t;
+
+CREATE TABLE game_t (rowkey VARCHAR PRIMARY KEY) 
+WITH (KAFKA_TOPIC='game_v1', VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA');
+```
+
+
+
+### Game Lineup 
+
 
 Create a Stream on the lineup data
 
@@ -277,15 +375,6 @@ curl -X POST -H 'Content-Type: application/vnd.ksql.v1+avro' -i http://dataplatf
 }'
 ```
 
-## Game Metadata
-
-```
-DROP TABLE game_t;
-
-CREATE TABLE game_t (rowkey VARCHAR PRIMARY KEY) 
-WITH (KAFKA_TOPIC='game_v1', VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA');
-```
-
 
 ## Players Metadata (t.b.d.)
 
@@ -317,7 +406,7 @@ DROP TABLE stadium_t;
 CREATE TABLE stadium_t (
   id VARCHAR PRIMARY KEY, 
   name VARCHAR, 
-  pitchYSize DOUBLE, 
+  pitchXSize DOUBLE, 
   pitchYSize DOUBLE) 
 WITH (KAFKA_TOPIC='stadium_v1', PARTITIONS=1, REPLICAS=3, VALUE_FORMAT='AVRO', KEY_FORMAT='KAFKA');
 
@@ -547,3 +636,13 @@ SELECT * FROM ball_possession_stats_event_s emit changes;
 This was the game
 
 <https://de.uefa.com/uefanationsleague/match/2024419--portugal-vs-switzerland/stories/?iv=true>
+
+
+
+
+
+## Running the Azkarra Streams application
+
+```bash
+mvn clean package && java -jar target/calc-ball-possession-stats-1.0.jar
+```
